@@ -1,0 +1,1372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3BCD9A2-CA18-4AB9-A254-26B74894FFF1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Atencao_Assistida</RootNamespace>
+    <AssemblyName>Sms</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\sms\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>SmS</ProductName>
+    <PublisherName>Setup</PublisherName>
+    <SuiteName>Instalador SmS</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>20</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>515D21F22ED52A5792CD4D5CC11B63D569155DC5</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>teste1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Ícone-Atenção-Assistida.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Data.Protection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Data.Protection.1.0.0\lib\netstandard2.0\Carbon.Data.Protection.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Json, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Json.2.1.0\lib\netstandard2.0\Carbon.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Packaging, Version=1.36.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Packaging.1.36.0\lib\netstandard2.0\Carbon.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Storage, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Storage.2.0.0\lib\netstandard2.0\Carbon.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.VersionControl, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.VersionControl.2.0.0\lib\netstandard2.0\Carbon.VersionControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Versioning, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Versioning.1.6.0\lib\netstandard2.0\Carbon.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="GitHub, Version=1.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GitHub.1.18.0\lib\netstandard2.0\GitHub.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.16\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\DAL\DBAcess.cs" />
+    <Compile Include="Classes\DAL\DBAcessOleDB.cs" />
+    <Compile Include="Classes\Funcoes\CriaArquivo.cs" />
+    <Compile Include="Classes\Funcoes\Funcoes.cs" />
+    <Compile Include="Classes\Funcoes\IniFile.cs" />
+    <Compile Include="Classes\Mysql\Avisos.cs" />
+    <Compile Include="Classes\Mysql\Balanco.cs" />
+    <Compile Include="Classes\Mysql\Cfop.cs" />
+    <Compile Include="Classes\Mysql\clinica\Agenda.cs" />
+    <Compile Include="Classes\Mysql\clinica\Agenda_obs.cs" />
+    <Compile Include="Classes\Mysql\clinica\Arquivos.cs" />
+    <Compile Include="Classes\Mysql\CriaArquivo.cs" />
+    <Compile Include="Classes\Mysql\Departamento.cs" />
+    <Compile Include="Classes\Mysql\Empresa.cs" />
+    <Compile Include="Classes\Mysql\Entrada.cs" />
+    <Compile Include="Classes\Mysql\Entrada_item.cs" />
+    <Compile Include="Classes\Mysql\Entrada_item_vinculo.cs" />
+    <Compile Include="Classes\Mysql\Estoque.cs" />
+    <Compile Include="Classes\Mysql\Estorno.cs" />
+    <Compile Include="Classes\Mysql\Fornecedor.cs" />
+    <Compile Include="Classes\Mysql\Pedido.cs" />
+    <Compile Include="Classes\Mysql\Pedido_item.cs" />
+    <Compile Include="Classes\Mysql\Relatorios.cs" />
+    <Compile Include="Classes\Mysql\Saida.cs" />
+    <Compile Include="Classes\Mysql\Unidade.cs" />
+    <Compile Include="Classes\Mysql\Utilidades.cs" />
+    <Compile Include="Classes\Mysql\Acessos.cs" />
+    <Compile Include="Classes\Mysql\Agente.cs" />
+    <Compile Include="Classes\Mysql\DocumentosImg.cs" />
+    <Compile Include="Classes\Mysql\EntregaMercadoria.cs" />
+    <Compile Include="Classes\Mysql\Especialidade.cs" />
+    <Compile Include="Classes\Mysql\Grupo.cs" />
+    <Compile Include="Classes\Mysql\Marca.cs" />
+    <Compile Include="Classes\Mysql\Pacientes.cs" />
+    <Compile Include="Classes\Mysql\Produto.cs" />
+    <Compile Include="Classes\Mysql\Protocolo.cs" />
+    <Compile Include="Classes\Mysql\UnidadeMedida.cs" />
+    <Compile Include="Classes\Mysql\Visitas.cs" />
+    <Compile Include="Consultas\Estoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\Estoque.Designer.cs">
+      <DependentUpon>Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cr1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cr1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Acesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Acesso.Designer.cs">
+      <DependentUpon>Acesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AcessoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AcessoUsuarios.Designer.cs">
+      <DependentUpon>AcessoUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Agente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agente.Designer.cs">
+      <DependentUpon>Agente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AtualizaAcesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AtualizaAcesso.Designer.cs">
+      <DependentUpon>AtualizaAcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AvisoReqOfc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AvisoReqOfc.Designer.cs">
+      <DependentUpon>AvisoReqOfc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balanco.Designer.cs">
+      <DependentUpon>Balanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Autoriza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Autoriza.Designer.cs">
+      <DependentUpon>Autoriza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Autoriza_Oficio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Autoriza_Oficio.Designer.cs">
+      <DependentUpon>Autoriza_Oficio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Devolucao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Devolucao.Designer.cs">
+      <DependentUpon>Devolucao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\EntradaMercadoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\EntradaMercadoria.Designer.cs">
+      <DependentUpon>EntradaMercadoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Oficio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Oficio.Designer.cs">
+      <DependentUpon>Oficio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Requisicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Requisicao.Designer.cs">
+      <DependentUpon>Requisicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Saida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caftrin\Saida.Designer.cs">
+      <DependentUpon>Saida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CapturaScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CapturaScanner.Designer.cs">
+      <DependentUpon>CapturaScanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cfop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cfop.Designer.cs">
+      <DependentUpon>Cfop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Departamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Departamento.Designer.cs">
+      <DependentUpon>Departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EntregaMedicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EntregaMedicamentos.Designer.cs">
+      <DependentUpon>EntregaMedicamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Especialidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Especialidade.Designer.cs">
+      <DependentUpon>Especialidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FechamentoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FechamentoEstoque.Designer.cs">
+      <DependentUpon>FechamentoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Grupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Grupo.Designer.cs">
+      <DependentUpon>Grupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImgCaptura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImgCaptura.Designer.cs">
+      <DependentUpon>ImgCaptura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Marca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Marca.Designer.cs">
+      <DependentUpon>Marca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Medicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Medicamentos.Designer.cs">
+      <DependentUpon>Medicamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\AgendaOdt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\AgendaOdt.Designer.cs">
+      <DependentUpon>AgendaOdt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\Dentista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\Dentista.Designer.cs">
+      <DependentUpon>Dentista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\Empresa.Designer.cs">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\Fornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\Fornecedor.Designer.cs">
+      <DependentUpon>Fornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\Marcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\Marcas.Designer.cs">
+      <DependentUpon>Marcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\PacienteOdt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\PacienteOdt.Designer.cs">
+      <DependentUpon>PacienteOdt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\Produtos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\Produtos.Designer.cs">
+      <DependentUpon>Produtos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Odonto\Unidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Odonto\Unidades.Designer.cs">
+      <DependentUpon>Unidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Paciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Paciente.Designer.cs">
+      <DependentUpon>Paciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Processo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Processo.Designer.cs">
+      <DependentUpon>Processo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SaidaMercadoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SaidaMercadoria.Designer.cs">
+      <DependentUpon>SaidaMercadoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SaidaOficio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SaidaOficio.Designer.cs">
+      <DependentUpon>SaidaOficio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sobre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sobre.Designer.cs">
+      <DependentUpon>Sobre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnidadeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnidadeMedida.Designer.cs">
+      <DependentUpon>UnidadeMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Visitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Visitas.Designer.cs">
+      <DependentUpon>Visitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInicial.Designer.cs">
+      <DependentUpon>FrmInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="ModelSerialization\Detalhe.cs" />
+    <Compile Include="ModelSerialization\Emitente.cs" />
+    <Compile Include="ModelSerialization\Endereco.cs" />
+    <Compile Include="ModelSerialization\Identificacao.cs" />
+    <Compile Include="ModelSerialization\NFe.cs" />
+    <Compile Include="ModelSerialization\NFeProc.cs" />
+    <Compile Include="ModelSerialization\Produtos.cs" />
+    <Compile Include="Pesquisas\PesquisaAgente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaAgente.Designer.cs">
+      <DependentUpon>PesquisaAgente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaCfop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaCfop.Designer.cs">
+      <DependentUpon>PesquisaCfop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaEntrada.Designer.cs">
+      <DependentUpon>PesquisaEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaFornecedor.Designer.cs">
+      <DependentUpon>PesquisaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaOficio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaOficio.Designer.cs">
+      <DependentUpon>PesquisaOficio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaPaciente.Designer.cs">
+      <DependentUpon>PesquisaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaProdutos.Designer.cs">
+      <DependentUpon>PesquisaProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaProtocolo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaProtocolo.Designer.cs">
+      <DependentUpon>PesquisaProtocolo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaRequisicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaRequisicao.Designer.cs">
+      <DependentUpon>PesquisaRequisicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaTela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaTela.Designer.cs">
+      <DependentUpon>PesquisaTela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaUnidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaUnidade.Designer.cs">
+      <DependentUpon>PesquisaUnidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaUsuario.Designer.cs">
+      <DependentUpon>PesquisaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Agente\DsAgente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsAgente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Agente\RelAgente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Agente\RelAgente.Designer.cs">
+      <DependentUpon>RelAgente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Balanco\DsBalanco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsBalanco.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Balanco\RelBalanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Balanco\RelBalanco.Designer.cs">
+      <DependentUpon>RelBalanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Departamento\DsDepartamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsDepartamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Departamento\RelDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Departamento\RelDepartamento.Designer.cs">
+      <DependentUpon>RelDepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Entrada\DsEntrada.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsEntrada.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Entrada\RelEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Entrada\RelEntrada.Designer.cs">
+      <DependentUpon>RelEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\EntregaMercadoria\DsEntregaMercadoria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsEntregaMercadoria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\EntregaMercadoria\RelEntregaMercadoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\EntregaMercadoria\RelEntregaMercadoria.Designer.cs">
+      <DependentUpon>RelEntregaMercadoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Especialidade\DsEspecialidade.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsEspecialidade.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Especialidade\RelEspecialidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Especialidade\RelEspecialidade.Designer.cs">
+      <DependentUpon>RelEspecialidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Estoque\DsEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Estoque\RelEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Estoque\RelEstoque.Designer.cs">
+      <DependentUpon>RelEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Fornecedor\DsFornecedor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsFornecedor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Fornecedor\RelFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Fornecedor\RelFornecedor.Designer.cs">
+      <DependentUpon>RelFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Grupo\DsGrupo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsGrupo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Grupo\RelGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Grupo\RelGrupo.Designer.cs">
+      <DependentUpon>RelGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Marca\DsMarca.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsMarca.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Marca\RelMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Marca\RelMarca.Designer.cs">
+      <DependentUpon>RelMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Oficio\DsOficio.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsOficio.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Oficio\RelOficio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Oficio\RelOficio.Designer.cs">
+      <DependentUpon>RelOficio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\PacienteProduto\PacienteProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\PacienteProduto\PacienteProduto.Designer.cs">
+      <DependentUpon>PacienteProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\PacienteProduto\RelPacienteProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\PacienteProduto\RelPacienteProduto.Designer.cs">
+      <DependentUpon>RelPacienteProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Paciente\DsPaciente.cs">
+      <DependentUpon>DsPaciente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Paciente\DsPaciente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsPaciente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Paciente\RelPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Paciente\RelPaciente.Designer.cs">
+      <DependentUpon>RelPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Pedido\DsPedido.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsPedido.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Pedido\RelPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Pedido\RelPedido.Designer.cs">
+      <DependentUpon>RelPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\DsPrevisaoEntrega.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsPrevisaoEntrega.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\Previsao_Entrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\Previsao_Entrega.Designer.cs">
+      <DependentUpon>Previsao_Entrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega.Designer.cs">
+      <DependentUpon>RelPrevisaoEntrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RelPrevisaoEntrega1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega2.Designer.cs">
+      <DependentUpon>RelPrevisaoEntrega2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Produto\DsProdutos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsProdutos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Produto\RelProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Produto\RelProdutos.Designer.cs">
+      <DependentUpon>RelProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Protocolo\DsProtocolo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsProtocolo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Protocolo\DsProtocolo1.cs">
+      <DependentUpon>DsProtocolo1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Protocolo\DsProtocolo1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsProtocolo1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Protocolo\RelProtocolo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Protocolo\RelProtocolo.Designer.cs">
+      <DependentUpon>RelProtocolo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Saida\DsSaida.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsSaida.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Saida\RelSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Saida\RelSaida.Designer.cs">
+      <DependentUpon>RelSaida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Unidades\DsUnidade.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsUnidade.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Unidades\RelUnidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Unidades\RelUnidade.Designer.cs">
+      <DependentUpon>RelUnidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelPrevisaoEntrega1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RelPrevisaoEntrega1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scanner.cs" />
+    <Compile Include="ModelSerialization\Destinatario.cs" />
+    <Compile Include="Serializable\NFeSerialization.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Consultas\Estoque.resx">
+      <DependentUpon>Estoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cr1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Cr1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Acesso.resx">
+      <DependentUpon>Acesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AcessoUsuarios.resx">
+      <DependentUpon>AcessoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agente.resx">
+      <DependentUpon>Agente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AtualizaAcesso.resx">
+      <DependentUpon>AtualizaAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AvisoReqOfc.resx">
+      <DependentUpon>AvisoReqOfc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balanco.resx">
+      <DependentUpon>Balanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\Autoriza.resx">
+      <DependentUpon>Autoriza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\Autoriza_Oficio.resx">
+      <DependentUpon>Autoriza_Oficio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\Devolucao.resx">
+      <DependentUpon>Devolucao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\EntradaMercadoria.resx">
+      <DependentUpon>EntradaMercadoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\Oficio.resx">
+      <DependentUpon>Oficio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\Requisicao.resx">
+      <DependentUpon>Requisicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caftrin\Saida.resx">
+      <DependentUpon>Saida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CapturaScanner.resx">
+      <DependentUpon>CapturaScanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cfop.resx">
+      <DependentUpon>Cfop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Departamento.resx">
+      <DependentUpon>Departamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EntregaMedicamentos.resx">
+      <DependentUpon>EntregaMedicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Especialidade.resx">
+      <DependentUpon>Especialidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FechamentoEstoque.resx">
+      <DependentUpon>FechamentoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Grupo.resx">
+      <DependentUpon>Grupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Marca.resx">
+      <DependentUpon>Marca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Medicamentos.resx">
+      <DependentUpon>Medicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\AgendaOdt.resx">
+      <DependentUpon>AgendaOdt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\Dentista.resx">
+      <DependentUpon>Dentista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\Empresa.resx">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\Fornecedor.resx">
+      <DependentUpon>Fornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\Marcas.resx">
+      <DependentUpon>Marcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\PacienteOdt.resx">
+      <DependentUpon>PacienteOdt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\Produtos.resx">
+      <DependentUpon>Produtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Odonto\Unidades.resx">
+      <DependentUpon>Unidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Paciente.resx">
+      <DependentUpon>Paciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Processo.resx">
+      <DependentUpon>Processo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SaidaMercadoria.resx">
+      <DependentUpon>SaidaMercadoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SaidaOficio.resx">
+      <DependentUpon>SaidaOficio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sobre.resx">
+      <DependentUpon>Sobre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnidadeMedida.resx">
+      <DependentUpon>UnidadeMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Visitas.resx">
+      <DependentUpon>Visitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInicial.resx">
+      <DependentUpon>FrmInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaAgente.resx">
+      <DependentUpon>PesquisaAgente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaCfop.resx">
+      <DependentUpon>PesquisaCfop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaEntrada.resx">
+      <DependentUpon>PesquisaEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaFornecedor.resx">
+      <DependentUpon>PesquisaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaOficio.resx">
+      <DependentUpon>PesquisaOficio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaPaciente.resx">
+      <DependentUpon>PesquisaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaProdutos.resx">
+      <DependentUpon>PesquisaProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaProtocolo.resx">
+      <DependentUpon>PesquisaProtocolo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaRequisicao.resx">
+      <DependentUpon>PesquisaRequisicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaTela.resx">
+      <DependentUpon>PesquisaTela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaUnidade.resx">
+      <DependentUpon>PesquisaUnidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaUsuario.resx">
+      <DependentUpon>PesquisaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Agente\RelAgente.rdlc" />
+    <EmbeddedResource Include="Relatorios\Agente\RelAgente.resx">
+      <DependentUpon>RelAgente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Balanco\RelBalanco.rdlc" />
+    <EmbeddedResource Include="Relatorios\Balanco\RelBalanco.resx">
+      <DependentUpon>RelBalanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Departamento\RelDepartamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\Departamento\RelDepartamento.resx">
+      <DependentUpon>RelDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Entrada\RelEntrada.rdlc" />
+    <EmbeddedResource Include="Relatorios\Entrada\RelEntrada.resx">
+      <DependentUpon>RelEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\EntregaMercadoria\RelEntregaMercadoria.rdlc" />
+    <EmbeddedResource Include="Relatorios\EntregaMercadoria\RelEntregaMercadoria.resx">
+      <DependentUpon>RelEntregaMercadoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Especialidade\RelEspecialidade.rdlc" />
+    <EmbeddedResource Include="Relatorios\Especialidade\RelEspecialidade.resx">
+      <DependentUpon>RelEspecialidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque\RelEstoque.rdlc" />
+    <EmbeddedResource Include="Relatorios\Estoque\RelEstoque.resx">
+      <DependentUpon>RelEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Fornecedor\RelFornecedor.rdlc" />
+    <EmbeddedResource Include="Relatorios\Fornecedor\RelFornecedor.resx">
+      <DependentUpon>RelFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Grupo\RelGrupo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Grupo\RelGrupo.resx">
+      <DependentUpon>RelGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Marca\RelMarca.rdlc" />
+    <EmbeddedResource Include="Relatorios\Marca\RelMarca.resx">
+      <DependentUpon>RelMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Oficio\RelOficio.rdlc" />
+    <EmbeddedResource Include="Relatorios\Oficio\RelOficio.resx">
+      <DependentUpon>RelOficio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\PacienteProduto\PacienteProduto.resx">
+      <DependentUpon>PacienteProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\PacienteProduto\RelPacienteProduto.resx">
+      <DependentUpon>RelPacienteProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Paciente\RelPaciente.rdlc" />
+    <EmbeddedResource Include="Relatorios\Paciente\RelPaciente.resx">
+      <DependentUpon>RelPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Paciente\RelPaciente1.rdlc" />
+    <EmbeddedResource Include="Relatorios\Pedido\RelPedido.rdlc" />
+    <EmbeddedResource Include="Relatorios\Pedido\RelPedido.resx">
+      <DependentUpon>RelPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Previsao_entrega\Previsao_Entrega.resx">
+      <DependentUpon>Previsao_Entrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega.rdlc" />
+    <EmbeddedResource Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega.resx">
+      <DependentUpon>RelPrevisaoEntrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelPrevisaoEntrega1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Previsao_entrega\RelPrevisaoEntrega2.resx">
+      <DependentUpon>RelPrevisaoEntrega2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Produto\RelProdutos.rdlc" />
+    <EmbeddedResource Include="Relatorios\Produto\RelProdutos.resx">
+      <DependentUpon>RelProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Protocolo\RelProtocolo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Protocolo\RelProtocolo.resx">
+      <DependentUpon>RelProtocolo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Protocolo\RelProtocolo1.rdlc" />
+    <EmbeddedResource Include="Relatorios\Saida\RelSaida.rdlc" />
+    <EmbeddedResource Include="Relatorios\Saida\RelSaida.resx">
+      <DependentUpon>RelSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.rdlc" />
+    <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.resx">
+      <DependentUpon>RelUnidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelPrevisaoEntrega1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelPrevisaoEntrega1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Relatorios\Agente\DsAgente.xsc">
+      <DependentUpon>DsAgente.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Agente\DsAgente.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsAgente.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Agente\DsAgente.xss">
+      <DependentUpon>DsAgente.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Balanco\DsBalanco.xsc">
+      <DependentUpon>DsBalanco.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Balanco\DsBalanco.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsBalanco.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Balanco\DsBalanco.xss">
+      <DependentUpon>DsBalanco.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Departamento\DsDepartamento.xsc">
+      <DependentUpon>DsDepartamento.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Departamento\DsDepartamento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsDepartamento.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Departamento\DsDepartamento.xss">
+      <DependentUpon>DsDepartamento.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Entrada\DsEntrada.xsc">
+      <DependentUpon>DsEntrada.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Entrada\DsEntrada.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsEntrada.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Entrada\DsEntrada.xss">
+      <DependentUpon>DsEntrada.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\EntregaMercadoria\DsEntregaMercadoria.xsc">
+      <DependentUpon>DsEntregaMercadoria.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\EntregaMercadoria\DsEntregaMercadoria.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsEntregaMercadoria.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\EntregaMercadoria\DsEntregaMercadoria.xss">
+      <DependentUpon>DsEntregaMercadoria.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Especialidade\DsEspecialidade.xsc">
+      <DependentUpon>DsEspecialidade.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Especialidade\DsEspecialidade.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsEspecialidade.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Especialidade\DsEspecialidade.xss">
+      <DependentUpon>DsEspecialidade.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Estoque\DsEstoque.xsc">
+      <DependentUpon>DsEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Estoque\DsEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Estoque\DsEstoque.xss">
+      <DependentUpon>DsEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Fornecedor\DsFornecedor.xsc">
+      <DependentUpon>DsFornecedor.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Fornecedor\DsFornecedor.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsFornecedor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Fornecedor\DsFornecedor.xss">
+      <DependentUpon>DsFornecedor.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Grupo\DsGrupo.xsc">
+      <DependentUpon>DsGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Grupo\DsGrupo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsGrupo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Grupo\DsGrupo.xss">
+      <DependentUpon>DsGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Marca\DsMarca.xsc">
+      <DependentUpon>DsMarca.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Marca\DsMarca.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsMarca.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Marca\DsMarca.xss">
+      <DependentUpon>DsMarca.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Oficio\DsOficio.xsc">
+      <DependentUpon>DsOficio.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Oficio\DsOficio.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsOficio.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Oficio\DsOficio.xss">
+      <DependentUpon>DsOficio.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Paciente\DsPaciente.xsc">
+      <DependentUpon>DsPaciente.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Paciente\DsPaciente.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsPaciente.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Paciente\DsPaciente.xss">
+      <DependentUpon>DsPaciente.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Pedido\DsPedido.xsc">
+      <DependentUpon>DsPedido.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Pedido\DsPedido.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsPedido.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Pedido\DsPedido.xss">
+      <DependentUpon>DsPedido.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Previsao_entrega\DsPrevisaoEntrega.xsc">
+      <DependentUpon>DsPrevisaoEntrega.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Previsao_entrega\DsPrevisaoEntrega.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsPrevisaoEntrega.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Previsao_entrega\DsPrevisaoEntrega.xss">
+      <DependentUpon>DsPrevisaoEntrega.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Produto\DsProdutos.xsc">
+      <DependentUpon>DsProdutos.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Produto\DsProdutos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsProdutos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Produto\DsProdutos.xss">
+      <DependentUpon>DsProdutos.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Saida\DsSaida.xsc">
+      <DependentUpon>DsSaida.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Saida\DsSaida.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsSaida.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Saida\DsSaida.xss">
+      <DependentUpon>DsSaida.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Unidades\DsUnidade.xsc">
+      <DependentUpon>DsUnidade.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Unidades\DsUnidade.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsUnidade.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Unidades\DsUnidade.xss">
+      <DependentUpon>DsUnidade.xsd</DependentUpon>
+    </None>
+    <None Include="teste1_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Relatorios.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\lupa.png" />
+    <None Include="Resources\1-área-da-saúde-1.jpg" />
+    <None Include="Resources\6157a1909ff1e4e.jpg" />
+    <None Include="Resources\depositphotos_48659805-stock-illustration-health-beauty-and-cosmetics-background.jpg" />
+    <None Include="Resources\fundo-de-banner-com-baixo-poli_1048-10730.jpg" />
+    <None Include="Resources\fundo-de-forma-geometrica-gradiente_78532-307.jpg" />
+    <None Include="Resources\fundo-preto-com-malha-de-baixo-poli-vermelho-brilhante_1017-20215.jpg" />
+    <None Include="Resources\dentes.png" />
+    <None Include="Resources\dentes1.png" />
+    <None Include="Resources\dente.png" />
+    <None Include="Resources\dentes2.png" />
+    <None Include="Resources\dentes11.png" />
+    <Content Include="Ícone-Atenção-Assistida.ico" />
+    <None Include="Relatorios\Protocolo\DsProtocolo.xsc">
+      <DependentUpon>DsProtocolo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Protocolo\DsProtocolo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsProtocolo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Protocolo\DsProtocolo.xss">
+      <DependentUpon>DsProtocolo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Protocolo\DsProtocolo1.xsc">
+      <DependentUpon>DsProtocolo1.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Protocolo\DsProtocolo1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsProtocolo1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Protocolo\DsProtocolo1.xss">
+      <DependentUpon>DsProtocolo1.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\slide.jpg" />
+    <None Include="Resources\addP.png" />
+    <None Include="Resources\adicionar.png" />
+    <None Include="Resources\checkmark.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\delete32.png" />
+    <None Include="Resources\Desfazer_48x48_72.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\edit2.png" />
+    <None Include="Resources\excluir.png" />
+    <None Include="Resources\fechar.jpeg" />
+    <None Include="Resources\gravar.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\remove_Item.png" />
+    <None Include="Resources\Retornar_48x48_72.png" />
+    <None Include="Resources\zoom-in.png" />
+    <None Include="Resources\zoom-out.png" />
+    <None Include="Resources\chosen-sprite.png" />
+    <None Include="Resources\adicionar1.png" />
+    <None Include="Resources\calendar3.png" />
+    <None Include="Resources\checkmark1.png" />
+    <None Include="Resources\edit1.png" />
+    <None Include="Resources\excluir1.png" />
+    <None Include="Resources\fechar1.jpeg" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\print1.png" />
+    <None Include="Resources\setaDir.png" />
+    <None Include="Resources\Img02.jpg" />
+    <None Include="Resources\Img01.jpg" />
+    <None Include="Resources\logo-prefeitura.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Relatorios\Administrativos\Produtos\" />
+    <Folder Include="Relatorios\Cfop\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

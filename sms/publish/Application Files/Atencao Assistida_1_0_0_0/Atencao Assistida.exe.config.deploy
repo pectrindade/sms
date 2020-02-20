@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+  </configSections>
+  <connectionStrings>
+    <add name="MySqlLocal" connectionString="server=localhost;User Id=renato;Persist Security Info=True;database=atencaoassist; Password=taroba"
+      providerName="" />
+    <add name="MinhaStringAccess" connectionString="Provider=Microsoft.Jet.OLEDB.4.0; Data Source=D:\Projetos\c#\Winform\teste1\teste1\bin\Debug\Relatorios.mdb" />
+    <!--<add name="Atencao_Assistida.Properties.Settings.RelatoriosCs"
+      connectionString="&#xD;&#xA;        &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;        &lt;SerializableConnectionString xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&#xD;&#xA;        &lt;ConnectionString&gt;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Relatorios.mdb&lt;/ConnectionString&gt;&#xD;&#xA;        &lt;ProviderName&gt;System.Data.OleDb&lt;/ProviderName&gt;&#xD;&#xA;        &lt;/SerializableConnectionString&gt;&#xD;&#xA;      "
+      providerName="" />-->
+    <!--<add name="Atencao_Assistida.Properties.Settings.RelatoriosConnectionString"
+      connectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Relatorios.mdb"
+      providerName="System.Data.OleDb" />-->
+  </connectionStrings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
+  </startup>
+</configuration>
