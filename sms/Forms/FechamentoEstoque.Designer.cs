@@ -39,6 +39,13 @@
             this.btnFechar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbgrupo = new System.Windows.Forms.ComboBox();
+            this.btnBuscaProduto = new System.Windows.Forms.Button();
+            this.txtcodigo = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -71,7 +78,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 52);
+            this.label8.Location = new System.Drawing.Point(8, 52);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 40;
@@ -79,7 +86,7 @@
             // 
             // txtdtprocesso
             // 
-            this.txtdtprocesso.Location = new System.Drawing.Point(10, 68);
+            this.txtdtprocesso.Location = new System.Drawing.Point(12, 68);
             this.txtdtprocesso.Mask = "00/00/0000";
             this.txtdtprocesso.Name = "txtdtprocesso";
             this.txtdtprocesso.Size = new System.Drawing.Size(79, 20);
@@ -98,7 +105,7 @@
             // 
             // btnDesfazer
             // 
-            this.btnDesfazer.Location = new System.Drawing.Point(371, 392);
+            this.btnDesfazer.Location = new System.Drawing.Point(411, 315);
             this.btnDesfazer.Name = "btnDesfazer";
             this.btnDesfazer.Size = new System.Drawing.Size(75, 23);
             this.btnDesfazer.TabIndex = 4;
@@ -107,7 +114,7 @@
             // 
             // btnExecutar
             // 
-            this.btnExecutar.Location = new System.Drawing.Point(175, 392);
+            this.btnExecutar.Location = new System.Drawing.Point(215, 315);
             this.btnExecutar.Name = "btnExecutar";
             this.btnExecutar.Size = new System.Drawing.Size(75, 23);
             this.btnExecutar.TabIndex = 3;
@@ -117,7 +124,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(6, 392);
+            this.btnFechar.Location = new System.Drawing.Point(46, 315);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 23);
             this.btnFechar.TabIndex = 5;
@@ -127,24 +134,98 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(10, 278);
+            this.progressBar1.Location = new System.Drawing.Point(8, 212);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(456, 23);
+            this.progressBar1.Size = new System.Drawing.Size(528, 23);
             this.progressBar1.TabIndex = 42;
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(10, 319);
+            this.progressBar2.Location = new System.Drawing.Point(8, 253);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(456, 23);
+            this.progressBar2.Size = new System.Drawing.Size(528, 23);
             this.progressBar2.TabIndex = 43;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(17, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 227;
+            this.label6.Text = "Grupo";
+            // 
+            // cmbgrupo
+            // 
+            this.cmbgrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbgrupo.FormattingEnabled = true;
+            this.cmbgrupo.Items.AddRange(new object[] {
+            "Em Avaliação",
+            "Deferido",
+            "Autorizado"});
+            this.cmbgrupo.Location = new System.Drawing.Point(12, 121);
+            this.cmbgrupo.Name = "cmbgrupo";
+            this.cmbgrupo.Size = new System.Drawing.Size(121, 21);
+            this.cmbgrupo.TabIndex = 226;
+            // 
+            // btnBuscaProduto
+            // 
+            this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnBuscaProduto.Location = new System.Drawing.Point(67, 169);
+            this.btnBuscaProduto.Name = "btnBuscaProduto";
+            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscaProduto.TabIndex = 230;
+            this.btnBuscaProduto.TabStop = false;
+            this.btnBuscaProduto.UseVisualStyleBackColor = true;
+            // 
+            // txtcodigo
+            // 
+            this.txtcodigo.Location = new System.Drawing.Point(8, 169);
+            this.txtcodigo.Name = "txtcodigo";
+            this.txtcodigo.Size = new System.Drawing.Size(53, 20);
+            this.txtcodigo.TabIndex = 228;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(98, 169);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(443, 20);
+            this.txtNome.TabIndex = 229;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(12, 153);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 231;
+            this.label4.Text = "Código";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(95, 153);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 232;
+            this.label3.Text = "Nome";
             // 
             // FechamentoEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 468);
+            this.ClientSize = new System.Drawing.Size(550, 365);
             this.ControlBox = false;
+            this.Controls.Add(this.btnBuscaProduto);
+            this.Controls.Add(this.txtcodigo);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cmbgrupo);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnDesfazer);
@@ -182,5 +263,12 @@
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbgrupo;
+        private System.Windows.Forms.Button btnBuscaProduto;
+        private System.Windows.Forms.TextBox txtcodigo;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

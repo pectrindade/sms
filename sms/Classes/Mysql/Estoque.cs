@@ -256,20 +256,31 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
 
-        public bool DeleteMesAno(int codempresa, int coddepartamento, int mes, int ano)
+        public bool DeleteMesAno(int codempresa, int coddepartamento, int mes, int ano, string produto, string grupo)
         {
             var db = new DBAcess();
-            var Mysql = " DELETE FROM estoque ";
-            Mysql = Mysql + " WHERE CODEMPRESA = @CODEMPRESA ";
-            Mysql = Mysql + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO ";
-            Mysql = Mysql + " AND MES = @MES ";
-            Mysql = Mysql + " AND ANO = @ANO; ";
+            var Mysql = " DELETE E.* FROM estoque E ";
+            Mysql = Mysql + " INNER JOIN produtos P ON P.CODPRODUTO = E.CODPRODUTO ";
+            Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND E.MES = @MES ";
+            Mysql = Mysql + " AND E.ANO = @ANO ";
+            if (produto != "") { Mysql = Mysql + " AND E.CODPRODUTO = @CODPRODUTO "; }
+            if (grupo != "") { Mysql = Mysql + " AND P.CODGRUPO = @CODGRUPO "; }
 
             db.CommandText = Mysql;
             db.AddParameter("@CODEMPRESA", codempresa);
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
             db.AddParameter("@MES", mes);
             db.AddParameter("@ANO", ano);
+
+            if (produto == "") { produto = "0"; }
+            if (grupo == "") { grupo = "0"; }
+
+            db.AddParameter("@CODPRODUTO",  int.Parse(produto));
+            db.AddParameter("@CODGRUPO", int.Parse(grupo));
+
+
 
             try
             {

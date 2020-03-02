@@ -21,6 +21,7 @@ namespace Atencao_Assistida.Forms
         private void FechamentoEstoque_Load(object sender, EventArgs e)
         {
             CarregaCmbDepartamento();
+            CarregaCmbGrupo();
         }
 
         private void FechamentoEstoque_KeyPress(object sender, KeyPressEventArgs e)
@@ -84,6 +85,38 @@ namespace Atencao_Assistida.Forms
 
         }
 
+        private void CarregaCmbGrupo()
+        {
+            int codigo;
+            string nome;
+
+
+            cmbgrupo.Items.Clear();
+
+
+            cmbgrupo.Items.Insert(0, "--SELECIONE--");
+
+            var dr = Classes.Mysql.Grupo.SelectTudo();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+                    codigo = int.Parse(dr.GetString(dr.GetOrdinal("CODGRUPO")));
+                    nome = dr.GetString(dr.GetOrdinal("DESCRICAO"));
+
+                    cmbgrupo.Items.Insert(codigo, nome);
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+        }
+
+
         private void btnExecutar_Click(object sender, EventArgs e)
         {
             FechaEstoque();
@@ -93,6 +126,14 @@ namespace Atencao_Assistida.Forms
         {
             var codempresa = Usuario.Codempresa.ToString();
             var coddepartamento = cmbDepartamento.SelectedIndex.ToString();
+            var grupo = "";
+
+            if (cmbgrupo.SelectedIndex.ToString() != "") { grupo = cmbgrupo.SelectedIndex.ToString(); }
+            if (grupo == "-1") { grupo = ""; }
+
+            var codproduto = "";
+
+            if (txtcodigo.Text.Trim() != "") { codproduto = txtcodigo.Text.Trim(); }
 
             DateTime data = Convert.ToDateTime(txtdtprocesso.Text.Trim());
 
@@ -115,10 +156,10 @@ namespace Atencao_Assistida.Forms
 
             var Est = new Estoque();
 
-            var retorno = Est.DeleteMesAno(int.Parse(codempresa), int.Parse(coddepartamento), mes, ano);
+            var retorno = Est.DeleteMesAno(int.Parse(codempresa), int.Parse(coddepartamento), mes, ano, codproduto, grupo);
 
             //SEGUNDO PEGA OS PRODUTOS
-            var dr = Produto.Select("", int.Parse(coddepartamento));
+            var dr = Produto.Select(codproduto, int.Parse(coddepartamento), grupo);
 
             var cont = new Produto() ;
             var Cont = cont.SelectCount();

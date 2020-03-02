@@ -133,6 +133,7 @@ namespace Atencao_Assistida.Consultas
 
             var vano = data.ToString("yyyy");
             int ano = int.Parse(vano);
+
             var vcodgrupo = 0;
             vcodgrupo = cmbGrupo.SelectedIndex;
 

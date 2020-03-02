@@ -1290,8 +1290,6 @@ namespace teste1
         private void tAviso_Tick(object sender, EventArgs e)
         {
             AvisaOficio();
-
-
         }
 
         private void AvisaOficio()
@@ -1306,7 +1304,9 @@ namespace teste1
                 {
                     tAviso.Interval = tAviso.Interval + 5000;
 
-                    //DialogResult result = MessageBox.Show("Tem um novo OFICIO !", "Atenção !!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (Usuario.Login == "renato") { return; }
+                    if (Usuario.Login == "R. DIEGO") { return; }
+                    if (Usuario.Login == "Administra") { return; }
 
                     bool open = false;
                     foreach (Form form in this.MdiChildren)
@@ -1323,13 +1323,7 @@ namespace teste1
                         tela.MdiParent = this;
                         tela.Show();
                     }
-
-                    //if (result == DialogResult.OK)
-                    //{
-                    //    tAviso.Interval = tAviso.Interval + 10000;
-                    //}
-
-                    //if(tAviso.Interval == 100000) { tAviso.Interval = 10000; }
+                    
                 }
 
             }

@@ -311,33 +311,27 @@ namespace Atencao_Assistida.Classes.Mysql
 
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public static MySqlDataReader Select(string valor, int coddepartamento)
+        public static MySqlDataReader Select(string codproduto, int coddepartamento, string codgrupo)
         {
             var db = new DBAcess();
             var Mysql = " select p.* ";
             Mysql = Mysql + " from produtos AS p ";
             Mysql = Mysql + " WHERE p.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            //Mysql = Mysql + " AND p.CODPRODUTO = @CODPRODUTO ";
             Mysql = Mysql + " AND p.ATIVO = 1 ";
 
-            //if (valor != "")
-            //{
-            //    Mysql = Mysql + " AND p.NOME LIKE @valor ";
-            //    valor = '%' + valor + "%";
+            if (codproduto != "") { Mysql = Mysql + " AND p.CODPRODUTO = @CODPRODUTO "; }
+            if (codgrupo != "") { Mysql = Mysql + " AND p.CODGRUPO = @CODGRUPO "; }
 
-            //}
-
-            if (valor != "")
-            {
-                Mysql = Mysql + " AND p.CODPRODUTO = @valor ";
-                //valor = '%' + valor + "%";
-
-            }
-
-
-            //Mysql = Mysql + " ORDER BY p.NOME ASC; ";
             db.CommandText = Mysql;
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
-            db.AddParameter("@valor", valor);
+
+            if (codproduto == "") { codproduto = "0"; }
+            if (codgrupo == "") { codgrupo = "0"; }
+
+            db.AddParameter("@CODPRODUTO", int.Parse(codproduto));
+            db.AddParameter("@CODGRUPO", int.Parse(codgrupo));
+                       
 
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;

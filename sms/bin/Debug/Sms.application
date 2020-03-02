@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Sms.exe.manifest" size="63710">
+    <dependentAssembly dependencyType="install" codebase="Sms.exe.manifest" size="137907">
       <assemblyIdentity name="Sms.exe" version="1.0.0.20" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PquYr2VclAi9CR3SUqUUpXsJA8uADCfXkEPS/I4ToY8=</dsig:DigestValue>
+        <dsig:DigestValue>ostzK3YHxdUIH+bZo+xjemSI9II1M0xF95x3K7ejQgU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
