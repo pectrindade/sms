@@ -260,10 +260,8 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         private void AbrePedido(int codpedido)
         {
-
             var U = new Pedido();
             U.UpdateStatus(codpedido, "ABERTO");
-
         }
 
         private void Limpatela()
@@ -275,8 +273,6 @@ namespace Atencao_Assistida.Forms.Caftrin
 
             DateTime date = this.dateTimePicker1.Value;
             this.txtdtdevolucao.Text = date.ToString("dd/MM/yyyy");
-
-
 
             //LIMPAR GRID
             Grid.Rows.Clear();

@@ -563,6 +563,12 @@
     <Compile Include="Relatorios\Balanco\RelBalanco.Designer.cs">
       <DependentUpon>RelBalanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Chama_RelEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Chama_RelEntrada.Designer.cs">
+      <DependentUpon>Chama_RelEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Departamento\DsDepartamento.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -963,6 +969,9 @@
     <EmbeddedResource Include="Relatorios\Balanco\RelBalanco.resx">
       <DependentUpon>RelBalanco.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Chama_RelEntrada.resx">
+      <DependentUpon>Chama_RelEntrada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Departamento\RelDepartamento.rdlc" />
     <EmbeddedResource Include="Relatorios\Departamento\RelDepartamento.resx">
       <DependentUpon>RelDepartamento.cs</DependentUpon>
@@ -1350,6 +1359,7 @@
   <ItemGroup>
     <Folder Include="Relatorios\Administrativos\Produtos\" />
     <Folder Include="Relatorios\Cfop\" />
+    <Folder Include="Relatorios\EntradaPeriodo\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

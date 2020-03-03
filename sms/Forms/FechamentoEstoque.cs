@@ -180,7 +180,6 @@ namespace Atencao_Assistida.Forms
 
                     SaldoAnterior(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
 
-
                     var cod = int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO")));
 
                     DateTime totalDeDias = primeiroDiaDoMes;

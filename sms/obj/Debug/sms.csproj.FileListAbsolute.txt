@@ -1162,3 +1162,4 @@ D:\Projetos\c#\Winform\sms\sms\bin\Debug\ru\Microsoft.ReportViewer.Common.resour
 D:\Projetos\c#\Winform\sms\sms\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
 D:\Projetos\c#\Winform\sms\sms\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Sms.exe.config
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Chama_RelEntrada.resources
