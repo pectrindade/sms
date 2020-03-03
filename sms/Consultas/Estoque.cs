@@ -145,6 +145,12 @@ namespace Atencao_Assistida.Consultas
                 cod = txtcodigo.Text.Trim();
 
             }
+
+            Grid.Columns["qtanterior"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Grid.Columns["entrada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Grid.Columns["saida"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Grid.Columns["qtatual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             //define um array de strings com nCOlunas
             string[] linhaDados = new string[6];
 

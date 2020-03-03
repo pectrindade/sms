@@ -1,4 +1,5 @@
 ﻿using Atencao_Assistida.Classes.Mysql;
+using Atencao_Assistida.Pesquisas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -130,6 +131,7 @@ namespace Atencao_Assistida.Forms
 
             if (cmbgrupo.SelectedIndex.ToString() != "") { grupo = cmbgrupo.SelectedIndex.ToString(); }
             if (grupo == "-1") { grupo = ""; }
+            if (grupo == "0") { grupo = ""; }
 
             var codproduto = "";
 
@@ -331,5 +333,91 @@ namespace Atencao_Assistida.Forms
 
         }
 
+        private void btnBuscaProduto_Click(object sender, EventArgs e)
+        {
+            Parametros.Form = "Produtos";
+            Parametros.Valor = "";
+
+            bool open = false;
+            foreach (Form form in Application.OpenForms)
+            {
+
+                // Verifica se o form esta aberto
+                if (form.Name == "PesquisaPaciente")
+                {
+                    if (form is PesquisaProdutos)
+                    {
+                        form.BringToFront();
+                        open = true;
+                    }
+
+                }
+            }
+
+            if (!open)
+            {
+                Form tela = new PesquisaProdutos();
+                //tela.MdiParent = this.MdiParent;
+                tela.ShowDialog();
+                RetornoPesquisaMedicamento();
+            }
+        }
+
+        public void RetornoPesquisaMedicamento()
+        {
+            if (Parametros.Valor != "")
+            {
+                BuscaProduto(int.Parse(Parametros.Valor));
+            }
+        }
+
+        private void BuscaProduto(int codigo)
+        {
+            var cod1 = Usuario.Coddepartamento;
+            var cod2 = 0;
+
+            var dr = Classes.Mysql.Produto.Select(codigo);
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    //cod2 = dr.GetInt32(dr.GetOrdinal("CODDEPARTAMENTO"));
+
+                    //if (int.Parse(cod1) != cod2)
+                    //{
+                    //    MessageBox.Show("Código referênte a produto de outro Departamento !");
+                    //   // LimpaTela();
+                    //    dr.Close();
+                    //    dr.Dispose();
+
+
+                    //    return;
+                    //}
+
+                    txtcodigo.Text = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
+                    txtNome.Text = dr.GetString(dr.GetOrdinal("NOME"));
+
+
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+            //txtNome.Focus();
+        }
+
+        private void btnDesfazer_Click(object sender, EventArgs e)
+        {
+            CarregaCmbDepartamento();
+            CarregaCmbGrupo();
+            txtdtprocesso.Text = "__/__/____";
+            txtcodigo.Text = "";
+            txtNome.Text = "";
+
+            cmbDepartamento.Focus();
+        }
     }
 }

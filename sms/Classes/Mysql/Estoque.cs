@@ -1061,7 +1061,7 @@ namespace Atencao_Assistida.Classes.Mysql
 
             if (codproduto != 0){Mysql = Mysql + " AND E.CODPRODUTO = @CODPRODUTO "; }
 
-            Mysql = Mysql + " ORDER BY E.CODPRODUTO";
+            Mysql = Mysql + " ORDER BY P.NOME";
 
             db.CommandText = Mysql;
 

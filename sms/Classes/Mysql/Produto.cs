@@ -317,7 +317,6 @@ namespace Atencao_Assistida.Classes.Mysql
             var Mysql = " select p.* ";
             Mysql = Mysql + " from produtos AS p ";
             Mysql = Mysql + " WHERE p.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
-            //Mysql = Mysql + " AND p.CODPRODUTO = @CODPRODUTO ";
             Mysql = Mysql + " AND p.ATIVO = 1 ";
 
             if (codproduto != "") { Mysql = Mysql + " AND p.CODPRODUTO = @CODPRODUTO "; }

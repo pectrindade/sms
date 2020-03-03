@@ -249,6 +249,8 @@ namespace Atencao_Assistida.Forms.Caftrin
                     var Del_saidaitem = new Classes.Mysql.Saida();
                     Del_saidaitem.DeleteSaidaItens(codsaida);
 
+                    // AQUI TEM DE COLOCAR UM FECHAMENTO DE ESTOQUE 
+
                     var Del_saida = new Classes.Mysql.Saida();
                     Del_saida.DeleteSaida(codsaida);
                 }

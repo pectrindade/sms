@@ -102,6 +102,7 @@
             this.chkProcessoCompleto.TabIndex = 2;
             this.chkProcessoCompleto.Text = "Processo Completo";
             this.chkProcessoCompleto.UseVisualStyleBackColor = true;
+            this.chkProcessoCompleto.Visible = false;
             // 
             // btnDesfazer
             // 
@@ -111,6 +112,7 @@
             this.btnDesfazer.TabIndex = 4;
             this.btnDesfazer.Text = "Desfazer";
             this.btnDesfazer.UseVisualStyleBackColor = true;
+            this.btnDesfazer.Click += new System.EventHandler(this.btnDesfazer_Click);
             // 
             // btnExecutar
             // 
@@ -172,32 +174,33 @@
             // btnBuscaProduto
             // 
             this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaProduto.Location = new System.Drawing.Point(67, 169);
+            this.btnBuscaProduto.Location = new System.Drawing.Point(71, 174);
             this.btnBuscaProduto.Name = "btnBuscaProduto";
             this.btnBuscaProduto.Size = new System.Drawing.Size(25, 23);
             this.btnBuscaProduto.TabIndex = 230;
             this.btnBuscaProduto.TabStop = false;
             this.btnBuscaProduto.UseVisualStyleBackColor = true;
+            this.btnBuscaProduto.Click += new System.EventHandler(this.btnBuscaProduto_Click);
             // 
             // txtcodigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(8, 169);
+            this.txtcodigo.Location = new System.Drawing.Point(12, 174);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(53, 20);
             this.txtcodigo.TabIndex = 228;
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(98, 169);
+            this.txtNome.Location = new System.Drawing.Point(102, 174);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(443, 20);
+            this.txtNome.Size = new System.Drawing.Size(434, 20);
             this.txtNome.TabIndex = 229;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(12, 153);
+            this.label4.Location = new System.Drawing.Point(16, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 231;
@@ -207,7 +210,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(95, 153);
+            this.label3.Location = new System.Drawing.Point(99, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 232;

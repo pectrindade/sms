@@ -51,7 +51,7 @@
             this.Grid.MultiSelect = false;
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
-            this.Grid.Size = new System.Drawing.Size(1094, 374);
+            this.Grid.Size = new System.Drawing.Size(1005, 374);
             this.Grid.TabIndex = 7;
             this.Grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick);
             // 
@@ -101,12 +101,13 @@
             this.saldo.HeaderText = "Saldo";
             this.saldo.Name = "saldo";
             this.saldo.ReadOnly = true;
+            this.saldo.Visible = false;
             // 
             // PesquisaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 463);
+            this.ClientSize = new System.Drawing.Size(1029, 463);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.txtpesquisa);
             this.Controls.Add(this.label2);
