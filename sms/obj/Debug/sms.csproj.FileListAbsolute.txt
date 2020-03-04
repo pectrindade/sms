@@ -1163,3 +1163,5 @@ D:\Projetos\c#\Winform\sms\sms\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.re
 D:\Projetos\c#\Winform\sms\sms\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Sms.exe.config
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Chama_RelEntrada.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Saida_Periodo.Chama_RelSaida.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Saida_Periodo.RelSaidaPeriodo.resources

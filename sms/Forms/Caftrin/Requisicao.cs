@@ -363,6 +363,9 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (txtnomeSolicitante.Text.Trim() == "") { MessageBox.Show("Favor informar o Nome do Solicitante !"); txtnomeSolicitante.Focus(); return; }
+            if (txtnomeSolicitante.Text.Trim() == ".") { MessageBox.Show("Favor informar o Nome do Solicitante !"); txtnomeSolicitante.Focus(); return; }
+
             if (txtNumeroPedido.Text.Trim() != "")
             {
 
@@ -675,22 +678,22 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         private void txtnomeSolicitante_Enter(object sender, EventArgs e)
         {
-            if (txtNumeroPedido.Text == "") { MessageBox.Show("Favor informar o Número do Pedido !"); txtNumeroPedido.Focus();  return; }
+            if (txtNumeroPedido.Text.Trim() == "") { MessageBox.Show("Favor informar o Número do Pedido !"); txtNumeroPedido.Focus();  return; }
         }
 
         private void txtCodUnidade_Enter(object sender, EventArgs e)
         {
-            if (txtnomeSolicitante.Text == "") { MessageBox.Show("Favor informar o Nome do Solicitante !"); txtnomeSolicitante.Focus(); return; }
+            if (txtnomeSolicitante.Text.Trim() == "") { MessageBox.Show("Favor informar o Nome do Solicitante !"); txtnomeSolicitante.Focus(); return; }
         }
 
         private void txtCodProduto_Enter(object sender, EventArgs e)
         {
-            if (txtCodUnidade.Text == "") { MessageBox.Show("Favor informar a Unidade !"); txtCodUnidade.Focus(); return; }
+            if (txtCodUnidade.Text.Trim() == "") { MessageBox.Show("Favor informar a Unidade !"); txtCodUnidade.Focus(); return; }
         }
 
         private void txtQuantidade_Enter(object sender, EventArgs e)
         {
-            if (txtCodProduto.Text == "") { MessageBox.Show("Favor informar o Produto !"); txtCodProduto.Focus(); return; }
+            if (txtCodProduto.Text.Trim() == "") { MessageBox.Show("Favor informar o Produto !"); txtCodProduto.Focus(); return; }
         }
     }
 

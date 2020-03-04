@@ -775,6 +775,18 @@
     <Compile Include="Relatorios\Saida\RelSaida.Designer.cs">
       <DependentUpon>RelSaida.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Saida_Periodo\Chama_RelSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Saida_Periodo\Chama_RelSaida.Designer.cs">
+      <DependentUpon>Chama_RelSaida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.Designer.cs">
+      <DependentUpon>RelSaidaPeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Unidades\DsUnidade.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1049,6 +1061,12 @@
     <EmbeddedResource Include="Relatorios\Saida\RelSaida.rdlc" />
     <EmbeddedResource Include="Relatorios\Saida\RelSaida.resx">
       <DependentUpon>RelSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Saida_Periodo\Chama_RelSaida.resx">
+      <DependentUpon>Chama_RelSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.resx">
+      <DependentUpon>RelSaidaPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.rdlc" />
     <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.resx">

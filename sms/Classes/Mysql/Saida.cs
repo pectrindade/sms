@@ -157,6 +157,46 @@ namespace Atencao_Assistida.Classes.Mysql
             }
         }
 
+        public int InsertAccessSaidaPeriodo(int codempresa, string nomedeempresa, int coddepartamento, string nomedepartamento, int codsaida, string dataentrega, 
+        int codunidade, string nomeunidade, string solicitante, string numeropedido, int codproduto, string nomeproduto, string quantidade)
+        {
+            var db = new DBAcessOleDB();
+            var Mysql = " INSERT INTO SaidaPeriodo(";
+            Mysql = Mysql + " CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, CODSAIDA, DATASAIDA, CODUNIDADE, NOMEUNIDADE, SOLICITANTE, ";
+            Mysql = Mysql + " NUMEROPEDIDO, CODPRODUTO, NOMEPRODUTO, QUANTIDADE ";
+            Mysql = Mysql + ") ";
+            Mysql = Mysql + " VALUES(";
+            Mysql = Mysql + " @CODEMPRESA, @NOMEEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @CODSAIDA, @DATASAIDA, @CODUNIDADE, @NOMEUNIDADE, @SOLICITANTE, ";
+            Mysql = Mysql + " @NUMEROPEDIDO, @CODPRODUTO, @NOMEPRODUTO, @QUANTIDADE ";
+            Mysql = Mysql + "); ";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@NOMEEMPRESA", nomedeempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@NOMEDEPARTAMENTO", nomedepartamento);
+            db.AddParameter("@CODSAIDA", codsaida);
+            db.AddParameter("@DATASAIDA", dataentrega);
+            db.AddParameter("@CODUNIDADE", codunidade);
+            db.AddParameter("@NOMEUNIDADE", nomeunidade);
+            db.AddParameter("@SOLICITANTE", solicitante);
+            db.AddParameter("@NUMEROPEDIDO", numeropedido);
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@NOMEPRODUTO", nomeproduto);
+            db.AddParameter("@QUANTIDADE", quantidade);
+
+            try
+            {
+                return Convert.ToInt32(db.ExecuteScalar());
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static MySqlDataReader Select(int id)
         {
@@ -271,6 +311,31 @@ namespace Atencao_Assistida.Classes.Mysql
             return dr;
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader Saida_Periodo(string pedido, string departamento)
+        {
+            var db = new DBAcess();
+            var Mysql = " SELECT S.CODSAIDA, S.CODEMPRESA, S.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, S.CODUNIDADE, U.NOME AS NOMEUNIDADE, PE.SOLICITANTE, ";
+            Mysql = Mysql + " S.NUMEROPEDIDO, DATE_FORMAT(S.DATAENTREGA, '%d/%m/%Y') AS DATAENTREGA,  ";
+            Mysql = Mysql + " SI.CODPRODUTO, P.NOME AS NOMEPRODUTO, SI.SOLICITADO, SI.ENTREGUE, ";
+            Mysql = Mysql + " S.RESPINCLUSAO, DATE_FORMAT(S.DATAINCLUSAO, '%d/%m/%Y') AS DATAINCLUSAO ";
+            Mysql = Mysql + " FROM saida S ";
+            Mysql = Mysql + " INNER JOIN saida_item SI ON SI.CODSAIDA = S.CODSAIDA ";
+            Mysql = Mysql + " INNER JOIN produtos P ON P.CODPRODUTO = SI.CODPRODUTO ";
+            Mysql = Mysql + " INNER JOIN departamento D ON D.CODDEPARTAMENTO = S.CODDEPARTAMENTO ";
+            Mysql = Mysql + " INNER JOIN unidade U ON U.CODUNIDADE = S.CODUNIDADE ";
+            Mysql = Mysql + " INNER JOIN pedido PE ON PE.NUMEROPEDIDO = S.NUMEROPEDIDO AND PE.CODDEPARTAMENTO = S.CODDEPARTAMENTO ";
+
+            Mysql = Mysql + " WHERE S.NUMEROPEDIDO = @NUMEROPEDIDO ";
+            Mysql = Mysql + " AND S.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+
+            db.CommandText = Mysql;
+            db.AddParameter("@NUMEROPEDIDO", pedido);
+            db.AddParameter("@CODDEPARTAMENTO", departamento);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            return dr;
+        }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static DataSet SelectTodos()
