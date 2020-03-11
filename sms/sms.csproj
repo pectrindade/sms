@@ -169,6 +169,7 @@
     <Compile Include="Classes\Funcoes\CriaArquivo.cs" />
     <Compile Include="Classes\Funcoes\Funcoes.cs" />
     <Compile Include="Classes\Funcoes\IniFile.cs" />
+    <Compile Include="Classes\Mysql\Ajuste.cs" />
     <Compile Include="Classes\Mysql\Avisos.cs" />
     <Compile Include="Classes\Mysql\Balanco.cs" />
     <Compile Include="Classes\Mysql\Cfop.cs" />
@@ -208,6 +209,12 @@
     <Compile Include="Consultas\Estoque.Designer.cs">
       <DependentUpon>Estoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\Saldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\Saldo.Designer.cs">
+      <DependentUpon>Saldo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cr1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -231,6 +238,12 @@
     </Compile>
     <Compile Include="Forms\Agente.Designer.cs">
       <DependentUpon>Agente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AjusteEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AjusteEstoque.Designer.cs">
+      <DependentUpon>AjusteEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AtualizaAcesso.cs">
       <SubType>Form</SubType>
@@ -624,6 +637,23 @@
     <Compile Include="Relatorios\Estoque\RelEstoque.Designer.cs">
       <DependentUpon>RelEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.Designer.cs">
+      <DependentUpon>Chama_RelEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsEstoquePeriodo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Periodo\RelEstoquePeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Periodo\RelEstoquePeriodo.Designer.cs">
+      <DependentUpon>RelEstoquePeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Fornecedor\DsFornecedor.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -781,6 +811,11 @@
     <Compile Include="Relatorios\Saida_Periodo\Chama_RelSaida.Designer.cs">
       <DependentUpon>Chama_RelSaida.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Saida_Periodo\DsSaidaPeriodo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsSaidaPeriodo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -811,6 +846,9 @@
     <EmbeddedResource Include="Consultas\Estoque.resx">
       <DependentUpon>Estoque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\Saldo.resx">
+      <DependentUpon>Saldo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cr1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Cr1.cs</LastGenOutput>
@@ -823,6 +861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agente.resx">
       <DependentUpon>Agente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AjusteEstoque.resx">
+      <DependentUpon>AjusteEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AtualizaAcesso.resx">
       <DependentUpon>AtualizaAcesso.cs</DependentUpon>
@@ -1004,6 +1045,13 @@
     <EmbeddedResource Include="Relatorios\Estoque\RelEstoque.resx">
       <DependentUpon>RelEstoque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.resx">
+      <DependentUpon>Chama_RelEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque_Periodo\RelEstoquePeriodo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Estoque_Periodo\RelEstoquePeriodo.resx">
+      <DependentUpon>RelEstoquePeriodo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Fornecedor\RelFornecedor.rdlc" />
     <EmbeddedResource Include="Relatorios\Fornecedor\RelFornecedor.resx">
       <DependentUpon>RelFornecedor.cs</DependentUpon>
@@ -1065,6 +1113,7 @@
     <EmbeddedResource Include="Relatorios\Saida_Periodo\Chama_RelSaida.resx">
       <DependentUpon>Chama_RelSaida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.rdlc" />
     <EmbeddedResource Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.resx">
       <DependentUpon>RelSaidaPeriodo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1162,6 +1211,17 @@
     </None>
     <None Include="Relatorios\Estoque\DsEstoque.xss">
       <DependentUpon>DsEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.xsc">
+      <DependentUpon>DsEstoquePeriodo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsEstoquePeriodo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.xss">
+      <DependentUpon>DsEstoquePeriodo.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Fornecedor\DsFornecedor.xsc">
       <DependentUpon>DsFornecedor.xsd</DependentUpon>
@@ -1261,6 +1321,17 @@
     </None>
     <None Include="Relatorios\Saida\DsSaida.xss">
       <DependentUpon>DsSaida.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Saida_Periodo\DsSaidaPeriodo.xsc">
+      <DependentUpon>DsSaidaPeriodo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Saida_Periodo\DsSaidaPeriodo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsSaidaPeriodo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Saida_Periodo\DsSaidaPeriodo.xss">
+      <DependentUpon>DsSaidaPeriodo.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Unidades\DsUnidade.xsc">
       <DependentUpon>DsUnidade.xsd</DependentUpon>

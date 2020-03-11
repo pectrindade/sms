@@ -312,26 +312,38 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public static MySqlDataReader Saida_Periodo(string pedido, string departamento)
+        public static MySqlDataReader Saida_Periodo(int codempresa, int coddepartamento, int codunidade, int codproduto, string dtinicial, string dtfinal)
         {
             var db = new DBAcess();
-            var Mysql = " SELECT S.CODSAIDA, S.CODEMPRESA, S.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, S.CODUNIDADE, U.NOME AS NOMEUNIDADE, PE.SOLICITANTE, ";
-            Mysql = Mysql + " S.NUMEROPEDIDO, DATE_FORMAT(S.DATAENTREGA, '%d/%m/%Y') AS DATAENTREGA,  ";
-            Mysql = Mysql + " SI.CODPRODUTO, P.NOME AS NOMEPRODUTO, SI.SOLICITADO, SI.ENTREGUE, ";
-            Mysql = Mysql + " S.RESPINCLUSAO, DATE_FORMAT(S.DATAINCLUSAO, '%d/%m/%Y') AS DATAINCLUSAO ";
-            Mysql = Mysql + " FROM saida S ";
-            Mysql = Mysql + " INNER JOIN saida_item SI ON SI.CODSAIDA = S.CODSAIDA ";
-            Mysql = Mysql + " INNER JOIN produtos P ON P.CODPRODUTO = SI.CODPRODUTO ";
-            Mysql = Mysql + " INNER JOIN departamento D ON D.CODDEPARTAMENTO = S.CODDEPARTAMENTO ";
-            Mysql = Mysql + " INNER JOIN unidade U ON U.CODUNIDADE = S.CODUNIDADE ";
-            Mysql = Mysql + " INNER JOIN pedido PE ON PE.NUMEROPEDIDO = S.NUMEROPEDIDO AND PE.CODDEPARTAMENTO = S.CODDEPARTAMENTO ";
+            var Mysql = " SELECT S.CODEMPRESA, E.NOME AS NOMEEMPRESA, S.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, S.CODSAIDA,  ";
+            Mysql = Mysql + " DATE_FORMAT(S.DATAENTREGA, '%d/%m/%Y') AS DATASAIDA, S.CODUNIDADE, U.NOME AS NOMEUNIDADE, PE.SOLICITANTE,  ";
+            Mysql = Mysql + " S.NUMEROPEDIDO, SI.CODPRODUTO, P.NOME AS NOMEPRODUTO, SI.ENTREGUE AS QUANTIDADE ";
 
-            Mysql = Mysql + " WHERE S.NUMEROPEDIDO = @NUMEROPEDIDO ";
+            Mysql = Mysql + " FROM saida S ";
+            Mysql = Mysql + " INNER JOIN empresa E ON S.CODEMPRESA = E.CODEMPRESA ";
+            Mysql = Mysql + " INNER JOIN departamento D ON S.CODDEPARTAMENTO = D.CODDEPARTAMENTO ";
+            Mysql = Mysql + " INNER JOIN unidade U ON S.CODUNIDADE = U.CODUNIDADE ";
+            Mysql = Mysql + " INNER JOIN pedido PE ON S.NUMEROPEDIDO = PE.NUMEROPEDIDO ";
+            Mysql = Mysql + " INNER JOIN saida_item SI ON S.CODSAIDA = SI.CODSAIDA ";
+            Mysql = Mysql + " INNER JOIN produtos P ON SI.CODPRODUTO = P.CODPRODUTO ";
+
+            Mysql = Mysql + " WHERE S.DATAENTREGA BETWEEN @DATAINICIAL AND @DATAFINAL ";
+            Mysql = Mysql + " AND S.CODEMPRESA = @CODEMPRESA ";
             Mysql = Mysql + " AND S.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND PE.TIPO = 0 ";
+
+            if (codunidade != 0) { Mysql = Mysql + " AND S.CODUNIDADE = @CODUNIDADE "; }
+            if (codproduto != 0) { Mysql = Mysql + " AND SI.CODPRODUTO = @CODPRODUTO "; }
+
+            Mysql = Mysql + " ORDER BY S.NUMEROPEDIDO ";
 
             db.CommandText = Mysql;
-            db.AddParameter("@NUMEROPEDIDO", pedido);
-            db.AddParameter("@CODDEPARTAMENTO", departamento);
+            db.AddParameter("@DATAINICIAL", Convert.ToDateTime(dtinicial));
+            db.AddParameter("@DATAFINAL", Convert.ToDateTime(dtfinal));
+            db.AddParameter("@CODUNIDADE", codunidade);
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;

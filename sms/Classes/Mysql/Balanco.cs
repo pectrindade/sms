@@ -221,11 +221,11 @@ namespace Atencao_Assistida.Classes.Mysql
             var db = new DBAcessOleDB();
             var Mysql = " INSERT INTO Balanco( ";
             Mysql = Mysql + "CODEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, DATABALANCO, CODPRODUTO, NOMEPRODUTO, QUANTIDADE ";
-           // Mysql = Mysql + ", RESPINCLUSAO, DATAINCLUSAO, RESPALTERACAO, DATAALTERACAO ";
+           
             Mysql = Mysql + ") ";
             Mysql = Mysql + " VALUES(";
             Mysql = Mysql + "@CODEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @DATABALANCO, @CODPRODUTO, @NOMEPRODUTO, @QUANTIDADE ";
-           // Mysql = Mysql + ", @RESPINCLUSAO, @DATAINCLUSAO, @RESPALTERACAO, @DATAALTERACAO ";
+           
             Mysql = Mysql + "); ";
 
             db.CommandText = Mysql;
@@ -237,12 +237,6 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@CODPRODUTO", codproduto);
             db.AddParameter("@NOMEPRODUTO", nomeproduto);
             db.AddParameter("@QUANTIDADE", quantidade);
-
-            //db.AddParameter("@RESPINCLUSAO", respinclusao);
-            //db.AddParameter("@DATAINCLUSAO", datainclusao);
-            //db.AddParameter("@RESPALTERACAO", respalteracao);
-            //db.AddParameter("@DATAALTERACAO", dataalteracao);
-
 
             try
             {

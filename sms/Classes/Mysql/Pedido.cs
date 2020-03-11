@@ -803,7 +803,7 @@ namespace Atencao_Assistida.Classes.Mysql
             string Mysql = " SELECT P.CODPEDIDO, P.CODEMPRESA, P.TIPO, P.APROVADO, P.CODDEPARTAMENTO, P.SOLICITANTE,D.NOME AS LOTACAO, ";
             Mysql = Mysql + " P.NUMEROPEDIDO, DATE_FORMAT(P.DATAPEDIDO, '%d/%m/%Y') AS DATAPEDIDO, P.`STATUS` ";
             Mysql = Mysql + " FROM pedido P ";
-            Mysql = Mysql + " INNER JOIN usuarios U ON U.NOME = P.SOLICITANTE AND U.CODDEPARTAMENTO = P.CODDEPARTAMENTO ";
+            //Mysql = Mysql + " INNER JOIN usuarios U ON U.NOME = P.SOLICITANTE AND U.CODDEPARTAMENTO = P.CODDEPARTAMENTO ";
             Mysql = Mysql + " INNER JOIN departamento D ON P.CODDEPARTAMENTO = D.CODDEPARTAMENTO ";
 
             Mysql = Mysql + " WHERE P.STATUS = 'ABERTO' ";

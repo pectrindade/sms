@@ -62,6 +62,7 @@
             this.MenuItemSair = new System.Windows.Forms.ToolStripMenuItem();
             this.Consultas = new System.Windows.Forms.ToolStripMenuItem();
             this.MiconsEstoque = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiconsSaldo = new System.Windows.Forms.ToolStripMenuItem();
             this.Movimento = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.MimCaftrin = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +84,8 @@
             this.MimAtencaoAssistManutencaoProtocolo = new System.Windows.Forms.ToolStripMenuItem();
             this.MimAutoriza = new System.Windows.Forms.ToolStripMenuItem();
             this.Relatorios = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiCaf = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiCafSaidaMercadoria = new System.Windows.Forms.ToolStripMenuItem();
             this.MirOdont = new System.Windows.Forms.ToolStripMenuItem();
             this.MirAtencaoAssist = new System.Windows.Forms.ToolStripMenuItem();
             this.MirAtencaoAssistPrevisaoEntrega = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,6 +102,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tAviso = new System.Windows.Forms.Timer(this.components);
+            this.MimCaftrinAjusteEstoque = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -352,7 +356,8 @@
             // Consultas
             // 
             this.Consultas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MiconsEstoque});
+            this.MiconsEstoque,
+            this.MiconsSaldo});
             this.Consultas.Name = "Consultas";
             this.Consultas.Size = new System.Drawing.Size(71, 20);
             this.Consultas.Text = "C&onsultas";
@@ -360,9 +365,16 @@
             // MiconsEstoque
             // 
             this.MiconsEstoque.Name = "MiconsEstoque";
-            this.MiconsEstoque.Size = new System.Drawing.Size(180, 22);
+            this.MiconsEstoque.Size = new System.Drawing.Size(116, 22);
             this.MiconsEstoque.Text = "Estoque";
             this.MiconsEstoque.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
+            // 
+            // MiconsSaldo
+            // 
+            this.MiconsSaldo.Name = "MiconsSaldo";
+            this.MiconsSaldo.Size = new System.Drawing.Size(116, 22);
+            this.MiconsSaldo.Text = "Saldo";
+            this.MiconsSaldo.Click += new System.EventHandler(this.MiconsSaldo_Click);
             // 
             // Movimento
             // 
@@ -385,6 +397,7 @@
             // 
             this.MimCaftrin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MimCaftrinbalanco,
+            this.MimCaftrinAjusteEstoque,
             this.MimCaftrinEntradaMercadoria,
             this.MimCaftrinSaidaMercadoria,
             this.MimCaftrinDigitacaoRequisicao,
@@ -522,11 +535,27 @@
             // Relatorios
             // 
             this.Relatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MiCaf,
             this.MirOdont,
             this.MirAtencaoAssist});
             this.Relatorios.Name = "Relatorios";
             this.Relatorios.Size = new System.Drawing.Size(71, 20);
             this.Relatorios.Text = "&Relatórios";
+            // 
+            // MiCaf
+            // 
+            this.MiCaf.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MiCafSaidaMercadoria});
+            this.MiCaf.Name = "MiCaf";
+            this.MiCaf.Size = new System.Drawing.Size(167, 22);
+            this.MiCaf.Text = "Caftrin";
+            // 
+            // MiCafSaidaMercadoria
+            // 
+            this.MiCafSaidaMercadoria.Name = "MiCafSaidaMercadoria";
+            this.MiCafSaidaMercadoria.Size = new System.Drawing.Size(186, 22);
+            this.MiCafSaidaMercadoria.Text = "Saida de Mercadorias";
+            this.MiCafSaidaMercadoria.Click += new System.EventHandler(this.MiCafSaidaMercadoria_Click);
             // 
             // MirOdont
             // 
@@ -637,6 +666,13 @@
             this.tAviso.Interval = 10000;
             this.tAviso.Tick += new System.EventHandler(this.tAviso_Tick);
             // 
+            // MimCaftrinAjusteEstoque
+            // 
+            this.MimCaftrinAjusteEstoque.Name = "MimCaftrinAjusteEstoque";
+            this.MimCaftrinAjusteEstoque.Size = new System.Drawing.Size(200, 22);
+            this.MimCaftrinAjusteEstoque.Text = "Ajuste Estoque";
+            this.MimCaftrinAjusteEstoque.Click += new System.EventHandler(this.MimCaftrinAjusteEstoque_Click);
+            // 
             // FrmInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -734,6 +770,10 @@
         private System.Windows.Forms.ToolStripMenuItem MimOdontDigitacaoOfício;
         private System.Windows.Forms.Timer tAviso;
         private System.Windows.Forms.ToolStripMenuItem MimCaftrinDevolucao;
+        private System.Windows.Forms.ToolStripMenuItem MiCaf;
+        private System.Windows.Forms.ToolStripMenuItem MiCafSaidaMercadoria;
+        private System.Windows.Forms.ToolStripMenuItem MiconsSaldo;
+        private System.Windows.Forms.ToolStripMenuItem MimCaftrinAjusteEstoque;
     }
 }
 

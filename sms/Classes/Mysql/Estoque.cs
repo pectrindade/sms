@@ -446,12 +446,7 @@ namespace Atencao_Assistida.Classes.Mysql
             {
                 while (dr.Read())
                 {
-                   
-                                       
-
                     var QtB = BuscaBalanco(codempresa, coddepartamento, data, codproduto);
-
-
                     // se tem Balanço entao a entrada é o balanço
                     if (QtB != "")
                     {
@@ -462,29 +457,36 @@ namespace Atencao_Assistida.Classes.Mysql
                         qtEntrada = BuscaEntrada();
 
                         qtEntrada = qtEntrada + dr.GetFloat(dr.GetOrdinal("QUANTIDADE"));
-
                         
+                        var QtAjuste = BuscaAjuste(codempresa, coddepartamento, data, codproduto);
+                        // se tem Ajuste entao a entrada é o ajuste
+                        if (QtAjuste != "")
+                        {
+                            qtEntrada = float.Parse(QtAjuste);
+                        }
                     }
-
-
                 }
-
                 UpdateEntrada(qtEntrada.ToString());
-
             }
             else
             {
                 var QtB = BuscaBalanco(codempresa, coddepartamento, data, codproduto);
-
-
                 // se tem Balanço entao a entrada é o balanço
                 if (QtB != "")
                 {
                     qtEntrada = float.Parse(QtB);
-
                     UpdateEntrada(qtEntrada.ToString());
                 }
-
+                else
+                {
+                    var QtAjuste = BuscaAjuste(codempresa, coddepartamento, data, codproduto);
+                    // se tem Ajuste entao a entrada é o ajuste
+                    if (QtAjuste != "")
+                    {
+                        qtEntrada = float.Parse(QtAjuste);
+                        UpdateEntrada(qtEntrada.ToString());
+                    }
+                }
             }
 
             dr.Dispose();
@@ -912,7 +914,48 @@ namespace Atencao_Assistida.Classes.Mysql
             return resposta;
         }
 
+        //AJUSTE
+        public string BuscaAjuste(int codempresa, int coddepartamento, string data, int Codproduto)
+        {
 
+            string resposta = "";
+
+            var db = new DBAcess();
+            var Mysql = " SELECT * ";
+            Mysql = Mysql + " FROM ajuste_estoque ";
+            Mysql = Mysql + " WHERE DATAAJUSTE = @DATAAJUSTE ";
+            Mysql = Mysql + " AND CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND CODPRODUTO = @CODPRODUTO;";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@DATAAJUSTE", Convert.ToDateTime(data));
+            db.AddParameter("@CODPRODUTO", Codproduto);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    resposta = dr.GetString(dr.GetOrdinal("QUANTIDADE")).ToString();
+                }
+
+            }
+            else
+            {
+                resposta = "";
+            }
+
+            dr.Dispose();
+            dr.Close();
+
+            return resposta;
+        }
 
 
         #endregion
@@ -1076,6 +1119,48 @@ namespace Atencao_Assistida.Classes.Mysql
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader BuscaEstoqueNome(int codempresa, int coddepartamento, string mes, string ano, string valor, int codgrupo)
+        {
+
+            var db = new DBAcess();
+            string Mysql = " SELECT E.CODEMPRESA, EP.NOME AS NOMEEMPRESA, E.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, E.MES, E.ANO, ";
+            Mysql = Mysql + " E.CODPRODUTO, P.NOME AS NOMEPRODUTO, ";
+            Mysql = Mysql + " E.QTANTERIOR, E.ENTRADA, E.SAIDA, E.QTATUAL ";
+            Mysql = Mysql + " FROM ESTOQUE E ";
+
+            Mysql = Mysql + " INNER JOIN empresa AS EP ON EP.CODEMPRESA = E.CODEMPRESA ";
+            Mysql = Mysql + " INNER JOIN departamento AS D ON D.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
+            Mysql = Mysql + " INNER JOIN produtos AS P ON P.CODPRODUTO = E.CODPRODUTO ";
+
+            Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+
+            if (valor != "")  {
+                Mysql = Mysql + " AND p.NOME LIKE @valor ";
+                valor = '%' + valor + "%";
+            }
+
+            if (codgrupo != 0) { Mysql = Mysql + " AND P.CODGRUPO = @CODGRUPO "; }
+
+            Mysql = Mysql + " AND E.MES = @MES ";
+            Mysql = Mysql + " AND E.ANO = @ANO ";
+            Mysql = Mysql + " ORDER BY P.NOME";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@CODGRUPO", codgrupo);
+            db.AddParameter("@MES", mes);
+            db.AddParameter("@ANO", ano);
+            db.AddParameter("@valor", valor);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            return dr;
+        }
+
 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static MySqlDataReader BuscaProdutoEstoque(int codempresa, int coddepartamento, string mes, string ano, int codproduto)

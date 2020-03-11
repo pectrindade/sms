@@ -1,11 +1,13 @@
 ﻿using Atencao_Assistida;
 using Atencao_Assistida.Classes.Mysql;
+using Atencao_Assistida.Consultas;
 using Atencao_Assistida.Forms;
 using Atencao_Assistida.Forms.Caftrin;
 using Atencao_Assistida.Forms.Odonto;
 using Atencao_Assistida.Pesquisas;
 using Atencao_Assistida.Relatorios.PacienteProduto;
 using Atencao_Assistida.Relatorios.Previsao_entrega;
+using Atencao_Assistida.Relatorios.Saida_Periodo;
 using System;
 using System.Windows.Forms;
 using UnidadeMedida = Atencao_Assistida.Forms.UnidadeMedida;
@@ -1353,6 +1355,64 @@ namespace teste1
                 tela.MdiParent = this;
                 tela.Show();
             }
+        }
+
+        private void MiCafSaidaMercadoria_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is Chama_RelSaida)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new Chama_RelSaida();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+        }
+
+        private void MiconsSaldo_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is Saldo)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new Saldo();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+        }
+
+        private void MimCaftrinAjusteEstoque_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is AjusteEstoque)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new AjusteEstoque();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+
         }
     }
 }

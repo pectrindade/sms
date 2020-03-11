@@ -161,6 +161,7 @@ namespace Atencao_Assistida.Forms
             LimpaTela();
 
         }
+
         private void LimpaTela()
         {
 
@@ -348,7 +349,6 @@ namespace Atencao_Assistida.Forms
             LimpaTela();
 
         }
-
 
         private void btnListar_Click(object sender, EventArgs e)
         {

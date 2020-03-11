@@ -198,6 +198,8 @@ namespace Atencao_Assistida.Forms
 
                     SaldoAtual(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
 
+
+
                     progresso1 = progresso1 + 1;
                     progressBar1.Value = progresso1;
 

@@ -813,7 +813,7 @@ namespace Atencao_Assistida.Classes.Funcoes
             Mysql = Mysql + " [NUMEROPEDIDO]   varchar(10), ";
             Mysql = Mysql + " [CODPRODUTO]   Int, ";
             Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
-            Mysql = Mysql + " [QUANTIDADE]  varchar(10), ";
+            Mysql = Mysql + " [QUANTIDADE]  varchar(10) ";
 
             Mysql = Mysql + " )";
 

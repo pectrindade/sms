@@ -32,6 +32,24 @@ namespace Atencao_Assistida.Consultas
 
         }
 
+        private void Estoque_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void Estoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F8)
+            {
+                if (ActiveControl.Name == "txtcodigo") { btnBuscaProduto.PerformClick(); return; }
+            }
+        }
+
+
         private void CarregaCmbEmpresa()
         {
             int codigo;
@@ -122,7 +140,6 @@ namespace Atencao_Assistida.Consultas
             dr.Dispose();
 
         }
-
 
         private void CarregaGrid()
         {
@@ -384,24 +401,7 @@ namespace Atencao_Assistida.Consultas
             if (cmbDepartamento.Text.Trim() == "--SELECIONE--") { cmbDepartamento.Focus(); return; }
 
         }
-
-        private void Estoque_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-        }
-
-        private void Estoque_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F8)
-            {
-                if (ActiveControl.Name == "txtcodigo") { btnBuscaProduto.PerformClick(); return; }
-            }
-        }
-
+       
         private void LimpaTela()
         {
             DateTime date = DateTime.Now;
@@ -428,6 +428,9 @@ namespace Atencao_Assistida.Consultas
 
         private void btnBuscaProduto_Click(object sender, EventArgs e)
         {
+            txtcodigo.Text = "";
+            txtNome.Text = "";
+
             bool open = false;
             foreach (Form form in Application.OpenForms)
             {
