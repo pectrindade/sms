@@ -50,7 +50,7 @@ namespace Atencao_Assistida.Classes.Mysql
         public int Insert()
         {
             var db = new DBAcess();
-            var Mysql = " INSERT INTO Ajuste( ";
+            var Mysql = " INSERT INTO ajuste_estoque( ";
             Mysql = Mysql + " CODEMPRESA, CODDEPARTAMENTO, DATAAJUSTE, CODPRODUTO, QUANTIDADE, MOTIVO, RESPINCLUSAO, DATAINCLUSAO ";
             Mysql = Mysql + ") ";
             Mysql = Mysql + " VALUES(";
@@ -104,22 +104,24 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public static MySqlDataReader Select(int codempresa, int coddepartamento, string dataajuste, int codproduto)
+        public static MySqlDataReader SelectAjuste(int codempresa, int coddepartamento, string dataajuste, int codproduto)
         {
             var db = new DBAcess();
-            var Mysql = " SELECT * ";
-            Mysql = Mysql + " FROM Ajuste ";
+            var Mysql = " SELECT AJ.CODEMPRESA, AJ.CODDEPARTAMENTO, DATE_FORMAT(AJ.DATAAJUSTE,'%d/%m/%Y') AS DATAAJUSTE, ";
+            Mysql = Mysql + " AJ.CODPRODUTO, P.NOME AS NOMEPRODUTO, AJ.QUANTIDADE, AJ.MOTIVO  ";
 
-            Mysql = Mysql + " WHERE CODEMPRESA = @CODEMPRESA ";
-            Mysql = Mysql + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO ";
-            Mysql = Mysql + " AND DATAAJUSTE = @DATAAJUSTE ";
-            Mysql = Mysql + " AND CODPRODUTO = @CODPRODUTO;";
+            Mysql = Mysql + " FROM ajuste_estoque AJ ";
+            Mysql = Mysql + " INNER JOIN produtos P ON AJ.CODPRODUTO = P.CODPRODUTO ";
+
+            Mysql = Mysql + " WHERE AJ.CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND AJ.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND AJ.DATAAJUSTE = @DATAAJUSTE ";
 
             db.CommandText = Mysql;
 
             db.AddParameter("@CODEMPRESA", codempresa);
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
-            db.AddParameter("@DATAAjuste", Convert.ToDateTime(dataajuste));
+            db.AddParameter("@DATAAJUSTE", Convert.ToDateTime(dataajuste));
             db.AddParameter("@CODPRODUTO", codproduto);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
@@ -134,7 +136,7 @@ namespace Atencao_Assistida.Classes.Mysql
             var db = new DBAcess();
             var Mysql = " SELECT B.CODEMPRESA, B.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, DATE_FORMAT(B.DATAAjuste,'%d/%m/%Y') AS DATAAjuste, ";
             Mysql = Mysql + " B.CODPRODUTO, P.NOME AS NOMEPRODUTO, B.QUANTIDADE ";
-            Mysql = Mysql + " FROM Ajuste AS B ";
+            Mysql = Mysql + " FROM ajuste_estoque AS B ";
             Mysql = Mysql + " INNER JOIN produtos AS P ON B.CODPRODUTO = P.CODPRODUTO ";
             Mysql = Mysql + " INNER JOIN departamento D ON D.CODDEPARTAMENTO = B.CODDEPARTAMENTO ";
 
@@ -155,7 +157,7 @@ namespace Atencao_Assistida.Classes.Mysql
         public int InsertAccess(int codempresa, int coddepartamento, string nomedepartamento, string dataajuste, int codproduto, string nomeproduto, string quantidade)
         {
             var db = new DBAcessOleDB();
-            var Mysql = " INSERT INTO Ajuste( ";
+            var Mysql = " INSERT INTO ajuste_estoque( ";
             Mysql = Mysql + "CODEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, DATAAJUSTE, CODPRODUTO, NOMEPRODUTO, QUANTIDADE ";
 
             Mysql = Mysql + ") ";

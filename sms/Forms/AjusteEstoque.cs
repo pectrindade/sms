@@ -18,6 +18,7 @@ namespace Atencao_Assistida.Forms
             txtdtAjuste.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
         }
+
         private void CarregaCmbDepartamento()
         {
             int codigo;
@@ -176,6 +177,159 @@ namespace Atencao_Assistida.Forms
             txtdtAjuste.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
             cmbDepartamento.Focus();
+
+        }
+
+        private void txtdtAjuste_Leave(object sender, EventArgs e)
+        {
+            CarregaGrid();
+        }
+
+        private void CarregaGrid()
+        {
+            DateTime data = Convert.ToDateTime(txtdtAjuste.Text.Trim());
+            var dia = data.ToString("dd/MM/yyyy");
+
+
+            Grid.Columns["QUANTIDADE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //define um array de strings com nCOlunas
+            string[] linhaDados = new string[4];
+
+            //LIMPAR GRID
+            Grid.Rows.Clear();
+            Grid.Refresh();
+
+            var dr = Ajuste.SelectAjuste(int.Parse(Usuario.Codempresa), cmbDepartamento.SelectedIndex, dia);
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+                    linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
+                    linhaDados[1] = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
+                    linhaDados[2] = dr.GetString(dr.GetOrdinal("QUANTIDADE"));
+                    linhaDados[3] = dr.GetString(dr.GetOrdinal("MOTIVO"));
+
+                    Grid.Rows.Add(linhaDados);
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+        }
+
+        private void btnAddGrid_Click(object sender, EventArgs e)
+        {
+            if (txtQuantidade.Text.Trim() != "")              
+            {
+                int NumLetras = txtMotivo.Text.Trim().Length;
+                if (NumLetras < 38) { MessageBox.Show("Quantidade caracteres insuficientes na descrição de Motivo "); txtMotivo.Focus(); return; }
+
+                GridAdd();
+
+                txtCodProduto.Focus();
+
+            }
+        }
+
+        private void GridAdd()
+        {
+            Grid.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //define um array de strings com nCOlunas
+            string[] linhaDados = new string[6];
+
+            linhaDados[0] = txtCodProduto.Text.Trim();
+            linhaDados[1] = txtNomeProduto.Text.Trim();
+            linhaDados[2] = txtQuantidade.Text.Trim();
+            linhaDados[3] = txtMotivo.Text.Trim();
+
+            Grid.Rows.Add(linhaDados);
+
+            txtCodProduto.Text = "";
+            txtNomeProduto.Text = "";
+            txtQuantidade.Text = "";
+            txtMotivo.Text = "";
+
+            txtCodProduto.Focus();
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            if (txtdtAjuste.Text.Trim() != "")
+            {
+               
+
+                Gravar();
+            }
+        }
+
+        private void Gravar()
+        {
+            var hoje = DateTime.Now;
+            var codempresa = Usuario.Codempresa.ToString();
+            var dataajuste = txtdtAjuste.Text.Trim();
+            var coddepartamento = Usuario.Coddepartamento.ToString();
+            var respinclusao = Usuario.Nomeusuario.ToString();
+            var datainclusao = hoje.ToString();
+
+            try
+            {
+
+                int total = Grid.Rows.Count;
+                int i;
+                var Produto = "";
+                var nome = "";
+                var qt = "";
+                var motivo = "";
+
+                DialogResult result = MessageBox.Show("Deseja Realmente Ajustar o Estoque Desses Itens ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    var Linhas = Grid.Rows.Count;
+
+                    foreach (DataGridViewRow linha1 in Grid.Rows)
+                    {
+                        Produto = linha1.Cells[0].Value.ToString();
+                        nome = linha1.Cells[1].Value.ToString();
+                        qt = linha1.Cells[2].Value.ToString();
+                        motivo = linha1.Cells[3].Value.ToString();
+
+                        int NumLetras = motivo.Trim().Length;
+                        if (NumLetras < 38) { MessageBox.Show("Quantidade caracteres insuficientes na descrição de Motivo "); txtMotivo.Focus(); return; }
+
+                        //var item = new Ajuste(int.Parse(codempresa), int.Parse(coddepartamento), dataajuste, int.Parse(Produto), int.Parse(qt), motivo, respinclusao.ToString(), datainclusao);
+
+                        //item.Insert();
+
+                        var dr_i = Ajuste.SelectAjuste(int.Parse(codempresa), int.Parse(coddepartamento), dataajuste, int.Parse(Produto));
+                        if (dr_i.HasRows)
+                        {
+                            item.Update();
+                        }
+                        else
+                        {
+                            item.Insert();
+                        }
+
+                        dr_i.Dispose();
+                        dr_i.Close();
+
+                    }
+
+                }
+                //MessageBox.Show("Registro Gravado com Sucesso !");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro na Persistência");
+            }
+
+            LimpaTela();
 
         }
 
