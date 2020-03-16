@@ -169,7 +169,9 @@
     <Compile Include="Classes\Funcoes\CriaArquivo.cs" />
     <Compile Include="Classes\Funcoes\Funcoes.cs" />
     <Compile Include="Classes\Funcoes\IniFile.cs" />
+    <Compile Include="Classes\Funcoes\InputBox.cs" />
     <Compile Include="Classes\Mysql\Ajuste.cs" />
+    <Compile Include="Classes\Mysql\Ajuste_Log.cs" />
     <Compile Include="Classes\Mysql\Avisos.cs" />
     <Compile Include="Classes\Mysql\Balanco.cs" />
     <Compile Include="Classes\Mysql\Cfop.cs" />
@@ -250,6 +252,12 @@
     </Compile>
     <Compile Include="Forms\AtualizaAcesso.Designer.cs">
       <DependentUpon>AtualizaAcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AutorizaAjuste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AutorizaAjuste.Designer.cs">
+      <DependentUpon>AutorizaAjuste.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AvisoReqOfc.cs">
       <SubType>Form</SubType>
@@ -867,6 +875,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AtualizaAcesso.resx">
       <DependentUpon>AtualizaAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AutorizaAjuste.resx">
+      <DependentUpon>AutorizaAjuste.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AvisoReqOfc.resx">
       <DependentUpon>AvisoReqOfc.cs</DependentUpon>

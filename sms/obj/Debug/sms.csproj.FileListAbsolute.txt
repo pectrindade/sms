@@ -1169,3 +1169,4 @@ D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Consultas.Saldo.resou
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Periodo.Chama_RelEstoque.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Periodo.RelEstoquePeriodo.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.AjusteEstoque.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.AutorizaAjuste.resources

@@ -58,19 +58,18 @@ namespace Atencao_Assistida.Classes.Mysql
         public int Insert()
         {
             var db = new DBAcess();
-            const string insert = " INSERT INTO Unidade(" +
-                                  " NOME, TELEFONE, EMAIL, ENDERECO, BAIRRO, " +
-                                  " ATIVA, RESPINCLUSAO, DATAINCLUSAO, " +
-                                  " EXCLUIDO" +
+            var Mysql = " INSERT INTO Unidade(";
+            Mysql = Mysql + " NOME, TELEFONE, EMAIL, ENDERECO, BAIRRO, ";
+            Mysql = Mysql + " ATIVA, RESPINCLUSAO, DATAINCLUSAO, ";
+            Mysql = Mysql + " EXCLUIDO";
+            Mysql = Mysql + ") ";
+            Mysql = Mysql + " VALUES(";
+            Mysql = Mysql + " @NOME, @TELEFONE, @EMAIL, @ENDERECO, @BAIRRO, ";
+            Mysql = Mysql + " @ATIVA, @RESPINCLUSAO, @DATAINCLUSAO, ";
+            Mysql = Mysql + " @EXCLUIDO";
+            Mysql = Mysql + "); ";
 
-                                  ") ";
-            const string values = " VALUES(" +
-                                  " @NOME, @TELEFONE, @EMAIL, @ENDERECO, @BAIRRO, " +
-                                  " @ATIVA, @RESPINCLUSAO, @DATAINCLUSAO, " +
-                                  " @EXCLUIDO" +
-                                  "); ";
-            const string select = " ";
-            db.CommandText = insert + values + select;
+            db.CommandText = Mysql;
 
             db.AddParameter("@NOME", Nome);
             db.AddParameter("@TELEFONE", Telefone);
@@ -95,14 +94,16 @@ namespace Atencao_Assistida.Classes.Mysql
         public bool Update()
         {
             var db = new DBAcess();
-            const string update = " UPDATE Unidade ";
-            const string set = " SET" +
-                               " NOME = @NOME, TELEFONE = @TELEFONE, EMAIL = @EMAIL, " +
-                               " ENDERECO = @ENDERECO, BAIRRO = @BAIRRO, " +
-                               " ATIVA = @ATIVA, " +
-                               " RESPALTERACAO = @RESPALTERACAO, DATAALTERACAO = @DATAALTERACAO, EXCLUIDO = @EXCLUIDO";
-            const string where = " WHERE codUnidade = @CODUnidade;";
-            db.CommandText = update + set + where;
+            var Mysql = " UPDATE Unidade ";
+            Mysql = Mysql + " SET";
+            Mysql = Mysql + " NOME = @NOME, TELEFONE = @TELEFONE, EMAIL = @EMAIL, ";
+            Mysql = Mysql + " ENDERECO = @ENDERECO, BAIRRO = @BAIRRO, ";
+            Mysql = Mysql + " ATIVA = @ATIVA, ";
+            Mysql = Mysql + " RESPALTERACAO = @RESPALTERACAO, DATAALTERACAO = @DATAALTERACAO, EXCLUIDO = @EXCLUIDO";
+            Mysql = Mysql + " WHERE codUnidade = @CODUnidade;";
+
+            db.CommandText = Mysql;
+
             db.AddParameter("@CODUNIDADE", Codunidade);
             db.AddParameter("@NOME", Nome);
             db.AddParameter("@TELEFONE", Telefone);
@@ -143,7 +144,7 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " @CODUNIDADE, @NOME, @TELEFONE, @EMAIL, @ENDERECO, @BAIRRO, ";
             Mysql = Mysql + " @RESPINCLUSAO, @DATAHORAINCLUSAO, @RESPALTERACAO, @DATAHORAALTERACAO ";
             Mysql = Mysql + "); ";
-            
+
             db.CommandText = Mysql;
 
             db.AddParameter("@CODUNIDADE", codunidade);

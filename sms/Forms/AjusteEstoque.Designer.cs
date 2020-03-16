@@ -178,6 +178,7 @@
             this.Grid.Size = new System.Drawing.Size(469, 216);
             this.Grid.TabIndex = 269;
             this.Grid.TabStop = false;
+            this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
             // codigo
             // 
@@ -259,8 +260,9 @@
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(59, 23);
             this.BtnExcluir.TabIndex = 274;
-            this.BtnExcluir.Text = "Excluir";
+            this.BtnExcluir.Text = "Autoriza";
             this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnGravar
             // 

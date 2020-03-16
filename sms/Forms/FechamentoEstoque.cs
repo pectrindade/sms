@@ -225,6 +225,7 @@ namespace Atencao_Assistida.Forms
 
         }
 
+
         private void SaldoAnterior(int codempresa, int codproduto)
         {
 
@@ -277,6 +278,7 @@ namespace Atencao_Assistida.Forms
             #endregion;
 
         }
+
         private void EntradaProduto(int codempresa, int coddepartamento, string dia, int codproduto)
         {
 
@@ -333,6 +335,7 @@ namespace Atencao_Assistida.Forms
             #endregion
 
         }
+
 
         private void btnBuscaProduto_Click(object sender, EventArgs e)
         {

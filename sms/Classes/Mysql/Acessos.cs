@@ -29,7 +29,7 @@ namespace Atencao_Assistida.Classes.Mysql
         private string Respalteracao { get; set; }
         private string Datahoraalteracao { get; set; }
         private string Excluido { get; set; }
-        
+
 
         public Acessos(int codusuario, int codempresa, int coddepartamento, int codunidade, int tipousuario, string nome, string cpf, string email, string telefone,
         string login, string senha, int ativo, string respinclusao, string datahorainclusao, string respalteracao,
@@ -430,7 +430,7 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public MySqlDataReader BuscaPermisaoCodigo(int codigo, int codform)
+        public MySqlDataReader BuscaPermisaoCodigo(int Codusuario, int codform)
         {
             var db = new DBAcess();
             //const string select = " SELECT p.codusuario, p.codform  ";
@@ -440,8 +440,39 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " AND p.codform = @codform ";
 
             db.CommandText = Mysql;
-            db.AddParameter("@codusuario", codigo);
+            db.AddParameter("@codusuario", Codusuario);
             db.AddParameter("@codform", codform);
+
+            try
+            {
+                var dr = (MySqlDataReader)db.ExecuteReader();
+                return dr;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader BuscaAutoriza(string login, string Senha, int codform)
+        {
+            var db = new DBAcess();
+            //const string select = " SELECT p.codusuario, p.codform  ";
+            var Mysql = " SELECT U.CODUSUARIO, U.NOME, AP.CODFORM ";
+            Mysql = Mysql + " FROM usuarios U  ";
+
+            Mysql = Mysql + " INNER JOIN acesso_permisao AP ON AP.CODUSUARIO = U.CODUSUARIO ";
+            Mysql = Mysql + " INNER JOIN acesso_forms AF ON AF.CODFORM = AP.CODFORM ";
+
+            Mysql = Mysql + "WHERE U.LOGIN = @LOGIN ";
+            Mysql = Mysql + " AND U.SENHA = @SENHA ";
+            Mysql = Mysql + " AND AF.CODFORM = @CODFORM ";
+
+            db.CommandText = Mysql;
+            db.AddParameter("@LOGIN", login);
+            db.AddParameter("@SENHA", Senha);
+            db.AddParameter("@CODFORM", codform);
 
             try
             {

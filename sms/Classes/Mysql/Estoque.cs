@@ -87,6 +87,39 @@ namespace Atencao_Assistida.Classes.Mysql
             return 1;
         }
 
+        public bool UpdateAnterior(string qtanterior)
+        {
+            var db = new DBAcess();
+            const string update = " UPDATE estoque ";
+            const string set = " SET" +
+                               " QTANTERIOR = @QTANTERIOR ";
+            string where = " WHERE CODEMPRESA = @CODEMPRESA";
+            where = where + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO";
+            where = where + " AND MES = @MES";
+            where = where + " AND ANO = @ANO";
+            where = where + " AND CODPRODUTO = @CODPRODUTO;";
+
+            db.CommandText = update + set + where;
+
+            db.AddParameter("@CODEMPRESA", Codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", Coddepartamento);
+            db.AddParameter("@MES", Mes);
+            db.AddParameter("@ANO", Ano);
+            db.AddParameter("@CODPRODUTO", Codproduto);
+            db.AddParameter("@QTANTERIOR", Convert.ToDecimal(qtanterior));
+
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
         public int Insert()
         {
             var db = new DBAcess();
@@ -277,7 +310,7 @@ namespace Atencao_Assistida.Classes.Mysql
             if (produto == "") { produto = "0"; }
             if (grupo == "") { grupo = "0"; }
 
-            db.AddParameter("@CODPRODUTO",  int.Parse(produto));
+            db.AddParameter("@CODPRODUTO", int.Parse(produto));
             db.AddParameter("@CODGRUPO", int.Parse(grupo));
 
 
@@ -414,6 +447,7 @@ namespace Atencao_Assistida.Classes.Mysql
 
         public int Fecha_Entradas(int codempresa, int coddepartamento, string data, int codproduto)
         {
+
             //-> PROCESSO EM QUE BUSCA TODAS AS ENTRADAS NO MES DO REFERIDO PRODUTO
             //-> PROCESSO DE CORREÇÃO DE ESTOQUE 
 
@@ -436,7 +470,7 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@CODEMPRESA", codempresa);
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
             db.AddParameter("@DATA", Convert.ToDateTime(data));
-           
+
             db.AddParameter("@CODPRODUTO", codproduto);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
@@ -457,16 +491,26 @@ namespace Atencao_Assistida.Classes.Mysql
                         qtEntrada = BuscaEntrada();
 
                         qtEntrada = qtEntrada + dr.GetFloat(dr.GetOrdinal("QUANTIDADE"));
-                        
+
                         var QtAjuste = BuscaAjuste(codempresa, coddepartamento, data, codproduto);
                         // se tem Ajuste entao a entrada é o ajuste
                         if (QtAjuste != "")
                         {
+
+                            DateTime data1 = Convert.ToDateTime(data);
+
+                            var vmes = data1.ToString("MM");
+                            var vano = data1.ToString("yyyy");
+
+                            UpdateAnterior("0");
+                            UpdateEntrada(qtEntrada.ToString());
+
                             qtEntrada = float.Parse(QtAjuste);
                         }
                     }
                 }
-                UpdateEntrada(qtEntrada.ToString());
+
+
             }
             else
             {
@@ -483,6 +527,14 @@ namespace Atencao_Assistida.Classes.Mysql
                     // se tem Ajuste entao a entrada é o ajuste
                     if (QtAjuste != "")
                     {
+
+                        DateTime data1 = Convert.ToDateTime(data);
+
+                        var vmes = data1.ToString("MM");
+                        var vano = data1.ToString("yyyy");
+
+                        UpdateAnterior("0");
+
                         qtEntrada = float.Parse(QtAjuste);
                         UpdateEntrada(qtEntrada.ToString());
                     }
@@ -926,6 +978,7 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " WHERE DATAAJUSTE = @DATAAJUSTE ";
             Mysql = Mysql + " AND CODEMPRESA = @CODEMPRESA ";
             Mysql = Mysql + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND AUTORIZADO = @AUTORIZADO ";
             Mysql = Mysql + " AND CODPRODUTO = @CODPRODUTO;";
 
             db.CommandText = Mysql;
@@ -933,6 +986,7 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@CODEMPRESA", codempresa);
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
             db.AddParameter("@DATAAJUSTE", Convert.ToDateTime(data));
+            db.AddParameter("@AUTORIZADO", "S");
             db.AddParameter("@CODPRODUTO", Codproduto);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
@@ -964,7 +1018,7 @@ namespace Atencao_Assistida.Classes.Mysql
         public float BuscaEntrada()
         {
             float qtEntradaAntes = 0;
-           
+
             var db = new DBAcess();
             string Mysql = " select ENTRADA ";
             Mysql = Mysql + " from estoque ";
@@ -993,7 +1047,7 @@ namespace Atencao_Assistida.Classes.Mysql
                 {
                     qtEntradaAntes = dr.GetFloat(dr.GetOrdinal("ENTRADA"));
                 }
-               
+
             }
 
             dr.Dispose();
@@ -1063,7 +1117,7 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " AND E.ANO = @ANO ";
 
             if (codproduto != 0)
-            { Mysql = Mysql + " AND E.CODPRODUTO = @CODPRODUTO ";  }
+            { Mysql = Mysql + " AND E.CODPRODUTO = @CODPRODUTO "; }
 
             Mysql = Mysql + " ORDER BY E.CODPRODUTO";
 
@@ -1102,7 +1156,7 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " AND E.MES = @MES ";
             Mysql = Mysql + " AND E.ANO = @ANO ";
 
-            if (codproduto != 0){Mysql = Mysql + " AND E.CODPRODUTO = @CODPRODUTO "; }
+            if (codproduto != 0) { Mysql = Mysql + " AND E.CODPRODUTO = @CODPRODUTO "; }
 
             Mysql = Mysql + " ORDER BY P.NOME";
 
@@ -1137,7 +1191,8 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
             Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
 
-            if (valor != "")  {
+            if (valor != "")
+            {
                 Mysql = Mysql + " AND p.NOME LIKE @valor ";
                 valor = '%' + valor + "%";
             }
@@ -1206,7 +1261,7 @@ namespace Atencao_Assistida.Classes.Mysql
             var Mysql = " INSERT INTO Estoque(";
             Mysql = Mysql + " CODEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, MES, ANO, CODPRODUTO, NOMEPRODUTO, ";
             Mysql = Mysql + " QTANTERIOR, ENTRADA, SAIDA, QTATUAL ";
-           
+
 
             Mysql = Mysql + ") ";
             Mysql = Mysql + " VALUES(";
@@ -1245,7 +1300,7 @@ namespace Atencao_Assistida.Classes.Mysql
         {
             var db = new DBAcessOleDB();
             var Mysql = " DELETE FROM Estoque ";
-           
+
             db.CommandText = Mysql;
 
             try
