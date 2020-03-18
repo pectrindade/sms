@@ -245,6 +245,7 @@
             this.Controls.Add(this.btnProcuraAgente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Agente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agente";

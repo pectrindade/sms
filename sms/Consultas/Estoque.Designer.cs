@@ -185,38 +185,45 @@
             this.Grid.ReadOnly = true;
             this.Grid.Size = new System.Drawing.Size(1212, 209);
             this.Grid.TabIndex = 259;
+            this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
             // codigo
             // 
             this.codigo.HeaderText = "Código";
             this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
             this.codigo.Width = 60;
             // 
             // nome
             // 
             this.nome.HeaderText = "Nome";
             this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
             this.nome.Width = 700;
             // 
             // qtanterior
             // 
             this.qtanterior.HeaderText = "Qt. Anterior";
             this.qtanterior.Name = "qtanterior";
+            this.qtanterior.ReadOnly = true;
             // 
             // entrada
             // 
             this.entrada.HeaderText = "Entrada";
             this.entrada.Name = "entrada";
+            this.entrada.ReadOnly = true;
             // 
             // saida
             // 
             this.saida.HeaderText = "Saida";
             this.saida.Name = "saida";
+            this.saida.ReadOnly = true;
             // 
             // qtatual
             // 
             this.qtatual.HeaderText = "Qt. Atual";
             this.qtatual.Name = "qtatual";
+            this.qtatual.ReadOnly = true;
             // 
             // button1
             // 
@@ -289,6 +296,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 508);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbGrupo);
             this.Controls.Add(this.BtnDesfaz);
@@ -309,7 +317,9 @@
             this.Controls.Add(this.cmbDepartamento);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbEmpresa);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Estoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estoque";

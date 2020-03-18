@@ -117,7 +117,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(402, 224);
+            this.label5.Location = new System.Drawing.Point(477, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 226;
@@ -130,7 +130,7 @@
             this.cmbativo.Items.AddRange(new object[] {
             "S",
             "N"});
-            this.cmbativo.Location = new System.Drawing.Point(397, 240);
+            this.cmbativo.Location = new System.Drawing.Point(472, 240);
             this.cmbativo.Name = "cmbativo";
             this.cmbativo.Size = new System.Drawing.Size(64, 21);
             this.cmbativo.TabIndex = 7;
@@ -155,14 +155,14 @@
             "Autorizado"});
             this.cmbgrupo.Location = new System.Drawing.Point(6, 240);
             this.cmbgrupo.Name = "cmbgrupo";
-            this.cmbgrupo.Size = new System.Drawing.Size(121, 21);
+            this.cmbgrupo.Size = new System.Drawing.Size(222, 21);
             this.cmbgrupo.TabIndex = 4;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(142, 224);
+            this.label7.Location = new System.Drawing.Point(239, 224);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 224;
@@ -176,7 +176,7 @@
             "Em Avaliação",
             "Deferido",
             "Autorizado"});
-            this.cmbmarca.Location = new System.Drawing.Point(137, 240);
+            this.cmbmarca.Location = new System.Drawing.Point(234, 240);
             this.cmbmarca.Name = "cmbmarca";
             this.cmbmarca.Size = new System.Drawing.Size(121, 21);
             this.cmbmarca.TabIndex = 5;
@@ -239,7 +239,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(272, 224);
+            this.label19.Location = new System.Drawing.Point(366, 224);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(100, 13);
             this.label19.TabIndex = 233;
@@ -253,9 +253,9 @@
             "Em Avaliação",
             "Deferido",
             "Autorizado"});
-            this.cmbUnidaemedida.Location = new System.Drawing.Point(267, 240);
+            this.cmbUnidaemedida.Location = new System.Drawing.Point(361, 240);
             this.cmbUnidaemedida.Name = "cmbUnidaemedida";
-            this.cmbUnidaemedida.Size = new System.Drawing.Size(121, 21);
+            this.cmbUnidaemedida.Size = new System.Drawing.Size(105, 21);
             this.cmbUnidaemedida.TabIndex = 6;
             // 
             // Produtos

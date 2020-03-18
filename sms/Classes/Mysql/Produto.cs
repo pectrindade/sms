@@ -308,6 +308,42 @@ namespace Atencao_Assistida.Classes.Mysql
             return retorno;
         }
 
+        public int SelectCount(string coddepartamento, string codgrupo)
+        {
+            int retorno = 0;
+
+            var db = new DBAcess();
+            var Mysql = " SELECT COUNT(CODPRODUTO) AS PRODUTOS  ";
+            Mysql = Mysql + " FROM produtos ";
+            Mysql = Mysql + "  ";
+
+            if (coddepartamento != "") { Mysql = Mysql + " WHERE CODDEPARTAMENTO = @CODDEPARTAMENTO "; }
+            if (codgrupo != "") { Mysql = Mysql + " AND CODGRUPO = @CODGRUPO "; }
+
+            db.CommandText = Mysql;
+
+            if (coddepartamento == "") { coddepartamento = "0"; }
+            if (codgrupo == "") { codgrupo = "0"; }
+
+            db.AddParameter("@CODDEPARTAMENTO", int.Parse(coddepartamento));
+            db.AddParameter("@CODGRUPO", int.Parse(codgrupo));
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    retorno = dr.GetInt32(dr.GetOrdinal("PRODUTOS"));
+
+                }
+            }
+
+            dr.Dispose();
+            dr.Close();
+
+            return retorno;
+        }
+
 
 
         [DataObjectMethod(DataObjectMethodType.Select)]

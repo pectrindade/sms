@@ -226,6 +226,7 @@
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "EntregaMedicamentos";
             this.Load += new System.EventHandler(this.EntregaMedicamentos_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Entrega_de_Medicamentos_KeyPress);

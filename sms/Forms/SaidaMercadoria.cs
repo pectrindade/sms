@@ -155,7 +155,6 @@ namespace Atencao_Assistida.Forms
         {
             if (txtNumeroPedido.Text.Trim() != "")
             {
-
                 var entregue = "";
                 var produto = "";
 
@@ -168,21 +167,13 @@ namespace Atencao_Assistida.Forms
                     }
                     catch
                     {
-
                         MessageBox.Show("Produto " + produto + "sem informação, favor proceder a correção ", "Aviso Importante",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Exclamation,
                         MessageBoxDefaultButton.Button1);
 
-
                         return;
-
                     }
-
-
-
-
-
                 }
 
                 VerificaProduto();
@@ -203,14 +194,12 @@ namespace Atencao_Assistida.Forms
             var codunidade = txtCodigoUnidade.Text.Trim();
             var numeropedido = txtNumeroPedido.Text.Trim();
             var dataentrega = txtdatasaida.Text.Trim();
-            //txtdatasaida. text = DateTime.Now.ToString("dd/MM/yyyy");
 
             var respinclusao = Usuario.Nomeusuario.ToString();
             var datainclusao = hoje.ToString();
             var respalteracao = Usuario.Nomeusuario.ToString();
             var dataalteracao = hoje.ToString();
             var excluido = "N";
-
 
             var numero = 0;
 

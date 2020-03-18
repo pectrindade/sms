@@ -168,7 +168,7 @@
             "Autorizado"});
             this.cmbgrupo.Location = new System.Drawing.Point(12, 121);
             this.cmbgrupo.Name = "cmbgrupo";
-            this.cmbgrupo.Size = new System.Drawing.Size(121, 21);
+            this.cmbgrupo.Size = new System.Drawing.Size(255, 21);
             this.cmbgrupo.TabIndex = 226;
             // 
             // btnBuscaProduto
@@ -242,6 +242,7 @@
             this.Controls.Add(this.cmbDepartamento);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "FechamentoEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processo de Ajuste de Estoquee";

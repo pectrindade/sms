@@ -850,6 +850,68 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
+        public bool Cria_PedidoPeriodo()
+        {
+
+        Inicio:
+
+            var db = new DBAcessOleDB();
+
+            var tableName = "PedidoPeriodo";
+
+            var Mysql = "CREATE TABLE " + tableName + "( ";
+
+            Mysql = Mysql + " [CODEMPRESA]  Int, ";
+            Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
+            Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
+            Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [CODUNIDADE]  Int, ";
+            Mysql = Mysql + " [NOMEUNIDADE]  varchar(200), ";
+            Mysql = Mysql + " [TIPO]  varchar(2), ";
+            Mysql = Mysql + " [CODPEDIDO]  Int, ";
+            Mysql = Mysql + " [SOLICITANTE]  varchar(200), ";
+            Mysql = Mysql + " [NUMEROPEDIDO]   varchar(10), ";
+            Mysql = Mysql + " [CODPRODUTO]   Int, ";
+            Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
+            Mysql = Mysql + " [QUANTIDADE]  varchar(10), ";
+            Mysql = Mysql + " [DATAPEDIDO]  varchar(20), ";
+            Mysql = Mysql + " [STATUS]  varchar(20) ";
+
+            Mysql = Mysql + " )";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+                db.Dispose();
+                db = new DBAcessOleDB();
+
+                Mysql = "DROP  TABLE " + tableName;
+                db.CommandText = Mysql;
+                try
+                {
+                    db.ExecuteNonQuery();
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+
+                goto Inicio;
+
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
 
     }
 }

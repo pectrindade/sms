@@ -266,6 +266,9 @@ namespace Atencao_Assistida.Forms
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            var Linhas = Grid.Rows.Count;
+            if (Linhas == 0) { return; }
+
             if (txtdtAjuste.Text.Trim() != "")
             {
 
@@ -282,6 +285,20 @@ namespace Atencao_Assistida.Forms
             var coddepartamento = Usuario.Coddepartamento.ToString();
             var respinclusao = Usuario.Nomeusuario.ToString();
             var datainclusao = hoje.ToString();
+
+            DateTime data = Convert.ToDateTime(txtdtAjuste.Text.Trim());
+
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+
+            var Est = new Estoque();
+
+            var mesanterior = Est.BuscaMesAnterior(mes, ano);
+            vmes = mesanterior.Substring(0, 2);
+            vano = mesanterior.Substring(2, 4);
 
             try
             {
@@ -309,6 +326,9 @@ namespace Atencao_Assistida.Forms
                         qtajustada = qt;
                         motivo = linha1.Cells[3].Value.ToString();
 
+                        //-> Buscando a quantidade do mes anterior 
+                        qtestava = Est.Anterior(int.Parse(codempresa), int.Parse(coddepartamento), int.Parse(vmes), int.Parse(vano), int.Parse(Produto)).ToString();
+
                         int NumLetras = motivo.Trim().Length;
                         if (NumLetras < 27) { MessageBox.Show("Quantidade caracteres insuficientes na descrição de Motivo "); txtMotivo.Focus(); return; }
 
@@ -319,7 +339,7 @@ namespace Atencao_Assistida.Forms
                         {
                             while (dr_i.Read())
                             {
-                                qtestava = dr_i.GetString(dr_i.GetOrdinal("QUANTIDADE"));
+                                var vqtestava = dr_i.GetString(dr_i.GetOrdinal("QUANTIDADE"));
                                 var autorizado = dr_i.GetString(dr_i.GetOrdinal("AUTORIZADO"));
 
                                 if (autorizado == "S")
@@ -331,7 +351,7 @@ namespace Atencao_Assistida.Forms
                                     acao = "INCLUSÃO";
                                 }
                                 
-                                if (int.Parse(qtestava) != int.Parse(qtajustada))
+                                if (int.Parse(vqtestava) != int.Parse(qtajustada))
                                 {
                                     var Log = new Ajuste_Log(int.Parse(codempresa), dataajuste, int.Parse(Produto), int.Parse(coddepartamento), qtestava, qtajustada, motivo, acao, respinclusao, datainclusao);
                                     Log.Insert();
@@ -401,8 +421,6 @@ namespace Atencao_Assistida.Forms
             }
 
         }
-
-
 
         public void FechaEstoque( string codproduto)
         {
@@ -588,6 +606,10 @@ namespace Atencao_Assistida.Forms
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
+            var Linhas = Grid.Rows.Count;
+
+            if (Linhas == 0) { return; }
+
             bool open = false;
             foreach (Form form in Application.OpenForms)
             {

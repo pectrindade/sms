@@ -67,6 +67,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.MimCaftrin = new System.Windows.Forms.ToolStripMenuItem();
             this.MimCaftrinbalanco = new System.Windows.Forms.ToolStripMenuItem();
+            this.MimCaftrinAjusteEstoque = new System.Windows.Forms.ToolStripMenuItem();
             this.MimCaftrinEntradaMercadoria = new System.Windows.Forms.ToolStripMenuItem();
             this.MimCaftrinSaidaMercadoria = new System.Windows.Forms.ToolStripMenuItem();
             this.MimCaftrinDigitacaoRequisicao = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +103,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tAviso = new System.Windows.Forms.Timer(this.components);
-            this.MimCaftrinAjusteEstoque = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiCafPedidosPeríodo = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -391,7 +392,7 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(164, 6);
             // 
             // MimCaftrin
             // 
@@ -405,7 +406,7 @@
             this.MimCaftrinSaidaOfício,
             this.MimCaftrinDevolucao});
             this.MimCaftrin.Name = "MimCaftrin";
-            this.MimCaftrin.Size = new System.Drawing.Size(180, 22);
+            this.MimCaftrin.Size = new System.Drawing.Size(167, 22);
             this.MimCaftrin.Text = "Caftrin";
             // 
             // MimCaftrinbalanco
@@ -414,6 +415,13 @@
             this.MimCaftrinbalanco.Size = new System.Drawing.Size(200, 22);
             this.MimCaftrinbalanco.Text = "Balanço";
             this.MimCaftrinbalanco.Click += new System.EventHandler(this.balançoToolStripMenuItem_Click);
+            // 
+            // MimCaftrinAjusteEstoque
+            // 
+            this.MimCaftrinAjusteEstoque.Name = "MimCaftrinAjusteEstoque";
+            this.MimCaftrinAjusteEstoque.Size = new System.Drawing.Size(200, 22);
+            this.MimCaftrinAjusteEstoque.Text = "Ajuste Estoque";
+            this.MimCaftrinAjusteEstoque.Click += new System.EventHandler(this.MimCaftrinAjusteEstoque_Click);
             // 
             // MimCaftrinEntradaMercadoria
             // 
@@ -465,7 +473,7 @@
             this.MimOdontDigitacaoOfício,
             this.MimOdontSaidaMercadoria});
             this.MimOdont.Name = "MimOdont";
-            this.MimOdont.Size = new System.Drawing.Size(180, 22);
+            this.MimOdont.Size = new System.Drawing.Size(167, 22);
             this.MimOdont.Text = "Odontologia";
             // 
             // MimOdontEntradaMercadoria
@@ -501,7 +509,7 @@
             this.MimAtencaoAssistVisitasAssistenteSocial,
             this.MimAtencaoAssistManutencaoProtocolo});
             this.MimAtencaoAssist.Name = "MimAtencaoAssist";
-            this.MimAtencaoAssist.Size = new System.Drawing.Size(180, 22);
+            this.MimAtencaoAssist.Size = new System.Drawing.Size(167, 22);
             this.MimAtencaoAssist.Text = "Atenção Assistida";
             // 
             // MimAtencaoAssistEntregaMedicamentos
@@ -528,7 +536,7 @@
             // MimAutoriza
             // 
             this.MimAutoriza.Name = "MimAutoriza";
-            this.MimAutoriza.Size = new System.Drawing.Size(180, 22);
+            this.MimAutoriza.Size = new System.Drawing.Size(167, 22);
             this.MimAutoriza.Text = "Autoriza";
             this.MimAutoriza.Click += new System.EventHandler(this.autorizaToolStripMenuItem_Click);
             // 
@@ -545,9 +553,10 @@
             // MiCaf
             // 
             this.MiCaf.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MiCafSaidaMercadoria});
+            this.MiCafSaidaMercadoria,
+            this.MiCafPedidosPeríodo});
             this.MiCaf.Name = "MiCaf";
-            this.MiCaf.Size = new System.Drawing.Size(167, 22);
+            this.MiCaf.Size = new System.Drawing.Size(180, 22);
             this.MiCaf.Text = "Caftrin";
             // 
             // MiCafSaidaMercadoria
@@ -560,7 +569,7 @@
             // MirOdont
             // 
             this.MirOdont.Name = "MirOdont";
-            this.MirOdont.Size = new System.Drawing.Size(167, 22);
+            this.MirOdont.Size = new System.Drawing.Size(180, 22);
             this.MirOdont.Text = "Odontologia";
             // 
             // MirAtencaoAssist
@@ -570,7 +579,7 @@
             this.MirAtencaoAssistEntregaEfetivadas,
             this.MirAtencaoAssistPacienteProdutos});
             this.MirAtencaoAssist.Name = "MirAtencaoAssist";
-            this.MirAtencaoAssist.Size = new System.Drawing.Size(167, 22);
+            this.MirAtencaoAssist.Size = new System.Drawing.Size(180, 22);
             this.MirAtencaoAssist.Text = "Atenção Assistida";
             // 
             // MirAtencaoAssistPrevisaoEntrega
@@ -666,12 +675,12 @@
             this.tAviso.Interval = 10000;
             this.tAviso.Tick += new System.EventHandler(this.tAviso_Tick);
             // 
-            // MimCaftrinAjusteEstoque
+            // MiCafPedidosPeríodo
             // 
-            this.MimCaftrinAjusteEstoque.Name = "MimCaftrinAjusteEstoque";
-            this.MimCaftrinAjusteEstoque.Size = new System.Drawing.Size(200, 22);
-            this.MimCaftrinAjusteEstoque.Text = "Ajuste Estoque";
-            this.MimCaftrinAjusteEstoque.Click += new System.EventHandler(this.MimCaftrinAjusteEstoque_Click);
+            this.MiCafPedidosPeríodo.Name = "MiCafPedidosPeríodo";
+            this.MiCafPedidosPeríodo.Size = new System.Drawing.Size(186, 22);
+            this.MiCafPedidosPeríodo.Text = "Pedidos por Período";
+            this.MiCafPedidosPeríodo.Click += new System.EventHandler(this.MiCafPedidosPeríodo_Click);
             // 
             // FrmInicial
             // 
@@ -774,6 +783,7 @@
         private System.Windows.Forms.ToolStripMenuItem MiCafSaidaMercadoria;
         private System.Windows.Forms.ToolStripMenuItem MiconsSaldo;
         private System.Windows.Forms.ToolStripMenuItem MimCaftrinAjusteEstoque;
+        private System.Windows.Forms.ToolStripMenuItem MiCafPedidosPeríodo;
     }
 }
 

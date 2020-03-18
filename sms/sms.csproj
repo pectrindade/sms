@@ -205,6 +205,12 @@
     <Compile Include="Classes\Mysql\Protocolo.cs" />
     <Compile Include="Classes\Mysql\UnidadeMedida.cs" />
     <Compile Include="Classes\Mysql\Visitas.cs" />
+    <Compile Include="Consultas\Detalhe_saida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\Detalhe_saida.Designer.cs">
+      <DependentUpon>Detalhe_saida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\Estoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +348,12 @@
     </Compile>
     <Compile Include="Forms\Especialidade.Designer.cs">
       <DependentUpon>Especialidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Espera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Espera.Designer.cs">
+      <DependentUpon>Espera.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FechamentoEstoque.cs">
       <SubType>Form</SubType>
@@ -802,6 +814,23 @@
     <Compile Include="Relatorios\Protocolo\RelProtocolo.Designer.cs">
       <DependentUpon>RelProtocolo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Requisicao_Periodo\Chama_RelRequisicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Requisicao_Periodo\Chama_RelRequisicao.Designer.cs">
+      <DependentUpon>Chama_RelRequisicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Requisicao_Periodo\DsRequisicaoPeriodo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsRequisicaoPeriodo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Requisicao_Periodo\RelRequisicaoPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Requisicao_Periodo\RelRequisicaoPeriodo.Designer.cs">
+      <DependentUpon>RelRequisicaoPeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Saida\DsSaida.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -851,6 +880,9 @@
     <Compile Include="ModelSerialization\Destinatario.cs" />
     <Compile Include="Serializable\NFeSerialization.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Consultas\Detalhe_saida.resx">
+      <DependentUpon>Detalhe_saida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\Estoque.resx">
       <DependentUpon>Estoque.cs</DependentUpon>
     </EmbeddedResource>
@@ -921,11 +953,17 @@
     <EmbeddedResource Include="Forms\Especialidade.resx">
       <DependentUpon>Especialidade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Espera.resx">
+      <DependentUpon>Espera.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FechamentoEstoque.resx">
       <DependentUpon>FechamentoEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Grupo.resx">
       <DependentUpon>Grupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImgCaptura.resx">
+      <DependentUpon>ImgCaptura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Marca.resx">
       <DependentUpon>Marca.cs</DependentUpon>
@@ -1117,6 +1155,13 @@
       <DependentUpon>RelProtocolo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Protocolo\RelProtocolo1.rdlc" />
+    <EmbeddedResource Include="Relatorios\Requisicao_Periodo\Chama_RelRequisicao.resx">
+      <DependentUpon>Chama_RelRequisicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Requisicao_Periodo\RelRequisicaoPeriodo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Requisicao_Periodo\RelRequisicaoPeriodo.resx">
+      <DependentUpon>RelRequisicaoPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Saida\RelSaida.rdlc" />
     <EmbeddedResource Include="Relatorios\Saida\RelSaida.resx">
       <DependentUpon>RelSaida.cs</DependentUpon>
@@ -1322,6 +1367,17 @@
     <None Include="Relatorios\Produto\DsProdutos.xss">
       <DependentUpon>DsProdutos.xsd</DependentUpon>
     </None>
+    <None Include="Relatorios\Requisicao_Periodo\DsRequisicaoPeriodo.xsc">
+      <DependentUpon>DsRequisicaoPeriodo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Requisicao_Periodo\DsRequisicaoPeriodo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsRequisicaoPeriodo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Requisicao_Periodo\DsRequisicaoPeriodo.xss">
+      <DependentUpon>DsRequisicaoPeriodo.xsd</DependentUpon>
+    </None>
     <None Include="Relatorios\Saida\DsSaida.xsc">
       <DependentUpon>DsSaida.xsd</DependentUpon>
     </None>
@@ -1376,6 +1432,7 @@
     <None Include="Resources\dente.png" />
     <None Include="Resources\dentes2.png" />
     <None Include="Resources\dentes11.png" />
+    <None Include="Resources\loader.gif" />
     <Content Include="Ícone-Atenção-Assistida.ico" />
     <None Include="Relatorios\Protocolo\DsProtocolo.xsc">
       <DependentUpon>DsProtocolo.xsd</DependentUpon>

@@ -688,6 +688,8 @@ namespace Atencao_Assistida.Classes.Mysql
 
             if (dr.HasRows)
             {
+                qtSaida = BuscaSaida();
+
                 while (dr.Read())
                 {
 
@@ -701,11 +703,7 @@ namespace Atencao_Assistida.Classes.Mysql
                     }
                     else
                     {
-                        qtSaida = BuscaSaida();
-
                         qtSaida = qtSaida + dr.GetFloat(dr.GetOrdinal("ENTREGUE"));
-
-
                     }
 
 

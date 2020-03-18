@@ -375,6 +375,7 @@
             this.Controls.Add(this.btnFechar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Paciente";
             this.Load += new System.EventHandler(this.Paciente_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Paciente_KeyPress);

@@ -181,6 +181,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "AtualizaAcesso";
             this.Text = "AtualizaAcesso";
             this.Load += new System.EventHandler(this.AtualizaAcesso_Load);

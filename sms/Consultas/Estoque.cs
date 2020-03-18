@@ -22,6 +22,8 @@ namespace Atencao_Assistida.Consultas
 
         private void Estoque_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
+
             DateTime date = DateTime.Now;
 
             this.txtDataEstoque.Text = date.ToString("dd/MM/yyyy");
@@ -385,8 +387,6 @@ namespace Atencao_Assistida.Consultas
             if (cmbEmpresa.Text.Trim() == "--SELECIONE--") { MessageBox.Show("Favor informar a Empresa !"); return; }
             if (cmbDepartamento.Text.Trim() == "--SELECIONE--") { MessageBox.Show("Favor informar o Departamento !"); return; }
 
-
-
             if (txtcodigo.Text.Trim() != "")
             {
                 BuscaProduto(txtcodigo.Text);
@@ -443,18 +443,15 @@ namespace Atencao_Assistida.Consultas
                         form.BringToFront();
                         open = true;
                     }
-
                 }
             }
 
             if (!open)
             {
-
                 Form tela = new PesquisaProdutos();
 
                 tela.ShowDialog();
                 RetornoPesquisaProdutos();
-
             }
         }
 
@@ -464,6 +461,54 @@ namespace Atencao_Assistida.Consultas
             {
                 BuscaProduto(Parametros.Valor);
             }
+        }
+
+        private void Grid_DoubleClick(object sender, EventArgs e)
+        {
+            Parametros.Codigo = "";
+            Parametros.Nome = "";
+
+            var RowsIndex = Grid.CurrentRow.Index;
+
+            try
+            {
+                Parametros.Codigo = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
+                Parametros.Nome = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+
+            bool open = false;
+            foreach (Form form in Application.OpenForms)
+            {
+
+                // Verifica se o form esta aberto
+                if (form.Name == "Detalhe_saida")
+                {
+                    if (form is Detalhe_saida)
+                    {
+                        form.BringToFront();
+                        open = true;
+                    }
+
+                }
+            }
+
+            if (!open)
+            {
+
+                Form tela = new Detalhe_saida();
+
+                tela.ShowDialog();
+                //RetornoPesquisaProdutos();
+
+            }
+
+            Parametros.Codigo = "";
+            Parametros.Nome = "";
         }
 
     }

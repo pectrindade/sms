@@ -76,10 +76,33 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
             dr.Dispose();
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Relatorio();
+            CarregarRelatorio();
+        }
+
+
+        private void CarregarRelatorio()
+        {
+            try
+            {
+                System.Threading.Thread tFormAguarde = new System.Threading.Thread(new System.Threading.ThreadStart(CarregaFormAguarde));
+                tFormAguarde.Start();
+
+                Relatorio();
+
+                tFormAguarde.Abort();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void CarregaFormAguarde()
+        {
+            Form f = new Forms.Espera();
+            f.ShowDialog();
         }
 
         private void Relatorio()
@@ -181,6 +204,10 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
             if (txtCodUnidade.Text.Trim() != "")
             {
                 BuscaUnidades();
+            }
+            else
+            {
+                txtNomeUnidade.Text = "";
             }
         }
 
@@ -289,6 +316,10 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
             {
                 BuscaProduto(int.Parse(txtcodigo.Text));
             }
+            else
+            {
+                txtNome.Text = "";
+            }
         }
 
         private void BuscaProduto(int codigo)
@@ -354,5 +385,23 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
             }
         }
 
+        private void LimpraTela()
+        {
+            CarregaCmbEmpresa();
+            CarregaCmbDepartamento();
+            txtCodUnidade.Text = "";
+            txtNomeUnidade.Text = "";
+            txtcodigo.Text = "";
+            txtNome.Text = "";
+            txtDataInicial.Text = "";
+            txtDataFinal.Text = "";
+
+            cmbEmpresa.Focus();
+        }
+
+        private void btnDesfaz_Click(object sender, EventArgs e)
+        {
+            LimpraTela();
+        }
     }
 }

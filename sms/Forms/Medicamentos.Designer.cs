@@ -200,6 +200,7 @@
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Medicamentos";
             this.Load += new System.EventHandler(this.Medicamentos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Medicamentos_KeyDown);

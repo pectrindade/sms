@@ -250,6 +250,7 @@ namespace Atencao_Assistida.Forms.Caftrin
                     Del_saidaitem.DeleteSaidaItens(codsaida);
 
                     // AQUI TEM DE COLOCAR UM FECHAMENTO DE ESTOQUE 
+                    FechaItens(codsaida.ToString());
 
                     var Del_saida = new Classes.Mysql.Saida();
                     Del_saida.DeleteSaida(codsaida);
@@ -257,6 +258,208 @@ namespace Atencao_Assistida.Forms.Caftrin
             }
 
         }
+
+
+        private void FechaItens(string codigo)
+        {
+            
+            var dr = Pedido_item.SelectPC(int.Parse(txtCodigo.Text));
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    var item = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
+                    FechaEstoque(item);
+                }
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+        }
+
+
+        public void FechaEstoque(string codproduto)
+        {
+            var codempresa = Usuario.Codempresa.ToString();
+            var coddepartamento = Usuario.Coddepartamento.ToString();
+            var grupo = "";
+
+            DateTime data = Convert.ToDateTime(txtdtdevolucao.Text.Trim());
+
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+
+
+            //PRIMEIRO PEGA O PRIMEIRO E O ULTIMO DIA DO MES 
+            //DateTime com o primeiro dia do mês
+            DateTime primeiroDiaDoMes = new DateTime(data.Year, data.Month, 1);
+            var dtinicial = primeiroDiaDoMes.ToString("dd/MM/yyyy");
+
+            //DateTime com o último dia do mês
+            DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
+            var dtfinal = ultimoDiaDoMes.ToString("dd/MM/yyyy");
+            var UltimoDia = ultimoDiaDoMes.ToString("dd");
+
+            var Est = new Estoque();
+
+            var retorno = Est.DeleteMesAno(int.Parse(codempresa), int.Parse(coddepartamento), mes, ano, codproduto, grupo);
+
+            //SEGUNDO PEGA OS PRODUTOS
+            var dr = Produto.Select(codproduto, int.Parse(coddepartamento), grupo);
+
+            var cont = new Produto();
+            var Cont = cont.SelectCount();
+
+
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+                    SaldoAnterior(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
+
+                    var cod = int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO")));
+
+                    DateTime totalDeDias = primeiroDiaDoMes;
+                    for (int i = 0; i < int.Parse(UltimoDia); i++)
+                    {
+                        EntradaProduto(int.Parse(codempresa), int.Parse(coddepartamento), totalDeDias.ToString("dd/MM/yyyy"), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
+
+                        SaidaProduto(int.Parse(codempresa), int.Parse(coddepartamento), totalDeDias.ToString("dd/MM/yyyy"), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
+
+                        var Adiciona = totalDeDias.AddDays(1).ToString("dd/MM/yyyy");
+                        totalDeDias = Convert.ToDateTime(Adiciona);
+
+
+                    }
+
+                    SaldoAtual(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
+
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+        }
+
+        private void SaldoAnterior(int codempresa, int codproduto)
+        {
+
+            DateTime data = Convert.ToDateTime(txtdtdevolucao.Text.Trim());
+
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+            var coddepartamento = Usuario.Coddepartamento.ToString();
+
+            var Est = new Estoque();
+
+            #region Quantidade Mes Anterior
+
+            var mesanterior = Est.BuscaMesAnterior(mes, ano);
+            vmes = mesanterior.Substring(0, 2);
+            vano = mesanterior.Substring(2, 4);
+
+            #region Verrificação de Balanco
+
+            //DateTime com o primeiro dia do mês
+            DateTime primeiroDiaDoMes = new DateTime(data.Year, data.Month, 1);
+            var dtinicial = primeiroDiaDoMes.ToString("dd/MM/yyyy");
+
+            //DateTime com o último dia do mês
+            DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
+            var dtfinal = ultimoDiaDoMes.ToString("dd/MM/yyyy");
+
+            var temBalanco = Est.TemBalanco(codempresa, int.Parse(coddepartamento), dtinicial, dtfinal, codproduto);
+            var QtAnterior = "0";
+
+            #endregion
+            if (temBalanco == true)
+            {
+                QtAnterior = "0";
+            }
+            else
+            {
+                //-> Buscando a quantidade do mes anterior 
+                QtAnterior = Est.Anterior(codempresa, int.Parse(coddepartamento), int.Parse(vmes), int.Parse(vano), codproduto).ToString();
+            }
+
+            // id, codempresa, mes, ano,codproduto, qtanterior, entrada, saida , qtatual 
+            var m = new Estoque(0, codempresa, int.Parse(coddepartamento), mes, ano, codproduto, QtAnterior.ToString(), "0", "0", "0");
+
+            m.GravaAnterior();
+
+            #endregion;
+
+        }
+
+        private void EntradaProduto(int codempresa, int coddepartamento, string dia, int codproduto)
+        {
+
+            DateTime data = Convert.ToDateTime(txtdtdevolucao.Text.Trim());
+
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+
+
+            var ent = new Estoque(codempresa, coddepartamento, mes, ano, codproduto);
+
+            ent.Fecha_Entradas(codempresa, coddepartamento, dia, codproduto);
+
+
+        }
+
+        private void SaidaProduto(int codempresa, int coddepartamento, string dia, int codproduto)
+        {
+            DateTime data = Convert.ToDateTime(txtdtdevolucao.Text.Trim());
+
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+
+
+            var ent = new Estoque(codempresa, coddepartamento, mes, ano, codproduto);
+
+            ent.Fecha_Saida(codempresa, coddepartamento, dia, codproduto);
+
+        }
+
+        private void SaldoAtual(int codempresa, int codproduto)
+        {
+            DateTime data = Convert.ToDateTime(txtdtdevolucao.Text.Trim());
+
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+            var coddepartamento = Usuario.Coddepartamento.ToString();
+
+            #region Quantidade Atual
+
+            var atual = new Estoque(0, codempresa, int.Parse(coddepartamento), mes, ano, codproduto, "0", "0", "0", "0");
+
+            atual.AtualizaQtAtual();
+
+            #endregion
+
+        }
+
 
         private void AbrePedido(int codpedido)
         {

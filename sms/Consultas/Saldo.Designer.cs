@@ -177,6 +177,7 @@
             this.Grid.ReadOnly = true;
             this.Grid.Size = new System.Drawing.Size(1212, 209);
             this.Grid.TabIndex = 281;
+            this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
             // btnBuscaProduto
             // 
@@ -319,6 +320,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbEmpresa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Saldo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Saldo";

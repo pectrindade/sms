@@ -1170,3 +1170,8 @@ D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Pe
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Periodo.RelEstoquePeriodo.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.AjusteEstoque.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.AutorizaAjuste.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.ImgCaptura.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Consultas.Detalhe_saida.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Requisicao_Periodo.Chama_RelRequisicao.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Requisicao_Periodo.RelRequisicaoPeriodo.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.Espera.resources

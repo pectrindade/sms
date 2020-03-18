@@ -115,6 +115,7 @@
             this.Controls.Add(this.txtsenha);
             this.Controls.Add(this.btnEntra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "AutorizaAjuste";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autoriza Ajuste";

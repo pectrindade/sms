@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.SaidaPeriodoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DsSaidaPeriodo = new Atencao_Assistida.Relatorios.Saida_Periodo.DsSaidaPeriodo();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -51,9 +51,9 @@
             // reportViewer2
             // 
             this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "DsSaidaPeriodo";
-            reportDataSource2.Value = this.SaidaPeriodoBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DsSaidaPeriodo";
+            reportDataSource1.Value = this.SaidaPeriodoBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Atencao_Assistida.Relatorios.Saida_Periodo.RelSaidaPeriodo.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(0, 0);
             this.reportViewer2.Name = "reportViewer2";
@@ -73,6 +73,7 @@
             this.Controls.Add(this.reportViewer2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RelSaidaPeriodo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Saída Por Período";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.RelSaidaPeriodo_Load);

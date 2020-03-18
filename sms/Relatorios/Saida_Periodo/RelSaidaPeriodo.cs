@@ -32,6 +32,9 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
 
             
             this.reportViewer2.RefreshReport();
+
+            if (Application.OpenForms["Espera"] != null)
+                Application.OpenForms["Espera"].Close();
         }
 
        

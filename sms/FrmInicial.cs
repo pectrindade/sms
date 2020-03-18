@@ -7,6 +7,7 @@ using Atencao_Assistida.Forms.Odonto;
 using Atencao_Assistida.Pesquisas;
 using Atencao_Assistida.Relatorios.PacienteProduto;
 using Atencao_Assistida.Relatorios.Previsao_entrega;
+using Atencao_Assistida.Relatorios.Requisicao_Periodo;
 using Atencao_Assistida.Relatorios.Saida_Periodo;
 using System;
 using System.Windows.Forms;
@@ -1413,6 +1414,25 @@ namespace teste1
                 tela.Show();
             }
 
+        }
+
+        private void MiCafPedidosPeríodo_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is Chama_RelRequisicao)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new Chama_RelRequisicao();
+                tela.MdiParent = this;
+                tela.Show();
+            }
         }
     }
 }

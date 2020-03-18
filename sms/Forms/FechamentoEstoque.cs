@@ -164,14 +164,14 @@ namespace Atencao_Assistida.Forms
             var dr = Produto.Select(codproduto, int.Parse(coddepartamento), grupo);
 
             var cont = new Produto() ;
-            var Cont = cont.SelectCount();
+            var Cont = cont.SelectCount(coddepartamento, grupo);
 
             int progresso1 = 0;
             int progresso2 = 0;
             progressBar1.Value = progresso1;
             progressBar2.Value = progresso2;
             progressBar1.Maximum = Cont;
-            progressBar2.Maximum = 31;
+            progressBar2.Maximum = Cont;
 
             if (dr.HasRows)
             {
@@ -192,16 +192,16 @@ namespace Atencao_Assistida.Forms
                         var Adiciona = totalDeDias.AddDays(1).ToString("dd/MM/yyyy");
                         totalDeDias = Convert.ToDateTime(Adiciona);
 
-                        progresso2 = progresso2 + 1;
-                        progressBar2.Value = i;
+                        progresso1 = progresso1 + 1;
+                        progressBar1.Value = i;
                     }
 
                     SaldoAtual(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));
 
 
 
-                    progresso1 = progresso1 + 1;
-                    progressBar1.Value = progresso1;
+                    progresso2 = progresso2 + 1;
+                    progressBar2.Value = progresso2;
 
                 }
 
@@ -212,7 +212,8 @@ namespace Atencao_Assistida.Forms
 
 
             MessageBox.Show("Fim do Processo !");
-
+            progressBar1.Value = 0;
+            progressBar2.Value = 0;
         }
 
         private void ControlaEstoque(int codempresa, int codproduto, string QtEntrada, string QtSaida)

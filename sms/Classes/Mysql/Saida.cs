@@ -335,7 +335,7 @@ namespace Atencao_Assistida.Classes.Mysql
             if (codunidade != 0) { Mysql = Mysql + " AND S.CODUNIDADE = @CODUNIDADE "; }
             if (codproduto != 0) { Mysql = Mysql + " AND SI.CODPRODUTO = @CODPRODUTO "; }
 
-            Mysql = Mysql + " ORDER BY S.NUMEROPEDIDO ";
+            Mysql = Mysql + " ORDER BY S.CODSAIDA ";
 
             db.CommandText = Mysql;
             db.AddParameter("@DATAINICIAL", Convert.ToDateTime(dtinicial));

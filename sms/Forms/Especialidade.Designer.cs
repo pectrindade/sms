@@ -136,6 +136,7 @@
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Especialidade";
             this.Load += new System.EventHandler(this.Especialidade_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Especialidade_KeyPress);

@@ -553,6 +553,7 @@
             this.Controls.Add(this.btnFechar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Processo";
             this.Activated += new System.EventHandler(this.Processo_Activated);
             this.Load += new System.EventHandler(this.Processo_Load);

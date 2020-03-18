@@ -50,13 +50,14 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnDesfaz = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(272, 265);
+            this.button1.Location = new System.Drawing.Point(316, 265);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 23);
+            this.button1.Size = new System.Drawing.Size(118, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Listar";
             this.button1.UseVisualStyleBackColor = true;
@@ -208,7 +209,7 @@
             // 
             this.btnFechar.Location = new System.Drawing.Point(12, 265);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(163, 23);
+            this.btnFechar.Size = new System.Drawing.Size(120, 23);
             this.btnFechar.TabIndex = 267;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
@@ -261,12 +262,23 @@
             this.label8.TabIndex = 272;
             this.label8.Text = "Nome";
             // 
+            // btnDesfaz
+            // 
+            this.btnDesfaz.Location = new System.Drawing.Point(167, 265);
+            this.btnDesfaz.Name = "btnDesfaz";
+            this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
+            this.btnDesfaz.TabIndex = 296;
+            this.btnDesfaz.Text = "Desfaz";
+            this.btnDesfaz.UseVisualStyleBackColor = true;
+            this.btnDesfaz.Click += new System.EventHandler(this.btnDesfaz_Click);
+            // 
             // Chama_RelSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 297);
+            this.ClientSize = new System.Drawing.Size(446, 297);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDesfaz);
             this.Controls.Add(this.btnBuscaProduto);
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.txtNome);
@@ -326,5 +338,6 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnDesfaz;
     }
 }

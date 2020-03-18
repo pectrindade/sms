@@ -127,6 +127,7 @@ namespace Atencao_Assistida.Forms.Odonto
 
         private void Gravar(bool novo, int codigo)
         {
+            if (txtDescricao.Text.Trim() == "") { MessageBox.Show("Nome é campo Obrigatório"); txtDescricao.Focus(); return; }
 
             var hoje = DateTime.Now;
             var descricao = txtDescricao.Text.Trim();

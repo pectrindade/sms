@@ -226,6 +226,7 @@
             // 
             // txtMotivo
             // 
+            this.txtMotivo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMotivo.Location = new System.Drawing.Point(10, 151);
             this.txtMotivo.Multiline = true;
             this.txtMotivo.Name = "txtMotivo";
@@ -325,6 +326,7 @@
             this.Controls.Add(this.txtdtAjuste);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "AjusteEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajuste de Estoque";

@@ -469,6 +469,56 @@ namespace Atencao_Assistida.Consultas
                 if (ActiveControl.Name == "txtcodigo") { btnBuscaProduto.PerformClick(); return; }
             }
         }
+
+
+        private void Grid_DoubleClick(object sender, EventArgs e)
+        {
+            Parametros.Codigo = "";
+            Parametros.Nome = "";
+
+            var RowsIndex = Grid.CurrentRow.Index;
+
+            try
+            {
+                Parametros.Codigo = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
+                Parametros.Nome = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+
+            bool open = false;
+            foreach (Form form in Application.OpenForms)
+            {
+
+                // Verifica se o form esta aberto
+                if (form.Name == "Detalhe_saida")
+                {
+                    if (form is Detalhe_saida)
+                    {
+                        form.BringToFront();
+                        open = true;
+                    }
+
+                }
+            }
+
+            if (!open)
+            {
+
+                Form tela = new Detalhe_saida();
+
+                tela.ShowDialog();
+                //RetornoPesquisaProdutos();
+
+            }
+
+            Parametros.Codigo = "";
+            Parametros.Nome = "";
+        }
+
     }
 }
 

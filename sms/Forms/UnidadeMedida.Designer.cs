@@ -130,6 +130,7 @@
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "UnidadeMedida";
             this.Load += new System.EventHandler(this.UnidadeMedida_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UnidadeMedida_KeyPress);
