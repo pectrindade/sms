@@ -120,8 +120,9 @@ namespace Atencao_Assistida.Forms.Caftrin
         public void BuscaPedido()
         {
             txtCodigo.Text = "0";
+            var aprovado = 1;
 
-            var dr = Pedido.SelectPedidoN(txtNumeroPedido.Text, 0, int.Parse(Usuario.Coddepartamento));
+            var dr = Pedido.SelectPedidoN(txtNumeroPedido.Text, 0, int.Parse(Usuario.Coddepartamento), aprovado);
             if (dr.HasRows)
             {
                 while (dr.Read())

@@ -59,8 +59,9 @@ namespace Atencao_Assistida.Forms
 
         public void BuscaPedido()
         {
+            var aprovado = 1;
 
-            var dr = Pedido.SelectPedidoN(txtNumeroPedido.Text, 0, int.Parse(Usuario.Coddepartamento));
+            var dr = Pedido.SelectPedidoN(txtNumeroPedido.Text, 0, int.Parse(Usuario.Coddepartamento), aprovado);
             if (dr.HasRows)
             {
                 while (dr.Read())
@@ -88,9 +89,10 @@ namespace Atencao_Assistida.Forms
             }
             dr.Dispose();
             dr.Close();
-
-            BuscaUnidade(int.Parse(txtCodigoUnidade.Text));
-
+            if (txtCodigoUnidade.Text.Trim() != "")
+            {
+                BuscaUnidade(int.Parse(txtCodigoUnidade.Text));
+            }
         }
 
         private void CarregaGrid()
@@ -386,7 +388,7 @@ namespace Atencao_Assistida.Forms
             vmes = mesanterior.Substring(0, 2);
             vano = mesanterior.Substring(2, 4);
 
-            
+
 
             //-> Buscando a quantidade do mes anterior 
             var QtAnterior = Est.Anterior(codempresa, int.Parse(coddepartamento), int.Parse(vmes), int.Parse(vano), codproduto);

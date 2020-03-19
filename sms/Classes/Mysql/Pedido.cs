@@ -466,7 +466,7 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public static MySqlDataReader SelectPedidoN(string Numero, int tipo, int coddepartamento)
+        public static MySqlDataReader SelectPedidoN(string Numero, int tipo, int coddepartamento, int aprovado)
         {
             var db = new DBAcess();
             string Mysql = " SELECT CODPEDIDO, NUMEROPEDIDO, DATE_FORMAT(DATAPEDIDO, '%d/%m/%Y') AS DATAPEDIDO, SOLICITANTE, ";
@@ -474,15 +474,18 @@ namespace Atencao_Assistida.Classes.Mysql
 
             Mysql = Mysql + " FROM pedido ";
             Mysql = Mysql + " WHERE NUMEROPEDIDO = @NUMEROPEDIDO ";
-            Mysql = Mysql + " AND TIPO = @TIPO ";
             Mysql = Mysql + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND TIPO = @TIPO ";
+            Mysql = Mysql + " AND APROVADO = @APROVADO ";
 
             db.CommandText = Mysql;
             db.AddParameter("@NUMEROPEDIDO", Numero);
-            db.AddParameter("@TIPO", tipo);
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@TIPO", tipo);
+            db.AddParameter("@APROVADO", aprovado);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
+
             return dr;
         }
 
@@ -567,7 +570,7 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public static MySqlDataReader SelectTudo(int coddepartamento)
+        public static MySqlDataReader SelectTudo(int coddepartamento, int tipo, int aprovado)
         {
             var db = new DBAcess();
             string Mysql = " SELECT P.CODPEDIDO,  P.TIPO, P.APROVADO, P.NUMEROPEDIDO, DATE_FORMAT(P.DATAPEDIDO,'%d/%m/%Y') AS DATAPEDIDO, P.SOLICITANTE, P.CODUNIDADE, U.NOME AS UNIDADE, P.STATUS  ";
@@ -576,10 +579,13 @@ namespace Atencao_Assistida.Classes.Mysql
 
             Mysql = Mysql + " WHERE P.STATUS = 'ABERTO' ";
             Mysql = Mysql + " AND P.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
-            Mysql = Mysql + " AND TIPO = 0 ";
+            Mysql = Mysql + " AND P.TIPO = @TIPO ";
+            Mysql = Mysql + " AND P.APROVADO = @APROVADO ";
 
             db.CommandText = Mysql;
             db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@TIPO", tipo);
+            db.AddParameter("@APROVADO", aprovado);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;
@@ -750,6 +756,25 @@ namespace Atencao_Assistida.Classes.Mysql
 
             db.CommandText = Mysql;
             db.AddParameter("@CODPEDIDO", Numero);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            return dr;
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader SelectPedidoC(int codigo, int tipo)
+        {
+            var db = new DBAcess();
+            string Mysql = " SELECT CODPEDIDO, NUMEROPEDIDO, DATE_FORMAT(DATAPEDIDO, '%d/%m/%Y') AS DATAPEDIDO, SOLICITANTE, ";
+            Mysql = Mysql + " CODEMPRESA, CODUNIDADE, STATUS, CODDEPARTAMENTO, TIPO, APROVADO ";
+
+            Mysql = Mysql + " FROM pedido ";
+            Mysql = Mysql + " WHERE CODPEDIDO = @CODPEDIDO ";
+            Mysql = Mysql + " AND TIPO = @TIPO ";
+
+            db.CommandText = Mysql;
+            db.AddParameter("@CODPEDIDO", codigo);
+            db.AddParameter("@TIPO", tipo);
 
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;

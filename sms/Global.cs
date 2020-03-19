@@ -47,6 +47,20 @@ namespace Atencao_Assistida
             set { _pesq = value; }
         }
 
+        private static string _tipo = "";
+        public static string Tipo
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+        private static string _aprovado = "";
+        public static string Aprovado
+        {
+            get { return _aprovado; }
+            set { _aprovado = value; }
+        }
+
 
     }
 

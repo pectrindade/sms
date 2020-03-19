@@ -40,8 +40,11 @@ namespace Atencao_Assistida.Pesquisas
             //LIMPAR GRID
             Grid.Rows.Clear();
             Grid.Refresh();
+            var tipo = 0;
+            var aprovado = 1;
+            // tem campos globais 
 
-            var dr = Classes.Mysql.Pedido.SelectTudo(int.Parse(Usuario.Coddepartamento.ToString()));
+            var dr = Pedido.SelectTudo(int.Parse(Usuario.Coddepartamento.ToString()), tipo, aprovado);
 
             if (dr.HasRows)
             {

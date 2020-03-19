@@ -38,6 +38,10 @@
             this.btnFechar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profissional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,10 +55,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtdataPedido = new System.Windows.Forms.MaskedTextBox();
             this.btnAutoriza = new System.Windows.Forms.Button();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profissional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,6 +167,31 @@
             this.Grid.TabIndex = 307;
             this.Grid.TabStop = false;
             this.Grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick);
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Código";
+            this.codigo.MinimumWidth = 20;
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            this.codigo.Width = 65;
+            // 
+            // nome
+            // 
+            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            // 
+            // profissional
+            // 
+            this.profissional.HeaderText = "Profissional";
+            this.profissional.Name = "profissional";
+            this.profissional.Width = 300;
+            // 
+            // quantidade
+            // 
+            this.quantidade.HeaderText = "Quantidade";
+            this.quantidade.Name = "quantidade";
             // 
             // label5
             // 
@@ -295,31 +320,6 @@
             this.btnAutoriza.UseVisualStyleBackColor = true;
             this.btnAutoriza.Click += new System.EventHandler(this.btnAutoriza_Click);
             // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Código";
-            this.codigo.MinimumWidth = 20;
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 65;
-            // 
-            // nome
-            // 
-            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            // 
-            // profissional
-            // 
-            this.profissional.HeaderText = "Profissional";
-            this.profissional.Name = "profissional";
-            this.profissional.Width = 300;
-            // 
-            // quantidade
-            // 
-            this.quantidade.HeaderText = "Quantidade";
-            this.quantidade.Name = "quantidade";
-            // 
             // Autoriza_Oficio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,7 +353,7 @@
             this.KeyPreview = true;
             this.Name = "Autoriza_Oficio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Autoriza_Oficio";
+            this.Text = "Autoriza Requisição";
             this.Load += new System.EventHandler(this.Autoriza_Oficio_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Autoriza_Oficio_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Autoriza_Oficio_KeyPress);

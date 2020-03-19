@@ -109,15 +109,15 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         public void BuscaOficio(int cod)
         {
-
-            var dr = Pedido.SelectOficioC(cod);
+            var tipo = 0;
+            var dr = Pedido.SelectPedidoC(cod, tipo);
             if (dr.HasRows)
             {
                 while (dr.Read())
                 {
                     if (dr.GetString(dr.GetOrdinal("STATUS")) == "FECHADO")
                     {
-                        MessageBox.Show("OFICIO FECHADO ");
+                        MessageBox.Show("Requisição FECHADA ");
                         btnGravar.Enabled = false;
                     }
 
@@ -306,7 +306,7 @@ namespace Atencao_Assistida.Forms.Caftrin
 
                     linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
                     linhaDados[1] = dr.GetString(dr.GetOrdinal("NOME"));
-                    linhaDados[2] = dr.GetString(dr.GetOrdinal("PARAQUEM"));
+                    if (!dr.IsDBNull(dr.GetOrdinal("PARAQUEM"))) { linhaDados[2] = dr.GetString(dr.GetOrdinal("PARAQUEM")); }
                     linhaDados[3] = dr.GetString(dr.GetOrdinal("QUANTIDADE"));
 
                     Grid.Rows.Add(linhaDados);
@@ -363,13 +363,13 @@ namespace Atencao_Assistida.Forms.Caftrin
                     {
                         id = dr.GetInt32(dr.GetOrdinal("CODPEDIDO"));
                     }
-                    var m = new Pedido(id, int.Parse(empresa), int.Parse(codUnidade), 1, 0, int.Parse(coddepartamento), solicitante, numeroPedido, dataentrega, status, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, "N");
+                    var m = new Pedido(id, int.Parse(empresa), int.Parse(codUnidade), 0, 0, int.Parse(coddepartamento), solicitante, numeroPedido, dataentrega, status, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, "N");
                     m.Update();
                     numero = id;
                 }
                 else
                 {
-                    var m = new Pedido(id, int.Parse(empresa), int.Parse(codUnidade), 1, 0, int.Parse(coddepartamento), solicitante, numeroPedido, dataentrega, status, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, "N");
+                    var m = new Pedido(id, int.Parse(empresa), int.Parse(codUnidade), 0, 0, int.Parse(coddepartamento), solicitante, numeroPedido, dataentrega, status, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, "N");
                     numero = m.Insert();
                     id = numero;
                 }
@@ -411,7 +411,6 @@ namespace Atencao_Assistida.Forms.Caftrin
                     item.InsertOficio();
 
                 }
-
 
                 #endregion
 
@@ -459,7 +458,7 @@ namespace Atencao_Assistida.Forms.Caftrin
         private void Grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            DialogResult result = MessageBox.Show("Deseja alterar este item do Oficio ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Deseja alterar este item da Requisição ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
                 var RowsIndex = Grid.CurrentRow.Index;
@@ -644,7 +643,7 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         private void btnAutoriza_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Deseja Autorizar a entrega deste Oficio ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Deseja Autorizar a entrega deste Requisição ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
 
