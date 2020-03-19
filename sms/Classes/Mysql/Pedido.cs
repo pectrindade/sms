@@ -375,7 +375,15 @@ namespace Atencao_Assistida.Classes.Mysql
 
             try
             {
-                return Convert.ToInt32(db.ExecuteScalar());
+               if(db.ExecuteScalar().ToString() !=  "")
+                {
+                    return Convert.ToInt32(db.ExecuteScalar());
+                }
+               else
+                {
+                    return 0;
+                }
+                
             }
             finally
             {

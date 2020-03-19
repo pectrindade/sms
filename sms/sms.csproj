@@ -663,6 +663,9 @@
     <Compile Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.Designer.cs">
       <DependentUpon>Chama_RelEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.cs">
+      <DependentUpon>DsEstoquePeriodo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -81,7 +81,6 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
             CarregarRelatorio();
         }
 
-
         private void CarregarRelatorio()
         {
             try

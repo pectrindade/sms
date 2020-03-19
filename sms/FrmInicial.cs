@@ -5,6 +5,7 @@ using Atencao_Assistida.Forms;
 using Atencao_Assistida.Forms.Caftrin;
 using Atencao_Assistida.Forms.Odonto;
 using Atencao_Assistida.Pesquisas;
+using Atencao_Assistida.Relatorios.Estoque_Periodo;
 using Atencao_Assistida.Relatorios.PacienteProduto;
 using Atencao_Assistida.Relatorios.Previsao_entrega;
 using Atencao_Assistida.Relatorios.Requisicao_Periodo;
@@ -1430,6 +1431,25 @@ namespace teste1
             if (!open)
             {
                 Form tela = new Chama_RelRequisicao();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+        }
+
+        private void MiCafEstoque_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is Chama_RelEstoque)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new Chama_RelEstoque();
                 tela.MdiParent = this;
                 tela.Show();
             }

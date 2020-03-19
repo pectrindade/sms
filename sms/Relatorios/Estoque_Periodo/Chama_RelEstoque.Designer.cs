@@ -35,14 +35,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnBuscaUnidade = new System.Windows.Forms.Button();
-            this.txtCodUnidade = new System.Windows.Forms.TextBox();
-            this.txtNomeUnidade = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtDataFinal = new System.Windows.Forms.MaskedTextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.txtDataInicial = new System.Windows.Forms.MaskedTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,6 +42,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbEmpresa = new System.Windows.Forms.ComboBox();
             this.btnListar = new System.Windows.Forms.Button();
+            this.btnDesfaz = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbGrupo = new System.Windows.Forms.ComboBox();
+            this.chkNegativo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnBuscaProduto
@@ -68,6 +64,7 @@
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(67, 20);
             this.txtcodigo.TabIndex = 290;
+            this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // txtNome
             // 
@@ -101,99 +98,25 @@
             // 
             this.btnFechar.Location = new System.Drawing.Point(12, 262);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(163, 23);
+            this.btnFechar.Size = new System.Drawing.Size(120, 23);
             this.btnFechar.TabIndex = 289;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(17, 193);
+            this.label2.Location = new System.Drawing.Point(17, 184);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 288;
-            this.label2.Text = "Dt Inicial";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(164, 193);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 287;
-            this.label1.Text = "Dt Final";
-            // 
-            // btnBuscaUnidade
-            // 
-            this.btnBuscaUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscaUnidade.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaUnidade.Location = new System.Drawing.Point(87, 113);
-            this.btnBuscaUnidade.Name = "btnBuscaUnidade";
-            this.btnBuscaUnidade.Size = new System.Drawing.Size(25, 21);
-            this.btnBuscaUnidade.TabIndex = 286;
-            this.btnBuscaUnidade.TabStop = false;
-            this.btnBuscaUnidade.Text = "...";
-            this.btnBuscaUnidade.UseVisualStyleBackColor = true;
-            // 
-            // txtCodUnidade
-            // 
-            this.txtCodUnidade.Location = new System.Drawing.Point(13, 113);
-            this.txtCodUnidade.Name = "txtCodUnidade";
-            this.txtCodUnidade.Size = new System.Drawing.Size(68, 20);
-            this.txtCodUnidade.TabIndex = 282;
-            // 
-            // txtNomeUnidade
-            // 
-            this.txtNomeUnidade.Location = new System.Drawing.Point(116, 113);
-            this.txtNomeUnidade.Name = "txtNomeUnidade";
-            this.txtNomeUnidade.ReadOnly = true;
-            this.txtNomeUnidade.Size = new System.Drawing.Size(319, 20);
-            this.txtNomeUnidade.TabIndex = 283;
-            this.txtNomeUnidade.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(12, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 284;
-            this.label6.Text = "Unidade";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(113, 97);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 285;
-            this.label7.Text = "Nome";
-            // 
-            // txtDataFinal
-            // 
-            this.txtDataFinal.Location = new System.Drawing.Point(158, 209);
-            this.txtDataFinal.Mask = "00/00/0000";
-            this.txtDataFinal.Name = "txtDataFinal";
-            this.txtDataFinal.Size = new System.Drawing.Size(82, 20);
-            this.txtDataFinal.TabIndex = 280;
-            this.txtDataFinal.ValidatingType = typeof(System.DateTime);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(239, 209);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(20, 20);
-            this.dateTimePicker2.TabIndex = 281;
-            this.dateTimePicker2.TabStop = false;
+            this.label2.Text = "Data";
             // 
             // txtDataInicial
             // 
-            this.txtDataInicial.Location = new System.Drawing.Point(14, 209);
+            this.txtDataInicial.Location = new System.Drawing.Point(14, 200);
             this.txtDataInicial.Mask = "00/00/0000";
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(82, 20);
@@ -202,11 +125,12 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(95, 209);
+            this.dateTimePicker1.Location = new System.Drawing.Point(95, 200);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(20, 20);
             this.dateTimePicker1.TabIndex = 279;
             this.dateTimePicker1.TabStop = false;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label5
             // 
@@ -246,19 +170,62 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(272, 262);
+            this.btnListar.Location = new System.Drawing.Point(315, 262);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(163, 23);
+            this.btnListar.Size = new System.Drawing.Size(120, 23);
             this.btnListar.TabIndex = 273;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
+            // btnDesfaz
+            // 
+            this.btnDesfaz.Location = new System.Drawing.Point(158, 262);
+            this.btnDesfaz.Name = "btnDesfaz";
+            this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
+            this.btnDesfaz.TabIndex = 297;
+            this.btnDesfaz.Text = "Desfaz";
+            this.btnDesfaz.UseVisualStyleBackColor = true;
+            this.btnDesfaz.Click += new System.EventHandler(this.btnDesfaz_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(11, 96);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 299;
+            this.label9.Text = "Grupo";
+            // 
+            // cmbGrupo
+            // 
+            this.cmbGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGrupo.FormattingEnabled = true;
+            this.cmbGrupo.Location = new System.Drawing.Point(14, 112);
+            this.cmbGrupo.Name = "cmbGrupo";
+            this.cmbGrupo.Size = new System.Drawing.Size(238, 21);
+            this.cmbGrupo.TabIndex = 298;
+            // 
+            // chkNegativo
+            // 
+            this.chkNegativo.AutoSize = true;
+            this.chkNegativo.Location = new System.Drawing.Point(146, 205);
+            this.chkNegativo.Name = "chkNegativo";
+            this.chkNegativo.Size = new System.Drawing.Size(289, 17);
+            this.chkNegativo.TabIndex = 300;
+            this.chkNegativo.Text = "Mostrar apenas produtos com estoque zero ou negativo";
+            this.chkNegativo.UseVisualStyleBackColor = true;
+            // 
             // Chama_RelEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 308);
+            this.ClientSize = new System.Drawing.Size(453, 295);
+            this.ControlBox = false;
+            this.Controls.Add(this.chkNegativo);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cmbGrupo);
+            this.Controls.Add(this.btnDesfaz);
             this.Controls.Add(this.btnBuscaProduto);
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.txtNome);
@@ -266,14 +233,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnBuscaUnidade);
-            this.Controls.Add(this.txtCodUnidade);
-            this.Controls.Add(this.txtNomeUnidade);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDataFinal);
-            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.txtDataInicial);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label5);
@@ -281,8 +240,14 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbEmpresa);
             this.Controls.Add(this.btnListar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "Chama_RelEstoque";
-            this.Text = "Chama_RelEstoque";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Estoque";
+            this.Load += new System.EventHandler(this.Chama_RelEstoque_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Chama_RelEstoque_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Chama_RelEstoque_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,14 +262,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBuscaUnidade;
-        private System.Windows.Forms.TextBox txtCodUnidade;
-        private System.Windows.Forms.TextBox txtNomeUnidade;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MaskedTextBox txtDataFinal;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.MaskedTextBox txtDataInicial;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
@@ -312,5 +269,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbEmpresa;
         private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.Button btnDesfaz;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbGrupo;
+        private System.Windows.Forms.CheckBox chkNegativo;
     }
 }

@@ -912,6 +912,68 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
+        public bool Cria_EstoquePeriodo()
+        {
+
+        Inicio:
+
+            var db = new DBAcessOleDB();
+
+            var tableName = "Estoque";
+
+            var Mysql = "CREATE TABLE " + tableName + "( ";
+
+            Mysql = Mysql + " [CODEMPRESA]  Int, ";
+            Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
+            Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
+            Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [MES]  varchar(2), ";
+            Mysql = Mysql + " [ANO]  varchar(4), ";
+            Mysql = Mysql + " [CODGRUPO]   Int, ";
+            Mysql = Mysql + " [NOMEGRUPO]  varchar(200), ";
+            Mysql = Mysql + " [CODPRODUTO]   Int, ";
+            Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
+            Mysql = Mysql + " [QTANTERIOR]  varchar(10), ";
+            Mysql = Mysql + " [ENTRADA]  varchar(200), ";
+            Mysql = Mysql + " [SAIDA]  varchar(20), ";
+            Mysql = Mysql + " [QTATUAL]  varchar(20) ";
+           
+
+            Mysql = Mysql + " )";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+                db.Dispose();
+                db = new DBAcessOleDB();
+
+                Mysql = "DROP TABLE " + tableName;
+                db.CommandText = Mysql;
+                try
+                {
+                    db.ExecuteNonQuery();
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+
+                goto Inicio;
+
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
 
     }
 }

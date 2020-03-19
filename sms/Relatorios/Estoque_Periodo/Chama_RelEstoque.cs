@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Atencao_Assistida.Classes.Mysql;
+using Atencao_Assistida.Pesquisas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,75 +19,193 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             InitializeComponent();
         }
 
-        private void btnListar_Click(object sender, EventArgs e)
+        private void Chama_RelEstoque_Load(object sender, EventArgs e)
         {
-
-            Relatorio();
+            CarregaCmbEmpresa();
+            CarregaCmbDepartamento();
+            CarregaCmbGrupo();
         }
 
-        private void Relatorio()
+        private void CarregaCmbEmpresa()
         {
-
-            DateTime dtInicial = Convert.ToDateTime(txtDataInicial.Text.Trim());
-            string DataInicial = dtInicial.Year.ToString() + "-" + dtInicial.Month.ToString() + "-" + dtInicial.Day.ToString();
-
-            DateTime dtFinal = Convert.ToDateTime(txtDataFinal.Text.Trim());
-            string DataFinal = dtFinal.Year.ToString() + "-" + dtFinal.Month.ToString() + "-" + dtFinal.Day.ToString();
+            int codigo;
+            string nome;
 
 
+            cmbEmpresa.Items.Clear();
 
-            var codempresa = 0;
-            var nomeempresa = "";
-            var coddepartamento = 0;
-            var nomedepartamento = "";
-            var codsaida = 0;
-            var dataentrega = "";
-            var codunidade = 0;
-            if (txtCodUnidade.Text.Trim() != "") { codunidade = int.Parse(txtCodUnidade.Text.Trim()); }
+            cmbEmpresa.Items.Insert(0, "--SELECIONE--");
 
-            var nomeunidade = "";
-            var solicitante = "";
-            var numeropedido = "";
-            var codproduto = 0;
-            if (txtcodigo.Text.Trim() != "") { codproduto = int.Parse(txtcodigo.Text.Trim()); }
-
-            var nomeproduto = "";
-            var quantidade = "";
-
-
-            var cria = new Classes.Funcoes.CriaArquivo();
-            cria.Cria_SaidaPeriodo();
-
-            // BUSCA E GRAVA NO REPOSITORIO
-            var dr = Classes.Mysql.Saida.Saida_Periodo(cmbEmpresa.SelectedIndex, cmbDepartamento.SelectedIndex, codunidade, codproduto, DataInicial, DataFinal);
+            var dr = Empresa.SelectTudo();
 
             if (dr.HasRows)
             {
                 while (dr.Read())
                 {
 
+                    codigo = int.Parse(dr.GetString(dr.GetOrdinal("CODEMPRESA")));
+                    nome = dr.GetString(dr.GetOrdinal("NOME"));
 
+                    cmbEmpresa.Items.Insert(codigo, nome);
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+        }
+
+        private void CarregaCmbDepartamento()
+        {
+            int codigo;
+            string nome;
+
+            cmbDepartamento.Items.Clear();
+
+            cmbDepartamento.Items.Insert(0, "--SELECIONE--");
+
+            var dr = Classes.Mysql.Departamento.SelectTudo();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+                    codigo = int.Parse(dr.GetString(dr.GetOrdinal("CODDEPARTAMENTO")));
+                    nome = dr.GetString(dr.GetOrdinal("NOME"));
+
+                    cmbDepartamento.Items.Insert(codigo, nome);
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+        }
+
+        private void CarregaCmbGrupo()
+        {
+            int codigo;
+            string nome;
+
+
+            cmbGrupo.Items.Clear();
+
+
+            cmbGrupo.Items.Insert(0, "--SELECIONE--");
+
+            var dr = Classes.Mysql.Grupo.SelectTudo();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+                    codigo = int.Parse(dr.GetString(dr.GetOrdinal("CODGRUPO")));
+                    nome = dr.GetString(dr.GetOrdinal("DESCRICAO"));
+
+                    cmbGrupo.Items.Insert(codigo, nome);
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+
+            CarregarRelatorio();
+        }
+
+        private void CarregarRelatorio()
+        {
+            try
+            {
+                System.Threading.Thread tFormAguarde = new System.Threading.Thread(new System.Threading.ThreadStart(CarregaFormAguarde));
+                tFormAguarde.Start();
+
+                Relatorio();
+
+                tFormAguarde.Abort();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void CarregaFormAguarde()
+        {
+            Form f = new Forms.Espera();
+            f.ShowDialog();
+        }
+
+        private void Relatorio()
+        {
+
+            DateTime dtInicial = Convert.ToDateTime(txtDataInicial.Text.Trim());
+            //string DataInicial = dtInicial.Year.ToString() + "-" + dtInicial.Month.ToString() + "-" + dtInicial.Day.ToString();
+
+            var codempresa = cmbEmpresa.SelectedIndex;
+
+            var nomeempresa = "";
+            var coddepartamento = cmbDepartamento.SelectedIndex;
+            var nomedepartamento = "";
+            var mes = dtInicial.Month.ToString();
+            var ano = dtInicial.Year.ToString();
+            var codgrupo = cmbGrupo.SelectedIndex;
+            var nomegrupo = "";
+            var codproduto = 0;
+            if (txtcodigo.Text.Trim() != "") { codproduto = int.Parse(txtcodigo.Text.Trim()); }
+            var nomeproduto = "";
+
+            var qtanterior = "";
+            var entrada = "";
+            var saida = "";
+            var qtatual = "";
+            var negativo = false;
+
+            if (codempresa == -1) { codempresa = 0; }
+            if (coddepartamento == -1) { coddepartamento = 0; }
+            if (codgrupo == -1) { codgrupo = 0; }
+            if (chkNegativo.Checked == true) { negativo = true; }
+
+
+            var cria = new Classes.Funcoes.CriaArquivo();
+            cria.Cria_EstoquePeriodo();
+
+            // BUSCA E GRAVA NO REPOSITORIO
+            var dr = Classes.Mysql.Estoque.Estoque_Periodo(codempresa, coddepartamento, codgrupo, mes, ano, negativo);
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
                     if (!dr.IsDBNull(dr.GetOrdinal("CODEMPRESA"))) { codempresa = dr.GetInt32(dr.GetOrdinal("CODEMPRESA")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("NOMEEMPRESA"))) { nomeempresa = dr.GetString(dr.GetOrdinal("NOMEEMPRESA")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("CODDEPARTAMENTO"))) { coddepartamento = dr.GetInt32(dr.GetOrdinal("CODDEPARTAMENTO")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("NOMEDEPARTAMENTO"))) { nomedepartamento = dr.GetString(dr.GetOrdinal("NOMEDEPARTAMENTO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODSAIDA"))) { codsaida = dr.GetInt32(dr.GetOrdinal("CODSAIDA")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("DATASAIDA"))) { dataentrega = dr.GetString(dr.GetOrdinal("DATASAIDA")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODUNIDADE"))) { codunidade = dr.GetInt32(dr.GetOrdinal("CODUNIDADE")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("NOMEUNIDADE"))) { nomeunidade = dr.GetString(dr.GetOrdinal("NOMEUNIDADE")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("SOLICITANTE"))) { solicitante = dr.GetString(dr.GetOrdinal("SOLICITANTE")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("NUMEROPEDIDO"))) { numeropedido = dr.GetString(dr.GetOrdinal("NUMEROPEDIDO")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("MES"))) { mes = dr.GetString(dr.GetOrdinal("MES")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("ANO"))) { ano = dr.GetString(dr.GetOrdinal("ANO")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("CODGRUPO"))) { codgrupo = dr.GetInt32(dr.GetOrdinal("CODGRUPO")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("NOMEGRUPO"))) { nomegrupo = dr.GetString(dr.GetOrdinal("NOMEGRUPO")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("CODPRODUTO"))) { codproduto = dr.GetInt32(dr.GetOrdinal("CODPRODUTO")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("NOMEPRODUTO"))) { nomeproduto = dr.GetString(dr.GetOrdinal("NOMEPRODUTO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("QUANTIDADE"))) { quantidade = dr.GetString(dr.GetOrdinal("QUANTIDADE")); }
-
+                    if (!dr.IsDBNull(dr.GetOrdinal("QTANTERIOR"))) { qtanterior = dr.GetString(dr.GetOrdinal("QTANTERIOR")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("ENTRADA"))) { entrada = dr.GetString(dr.GetOrdinal("ENTRADA")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("SAIDA"))) { saida = dr.GetString(dr.GetOrdinal("SAIDA")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("QTATUAL"))) { qtatual = dr.GetString(dr.GetOrdinal("QTATUAL")); }
 
                     try
                     {
-                        var m = new Classes.Mysql.Saida();
+                        var m = new Classes.Mysql.Estoque();
 
-                        m.InsertAccessSaidaPeriodo(codempresa, nomeempresa, coddepartamento, nomedepartamento, codsaida, dataentrega, codunidade, nomeunidade,
-                            solicitante, numeropedido, codproduto, nomeproduto, quantidade);
+                        m.InsertAccess_Estoque_Periodo(codempresa, nomeempresa, coddepartamento, nomedepartamento, mes, ano, codgrupo, nomegrupo,
+                            codproduto, nomeproduto, qtanterior, entrada, saida, qtatual);
                     }
                     catch (Exception erro)
                     {
@@ -116,6 +236,129 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             }
 
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime date = this.dateTimePicker1.Value;
+
+            this.txtDataInicial.Text = date.ToString("dd/MM/yyyy");
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void txtcodigo_Leave(object sender, EventArgs e)
+        {
+            if (txtcodigo.Text.Trim() != "")
+            {
+                BuscaProduto(int.Parse(txtcodigo.Text));
+            }
+            else
+            {
+                txtNome.Text = "";
+            }
+        }
+
+        private void BuscaProduto(int codigo)
+        {
+            var cod1 = Usuario.Coddepartamento;
+
+            var dr = Classes.Mysql.Produto.Select(codigo);
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    txtcodigo.Text = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
+                    txtNome.Text = dr.GetString(dr.GetOrdinal("NOME"));
+                }
+
+            }
+
+            dr.Close();
+            dr.Dispose();
+
+            txtNome.Focus();
+        }
+
+        private void btnBuscaProduto_Click(object sender, EventArgs e)
+        {
+            txtcodigo.Text = "";
+            txtNome.Text = "";
+
+            Parametros.Form = "Produtos";
+            Parametros.Valor = "";
+
+            bool open = false;
+            foreach (Form form in Application.OpenForms)
+            {
+
+                // Verifica se o form esta aberto
+                if (form.Name == "PesquisaPaciente")
+                {
+                    if (form is PesquisaProdutos)
+                    {
+                        form.BringToFront();
+                        open = true;
+                    }
+
+                }
+            }
+
+            if (!open)
+            {
+                Form tela = new PesquisaProdutos();
+                //tela.MdiParent = this.MdiParent;
+                tela.ShowDialog();
+                RetornoPesquisaMedicamento();
+            }
+        }
+
+        public void RetornoPesquisaMedicamento()
+        {
+            if (Parametros.Valor != "")
+            {
+                BuscaProduto(int.Parse(Parametros.Valor));
+            }
+        }
+
+        private void LimpraTela()
+        {
+            CarregaCmbEmpresa();
+            CarregaCmbDepartamento();
+            CarregaCmbGrupo();
+            txtcodigo.Text = "";
+            txtNome.Text = "";
+            txtDataInicial.Text = "";
+            chkNegativo.Checked = false;
+
+            cmbEmpresa.Focus();
+        }
+
+        private void btnDesfaz_Click(object sender, EventArgs e)
+        {
+            LimpraTela();
+        }
+
+        private void Chama_RelEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F8)
+            {
+                if (ActiveControl.Name == "txtCodigo") { btnBuscaProduto.PerformClick(); return; }
+            }
+        }
+
+        private void Chama_RelEstoque_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
 
     }
 }
