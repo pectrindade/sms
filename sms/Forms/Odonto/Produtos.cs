@@ -47,7 +47,24 @@ namespace Atencao_Assistida.Forms.Odonto
             CarregaCmbMarca();
             CarregaAtivo();
 
+            txtSaidaPadrao.KeyPress += new KeyPressEventHandler(bloqueiaLetras);
+
         }
+
+        void bloqueiaLetras(object sender, KeyPressEventArgs e)
+
+        {
+
+            if (e.KeyChar > 20 && (e.KeyChar < 48 || e.KeyChar > 57)) // teclas menor q 20 (TAB, DEL..) Maior q 48 e menor q 57 (1,2,3...9)
+
+            {
+
+                e.Handled = true; // Bloqueia tecla
+
+            }
+
+        }
+
 
         private void CarregaCmbUnidadeMedida()
         {
@@ -217,7 +234,6 @@ namespace Atencao_Assistida.Forms.Odonto
                         LimpaTela();
                         dr.Close();
                         dr.Dispose();
-
                         
                         return;
                     }
@@ -238,7 +254,10 @@ namespace Atencao_Assistida.Forms.Odonto
 
                         cmbativo.SelectedIndex = int.Parse(dr.GetString(dr.GetOrdinal("ATIVO")));
 
-                    
+                        if (!dr.IsDBNull(dr.GetOrdinal("SAIDAPADRAO"))) { txtSaidaPadrao.Text = dr.GetInt32(dr.GetOrdinal("SAIDAPADRAO")).ToString(); }
+
+
+
                 }
 
             }
@@ -270,6 +289,7 @@ namespace Atencao_Assistida.Forms.Odonto
             cmbmarca.Text = "";
             CarregaAtivo();
             cmbativo.Text = "";
+            txtSaidaPadrao.Text = "";
 
             txtcodigo.Focus();
 
@@ -312,10 +332,17 @@ namespace Atencao_Assistida.Forms.Odonto
             var excluido = "N";
             var coddepartamento = Usuario.Coddepartamento.ToString();
 
+            int saidapadrao = 0;
+            if (txtSaidaPadrao.Text.Trim() != "")
+            {
+                saidapadrao = int.Parse(txtSaidaPadrao.Text.Trim());
+            }
+            
+
             try
             {
                 var m = new Classes.Mysql.Produto(int.Parse(cod), nome, descricao, grupo, marca, unidademedida, ativo,
-                    respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, excluido, int.Parse(coddepartamento));
+                    respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, excluido, int.Parse(coddepartamento), saidapadrao);
                 if (novo)
                 {
                     DialogResult result = MessageBox.Show("Deseja Incluir este item ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

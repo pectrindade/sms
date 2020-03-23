@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbGrupo = new System.Windows.Forms.ComboBox();
             this.BtnDesfaz = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnBusca = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.qtatual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtanterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.Grid = new System.Windows.Forms.DataGridView();
             this.btnBuscaProduto = new System.Windows.Forms.Button();
@@ -54,6 +53,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbEmpresa = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtanterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtatual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saidapadrao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estimativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,44 +122,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // qtatual
-            // 
-            this.qtatual.HeaderText = "Qt. Atual";
-            this.qtatual.Name = "qtatual";
-            this.qtatual.ReadOnly = true;
-            // 
-            // saida
-            // 
-            this.saida.HeaderText = "Saida";
-            this.saida.Name = "saida";
-            this.saida.ReadOnly = true;
-            // 
-            // entrada
-            // 
-            this.entrada.HeaderText = "Entrada";
-            this.entrada.Name = "entrada";
-            this.entrada.ReadOnly = true;
-            // 
-            // qtanterior
-            // 
-            this.qtanterior.HeaderText = "Qt. Anterior";
-            this.qtanterior.Name = "qtanterior";
-            this.qtanterior.ReadOnly = true;
-            // 
-            // nome
-            // 
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
-            this.nome.Width = 700;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Código";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 60;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -171,7 +140,9 @@
             this.qtanterior,
             this.entrada,
             this.saida,
-            this.qtatual});
+            this.qtatual,
+            this.saidapadrao,
+            this.estimativa});
             this.Grid.Location = new System.Drawing.Point(5, 247);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
@@ -293,6 +264,71 @@
             this.dateTimePicker1.TabStop = false;
             this.dateTimePicker1.Visible = false;
             // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Código";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            this.codigo.Width = 60;
+            // 
+            // nome
+            // 
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            this.nome.Width = 600;
+            // 
+            // qtanterior
+            // 
+            this.qtanterior.HeaderText = "Anterior";
+            this.qtanterior.Name = "qtanterior";
+            this.qtanterior.ReadOnly = true;
+            this.qtanterior.Width = 70;
+            // 
+            // entrada
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.entrada.DefaultCellStyle = dataGridViewCellStyle1;
+            this.entrada.HeaderText = "Entrada";
+            this.entrada.Name = "entrada";
+            this.entrada.ReadOnly = true;
+            this.entrada.Width = 70;
+            // 
+            // saida
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.saida.DefaultCellStyle = dataGridViewCellStyle2;
+            this.saida.HeaderText = "Saida";
+            this.saida.Name = "saida";
+            this.saida.ReadOnly = true;
+            this.saida.Width = 70;
+            // 
+            // qtatual
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.qtatual.DefaultCellStyle = dataGridViewCellStyle3;
+            this.qtatual.HeaderText = "Atual";
+            this.qtatual.Name = "qtatual";
+            this.qtatual.ReadOnly = true;
+            this.qtatual.Width = 70;
+            // 
+            // saidapadrao
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.saidapadrao.DefaultCellStyle = dataGridViewCellStyle4;
+            this.saidapadrao.HeaderText = "Saida Padrâo";
+            this.saidapadrao.Name = "saidapadrao";
+            this.saidapadrao.ReadOnly = true;
+            // 
+            // estimativa
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.estimativa.DefaultCellStyle = dataGridViewCellStyle5;
+            this.estimativa.HeaderText = "Estimativa/Mês";
+            this.estimativa.Name = "estimativa";
+            this.estimativa.ReadOnly = true;
+            this.estimativa.Width = 120;
+            // 
             // Saldo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,12 +378,6 @@
         private System.Windows.Forms.Button btnBusca;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtatual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saida;
-        private System.Windows.Forms.DataGridViewTextBoxColumn entrada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtanterior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView Grid;
         private System.Windows.Forms.Button btnBuscaProduto;
@@ -362,5 +392,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbEmpresa;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtanterior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtatual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saidapadrao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estimativa;
     }
 }

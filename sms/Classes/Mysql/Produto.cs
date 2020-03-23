@@ -22,6 +22,7 @@ namespace Atencao_Assistida.Classes.Mysql
         private string Dataalteracao { get; set; }
         private string Excluido { get; set; }
         private int CodDepartamento { get; set; }
+        private int Saidapadrao { get; set; }
 
 
         public Produto(int codproduto, string nome, string descricao, string codgrupo, string codmarca, string unidade,
@@ -45,6 +46,28 @@ namespace Atencao_Assistida.Classes.Mysql
 
         }
 
+        public Produto(int codproduto, string nome, string descricao, string codgrupo, string codmarca, string unidade,
+       string ativo, string respinclusao, string datainclusao, string respalteracao, string dataalteracao,
+       string excluido, int coddepartamento, int saidapadrao)
+        {
+            Codproduto = codproduto;
+
+            Nome = nome;
+            Descricao = descricao;
+            Codgrupo = codgrupo;
+            Codmarca = codmarca;
+            Unidade = unidade;
+            Ativo = ativo;
+            Respinclusao = respinclusao;
+            Datainclusao = datainclusao;
+            Respalteracao = respalteracao;
+            Dataalteracao = dataalteracao;
+            Excluido = excluido;
+            CodDepartamento = coddepartamento;
+            Saidapadrao = saidapadrao;
+
+        }
+
         public Produto()
         {
 
@@ -55,11 +78,11 @@ namespace Atencao_Assistida.Classes.Mysql
             var db = new DBAcess();
             const string insert = " INSERT INTO produtos( " +
                                 " NOME, DESCRICAO, CODGRUPO, CODMARCA, UNIDADE, ATIVO, RESPINCLUSAO, DATAINCLUSAO, " +
-                                " RESPALTERACAO, DATAALTERACAO, EXCLUIDO, CODDEPARTAMENTO " +
+                                " RESPALTERACAO, DATAALTERACAO, EXCLUIDO, CODDEPARTAMENTO, SAIDAPADRAO " +
                                 ") ";
             const string values = " VALUES(" +
                                 " @NOME, @DESCRICAO, @CODGRUPO, @CODMARCA, @UNIDADE, @ATIVO, @RESPINCLUSAO, " +
-                                " @DATAINCLUSAO, @RESPALTERACAO, @DATAALTERACAO, @EXCLUIDO, @CODDEPARTAMENTO " +
+                                " @DATAINCLUSAO, @RESPALTERACAO, @DATAALTERACAO, @EXCLUIDO, @CODDEPARTAMENTO, @SAIDAPADRAO " +
                                 "); ";
             const string select = " ";
             db.CommandText = insert + values + select;
@@ -76,6 +99,7 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@DATAALTERACAO", Convert.ToDateTime(Dataalteracao));
             db.AddParameter("@EXCLUIDO", Excluido);
             db.AddParameter("@CODDEPARTAMENTO", CodDepartamento);
+            db.AddParameter("@SAIDAPADRAO", Saidapadrao);
 
             try
             {
@@ -133,7 +157,7 @@ namespace Atencao_Assistida.Classes.Mysql
                                " NOME = @NOME, DESCRICAO = @DESCRICAO, CODGRUPO = @CODGRUPO, " +
                                " CODMARCA = @CODMARCA, UNIDADE = @UNIDADE, ATIVO = @ATIVO, RESPINCLUSAO = @RESPINCLUSAO, " +
                                " DATAINCLUSAO = @DATAINCLUSAO, RESPALTERACAO = @RESPALTERACAO, DATAALTERACAO = @DATAALTERACAO, " +
-                               " EXCLUIDO = @EXCLUIDO, CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+                               " EXCLUIDO = @EXCLUIDO, CODDEPARTAMENTO = @CODDEPARTAMENTO, SAIDAPADRAO = @SAIDAPADRAO ";
 
             const string where = " WHERE CODPRODUTO = @CODPRODUTO;";
             db.CommandText = update + set + where;
@@ -150,6 +174,7 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@DATAALTERACAO", Convert.ToDateTime(Dataalteracao));
             db.AddParameter("@EXCLUIDO", Excluido);
             db.AddParameter("@CODDEPARTAMENTO", CodDepartamento);
+            db.AddParameter("@SAIDAPADRAO", Saidapadrao);
 
             try
             {
@@ -202,7 +227,7 @@ namespace Atencao_Assistida.Classes.Mysql
         public static MySqlDataReader Select(int Codproduto)
         {
             var db = new DBAcess();
-            var Mysql = " SELECT P.CODPRODUTO, P.NOME, P.DESCRICAO, P.CODGRUPO, P.CODMARCA, P.UNIDADE AS CODUNIDADE, U.DESCRICAO AS NOMEUNIDADE, P.ATIVO, P.CODDEPARTAMENTO ";
+            var Mysql = " SELECT P.CODPRODUTO, P.NOME, P.DESCRICAO, P.CODGRUPO, P.CODMARCA, P.UNIDADE AS CODUNIDADE, U.DESCRICAO AS NOMEUNIDADE, P.ATIVO, P.CODDEPARTAMENTO, P.SAIDAPADRAO ";
             Mysql = Mysql + " FROM produtos AS P ";
             Mysql = Mysql + " INNER JOIN unidademedida AS U ON U.DESCRICAO = P.UNIDADE ";
 

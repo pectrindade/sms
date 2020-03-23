@@ -1178,7 +1178,7 @@ namespace Atencao_Assistida.Classes.Mysql
 
             var db = new DBAcess();
             string Mysql = " SELECT E.CODEMPRESA, EP.NOME AS NOMEEMPRESA, E.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, E.MES, E.ANO, ";
-            Mysql = Mysql + " E.CODPRODUTO, P.NOME AS NOMEPRODUTO, ";
+            Mysql = Mysql + " E.CODPRODUTO, P.NOME AS NOMEPRODUTO, P.SAIDAPADRAO, ";
             Mysql = Mysql + " E.QTANTERIOR, E.ENTRADA, E.SAIDA, E.QTATUAL ";
             Mysql = Mysql + " FROM ESTOQUE E ";
 

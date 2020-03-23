@@ -106,7 +106,7 @@ namespace Atencao_Assistida.Consultas
 
             cmbGrupo.Items.Insert(0, "--SELECIONE--");
 
-            var dr = Classes.Mysql.Grupo.SelectTudo();
+            var dr = Grupo.SelectTudo();
 
             if (dr.HasRows)
             {
@@ -156,11 +156,12 @@ namespace Atencao_Assistida.Consultas
             Grid.Columns["qtatual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //define um array de strings com nCOlunas
-            string[] linhaDados = new string[6];
+            string[] linhaDados = new string[8];
 
             //LIMPAR GRID
             Grid.Rows.Clear();
             Grid.Refresh();
+            var linha = 0;
 
             var dr = Classes.Mysql.Estoque.BuscaEstoqueNome(cmbEmpresa.SelectedIndex, cmbDepartamento.SelectedIndex, vmes, vano, valor, vcodgrupo);
 
@@ -168,6 +169,10 @@ namespace Atencao_Assistida.Consultas
             {
                 while (dr.Read())
                 {
+                    var vTotal = "";
+                    var prevSaida = "";
+                    var qtatual = "";
+                    var result = decimal.Parse("1") / decimal.Parse("1");
 
                     linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
                     linhaDados[1] = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
@@ -175,9 +180,55 @@ namespace Atencao_Assistida.Consultas
                     linhaDados[3] = dr.GetString(dr.GetOrdinal("ENTRADA"));
                     linhaDados[4] = dr.GetString(dr.GetOrdinal("SAIDA"));
                     linhaDados[5] = dr.GetString(dr.GetOrdinal("QTATUAL"));
+                    linhaDados[6] = ""; ;
+                    linhaDados[7] = "";
 
+                    if (!dr.IsDBNull(dr.GetOrdinal("SAIDAPADRAO")))
+                    {
+                        if (dr.GetString(dr.GetOrdinal("SAIDAPADRAO")) != "0")
+                        {
+                            prevSaida = dr.GetString(dr.GetOrdinal("SAIDAPADRAO"));
+                            qtatual = dr.GetString(dr.GetOrdinal("QTATUAL"));
+                            result = decimal.Parse(qtatual) / decimal.Parse(prevSaida);
+
+                            linhaDados[6] = dr.GetString(dr.GetOrdinal("SAIDAPADRAO"));
+
+                            var somatorio = "";
+                            somatorio = String.Format("{0:0.0}", result);
+
+                            linhaDados[7] = somatorio;
+
+                        }
+                    }
+                   
 
                     Grid.Rows.Add(linhaDados);
+
+                    if (prevSaida != "")
+                    {
+                        var somatorio = "";
+                        somatorio = String.Format("{0:N}", result);
+
+                        result = decimal.Parse(somatorio);
+                       
+                        somatorio = String.Format("{0:0.0}", result);
+
+                        float comparaAmarelo = float.Parse("2,5");
+
+                        float comparaVermelho = float.Parse("1,5");
+
+                        if (float.Parse(result.ToString()) <= comparaAmarelo)
+                        {
+                            PintaAmarelo(linha, 6);
+                        }
+
+                        if (float.Parse(result.ToString()) <= comparaVermelho)
+                        {
+                            PintaVermelho(linha, 6);
+                        }
+                    }
+
+                    linha++;
                 }
 
             }
@@ -186,6 +237,8 @@ namespace Atencao_Assistida.Consultas
             dr.Dispose();
 
         }
+
+
 
         private void Relatorio()
         {
@@ -482,6 +535,7 @@ namespace Atencao_Assistida.Consultas
             {
                 Parametros.Codigo = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
                 Parametros.Nome = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+
             }
             catch
             {
@@ -519,6 +573,20 @@ namespace Atencao_Assistida.Consultas
             Parametros.Nome = "";
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PintaVermelho(3, 2);
+        }
+
+        private void PintaVermelho(int linha, int coluna)
+        {
+            Grid.Rows[linha].Cells[coluna].Style.BackColor = Color.Red;
+        }
+
+        private void PintaAmarelo(int linha, int coluna)
+        {
+            Grid.Rows[linha].Cells[coluna].Style.BackColor = Color.Yellow;
+        }
     }
 }
 

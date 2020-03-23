@@ -48,6 +48,8 @@
             this.btnFechar = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.cmbUnidaemedida = new System.Windows.Forms.ComboBox();
+            this.txtSaidaPadrao = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBuscaProduto
@@ -99,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 93);
+            this.label1.Location = new System.Drawing.Point(0, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 220;
@@ -107,7 +109,7 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(3, 109);
+            this.txtDescricao.Location = new System.Drawing.Point(3, 71);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(533, 97);
@@ -117,7 +119,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(477, 224);
+            this.label5.Location = new System.Drawing.Point(477, 186);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 226;
@@ -130,7 +132,7 @@
             this.cmbativo.Items.AddRange(new object[] {
             "S",
             "N"});
-            this.cmbativo.Location = new System.Drawing.Point(472, 240);
+            this.cmbativo.Location = new System.Drawing.Point(472, 202);
             this.cmbativo.Name = "cmbativo";
             this.cmbativo.Size = new System.Drawing.Size(64, 21);
             this.cmbativo.TabIndex = 7;
@@ -139,7 +141,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(11, 224);
+            this.label6.Location = new System.Drawing.Point(11, 186);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 225;
@@ -153,7 +155,7 @@
             "Em Avaliação",
             "Deferido",
             "Autorizado"});
-            this.cmbgrupo.Location = new System.Drawing.Point(6, 240);
+            this.cmbgrupo.Location = new System.Drawing.Point(6, 202);
             this.cmbgrupo.Name = "cmbgrupo";
             this.cmbgrupo.Size = new System.Drawing.Size(222, 21);
             this.cmbgrupo.TabIndex = 4;
@@ -162,7 +164,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(239, 224);
+            this.label7.Location = new System.Drawing.Point(239, 186);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 224;
@@ -176,7 +178,7 @@
             "Em Avaliação",
             "Deferido",
             "Autorizado"});
-            this.cmbmarca.Location = new System.Drawing.Point(234, 240);
+            this.cmbmarca.Location = new System.Drawing.Point(234, 202);
             this.cmbmarca.Name = "cmbmarca";
             this.cmbmarca.Size = new System.Drawing.Size(121, 21);
             this.cmbmarca.TabIndex = 5;
@@ -239,7 +241,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(366, 224);
+            this.label19.Location = new System.Drawing.Point(366, 186);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(100, 13);
             this.label19.TabIndex = 233;
@@ -253,10 +255,27 @@
             "Em Avaliação",
             "Deferido",
             "Autorizado"});
-            this.cmbUnidaemedida.Location = new System.Drawing.Point(361, 240);
+            this.cmbUnidaemedida.Location = new System.Drawing.Point(361, 202);
             this.cmbUnidaemedida.Name = "cmbUnidaemedida";
             this.cmbUnidaemedida.Size = new System.Drawing.Size(105, 21);
             this.cmbUnidaemedida.TabIndex = 6;
+            // 
+            // txtSaidaPadrao
+            // 
+            this.txtSaidaPadrao.Location = new System.Drawing.Point(6, 248);
+            this.txtSaidaPadrao.Name = "txtSaidaPadrao";
+            this.txtSaidaPadrao.Size = new System.Drawing.Size(81, 20);
+            this.txtSaidaPadrao.TabIndex = 234;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(10, 232);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 235;
+            this.label2.Text = "Código";
             // 
             // Produtos
             // 
@@ -264,6 +283,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 319);
             this.ControlBox = false;
+            this.Controls.Add(this.txtSaidaPadrao);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cmbUnidaemedida);
             this.Controls.Add(this.btnListar);
@@ -318,5 +339,7 @@
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmbUnidaemedida;
+        private System.Windows.Forms.TextBox txtSaidaPadrao;
+        private System.Windows.Forms.Label label2;
     }
 }

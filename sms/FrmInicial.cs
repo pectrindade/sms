@@ -12,17 +12,26 @@ using Atencao_Assistida.Relatorios.Requisicao_Periodo;
 using Atencao_Assistida.Relatorios.Saida_Periodo;
 using System;
 using System.Windows.Forms;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Threading;
+using System.Text;
+
 using UnidadeMedida = Atencao_Assistida.Forms.UnidadeMedida;
+using System.Runtime.InteropServices;
 
 namespace teste1
 {
     public partial class FrmInicial : Form
     {
+        private Thread thread;
         private int childFormNumber = 0;
 
         public FrmInicial()
         {
             InitializeComponent();
+           
         }
 
         private void FrmInicial_Load(object sender, EventArgs e)
@@ -34,6 +43,10 @@ namespace teste1
             VerificaAcesso();
 
             VerificaData();
+
+            AvisoAutoriza.Enabled = true;
+
+
         }
 
 
@@ -105,7 +118,10 @@ namespace teste1
 
             AcessoNenhum();
             //AcessoTotal();
-            AcessoParcial(int.Parse(codigo));
+            if (codigo != "")
+            {
+                AcessoParcial(int.Parse(codigo));
+            }
         }
 
         private void AcessoNenhum()
@@ -1293,6 +1309,7 @@ namespace teste1
 
         private void tAviso_Tick(object sender, EventArgs e)
         {
+            tslAutoriza.Visible = false;
             AvisaOficio();
         }
 
@@ -1306,6 +1323,7 @@ namespace teste1
 
                 if (retorno != "")
                 {
+
                     tAviso.Interval = tAviso.Interval + 5000;
 
                     if (Usuario.Login == "renato") { return; }
@@ -1329,15 +1347,38 @@ namespace teste1
                     }
                     
                 }
-
+               
             }
 
         }
 
         private void AvisaAutoriza()
         {
+           
+            var tipo = 0;
+            var aprovado = 0;
+            var status = "ABERTO";
 
+          
+            var retorno = Avisos.TemAutoriza(int.Parse(Usuario.Codempresa), int.Parse(Usuario.Coddepartamento), tipo, aprovado, status);
+            if (retorno != "")
+            {
+                piscarLabel();
+            }
+            else
+            {
+                tslAutoriza.Visible = false;
+            }
+        }
 
+        private void piscarLabel()
+        {
+            // Se o label estiver visível, ele ficará não visível.
+            if (tslAutoriza.Visible == true)
+                tslAutoriza.Visible = false;
+            // Se o label estiver não visível, ele ficará visível.
+            else
+                tslAutoriza.Visible = true;
         }
 
         private void MimCaftrinDevolucao_Click(object sender, EventArgs e)
@@ -1453,6 +1494,16 @@ namespace teste1
                 tela.MdiParent = this;
                 tela.Show();
             }
+        }
+
+        private void FrmInicial_MouseUp(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void AvisoAutoriza_Tick(object sender, EventArgs e)
+        {
+            AvisaAutoriza();
         }
     }
 }

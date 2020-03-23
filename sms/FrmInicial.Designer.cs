@@ -1,4 +1,6 @@
-﻿namespace teste1
+﻿using System;
+
+namespace teste1
 {
     partial class FrmInicial
     {
@@ -103,8 +105,10 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslAutoriza = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tAviso = new System.Windows.Forms.Timer(this.components);
+            this.AvisoAutoriza = new System.Windows.Forms.Timer(this.components);
             this.menu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -673,7 +677,8 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
+            this.toolStripStatusLabel,
+            this.tslAutoriza});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(965, 22);
@@ -682,14 +687,32 @@
             // 
             // toolStripStatusLabel
             // 
+            this.toolStripStatusLabel.AutoSize = false;
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // tslAutoriza
+            // 
+            this.tslAutoriza.AutoSize = false;
+            this.tslAutoriza.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tslAutoriza.ForeColor = System.Drawing.Color.DarkRed;
+            this.tslAutoriza.Name = "tslAutoriza";
+            this.tslAutoriza.Size = new System.Drawing.Size(911, 17);
+            this.tslAutoriza.Spring = true;
+            this.tslAutoriza.Text = "Tem Requisições para autorizar !!";
+            this.tslAutoriza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tslAutoriza.Visible = false;
             // 
             // tAviso
             // 
             this.tAviso.Interval = 10000;
             this.tAviso.Tick += new System.EventHandler(this.tAviso_Tick);
+            // 
+            // AvisoAutoriza
+            // 
+            this.AvisoAutoriza.Interval = 1000;
+            this.AvisoAutoriza.Tick += new System.EventHandler(this.AvisoAutoriza_Tick);
             // 
             // FrmInicial
             // 
@@ -708,6 +731,7 @@
             this.Text = "Sms";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmInicial_Load);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmInicial_MouseUp);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -794,6 +818,8 @@
         private System.Windows.Forms.ToolStripMenuItem MimCaftrinAjusteEstoque;
         private System.Windows.Forms.ToolStripMenuItem MiCafPedidosPeríodo;
         private System.Windows.Forms.ToolStripMenuItem MiCafEstoque;
+        private System.Windows.Forms.ToolStripStatusLabel tslAutoriza;
+        private System.Windows.Forms.Timer AvisoAutoriza;
     }
 }
 
