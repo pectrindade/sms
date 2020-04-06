@@ -109,6 +109,9 @@ namespace teste1
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tAviso = new System.Windows.Forms.Timer(this.components);
             this.AvisoAutoriza = new System.Windows.Forms.Timer(this.components);
+            this.MimOdontbalanco = new System.Windows.Forms.ToolStripMenuItem();
+            this.MimOdontajusteEstoque = new System.Windows.Forms.ToolStripMenuItem();
+            this.MimOdontdevolucao = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -397,7 +400,7 @@ namespace teste1
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // MimCaftrin
             // 
@@ -411,7 +414,7 @@ namespace teste1
             this.MimCaftrinSaidaOfício,
             this.MimCaftrinDevolucao});
             this.MimCaftrin.Name = "MimCaftrin";
-            this.MimCaftrin.Size = new System.Drawing.Size(167, 22);
+            this.MimCaftrin.Size = new System.Drawing.Size(180, 22);
             this.MimCaftrin.Text = "Caftrin";
             // 
             // MimCaftrinbalanco
@@ -473,12 +476,15 @@ namespace teste1
             // MimOdont
             // 
             this.MimOdont.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MimOdontbalanco,
+            this.MimOdontajusteEstoque,
             this.MimOdontEntradaMercadoria,
+            this.MimOdontSaidaMercadoria,
             this.MimOdontDigitacaoRequisicao,
             this.MimOdontDigitacaoOfício,
-            this.MimOdontSaidaMercadoria});
+            this.MimOdontdevolucao});
             this.MimOdont.Name = "MimOdont";
-            this.MimOdont.Size = new System.Drawing.Size(167, 22);
+            this.MimOdont.Size = new System.Drawing.Size(180, 22);
             this.MimOdont.Text = "Odontologia";
             // 
             // MimOdontEntradaMercadoria
@@ -493,6 +499,7 @@ namespace teste1
             this.MimOdontDigitacaoRequisicao.Name = "MimOdontDigitacaoRequisicao";
             this.MimOdontDigitacaoRequisicao.Size = new System.Drawing.Size(200, 22);
             this.MimOdontDigitacaoRequisicao.Text = "Digitação de Requisição";
+            this.MimOdontDigitacaoRequisicao.Click += new System.EventHandler(this.MimCaftrinDigitacaoRequisicao_Click);
             // 
             // MimOdontDigitacaoOfício
             // 
@@ -514,7 +521,7 @@ namespace teste1
             this.MimAtencaoAssistVisitasAssistenteSocial,
             this.MimAtencaoAssistManutencaoProtocolo});
             this.MimAtencaoAssist.Name = "MimAtencaoAssist";
-            this.MimAtencaoAssist.Size = new System.Drawing.Size(167, 22);
+            this.MimAtencaoAssist.Size = new System.Drawing.Size(180, 22);
             this.MimAtencaoAssist.Text = "Atenção Assistida";
             // 
             // MimAtencaoAssistEntregaMedicamentos
@@ -541,7 +548,7 @@ namespace teste1
             // MimAutoriza
             // 
             this.MimAutoriza.Name = "MimAutoriza";
-            this.MimAutoriza.Size = new System.Drawing.Size(167, 22);
+            this.MimAutoriza.Size = new System.Drawing.Size(180, 22);
             this.MimAutoriza.Text = "Autoriza";
             this.MimAutoriza.Click += new System.EventHandler(this.autorizaToolStripMenuItem_Click);
             // 
@@ -714,6 +721,27 @@ namespace teste1
             this.AvisoAutoriza.Interval = 1000;
             this.AvisoAutoriza.Tick += new System.EventHandler(this.AvisoAutoriza_Tick);
             // 
+            // MimOdontbalanco
+            // 
+            this.MimOdontbalanco.Name = "MimOdontbalanco";
+            this.MimOdontbalanco.Size = new System.Drawing.Size(200, 22);
+            this.MimOdontbalanco.Text = "Balanço";
+            this.MimOdontbalanco.Click += new System.EventHandler(this.balançoToolStripMenuItem_Click);
+            // 
+            // MimOdontajusteEstoque
+            // 
+            this.MimOdontajusteEstoque.Name = "MimOdontajusteEstoque";
+            this.MimOdontajusteEstoque.Size = new System.Drawing.Size(200, 22);
+            this.MimOdontajusteEstoque.Text = "Ajuste Estoque";
+            this.MimOdontajusteEstoque.Click += new System.EventHandler(this.MimCaftrinAjusteEstoque_Click);
+            // 
+            // MimOdontdevolucao
+            // 
+            this.MimOdontdevolucao.Name = "MimOdontdevolucao";
+            this.MimOdontdevolucao.Size = new System.Drawing.Size(200, 22);
+            this.MimOdontdevolucao.Text = "Devolução";
+            this.MimOdontdevolucao.Click += new System.EventHandler(this.MimCaftrinDevolucao_Click);
+            // 
             // FrmInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,6 +848,9 @@ namespace teste1
         private System.Windows.Forms.ToolStripMenuItem MiCafEstoque;
         private System.Windows.Forms.ToolStripStatusLabel tslAutoriza;
         private System.Windows.Forms.Timer AvisoAutoriza;
+        private System.Windows.Forms.ToolStripMenuItem MimOdontbalanco;
+        private System.Windows.Forms.ToolStripMenuItem MimOdontajusteEstoque;
+        private System.Windows.Forms.ToolStripMenuItem MimOdontdevolucao;
     }
 }
 

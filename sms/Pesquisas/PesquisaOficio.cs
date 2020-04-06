@@ -29,6 +29,26 @@ namespace Atencao_Assistida.Pesquisas
 
         private void Carrega()
         {
+            DateTime data = DateTime.Now;
+           
+            var vmes = data.ToString("MM");
+            int mes = int.Parse(vmes);
+
+            var vano = data.ToString("yyyy");
+            int ano = int.Parse(vano);
+
+
+            //PRIMEIRO PEGA O PRIMEIRO E O ULTIMO DIA DO MES 
+            //DateTime com o primeiro dia do mês
+            DateTime primeiroDiaDoMes = new DateTime(data.Year, data.Month, 1);
+            var dtinicial = primeiroDiaDoMes.ToString("dd/MM/yyyy");
+
+            //DateTime com o último dia do mês
+            DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
+            var dtfinal = ultimoDiaDoMes.ToString("dd/MM/yyyy");
+            var UltimoDia = ultimoDiaDoMes.ToString("dd");
+
+
 
             //define um array de strings com nCOlunas
             string[] linhaDados = new string[5];

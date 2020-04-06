@@ -1051,14 +1051,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sms.exe" size="8103384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sms.exe" size="8104408">
       <assemblyIdentity name="Sms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XO8ET1jcqNr5NVdeBxYYkbbtJd1kQJ9Ieo+5uuiiz38=</dsig:DigestValue>
+        <dsig:DigestValue>V6aennni2Z/1huJ+IN+JKkwNugzK+3FyLhsuWRRUm4U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

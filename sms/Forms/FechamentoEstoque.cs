@@ -170,7 +170,7 @@ namespace Atencao_Assistida.Forms
             int progresso2 = 0;
             progressBar1.Value = progresso1;
             progressBar2.Value = progresso2;
-            progressBar1.Maximum = Cont;
+            progressBar1.Maximum = 31;
             progressBar2.Maximum = Cont;
 
             if (dr.HasRows)
@@ -193,7 +193,12 @@ namespace Atencao_Assistida.Forms
                         totalDeDias = Convert.ToDateTime(Adiciona);
 
                         progresso1 = progresso1 + 1;
-                        progressBar1.Value = i;
+                        try
+                        {
+                            progressBar1.Value = i;
+                        }
+                        catch { }
+                        
                     }
 
                     SaldoAtual(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))));

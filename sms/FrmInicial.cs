@@ -211,6 +211,12 @@ namespace teste1
             var dr = Acessos.SelectPermissao(id);
             if (dr.HasRows)
             {
+                if (id == 5)
+                {
+                    MioCadastroUsuarios.Enabled = true;
+                    MioAcessoUsuarios.Enabled = true;
+                    MioFechamentoEstoque.Enabled = true;
+                }
                 while (dr.Read())
                 {
 
@@ -300,12 +306,16 @@ namespace teste1
                             break;
                         case "tdSaida":
                             MimCaftrinSaidaMercadoria.Enabled = true;
+                            MimOdontSaidaMercadoria.Enabled = true;
                             break;
                         case "tdPedidos":
                             MimCaftrinDigitacaoRequisicao.Enabled = true;
+                            MimOdontDigitacaoRequisicao.Enabled = true;
+
                             break;
                         case "tdBalanco":
                             MimCaftrinbalanco.Enabled = true;
+                            MimOdontbalanco.Enabled = true;
                             break;
                         case "tdDigitacaoOficio":
                             MimCaftrinDigitacaoOfício.Enabled = true;
@@ -315,9 +325,11 @@ namespace teste1
                             break;
                         case "tdAutoriza":
                             MimAutoriza.Enabled = true;
+                            
                             break;
                         case "tdDevolve":
                             MimCaftrinDevolucao.Enabled = true;
+                            MimOdontdevolucao.Enabled = true;
                             break;
 
                         //OPERACIONAL

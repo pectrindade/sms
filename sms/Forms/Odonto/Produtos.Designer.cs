@@ -273,9 +273,9 @@
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(10, 232);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 235;
-            this.label2.Text = "Código";
+            this.label2.Text = "Saida Padrâo";
             // 
             // Produtos
             // 

@@ -219,12 +219,12 @@ namespace Atencao_Assistida.Consultas
 
                         if (float.Parse(result.ToString()) <= comparaAmarelo)
                         {
-                            PintaAmarelo(linha, 6);
+                            PintaAmarelo(linha, 7);
                         }
 
                         if (float.Parse(result.ToString()) <= comparaVermelho)
                         {
-                            PintaVermelho(linha, 6);
+                            PintaVermelho(linha, 7);
                         }
                     }
 
