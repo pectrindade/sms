@@ -1,13 +1,6 @@
 ﻿using Atencao_Assistida.Classes.Mysql;
 using Atencao_Assistida.Pesquisas;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Atencao_Assistida.Forms
@@ -97,7 +90,7 @@ namespace Atencao_Assistida.Forms
 
             CmbUnidade.Items.Insert(0, "--SELECIONE--");
 
-            var dr = Classes.Mysql.Unidade.SelectTudo();
+            var dr = Unidade.SelectTudo();
 
             if (dr.HasRows)
             {

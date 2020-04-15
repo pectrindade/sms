@@ -61,6 +61,13 @@ namespace Atencao_Assistida
             set { _aprovado = value; }
         }
 
+        private static string _coddepartamento = "";
+        public static string Coddepartamento
+        {
+            get { return _coddepartamento; }
+            set { _coddepartamento = value; }
+        }
+
 
     }
 

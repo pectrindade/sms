@@ -323,7 +323,7 @@ namespace Atencao_Assistida.Classes.Mysql
             Mysql = Mysql + " INNER JOIN empresa E ON S.CODEMPRESA = E.CODEMPRESA ";
             Mysql = Mysql + " INNER JOIN departamento D ON S.CODDEPARTAMENTO = D.CODDEPARTAMENTO ";
             Mysql = Mysql + " INNER JOIN unidade U ON S.CODUNIDADE = U.CODUNIDADE ";
-            Mysql = Mysql + " INNER JOIN pedido PE ON S.NUMEROPEDIDO = PE.NUMEROPEDIDO ";
+            Mysql = Mysql + " INNER JOIN pedido PE ON S.NUMEROPEDIDO = PE.NUMEROPEDIDO AND S.CODDEPARTAMENTO = PE.CODDEPARTAMENTO  ";
             Mysql = Mysql + " INNER JOIN saida_item SI ON S.CODSAIDA = SI.CODSAIDA ";
             Mysql = Mysql + " INNER JOIN produtos P ON SI.CODPRODUTO = P.CODPRODUTO ";
 

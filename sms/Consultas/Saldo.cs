@@ -535,6 +535,7 @@ namespace Atencao_Assistida.Consultas
             {
                 Parametros.Codigo = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
                 Parametros.Nome = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+                Parametros.Coddepartamento = cmbDepartamento.SelectedIndex.ToString();
 
             }
             catch

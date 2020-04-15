@@ -11,6 +11,11 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Copiando estrutura do banco de dados para sms
+CREATE DATABASE IF NOT EXISTS `sms` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `sms`;
+
 -- Copiando estrutura para tabela sms.acesso_forms
 DROP TABLE IF EXISTS `acesso_forms`;
 CREATE TABLE IF NOT EXISTS `acesso_forms` (
@@ -62,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `acesso_permisao` (
   `EXCLUIR` varchar(2) DEFAULT NULL,
   `IMPRIMIR` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`CODPERMISAO`)
-) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela sms.acesso_permisao: ~89 rows (aproximadamente)
+-- Copiando dados para a tabela sms.acesso_permisao: ~92 rows (aproximadamente)
 /*!40000 ALTER TABLE `acesso_permisao` DISABLE KEYS */;
 INSERT INTO `acesso_permisao` (`CODPERMISAO`, `CODUSUARIO`, `CODFORM`, `ACESSAR`, `GRAVAR`, `EDITAR`, `EXCLUIR`, `IMPRIMIR`) VALUES
 	(1, 1, 1, 'S', 'S', 'S', 'S', 'N'),
@@ -82,43 +87,27 @@ INSERT INTO `acesso_permisao` (`CODPERMISAO`, `CODUSUARIO`, `CODFORM`, `ACESSAR`
 	(13, 1, 13, 'S', 'S', 'S', 'S', 'S'),
 	(24, 1, 14, 'S', 'S', 'S', 'S', 'S'),
 	(25, 1, 15, 'S', 'S', 'S', 'S', 'S'),
-	(26, 1, 16, 'S', 'S', 'S', 'S', 'S'),
-	(27, 1, 17, 'S', 'S', 'N', 'S', 'S'),
 	(28, 1, 18, 'S', 'S', 'S', 'S', 'S'),
 	(29, 1, 19, 'S', 'S', 'S', 'S', 'S'),
 	(30, 1, 20, 'S', 'S', 'S', 'S', 'S'),
 	(31, 1, 21, 'S', 'S', 'S', 'S', 'S'),
 	(32, 1, 22, 'S', 'S', 'S', 'S', 'S'),
 	(57, 10, 9, 'S', 'S', 'S', 'S', 'S'),
-	(58, 10, 16, 'S', 'S', 'S', 'S', 'S'),
 	(59, 11, 9, 'S', 'S', 'S', 'S', 'S'),
-	(60, 11, 16, 'S', 'S', 'S', 'S', 'S'),
 	(61, 12, 9, 'S', 'S', 'S', 'S', 'S'),
-	(62, 12, 16, 'S', 'S', 'S', 'S', 'S'),
 	(63, 13, 9, 'S', 'S', 'S', 'S', 'S'),
-	(64, 13, 16, 'S', 'S', 'S', 'S', 'S'),
 	(67, 15, 9, 'S', 'S', 'S', 'S', 'S'),
-	(68, 15, 16, 'S', 'S', 'S', 'S', 'S'),
 	(69, 16, 9, 'S', 'S', 'S', 'S', 'S'),
-	(70, 16, 16, 'S', 'S', 'S', 'S', 'S'),
 	(71, 17, 9, 'S', 'S', 'S', 'S', 'S'),
-	(72, 17, 16, 'S', 'S', 'S', 'S', 'S'),
 	(73, 19, 9, 'S', 'S', 'S', 'S', 'S'),
-	(74, 19, 16, 'S', 'S', 'S', 'S', 'S'),
 	(75, 20, 9, 'S', 'S', 'S', 'S', 'S'),
-	(76, 20, 16, 'S', 'S', 'S', 'S', 'S'),
 	(77, 22, 9, 'S', 'S', 'S', 'S', 'S'),
-	(78, 22, 16, 'S', 'S', 'S', 'S', 'S'),
 	(79, 23, 9, 'S', 'S', 'S', 'S', 'S'),
-	(80, 23, 16, 'S', 'S', 'S', 'S', 'S'),
 	(81, 24, 9, 'S', 'S', 'S', 'S', 'S'),
-	(82, 24, 16, 'S', 'S', 'S', 'S', 'S'),
 	(83, 25, 9, 'S', 'S', 'S', 'S', 'S'),
 	(84, 26, 9, 'S', 'S', 'S', 'S', 'S'),
-	(85, 26, 16, 'S', 'S', 'S', 'S', 'S'),
 	(86, 27, 9, 'S', 'S', 'S', 'S', 'S'),
 	(87, 28, 9, 'S', 'S', 'S', 'S', 'S'),
-	(88, 28, 16, 'S', 'S', 'S', 'S', 'S'),
 	(96, 1, 23, 'S', 'S', 'S', 'S', 'S'),
 	(97, 29, 22, 'S', 'S', 'S', 'S', 'S'),
 	(125, 7, 1, 'S', 'S', 'S', 'S', 'S'),
@@ -143,19 +132,38 @@ INSERT INTO `acesso_permisao` (`CODPERMISAO`, `CODUSUARIO`, `CODFORM`, `ACESSAR`
 	(181, 8, 12, 'S', 'S', 'S', 'S', 'S'),
 	(182, 8, 13, 'S', 'S', 'S', 'S', 'S'),
 	(183, 8, 14, 'S', 'S', 'S', 'S', 'S'),
-	(184, 8, 16, 'S', 'S', 'S', 'S', 'S'),
 	(185, 8, 19, 'S', 'S', 'S', 'S', 'S'),
 	(186, 8, 20, 'S', 'S', 'S', 'S', 'S'),
 	(187, 8, 21, 'S', 'S', 'S', 'S', 'S'),
 	(188, 8, 22, 'S', 'S', 'S', 'S', 'S'),
 	(189, 8, 8, 'S', 'S', 'S', 'S', 'S'),
 	(190, 8, 7, 'S', 'S', 'S', 'S', 'S'),
-	(191, 8, 17, 'S', 'S', 'S', 'S', 'S'),
 	(192, 9, 8, 'S', 'S', 'S', 'S', 'S'),
 	(193, 9, 22, 'S', 'S', 'S', 'S', 'S'),
 	(194, 9, 9, 'S', 'S', 'S', 'S', 'S'),
 	(195, 9, 10, 'S', 'S', 'S', 'S', 'S'),
-	(196, 1, 24, 'S', 'S', 'S', 'S', 'S');
+	(196, 1, 24, 'S', 'S', 'S', 'S', 'S'),
+	(197, 5, 1, 'S', 'S', 'S', 'S', 'S'),
+	(198, 5, 2, 'S', 'S', 'S', 'S', 'S'),
+	(199, 5, 3, 'S', 'S', 'S', 'S', 'S'),
+	(200, 5, 4, 'S', 'S', 'S', 'S', 'S'),
+	(201, 5, 5, 'S', 'S', 'S', 'S', 'S'),
+	(202, 5, 6, 'S', 'S', 'S', 'S', 'S'),
+	(203, 5, 7, 'S', 'S', 'S', 'S', 'S'),
+	(204, 5, 8, 'S', 'S', 'S', 'S', 'S'),
+	(205, 5, 10, 'S', 'S', 'S', 'S', 'S'),
+	(206, 5, 11, 'S', 'S', 'S', 'S', 'S'),
+	(207, 5, 12, 'S', 'S', 'S', 'S', 'S'),
+	(208, 5, 13, 'S', 'S', 'S', 'S', 'S'),
+	(209, 5, 14, 'S', 'S', 'S', 'S', 'S'),
+	(210, 5, 15, 'S', 'S', 'S', 'S', 'S'),
+	(213, 5, 18, 'S', 'S', 'S', 'S', 'S'),
+	(214, 5, 19, 'S', 'S', 'S', 'S', 'S'),
+	(215, 5, 20, 'S', 'S', 'S', 'S', 'S'),
+	(216, 5, 21, 'S', 'S', 'S', 'S', 'S'),
+	(217, 5, 22, 'S', 'S', 'S', 'S', 'S'),
+	(218, 5, 23, 'S', 'S', 'S', 'S', 'S'),
+	(219, 5, 24, 'S', 'S', 'S', 'S', 'S');
 /*!40000 ALTER TABLE `acesso_permisao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sms.ajuste_estoque
@@ -213,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `balanco` (
   `DATAALTERACAO` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela sms.balanco: ~367 rows (aproximadamente)
+-- Copiando dados para a tabela sms.balanco: ~481 rows (aproximadamente)
 /*!40000 ALTER TABLE `balanco` DISABLE KEYS */;
 INSERT INTO `balanco` (`CODEMPRESA`, `DATABALANCO`, `CODPRODUTO`, `CODDEPARTAMENTO`, `LOTE`, `VALIDADE`, `QUANTIDADE`, `RESPINCLUSAO`, `DATAINCLUSAO`, `RESPALTERACAO`, `DATAALTERACAO`) VALUES
 	(1, '2020-02-10 00:00:00', 321, 3, NULL, NULL, 4, 'Renato Leandro', '2020-02-10 13:44:19', 'Renato Leandro', '2020-02-10 14:21:43'),
@@ -619,7 +627,8 @@ INSERT INTO `balanco` (`CODEMPRESA`, `DATABALANCO`, `CODPRODUTO`, `CODDEPARTAMEN
 	(1, '2020-03-10 00:00:00', 763, 3, NULL, NULL, 0, 'RODRIGO DIEGO', '2020-03-10 09:06:01', 'RODRIGO DIEGO', '2020-03-10 15:52:42'),
 	(1, '2020-03-10 00:00:00', 764, 3, NULL, NULL, 1, 'RODRIGO DIEGO', '2020-03-10 09:06:01', 'RODRIGO DIEGO', '2020-03-10 15:52:42'),
 	(1, '2020-03-09 00:00:00', 446, 3, NULL, NULL, 4, 'RODRIGO DIEGO', '2020-03-10 11:23:15', NULL, NULL),
-	(1, '2020-02-19 00:00:00', 446, 3, NULL, NULL, 4, 'Renato Leandro', '2020-03-10 11:29:33', NULL, NULL);
+	(1, '2020-02-19 00:00:00', 446, 3, NULL, NULL, 4, 'Renato Leandro', '2020-03-10 11:29:33', NULL, NULL),
+	(1, '2020-04-07 00:00:00', 66, 1, NULL, NULL, 10, 'Renato Leandro', '2020-04-07 10:45:35', NULL, NULL);
 /*!40000 ALTER TABLE `balanco` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sms.cfop
@@ -631,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `cfop` (
   PRIMARY KEY (`CODCFOP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Copiando dados para a tabela sms.cfop: ~599 rows (aproximadamente)
+-- Copiando dados para a tabela sms.cfop: ~650 rows (aproximadamente)
 /*!40000 ALTER TABLE `cfop` DISABLE KEYS */;
 INSERT INTO `cfop` (`CODCFOP`, `DESCRICAO`, `APLICACAO`) VALUES
 	('1000', 'ENTRADAS OU AQUISIÇÕES DE SERVIÇOS DO ESTADO', 'Classificam-se, neste grupo, as operações ou prestações em que o estabelecimento remetente esteja localizado na mesma unidade da Federação do destinatário'),
@@ -1370,9 +1379,9 @@ CREATE TABLE IF NOT EXISTS `estoque` (
   `SAIDA` float DEFAULT NULL,
   `QTATUAL` float DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4414 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4415 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela sms.estoque: ~1.364 rows (aproximadamente)
+-- Copiando dados para a tabela sms.estoque: ~1.436 rows (aproximadamente)
 /*!40000 ALTER TABLE `estoque` DISABLE KEYS */;
 INSERT INTO `estoque` (`ID`, `CODEMPRESA`, `CODDEPARTAMENTO`, `MES`, `ANO`, `CODPRODUTO`, `QTANTERIOR`, `ENTRADA`, `SAIDA`, `QTATUAL`) VALUES
 	(2172, 1, 3, 2, 2020, 321, 0, 4, 0, 4),
@@ -2670,7 +2679,8 @@ INSERT INTO `estoque` (`ID`, `CODEMPRESA`, `CODDEPARTAMENTO`, `MES`, `ANO`, `COD
 	(4408, 1, 3, 4, 2020, 765, 0, 0, 0, 0),
 	(4409, 1, 3, 4, 2020, 748, 67, 0, 1, 0),
 	(4410, 1, 3, 4, 2020, 769, 0, 0, 0, 0),
-	(4413, 1, 3, 4, 2020, 689, 400, 0, 1, 399);
+	(4413, 1, 3, 4, 2020, 689, 400, 0, 1, 399),
+	(4414, 1, 1, 4, 2020, 66, 0, 10, 3, 7);
 /*!40000 ALTER TABLE `estoque` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sms.estorno
@@ -2826,9 +2836,9 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `DATAALTERACAO` datetime DEFAULT NULL,
   `EXCLUIDO` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`CODPEDIDO`)
-) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=230 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Copiando dados para a tabela sms.pedido: ~273 rows (aproximadamente)
+-- Copiando dados para a tabela sms.pedido: ~145 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
 INSERT INTO `pedido` (`CODPEDIDO`, `CODEMPRESA`, `TIPO`, `APROVADO`, `CODUNIDADE`, `CODDEPARTAMENTO`, `SOLICITANTE`, `NUMEROPEDIDO`, `DATAPEDIDO`, `STATUS`, `RESPINCLUSAO`, `DATAINCLUSAO`, `RESPALTERACAO`, `DATAALTERACAO`, `EXCLUIDO`) VALUES
 	(1, 1, 1, 1, 29, 3, 'JOAO RICARDO P. SIQUEIRA LOPES', '1', '2019-10-29 00:00:00', 'FECHADO', 'JOAO RICARDO P. SIQUEIRA LOPES', '2019-10-29 15:30:14', NULL, NULL, 'N'),
@@ -2838,8 +2848,7 @@ INSERT INTO `pedido` (`CODPEDIDO`, `CODEMPRESA`, `TIPO`, `APROVADO`, `CODUNIDADE
 	(5, 1, 1, 1, 1, 3, 'LUCIANA', '5', '2019-11-01 00:00:00', 'FECHADO', 'LUCIANA', '2019-11-01 09:35:56', NULL, NULL, 'N'),
 	(6, 1, 1, 1, 1, 3, 'ELVIS', '6', '2019-11-01 00:00:00', 'FECHADO', 'ELVIS', '2019-11-01 13:25:55', NULL, NULL, 'N'),
 	(7, 1, 1, 1, 1, 3, 'KATIA CRISTINA RODRIGUES ALVES', '7', '2019-11-01 00:00:00', 'FECHADO', 'KATIA CRISTINA RODRIGUES ALVES', '2019-11-01 13:37:21', NULL, NULL, 'N'),
-	(8, 1, 0, 0, 1, NULL, NULL, '8', '2019-11-18 00:00:00', 'FECHADO', 'Renato Leandro', '2019-11-18 10:02:17', NULL, NULL, 'N'),
-	(9, 1, 0, 1, 0, 3, 'KÁTIA', '1', '2019-11-27 00:00:00', 'ABERTO', 'RODRIGO DIEGO', '2019-11-27 09:43:42', NULL, NULL, 'N'),
+	(9, 1, 1, 1, 1, 3, 'KÁTIA', '1', '2019-11-27 00:00:00', 'FECHADO', 'RODRIGO DIEGO', '2019-11-27 09:43:42', NULL, NULL, 'N'),
 	(10, 1, 0, 1, 31, 3, 'JOAO RICARDO ', '2', '2020-02-10 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-02-10 14:51:46', NULL, NULL, 'N'),
 	(11, 1, 0, 1, 31, 3, 'JOAO RICARDO', '3', '2020-02-10 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-02-10 14:53:28', NULL, NULL, 'N'),
 	(12, 1, 0, 1, 29, 3, 'JOAO RICARDO', '4', '2020-02-12 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-02-12 10:35:52', NULL, NULL, 'N'),
@@ -3055,7 +3064,9 @@ INSERT INTO `pedido` (`CODPEDIDO`, `CODEMPRESA`, `TIPO`, `APROVADO`, `CODUNIDADE
 	(224, 1, 0, 1, 35, 3, 'MARIANE FARIA', '216', '2020-04-01 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-04-01 14:43:38', NULL, NULL, 'N'),
 	(225, 1, 0, 1, 1, 3, 'KÁTIA CRISTINA R. ALVES', '217', '2020-04-01 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-04-01 14:56:13', NULL, NULL, 'N'),
 	(226, 1, 0, 1, 42, 3, 'PAULIANA MENDONÇA', '218', '2020-04-06 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-04-06 08:56:17', NULL, NULL, 'N'),
-	(227, 1, 0, 1, 42, 3, 'PAULIANA MENDONÇA', '219', '2020-04-06 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-04-06 11:00:58', NULL, NULL, 'N');
+	(227, 1, 0, 1, 42, 3, 'PAULIANA MENDONÇA', '219', '2020-04-06 00:00:00', 'FECHADO', 'Ingrid Gondin', '2020-04-06 11:00:58', NULL, NULL, 'N'),
+	(228, 1, 0, 1, 1, 1, 'RENATO LEANDRO', '1', '2020-04-07 00:00:00', 'FECHADO', 'Renato Leandro', '2020-04-07 09:55:21', NULL, NULL, 'N'),
+	(229, 1, 0, 1, 1, 1, 'PAULO EDUARDO', '2', '2020-04-07 00:00:00', 'FECHADO', 'Renato Leandro', '2020-04-07 11:01:51', NULL, NULL, 'N');
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sms.pedido_item
@@ -3070,7 +3081,7 @@ CREATE TABLE IF NOT EXISTS `pedido_item` (
   `PARAQUEM` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Copiando dados para a tabela sms.pedido_item: ~1.234 rows (aproximadamente)
+-- Copiando dados para a tabela sms.pedido_item: ~1.182 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedido_item` DISABLE KEYS */;
 INSERT INTO `pedido_item` (`CODPEDIDO`, `NUMEROPEDIDO`, `CODPRODUTO`, `LOTE`, `QUANTIDADE`, `ESTOQUEUBS`, `PARAQUEM`) VALUES
 	(1, '1', 488, '0', 2, '0', 'Lara Gabriela Silva Romão'),
@@ -4328,7 +4339,9 @@ INSERT INTO `pedido_item` (`CODPEDIDO`, `NUMEROPEDIDO`, `CODPRODUTO`, `LOTE`, `Q
 	(224, '216', 587, '0', 50, '0', NULL),
 	(225, '217', 699, '0', 30, '0', NULL),
 	(226, '218', 697, '0', 4, '0', NULL),
-	(227, '219', 715, '0', 1, '0', NULL);
+	(227, '219', 715, '0', 1, '0', NULL),
+	(228, '1', 66, '0', 10, '0', NULL),
+	(229, '2', 66, '0', 2, '0', NULL);
 /*!40000 ALTER TABLE `pedido_item` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sms.produtos
@@ -4351,7 +4364,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`CODPRODUTO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=785 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela sms.produtos: ~871 rows (aproximadamente)
+-- Copiando dados para a tabela sms.produtos: ~920 rows (aproximadamente)
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
 INSERT INTO `produtos` (`CODPRODUTO`, `NOME`, `DESCRICAO`, `CODGRUPO`, `CODMARCA`, `UNIDADE`, `ATIVO`, `RESPINCLUSAO`, `DATAINCLUSAO`, `RESPALTERACAO`, `DATAALTERACAO`, `EXCLUIDO`, `CODDEPARTAMENTO`, `SAIDAPADRAO`) VALUES
 	(1, 'Abridor de Boca ', ' ', 5, 47, 'UNIDADE', '1', 'RODRIGO DIEGO', '2019-01-10 00:00:00', '', '0000-00-00 00:00:00', 'N', 1, NULL),
@@ -5155,9 +5168,9 @@ CREATE TABLE IF NOT EXISTS `saida` (
   `DATAALTERACAO` datetime DEFAULT NULL,
   `EXCLUIDO` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`CODSAIDA`)
-) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=216 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Copiando dados para a tabela sms.saida: ~209 rows (aproximadamente)
+-- Copiando dados para a tabela sms.saida: ~213 rows (aproximadamente)
 /*!40000 ALTER TABLE `saida` DISABLE KEYS */;
 INSERT INTO `saida` (`CODSAIDA`, `CODEMPRESA`, `CODDEPARTAMENTO`, `CODUNIDADE`, `NUMEROPEDIDO`, `DATAENTREGA`, `RESPINCLUSAO`, `DATAINCLUSAO`, `RESPALTERACAO`, `DATAALTERACAO`, `EXCLUIDO`) VALUES
 	(3, 1, 3, 31, '2', '2020-02-11 00:00:00', 'Renato Leandro', '2020-02-11 00:00:00', 'Renato Leandro', '2020-02-11 00:00:00', 'N'),
@@ -5368,7 +5381,9 @@ INSERT INTO `saida` (`CODSAIDA`, `CODEMPRESA`, `CODDEPARTAMENTO`, `CODUNIDADE`, 
 	(210, 1, 3, 35, '216', '2020-04-01 00:00:00', 'Ingrid Gondin', '2020-04-01 14:45:12', NULL, NULL, 'N'),
 	(211, 1, 3, 1, '217', '2020-04-01 00:00:00', 'Ingrid Gondin', '2020-04-01 14:56:40', NULL, NULL, 'N'),
 	(212, 1, 3, 42, '218', '2020-04-06 00:00:00', 'Ingrid Gondin', '2020-04-06 08:56:39', NULL, NULL, 'N'),
-	(213, 1, 3, 42, '219', '2020-04-06 00:00:00', 'Ingrid Gondin', '2020-04-06 11:01:23', NULL, NULL, 'N');
+	(213, 1, 3, 42, '219', '2020-04-06 00:00:00', 'Ingrid Gondin', '2020-04-06 11:01:23', NULL, NULL, 'N'),
+	(214, 1, 1, 1, '1', '2020-04-07 00:00:00', 'Renato Leandro', '2020-04-07 10:47:55', NULL, NULL, 'N'),
+	(215, 1, 1, 1, '2', '2020-04-07 00:00:00', 'Renato Leandro', '2020-04-07 11:02:10', NULL, NULL, 'N');
 /*!40000 ALTER TABLE `saida` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sms.saida_item
@@ -5385,7 +5400,7 @@ CREATE TABLE IF NOT EXISTS `saida_item` (
   `ANO` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Copiando dados para a tabela sms.saida_item: ~1.017 rows (aproximadamente)
+-- Copiando dados para a tabela sms.saida_item: ~1.168 rows (aproximadamente)
 /*!40000 ALTER TABLE `saida_item` DISABLE KEYS */;
 INSERT INTO `saida_item` (`CODSAIDA`, `NUMEROPEDIDO`, `CODPRODUTO`, `LOTE`, `VALIDADE`, `SOLICITADO`, `ENTREGUE`, `MES`, `ANO`) VALUES
 	(3, '2', 323, '', '', 2, 2, 2, 2020),
@@ -6591,7 +6606,9 @@ INSERT INTO `saida_item` (`CODSAIDA`, `NUMEROPEDIDO`, `CODPRODUTO`, `LOTE`, `VAL
 	(210, '216', 587, '', '', 50, 50, 4, 2020),
 	(211, '217', 699, '', '', 30, 30, 4, 2020),
 	(212, '218', 697, '', '', 4, 4, 4, 2020),
-	(213, '219', 715, '', '', 1, 1, 4, 2020);
+	(213, '219', 715, '', '', 1, 1, 4, 2020),
+	(214, '1', 66, '', '', 10, 2, 4, 2020),
+	(215, '2', 66, '', '', 2, 1, 4, 2020);
 /*!40000 ALTER TABLE `saida_item` ENABLE KEYS */;
 
 -- Copiando estrutura para procedure sms.Sp_Add_ItemSaida
@@ -6634,7 +6651,7 @@ CREATE TABLE IF NOT EXISTS `unidade` (
   PRIMARY KEY (`CODUNIDADE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Copiando dados para a tabela sms.unidade: ~60 rows (aproximadamente)
+-- Copiando dados para a tabela sms.unidade: ~61 rows (aproximadamente)
 /*!40000 ALTER TABLE `unidade` DISABLE KEYS */;
 INSERT INTO `unidade` (`CODUNIDADE`, `NOME`, `TELEFONE`, `EMAIL`, `ENDERECO`, `BAIRRO`, `ATIVA`, `RESPINCLUSAO`, `DATAINCLUSAO`, `RESPALTERACAO`, `DATAALTERACAO`, `EXCLUIDO`) VALUES
 	(1, 'CAT - CENTRO AMBULATORIAL DE TRINDADE', '(62) 3506-4597', '', 'RUA ', 'VILA PERPÉTUO SOCORRO', 'S', NULL, NULL, 'RODRIGO DIEGO', '2020-03-10 15:16:06', 'N'),
@@ -6685,6 +6702,7 @@ INSERT INTO `unidade` (`CODUNIDADE`, `NOME`, `TELEFONE`, `EMAIL`, `ENDERECO`, `B
 	(46, 'GALPÃO PNEUS - CIGANINHO', '(  )     -', '', '', 'LAGUNA', 'S', 'Ingrid Gondin', '2020-03-10 14:35:54', 'RODRIGO DIEGO', '2020-03-10 15:58:49', 'N'),
 	(47, '302 - MAYSA II', '(62) 3506-7055', '', '', 'MAYSA II', 'S', 'RODRIGO DIEGO', '2020-03-10 16:14:23', 'RODRIGO DIEGO', '2020-03-10 16:39:07', 'N'),
 	(48, '321 - BELA VISTA', '(62) 3294-3885', '', '', 'BELA VISTA', 'S', 'Ingrid Gondin', '2020-03-10 16:24:47', 'RODRIGO DIEGO', '2020-03-10 16:49:59', 'N'),
+	(49, 'vazio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(50, 'PREFEITURA', '(  )     -', '', '', '', 'S', 'Ingrid Gondin', '2020-03-17 10:08:52', NULL, NULL, 'N'),
 	(51, 'DEPARTAMENTO DE REGULAÇÃO', '(  )     -', '', '', '', 'S', 'Ingrid Gondin', '2020-03-17 13:13:29', NULL, NULL, 'N'),
 	(52, 'ATENÇÃO ASSISTIDA', '(62) 3506-7236', '', '', '', 'S', 'Ingrid Gondin', '2020-03-18 09:25:24', NULL, NULL, 'N'),
@@ -6759,11 +6777,11 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Copiando dados para a tabela sms.usuarios: ~29 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`CODUSUARIO`, `CODEMPRESA`, `CODDEPARTAMENTO`, `CODUNIDADE`, `TIPOUSUARIO`, `NOME`, `CPF`, `EMAIL`, `TELEFONE`, `LOGIN`, `SENHA`, `ATIVO`, `RESPINCLUSAO`, `DATAHORAINCLUSAO`, `RESPALTERACAO`, `DATAHORAALTERACAO`, `EXCLUIDO`, `FUNCAO`, `LOTACAO`) VALUES
-	(1, 1, 3, 1, 0, 'Renato Leandro', '76089479187', 'renatolsouza@gmail.com', '31100010', 'renato', 'taroba', 1, '0', NULL, 'Renato Leandro', '2019-08-16 10:46:39', 'N', 'COORDENADOR', 'ODONTOLOGIA'),
+	(1, 1, 3, 1, 0, 'Renato Leandro', '76089479187', 'renatolsouza@gmail.com', '31100010', 'renato', '123', 1, '0', NULL, 'Renato Leandro', '2019-08-16 10:46:39', 'N', 'COORDENADOR', 'ODONTOLOGIA'),
 	(2, 1, 2, 1, 1, 'Rodrigo Diego', '21', 'matheus@marrentinho.com.br', '(62)3110-0010', 'RODRIGO', 'assistida', 2, '0', NULL, 'Renato Leandro', '2019-05-15 09:49:46', 'N', '0', '0'),
 	(3, 1, 2, 5, 5, 'FELIPE', '11123265498', 'felipe@sms.com', '3232-6654', 'FELIPE', '123', 2, 'Renato Leandro', '2019-07-17 07:54:42', '0', NULL, 'N', '0', '0'),
 	(4, 1, 1, 17, 17, 'AMANDA', '11123265498', 'amanda@sms.com', '6266660066', '11123265499', '123456', 2, 'Renato Leandro', '2019-07-17 07:55:36', '0', NULL, 'N', '0', '0'),
-	(5, 1, 1, 1, 1, 'Renato Leandro', '76089479187', 'renatolsouza@gmail.com', '31100010', 'renato', 'tarobao', 1, '0', '2019-07-26 09:53:59', '0', '2019-07-26 09:54:01', 'N', 'COORDENADOR', 'ODONTOLOGIA'),
+	(5, 1, 1, 1, 1, 'Renato Leandro', '76089479187', 'renatolsouza@gmail.com', '31100010', 'renato', '123o', 1, '0', '2019-07-26 09:53:59', '0', '2019-07-26 09:54:01', 'N', 'COORDENADOR', 'ODONTOLOGIA'),
 	(6, 1, 1, 1, 0, 'ZE', '11111111111', 'AAA', '3120-0062', 'teste', '123456', 2, 'Renato Leandro', '2019-08-16 11:38:13', '0', NULL, 'N', '0', '0'),
 	(7, 1, 1, 1, 0, 'RODRIGO DIEGO', '02102151190', 'r.diego@hotmail.com', '62 986194341', 'R. DIEGO', 'odonto', 1, 'Renato Leandro', '2019-09-18 10:27:00', '0', NULL, 'N', '0', '0'),
 	(8, 1, 3, 1, 0, 'RODRIGO DIEGO', '02102151190', 'r.diego@hotmail.com', '62 986194341', 'R. DIEGO', 'caftrin', 1, 'Renato Leandro', '2019-10-17 14:10:52', '0', NULL, 'N', '0', '0'),

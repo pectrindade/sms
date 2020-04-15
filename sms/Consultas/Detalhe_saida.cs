@@ -77,7 +77,7 @@ namespace Atencao_Assistida.Consultas
 
 
             // BUSCA E GRAVA NO REPOSITORIO
-            var dr = Classes.Mysql.Saida.Saida_Periodo(int.Parse(Usuario.Codempresa), int.Parse(Usuario.Coddepartamento), codunidade, codproduto, DataInicial, DataFinal);
+            var dr = Classes.Mysql.Saida.Saida_Periodo(int.Parse(Usuario.Codempresa), int.Parse(Parametros.Coddepartamento), codunidade, codproduto, DataInicial, DataFinal);
 
             if (dr.HasRows)
             {

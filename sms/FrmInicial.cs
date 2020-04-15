@@ -87,31 +87,33 @@ namespace teste1
             {
                 MicAtencaoAssit.Visible = false;
                 MimAtencaoAssist.Visible = false;
-                MirAtencaoAssist.Visible = false;
+                MiRAtencaoAssist.Visible = false;
 
                 Miccaftrin.Visible = false;
                 MimCaftrin.Visible = false;
+                MiRCaftrin.Visible = false;
 
             }
             else if (Coddepartamento == "2")
             {
                 MicOdont.Visible = false;
                 MimOdont.Visible = false;
-                MirOdont.Visible = false;
+                MiROdont.Visible = false;
 
                 Miccaftrin.Visible = false;
                 MimCaftrin.Visible = false;
+                MiRCaftrin.Visible = false;
 
             }
             else if (Coddepartamento == "3")
             {
                 MicOdont.Visible = false;
                 MimOdont.Visible = false;
-                MirOdont.Visible = false;
+                MiROdont.Visible = false;
 
                 MicAtencaoAssit.Visible = false;
                 MimAtencaoAssist.Visible = false;
-                MirAtencaoAssist.Visible = false;
+                MiRAtencaoAssist.Visible = false;
 
 
             }
@@ -207,6 +209,7 @@ namespace teste1
         private void AcessoParcial(int id)
         {
             tAviso.Enabled = true;
+            int coddepartamento = int.Parse(Usuario.Coddepartamento.ToString());
 
             var dr = Acessos.SelectPermissao(id);
             if (dr.HasRows)
@@ -271,28 +274,44 @@ namespace teste1
                         //CADASTRO
 
                         case "tdDepartamento":
-                            MicCaftrinDepartamento.Enabled = true;
+                            if (coddepartamento == 1) { MicOdontDepartamento.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinDepartamento.Enabled = true; }
+
                             break;
                         case "tdFornecedor":
-                            MicCaftrinFornecedor.Enabled = true;
+                            if (coddepartamento == 1) { MicOdontFornecedor.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinFornecedor.Enabled = true; }
+                            
                             break;
                         case "tdUnidade":
-                            MicCaftrinUnidades.Enabled = true;
+                            if (coddepartamento == 1) { MicOdontUnidades.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinUnidades.Enabled = true; }
+                            
                             break;
                         case "tdUnidadeMedida":
-                            MicCaftrinUnidadeMedida.Enabled = true;
+                            //if (coddepartamento == 1) { MicOdontu.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinUnidadeMedida.Enabled = true; }
+                            
                             break;
                         case "tdGrupo":
-                            MicCaftrinGrupo.Enabled = true;
+                            if (coddepartamento == 1) { MicOdontGrupos.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinGrupo.Enabled = true; }
+                           
                             break;
                         case "tdMarcas":
-                            MicCaftrinMarcas.Enabled = true;
+                            if (coddepartamento == 1) { MicOdontMarcas.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinMarcas.Enabled = true; }
+                            
                             break;
                         case "tdCfop":
-                            MicCaftrinCfop.Enabled = true;
+                            //if (coddepartamento == 1) { MicOdontCfop.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinCfop.Enabled = true; }
+                            
                             break;
                         case "tdProdutos":
-                            MicCaftrinProdutos.Enabled = true;
+                            if (coddepartamento == 1) { MicOdontProdutos.Enabled = true; }
+                            if (coddepartamento == 3) { MicCaftrinProdutos.Enabled = true; }
+                           
                             break;
 
                         //CONSULTAS
@@ -343,18 +362,18 @@ namespace teste1
                             MioFechamentoEstoque.Enabled = true;
                             break;
 
-                            #endregion
+                        #endregion
 
                         #region Operacional
 
-                            //case "tdUsuario":
-                            //    MioCadastroUsuarios.Enabled = true;
-                            //    break;
-                            //case "Acesso de Usuário":
-                            //    MioAcessoUsuarios.Enabled = true;
-                            //    break;
+                        //case "tdUsuario":
+                        //    MioCadastroUsuarios.Enabled = true;
+                        //    break;
+                        //case "Acesso de Usuário":
+                        //    MioAcessoUsuarios.Enabled = true;
+                        //    break;
 
-                            #endregion
+                        #endregion
                     }
 
 

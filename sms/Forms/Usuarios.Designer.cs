@@ -93,7 +93,7 @@
             // 
             this.cmbativo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbativo.FormattingEnabled = true;
-            this.cmbativo.Location = new System.Drawing.Point(12, 362);
+            this.cmbativo.Location = new System.Drawing.Point(15, 321);
             this.cmbativo.Name = "cmbativo";
             this.cmbativo.Size = new System.Drawing.Size(121, 21);
             this.cmbativo.TabIndex = 8;
@@ -147,7 +147,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 346);
+            this.label6.Location = new System.Drawing.Point(18, 305);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 11;
@@ -156,7 +156,7 @@
             // btnDesfazer
             // 
             this.btnDesfazer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDesfazer.Location = new System.Drawing.Point(292, 401);
+            this.btnDesfazer.Location = new System.Drawing.Point(371, 363);
             this.btnDesfazer.Name = "btnDesfazer";
             this.btnDesfazer.Size = new System.Drawing.Size(59, 23);
             this.btnDesfazer.TabIndex = 11;
@@ -167,7 +167,7 @@
             // BtnExcluir
             // 
             this.BtnExcluir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnExcluir.Location = new System.Drawing.Point(203, 401);
+            this.BtnExcluir.Location = new System.Drawing.Point(282, 363);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(59, 23);
             this.BtnExcluir.TabIndex = 10;
@@ -177,7 +177,7 @@
             // btnSalvar
             // 
             this.btnSalvar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSalvar.Location = new System.Drawing.Point(113, 401);
+            this.btnSalvar.Location = new System.Drawing.Point(192, 363);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(59, 23);
             this.btnSalvar.TabIndex = 9;
@@ -188,7 +188,7 @@
             // btnFechar
             // 
             this.btnFechar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFechar.Location = new System.Drawing.Point(27, 401);
+            this.btnFechar.Location = new System.Drawing.Point(106, 363);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(59, 23);
             this.btnFechar.TabIndex = 12;
@@ -292,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 466);
+            this.ClientSize = new System.Drawing.Size(537, 401);
             this.ControlBox = false;
             this.Controls.Add(this.label10);
             this.Controls.Add(this.CmbFuncao);
