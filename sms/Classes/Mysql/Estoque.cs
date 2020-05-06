@@ -926,6 +926,7 @@ namespace Atencao_Assistida.Classes.Mysql
         {
 
             string resposta = "";
+            data = Convert.ToDateTime(data).ToString();
 
             var db = new DBAcess();
             var Mysql = " SELECT * ";
@@ -1144,7 +1145,8 @@ namespace Atencao_Assistida.Classes.Mysql
 
             Mysql = Mysql + " INNER JOIN empresa AS EP ON EP.CODEMPRESA = E.CODEMPRESA ";
             Mysql = Mysql + " INNER JOIN departamento AS D ON D.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
-            Mysql = Mysql + " INNER JOIN produtos AS P ON P.CODPRODUTO = E.CODPRODUTO ";
+            Mysql = Mysql + " INNER JOIN produtos P ON P.CODPRODUTO = E.CODPRODUTO AND P.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
+           
 
             Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
             Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
@@ -1184,7 +1186,7 @@ namespace Atencao_Assistida.Classes.Mysql
 
             Mysql = Mysql + " INNER JOIN empresa AS EP ON EP.CODEMPRESA = E.CODEMPRESA ";
             Mysql = Mysql + " INNER JOIN departamento AS D ON D.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
-            Mysql = Mysql + " INNER JOIN produtos AS P ON P.CODPRODUTO = E.CODPRODUTO ";
+            Mysql = Mysql + " INNER JOIN produtos AS P ON P.CODPRODUTO = E.CODPRODUTO AND P.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
 
             Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
             Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";

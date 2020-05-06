@@ -39,9 +39,10 @@ namespace Atencao_Assistida.Consultas
             Grid.Refresh();
 
             DateTime date2 = DateTime.Now;
-            var vData = date2.ToString("dd/MM/yyyy");
+            var vData = Parametros.Data;
 
             DateTime data = Convert.ToDateTime(DateTime.Now);
+            data = Convert.ToDateTime(vData);
 
             var vmes = data.ToString("MM");
             int mes = int.Parse(vmes);

@@ -183,16 +183,21 @@ namespace Atencao_Assistida.Consultas
             {
                 while (dr.Read())
                 {
+                    var coddepartamento1 = dr.GetString(dr.GetOrdinal("CODDEPARTAMENTO"));
+                    var coddepartamento2 = cmbDepartamento.SelectedIndex.ToString();
 
-                    linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
-                    linhaDados[1] = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
-                    linhaDados[2] = dr.GetString(dr.GetOrdinal("QTANTERIOR"));
-                    linhaDados[3] = dr.GetString(dr.GetOrdinal("ENTRADA"));
-                    linhaDados[4] = dr.GetString(dr.GetOrdinal("SAIDA"));
-                    linhaDados[5] = dr.GetString(dr.GetOrdinal("QTATUAL"));
+                    if (dr.GetString(dr.GetOrdinal("CODDEPARTAMENTO")) == cmbDepartamento.SelectedIndex.ToString())
+                    {
+                        linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
+                        linhaDados[1] = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
+                        linhaDados[2] = dr.GetString(dr.GetOrdinal("QTANTERIOR"));
+                        linhaDados[3] = dr.GetString(dr.GetOrdinal("ENTRADA"));
+                        linhaDados[4] = dr.GetString(dr.GetOrdinal("SAIDA"));
+                        linhaDados[5] = dr.GetString(dr.GetOrdinal("QTATUAL"));
 
 
-                    Grid.Rows.Add(linhaDados);
+                        Grid.Rows.Add(linhaDados);
+                    }
                 }
 
             }
@@ -475,6 +480,7 @@ namespace Atencao_Assistida.Consultas
                 Parametros.Codigo = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
                 Parametros.Nome = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
                 Parametros.Coddepartamento = cmbDepartamento.SelectedIndex.ToString();
+                Parametros.Data = txtDataEstoque.Text.Trim();
             }
             catch
             {

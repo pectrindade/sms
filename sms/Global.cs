@@ -68,6 +68,13 @@ namespace Atencao_Assistida
             set { _coddepartamento = value; }
         }
 
+        private static string _data = "";
+        public static string Data
+        {
+            get { return _data; }
+            set { _data = value; }
+        }
+
 
     }
 
