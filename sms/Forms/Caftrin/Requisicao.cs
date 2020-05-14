@@ -1,15 +1,7 @@
 ﻿using Atencao_Assistida.Classes.Mysql;
 using Atencao_Assistida.Pesquisas;
 using Atencao_Assistida.Relatorios.Pedido;
-using Atencao_Assistida.Classes.Funcoes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Atencao_Assistida.Forms.Caftrin
@@ -61,6 +53,16 @@ namespace Atencao_Assistida.Forms.Caftrin
                 if (ActiveControl.Name == "txtCodUnidade") { btnBuscaUnidade.PerformClick(); return; }
                 if (ActiveControl.Name == "txtCodProduto") { btnBuscaProduto.PerformClick(); return; }
 
+
+            }
+        }
+
+        private void Requisicao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
 
             }
         }
@@ -281,17 +283,7 @@ namespace Atencao_Assistida.Forms.Caftrin
         {
             Close();
         }
-
-        private void Requisicao_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-
-            }
-        }
-
+       
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime date = this.dateTimePicker1.Value;
@@ -556,15 +548,9 @@ namespace Atencao_Assistida.Forms.Caftrin
             txtCodProduto.Focus();
         }
 
-        private void txtQuantidade_Leave(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDesfazer_Click(object sender, EventArgs e)
         {
             LimpaTela();
-
 
         }
 

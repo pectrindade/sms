@@ -189,7 +189,7 @@
             this.btnListar.Location = new System.Drawing.Point(367, 287);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(59, 23);
-            this.btnListar.TabIndex = 11;
+            this.btnListar.TabIndex = 12;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
@@ -200,7 +200,7 @@
             this.btnDesfaz.Location = new System.Drawing.Point(302, 287);
             this.btnDesfaz.Name = "btnDesfaz";
             this.btnDesfaz.Size = new System.Drawing.Size(59, 23);
-            this.btnDesfaz.TabIndex = 10;
+            this.btnDesfaz.TabIndex = 11;
             this.btnDesfaz.Text = "Desfaz";
             this.btnDesfaz.UseVisualStyleBackColor = true;
             this.btnDesfaz.Click += new System.EventHandler(this.btnDesfazer_Click);
@@ -211,7 +211,7 @@
             this.BtnExcluir.Location = new System.Drawing.Point(237, 287);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(59, 23);
-            this.BtnExcluir.TabIndex = 9;
+            this.BtnExcluir.TabIndex = 10;
             this.BtnExcluir.Text = "Excluir";
             this.BtnExcluir.UseVisualStyleBackColor = true;
             // 
@@ -221,7 +221,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(172, 287);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(59, 23);
-            this.btnSalvar.TabIndex = 8;
+            this.btnSalvar.TabIndex = 9;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -232,7 +232,7 @@
             this.btnFechar.Location = new System.Drawing.Point(107, 287);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(59, 23);
-            this.btnFechar.TabIndex = 12;
+            this.btnFechar.TabIndex = 13;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -265,7 +265,7 @@
             this.txtSaidaPadrao.Location = new System.Drawing.Point(6, 248);
             this.txtSaidaPadrao.Name = "txtSaidaPadrao";
             this.txtSaidaPadrao.Size = new System.Drawing.Size(81, 20);
-            this.txtSaidaPadrao.TabIndex = 234;
+            this.txtSaidaPadrao.TabIndex = 8;
             // 
             // label2
             // 

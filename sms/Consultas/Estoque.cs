@@ -255,11 +255,36 @@ namespace Atencao_Assistida.Consultas
                     var codempresa = dr.GetInt32(dr.GetOrdinal("CODEMPRESA"));
                     var coddepartamento = dr.GetInt32(dr.GetOrdinal("CODDEPARTAMENTO"));
                     var nomedepartamento = dr.GetString(dr.GetOrdinal("NOMEDEPARTAMENTO"));
+
+                    int codgrupo = 0;
+                    var nomegrupo = "";
+
+                    if (vcodgrupo != 0)
+                    {
+                       // codgrupo = dr.GetInt32(dr.GetOrdinal("CODGRUPO"));
+                        nomegrupo = dr.GetString(dr.GetOrdinal("NOMEGRUPO"));
+                    }
+                    else
+                    {
+                        nomegrupo = "TODOS";
+                    }
+
                     var varmes = dr.GetInt32(dr.GetOrdinal("MES"));
                     var varano = dr.GetString(dr.GetOrdinal("ANO"));
-
                     var codproduto = dr.GetInt32(dr.GetOrdinal("CODPRODUTO"));
-                    var nomeproduto = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
+
+                    string s = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
+                    int caract = s.Length;
+                    var nomeproduto = "";
+
+                    if(caract >= 200)
+                    {
+                        nomeproduto = s.Substring(0, 200);
+                    }
+                    else
+                    {
+                        nomeproduto = s;
+                    }
 
                     var qtanterior = dr.GetString(dr.GetOrdinal("QTANTERIOR"));
                     var entrada = dr.GetString(dr.GetOrdinal("ENTRADA"));
@@ -269,13 +294,28 @@ namespace Atencao_Assistida.Consultas
                     var usuario = Usuario.Nomeusuario;
                     var funcao = Usuario.Funcao;
 
+                    var saidapadrao = "";
+                    var estimativa = "";
+
+                    if (!dr.IsDBNull(dr.GetOrdinal("SAIDAPADRAO"))) { saidapadrao = dr.GetString(dr.GetOrdinal("SAIDAPADRAO")); }
+
+                    if(saidapadrao != "")
+                    {
+                        if (saidapadrao != "0")
+                        {
+                            estimativa = (float.Parse(qtatual) / float.Parse(saidapadrao)).ToString();
+                            var result = decimal.Parse(estimativa);
+
+                            estimativa = String.Format("{0:0.0}", result);
+                        }
+                    }
 
 
                     try
                     {
                         var m = new Classes.Mysql.Estoque();
 
-                        m.InsertAccess(codempresa, coddepartamento, nomedepartamento, varmes.ToString(), varano, codproduto, nomeproduto, qtanterior, entrada, saida, qtatual);
+                        m.InsertAccess(codempresa, coddepartamento, nomedepartamento, nomegrupo, varmes.ToString(), varano, codproduto, nomeproduto, qtanterior, entrada, saida, qtatual, saidapadrao, estimativa);
                     }
                     catch (Exception erro)
                     {

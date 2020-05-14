@@ -305,6 +305,12 @@ namespace Atencao_Assistida.Relatorios.Estoque {
             
             private global::System.Data.DataColumn columnFUNCAO;
             
+            private global::System.Data.DataColumn columnSAIDAPADRAO;
+            
+            private global::System.Data.DataColumn columnESTIMATIVAMES;
+            
+            private global::System.Data.DataColumn columnNOMEGRUPO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public EstoqueDataTable() {
@@ -444,6 +450,30 @@ namespace Atencao_Assistida.Relatorios.Estoque {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SAIDAPADRAOColumn {
+                get {
+                    return this.columnSAIDAPADRAO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ESTIMATIVAMESColumn {
+                get {
+                    return this.columnESTIMATIVAMES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NOMEGRUPOColumn {
+                get {
+                    return this.columnNOMEGRUPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +509,23 @@ namespace Atencao_Assistida.Relatorios.Estoque {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EstoqueRow AddEstoqueRow(int CODEMPRESA, int CODDEPARTAMENTO, string NOMEDEPARTAMENTO, string MES, string ANO, int CODPRODUTO, string NOMEPRODUTO, string QTANTERIOR, string ENTRADA, string SAIDA, string QTATUAL, string USUARIO, string FUNCAO) {
+            public EstoqueRow AddEstoqueRow(
+                        int CODEMPRESA, 
+                        int CODDEPARTAMENTO, 
+                        string NOMEDEPARTAMENTO, 
+                        string MES, 
+                        string ANO, 
+                        int CODPRODUTO, 
+                        string NOMEPRODUTO, 
+                        string QTANTERIOR, 
+                        string ENTRADA, 
+                        string SAIDA, 
+                        string QTATUAL, 
+                        string USUARIO, 
+                        string FUNCAO, 
+                        string SAIDAPADRAO, 
+                        string ESTIMATIVAMES, 
+                        string NOMEGRUPO) {
                 EstoqueRow rowEstoqueRow = ((EstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CODEMPRESA,
@@ -494,7 +540,10 @@ namespace Atencao_Assistida.Relatorios.Estoque {
                         SAIDA,
                         QTATUAL,
                         USUARIO,
-                        FUNCAO};
+                        FUNCAO,
+                        SAIDAPADRAO,
+                        ESTIMATIVAMES,
+                        NOMEGRUPO};
                 rowEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEstoqueRow);
                 return rowEstoqueRow;
@@ -530,6 +579,9 @@ namespace Atencao_Assistida.Relatorios.Estoque {
                 this.columnQTATUAL = base.Columns["QTATUAL"];
                 this.columnUSUARIO = base.Columns["USUARIO"];
                 this.columnFUNCAO = base.Columns["FUNCAO"];
+                this.columnSAIDAPADRAO = base.Columns["SAIDAPADRAO"];
+                this.columnESTIMATIVAMES = base.Columns["ESTIMATIVAMES"];
+                this.columnNOMEGRUPO = base.Columns["NOMEGRUPO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -561,6 +613,12 @@ namespace Atencao_Assistida.Relatorios.Estoque {
                 base.Columns.Add(this.columnUSUARIO);
                 this.columnFUNCAO = new global::System.Data.DataColumn("FUNCAO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFUNCAO);
+                this.columnSAIDAPADRAO = new global::System.Data.DataColumn("SAIDAPADRAO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSAIDAPADRAO);
+                this.columnESTIMATIVAMES = new global::System.Data.DataColumn("ESTIMATIVAMES", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESTIMATIVAMES);
+                this.columnNOMEGRUPO = new global::System.Data.DataColumn("NOMEGRUPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMEGRUPO);
                 this.columnNOMEDEPARTAMENTO.MaxLength = 200;
                 this.columnMES.MaxLength = 2;
                 this.columnANO.MaxLength = 4;
@@ -571,6 +629,9 @@ namespace Atencao_Assistida.Relatorios.Estoque {
                 this.columnQTATUAL.MaxLength = 20;
                 this.columnUSUARIO.MaxLength = 60;
                 this.columnFUNCAO.MaxLength = 60;
+                this.columnSAIDAPADRAO.MaxLength = 20;
+                this.columnESTIMATIVAMES.MaxLength = 20;
+                this.columnNOMEGRUPO.MaxLength = 200;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -921,6 +982,54 @@ namespace Atencao_Assistida.Relatorios.Estoque {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string SAIDAPADRAO {
+                get {
+                    try {
+                        return ((string)(this[this.tableEstoque.SAIDAPADRAOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'SAIDAPADRAO\' na tabela \'Estoque\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEstoque.SAIDAPADRAOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ESTIMATIVAMES {
+                get {
+                    try {
+                        return ((string)(this[this.tableEstoque.ESTIMATIVAMESColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'ESTIMATIVAMES\' na tabela \'Estoque\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEstoque.ESTIMATIVAMESColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NOMEGRUPO {
+                get {
+                    try {
+                        return ((string)(this[this.tableEstoque.NOMEGRUPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'NOMEGRUPO\' na tabela \'Estoque\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEstoque.NOMEGRUPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCODEMPRESANull() {
                 return this.IsNull(this.tableEstoque.CODEMPRESAColumn);
             }
@@ -1073,6 +1182,42 @@ namespace Atencao_Assistida.Relatorios.Estoque {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFUNCAONull() {
                 this[this.tableEstoque.FUNCAOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSAIDAPADRAONull() {
+                return this.IsNull(this.tableEstoque.SAIDAPADRAOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSAIDAPADRAONull() {
+                this[this.tableEstoque.SAIDAPADRAOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsESTIMATIVAMESNull() {
+                return this.IsNull(this.tableEstoque.ESTIMATIVAMESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetESTIMATIVAMESNull() {
+                this[this.tableEstoque.ESTIMATIVAMESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNOMEGRUPONull() {
+                return this.IsNull(this.tableEstoque.NOMEGRUPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNOMEGRUPONull() {
+                this[this.tableEstoque.NOMEGRUPOColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1248,16 +1393,18 @@ namespace Atencao_Assistida.Relatorios.Estoque.DsEstoqueTableAdapters {
             tableMapping.ColumnMappings.Add("QTATUAL", "QTATUAL");
             tableMapping.ColumnMappings.Add("USUARIO", "USUARIO");
             tableMapping.ColumnMappings.Add("FUNCAO", "FUNCAO");
+            tableMapping.ColumnMappings.Add("SAIDAPADRAO", "SAIDAPADRAO");
+            tableMapping.ColumnMappings.Add("ESTIMATIVAMES", "ESTIMATIVAMES");
+            tableMapping.ColumnMappings.Add("NOMEGRUPO", "NOMEGRUPO");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Estoque` (`CODEMPRESA`, `CODDEPARTAMENTO`, `NOMEDEPARTAMENTO`, `MES`" +
-                ", `ANO`, `CODPRODUTO`, `NOMEPRODUTO`, `QTANTERIOR`, `ENTRADA`, `SAIDA`, `QTATUAL" +
-                "`, `USUARIO`, `FUNCAO`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `Estoque` (`CODEMPRESA`, `CODDEPARTAMENTO`, `NOMEDEPARTAMENTO`, `NOMEGRUPO`, `MES`, `ANO`, `CODPRODUTO`, `NOMEPRODUTO`, `QTANTERIOR`, `ENTRADA`, `SAIDA`, `SAIDAPADRAO`, `ESTIMATIVAMES`, `QTATUAL`, `USUARIO`, `FUNCAO`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CODEMPRESA", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CODEMPRESA", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CODDEPARTAMENTO", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CODDEPARTAMENTO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NOMEDEPARTAMENTO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NOMEDEPARTAMENTO", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NOMEGRUPO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NOMEGRUPO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MES", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MES", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ANO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ANO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CODPRODUTO", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CODPRODUTO", global::System.Data.DataRowVersion.Current, false, null));
@@ -1265,6 +1412,8 @@ namespace Atencao_Assistida.Relatorios.Estoque.DsEstoqueTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("QTANTERIOR", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "QTANTERIOR", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ENTRADA", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENTRADA", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SAIDA", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SAIDA", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SAIDAPADRAO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SAIDAPADRAO", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ESTIMATIVAMES", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ESTIMATIVAMES", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("QTATUAL", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "QTATUAL", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("USUARIO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "USUARIO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FUNCAO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FUNCAO", global::System.Data.DataRowVersion.Current, false, null));
@@ -1283,9 +1432,9 @@ namespace Atencao_Assistida.Relatorios.Estoque.DsEstoqueTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        CODEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, MES, ANO, CODPRODUTO" +
-                ", NOMEPRODUTO, QTANTERIOR, ENTRADA, SAIDA, QTATUAL, USUARIO, FUNCAO\r\nFROM       " +
-                "     Estoque\r\nORDER BY CODPRODUTO";
+            this._commandCollection[0].CommandText = "SELECT        CODEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, NOMEGRUPO, MES, ANO," +
+                " CODPRODUTO, NOMEPRODUTO, QTANTERIOR, ENTRADA, SAIDA, SAIDAPADRAO, ESTIMATIVAMES" +
+                ", QTATUAL, USUARIO, FUNCAO\r\nFROM            Estoque\r\nORDER BY NOMEPRODUTO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1346,7 +1495,23 @@ namespace Atencao_Assistida.Relatorios.Estoque.DsEstoqueTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> CODEMPRESA, global::System.Nullable<int> CODDEPARTAMENTO, string NOMEDEPARTAMENTO, string MES, string ANO, global::System.Nullable<int> CODPRODUTO, string NOMEPRODUTO, string QTANTERIOR, string ENTRADA, string SAIDA, string QTATUAL, string USUARIO, string FUNCAO) {
+        public virtual int Insert(
+                    global::System.Nullable<int> CODEMPRESA, 
+                    global::System.Nullable<int> CODDEPARTAMENTO, 
+                    string NOMEDEPARTAMENTO, 
+                    string NOMEGRUPO, 
+                    string MES, 
+                    string ANO, 
+                    global::System.Nullable<int> CODPRODUTO, 
+                    string NOMEPRODUTO, 
+                    string QTANTERIOR, 
+                    string ENTRADA, 
+                    string SAIDA, 
+                    string SAIDAPADRAO, 
+                    string ESTIMATIVAMES, 
+                    string QTATUAL, 
+                    string USUARIO, 
+                    string FUNCAO) {
             if ((CODEMPRESA.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CODEMPRESA.Value));
             }
@@ -1365,65 +1530,83 @@ namespace Atencao_Assistida.Relatorios.Estoque.DsEstoqueTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(NOMEDEPARTAMENTO));
             }
-            if ((MES == null)) {
+            if ((NOMEGRUPO == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(MES));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(NOMEGRUPO));
             }
-            if ((ANO == null)) {
+            if ((MES == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(ANO));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(MES));
             }
-            if ((CODPRODUTO.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(CODPRODUTO.Value));
-            }
-            else {
+            if ((ANO == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((NOMEPRODUTO == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ANO));
+            }
+            if ((CODPRODUTO.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(CODPRODUTO.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(NOMEPRODUTO));
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((QTANTERIOR == null)) {
+            if ((NOMEPRODUTO == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(QTANTERIOR));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(NOMEPRODUTO));
             }
-            if ((ENTRADA == null)) {
+            if ((QTANTERIOR == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ENTRADA));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(QTANTERIOR));
             }
-            if ((SAIDA == null)) {
+            if ((ENTRADA == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SAIDA));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(ENTRADA));
             }
-            if ((QTATUAL == null)) {
+            if ((SAIDA == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(QTATUAL));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(SAIDA));
             }
-            if ((USUARIO == null)) {
+            if ((SAIDAPADRAO == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(USUARIO));
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(SAIDAPADRAO));
             }
-            if ((FUNCAO == null)) {
+            if ((ESTIMATIVAMES == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(FUNCAO));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(ESTIMATIVAMES));
+            }
+            if ((QTATUAL == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(QTATUAL));
+            }
+            if ((USUARIO == null)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(USUARIO));
+            }
+            if ((FUNCAO == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(FUNCAO));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

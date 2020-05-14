@@ -744,6 +744,7 @@ namespace Atencao_Assistida.Classes.Funcoes
             Mysql = Mysql + " [CODEMPRESA]  Int, ";
             Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
             Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [NOMEGRUPO]  varchar(200), ";
             Mysql = Mysql + " [MES]  varchar(2), ";
             Mysql = Mysql + " [ANO]  varchar(4), ";
             Mysql = Mysql + " [CODPRODUTO]   Int, ";
@@ -752,6 +753,8 @@ namespace Atencao_Assistida.Classes.Funcoes
             Mysql = Mysql + " [ENTRADA]  varchar(200), ";
             Mysql = Mysql + " [SAIDA]  varchar(20), ";
             Mysql = Mysql + " [QTATUAL]  varchar(20), ";
+            Mysql = Mysql + " [SAIDAPADRAO]  varchar(20), ";
+            Mysql = Mysql + " [ESTIMATIVAMES]  varchar(20), ";
             Mysql = Mysql + " [USUARIO]  varchar(60), ";
             Mysql = Mysql + " [FUNCAO]  varchar(60) ";
 
@@ -974,6 +977,68 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
+        public bool Cria_EstoqueExtrato()
+        {
+
+            Inicio:
+
+            var db = new DBAcessOleDB();
+
+            var tableName = "Extrato";
+
+            var Mysql = "CREATE TABLE " + tableName + "( ";
+
+            Mysql = Mysql + " [CODEMPRESA]  Int, ";
+            Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
+            Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
+            Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [MES]  varchar(2), ";
+            Mysql = Mysql + " [ANO]  varchar(4), ";
+            Mysql = Mysql + " [CODGRUPO]   Int, ";
+            Mysql = Mysql + " [NOMEGRUPO]  varchar(200), ";
+
+            Mysql = Mysql + " [CODPRODUTO]   Int, ";
+            Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
+            Mysql = Mysql + " [DATAMOVIMENTO]  varchar(20), ";
+            Mysql = Mysql + " [TIPOMOVIMENTO]  varchar(80), ";
+            Mysql = Mysql + " [QUANTIDADE]  varchar(20), ";
+            Mysql = Mysql + " [SALDO]  varchar(20) ";
+
+
+            Mysql = Mysql + " )";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+                db.Dispose();
+                db = new DBAcessOleDB();
+
+                Mysql = "DROP TABLE " + tableName;
+                db.CommandText = Mysql;
+                try
+                {
+                    db.ExecuteNonQuery();
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+
+                goto Inicio;
+
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
 
     }
 }

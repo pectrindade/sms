@@ -117,6 +117,7 @@ namespace Atencao_Assistida.Forms
                     linhaDados[1] = dr.GetString(dr.GetOrdinal("NOME"));
                     linhaDados[2] = dr.GetString(dr.GetOrdinal("LOTE"));
                     linhaDados[3] = dr.GetString(dr.GetOrdinal("QUANTIDADE"));
+                    //linhaDados[4] = dr.GetString(dr.GetOrdinal("ENTREGUE"));
 
 
                     Grid.Rows.Add(linhaDados);
@@ -605,7 +606,5 @@ namespace Atencao_Assistida.Forms
             }
 
         }
-
-
     }
 }

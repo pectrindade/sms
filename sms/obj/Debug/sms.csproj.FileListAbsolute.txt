@@ -1175,3 +1175,6 @@ D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Consultas.Detalhe_sai
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Requisicao_Periodo.Chama_RelRequisicao.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Requisicao_Periodo.RelRequisicaoPeriodo.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.Espera.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Extrato.Chama_extrato.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.Padrao_saida.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Pesquisas.PesquisaPadraoSaida.resources

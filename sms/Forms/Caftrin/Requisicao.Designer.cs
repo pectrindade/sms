@@ -200,7 +200,6 @@
             this.txtQuantidade.Size = new System.Drawing.Size(68, 20);
             this.txtQuantidade.TabIndex = 5;
             this.txtQuantidade.Enter += new System.EventHandler(this.txtQuantidade_Enter);
-            this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 
             // Grid
             // 

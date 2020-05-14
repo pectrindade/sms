@@ -1536,5 +1536,24 @@ namespace teste1
         {
             AvisaAutoriza();
         }
+
+        private void MicCaftrinPadrãoDeSaida_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is Padrao_saida)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new Padrao_saida();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+        }
     }
 }

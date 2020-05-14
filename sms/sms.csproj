@@ -191,6 +191,8 @@
     <Compile Include="Classes\Mysql\Pedido_item.cs" />
     <Compile Include="Classes\Mysql\Relatorios.cs" />
     <Compile Include="Classes\Mysql\Saida.cs" />
+    <Compile Include="Classes\Mysql\Saida_Padrao.cs" />
+    <Compile Include="Classes\Mysql\Saida_Padrao_Item.cs" />
     <Compile Include="Classes\Mysql\Unidade.cs" />
     <Compile Include="Classes\Mysql\Utilidades.cs" />
     <Compile Include="Classes\Mysql\Acessos.cs" />
@@ -439,6 +441,12 @@
     <Compile Include="Forms\Paciente.Designer.cs">
       <DependentUpon>Paciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Padrao_saida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Padrao_saida.Designer.cs">
+      <DependentUpon>Padrao_saida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Processo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -530,6 +538,12 @@
     </Compile>
     <Compile Include="Pesquisas\PesquisaPaciente.Designer.cs">
       <DependentUpon>PesquisaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaPadraoSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\PesquisaPadraoSaida.Designer.cs">
+      <DependentUpon>PesquisaPadraoSaida.cs</DependentUpon>
     </Compile>
     <Compile Include="Pesquisas\PesquisaProdutos.cs">
       <SubType>Form</SubType>
@@ -646,6 +660,9 @@
     <Compile Include="Relatorios\Especialidade\RelEspecialidade.Designer.cs">
       <DependentUpon>RelEspecialidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Estoque\DsEstoque.cs">
+      <DependentUpon>DsEstoque.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Estoque\DsEstoque.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -656,6 +673,18 @@
     </Compile>
     <Compile Include="Relatorios\Estoque\RelEstoque.Designer.cs">
       <DependentUpon>RelEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Extrato\Chama_extrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Extrato\Chama_extrato.Designer.cs">
+      <DependentUpon>Chama_extrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Extrato\Rel_Extrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Estoque_Extrato\Rel_Extrato.Designer.cs">
+      <DependentUpon>Rel_Extrato.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.cs">
       <SubType>Form</SubType>
@@ -1001,6 +1030,9 @@
     <EmbeddedResource Include="Forms\Paciente.resx">
       <DependentUpon>Paciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Padrao_saida.resx">
+      <DependentUpon>Padrao_saida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Processo.resx">
       <DependentUpon>Processo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1042,6 +1074,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisas\PesquisaPaciente.resx">
       <DependentUpon>PesquisaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\PesquisaPadraoSaida.resx">
+      <DependentUpon>PesquisaPadraoSaida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisas\PesquisaProdutos.resx">
       <DependentUpon>PesquisaProdutos.cs</DependentUpon>
@@ -1096,6 +1131,9 @@
     <EmbeddedResource Include="Relatorios\Estoque\RelEstoque.rdlc" />
     <EmbeddedResource Include="Relatorios\Estoque\RelEstoque.resx">
       <DependentUpon>RelEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque_Extrato\Chama_extrato.resx">
+      <DependentUpon>Chama_extrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.resx">
       <DependentUpon>Chama_RelEstoque.cs</DependentUpon>

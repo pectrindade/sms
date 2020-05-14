@@ -652,9 +652,10 @@ namespace Atencao_Assistida.Classes.Mysql
             var Mysql = " SELECT E.CODPRODUTO, P.NOME, E.LOTE, E.QUANTIDADE, P.UNIDADE, NULL AS ENTREGUE ";
             Mysql = Mysql + " FROM Pedido_item AS E ";
             Mysql = Mysql + " INNER JOIN produtos AS  P ON P.CODPRODUTO = E.CODPRODUTO ";
+            //Mysql = Mysql + " INNER JOIN saida_item AS SI ON SI.NUMEROPEDIDO = E.NUMEROPEDIDO AND SI.CODPRODUTO = E.CODPRODUTO ";
 
-            Mysql = Mysql + " WHERE CODPEDIDO = @CODPEDIDO ";
-            Mysql = Mysql + " AND NUMEROPEDIDO = @NUMEROPEDIDO ";
+            Mysql = Mysql + " WHERE E.CODPEDIDO = @CODPEDIDO ";
+            Mysql = Mysql + " AND E.NUMEROPEDIDO = @NUMEROPEDIDO ";
             
 
             db.CommandText = Mysql;

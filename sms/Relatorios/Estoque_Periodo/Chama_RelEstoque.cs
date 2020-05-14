@@ -26,6 +26,23 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             CarregaCmbGrupo();
         }
 
+        private void Chama_RelEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F8)
+            {
+                if (ActiveControl.Name == "txtCodigo") { btnBuscaProduto.PerformClick(); return; }
+            }
+        }
+
+        private void Chama_RelEstoque_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         private void CarregaCmbEmpresa()
         {
             int codigo;
@@ -179,7 +196,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             cria.Cria_EstoquePeriodo();
 
             // BUSCA E GRAVA NO REPOSITORIO
-            var dr = Classes.Mysql.Estoque.Estoque_Periodo(codempresa, coddepartamento, codgrupo, mes, ano, negativo);
+            var dr = Classes.Mysql.Estoque.Estoque_Periodo(codempresa, coddepartamento, codgrupo, codproduto, mes, ano, negativo);
 
             if (dr.HasRows)
             {
@@ -340,23 +357,6 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
         private void btnDesfaz_Click(object sender, EventArgs e)
         {
             LimpraTela();
-        }
-
-        private void Chama_RelEstoque_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F8)
-            {
-                if (ActiveControl.Name == "txtCodigo") { btnBuscaProduto.PerformClick(); return; }
-            }
-        }
-
-        private void Chama_RelEstoque_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
         }
 
 

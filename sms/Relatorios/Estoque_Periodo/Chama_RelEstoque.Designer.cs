@@ -71,7 +71,7 @@
             this.txtNome.Location = new System.Drawing.Point(116, 159);
             this.txtNome.Name = "txtNome";
             this.txtNome.ReadOnly = true;
-            this.txtNome.Size = new System.Drawing.Size(319, 20);
+            this.txtNome.Size = new System.Drawing.Size(533, 20);
             this.txtNome.TabIndex = 291;
             // 
             // label3
@@ -147,7 +147,7 @@
             this.cmbDepartamento.FormattingEnabled = true;
             this.cmbDepartamento.Location = new System.Drawing.Point(12, 66);
             this.cmbDepartamento.Name = "cmbDepartamento";
-            this.cmbDepartamento.Size = new System.Drawing.Size(238, 21);
+            this.cmbDepartamento.Size = new System.Drawing.Size(319, 21);
             this.cmbDepartamento.TabIndex = 276;
             // 
             // label4
@@ -165,12 +165,12 @@
             this.cmbEmpresa.FormattingEnabled = true;
             this.cmbEmpresa.Location = new System.Drawing.Point(12, 23);
             this.cmbEmpresa.Name = "cmbEmpresa";
-            this.cmbEmpresa.Size = new System.Drawing.Size(238, 21);
+            this.cmbEmpresa.Size = new System.Drawing.Size(319, 21);
             this.cmbEmpresa.TabIndex = 274;
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(315, 262);
+            this.btnListar.Location = new System.Drawing.Point(510, 262);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(120, 23);
             this.btnListar.TabIndex = 273;
@@ -180,7 +180,7 @@
             // 
             // btnDesfaz
             // 
-            this.btnDesfaz.Location = new System.Drawing.Point(158, 262);
+            this.btnDesfaz.Location = new System.Drawing.Point(251, 262);
             this.btnDesfaz.Name = "btnDesfaz";
             this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
             this.btnDesfaz.TabIndex = 297;
@@ -203,7 +203,7 @@
             this.cmbGrupo.FormattingEnabled = true;
             this.cmbGrupo.Location = new System.Drawing.Point(14, 112);
             this.cmbGrupo.Name = "cmbGrupo";
-            this.cmbGrupo.Size = new System.Drawing.Size(238, 21);
+            this.cmbGrupo.Size = new System.Drawing.Size(319, 21);
             this.cmbGrupo.TabIndex = 298;
             // 
             // chkNegativo
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 295);
+            this.ClientSize = new System.Drawing.Size(678, 295);
             this.ControlBox = false;
             this.Controls.Add(this.chkNegativo);
             this.Controls.Add(this.label9);

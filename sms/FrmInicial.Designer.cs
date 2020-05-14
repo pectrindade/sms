@@ -115,6 +115,7 @@ namespace teste1
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tAviso = new System.Windows.Forms.Timer(this.components);
             this.AvisoAutoriza = new System.Windows.Forms.Timer(this.components);
+            this.MicCaftrinPadrãoDeSaida = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -158,7 +159,8 @@ namespace teste1
             this.MicCaftrinGrupo,
             this.MicCaftrinMarcas,
             this.MicCaftrinCfop,
-            this.MicCaftrinProdutos});
+            this.MicCaftrinProdutos,
+            this.MicCaftrinPadrãoDeSaida});
             this.Miccaftrin.Name = "Miccaftrin";
             this.Miccaftrin.Size = new System.Drawing.Size(180, 22);
             this.Miccaftrin.Text = "Caftrin";
@@ -403,7 +405,7 @@ namespace teste1
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // MimCaftrin
             // 
@@ -417,7 +419,7 @@ namespace teste1
             this.MimCaftrinSaidaOfício,
             this.MimCaftrinDevolucao});
             this.MimCaftrin.Name = "MimCaftrin";
-            this.MimCaftrin.Size = new System.Drawing.Size(167, 22);
+            this.MimCaftrin.Size = new System.Drawing.Size(180, 22);
             this.MimCaftrin.Text = "Caftrin";
             // 
             // MimCaftrinbalanco
@@ -487,7 +489,7 @@ namespace teste1
             this.MimOdontDigitacaoOfício,
             this.MimOdontdevolucao});
             this.MimOdont.Name = "MimOdont";
-            this.MimOdont.Size = new System.Drawing.Size(167, 22);
+            this.MimOdont.Size = new System.Drawing.Size(180, 22);
             this.MimOdont.Text = "Odontologia";
             // 
             // MimOdontbalanco
@@ -545,7 +547,7 @@ namespace teste1
             this.MimAtencaoAssistVisitasAssistenteSocial,
             this.MimAtencaoAssistManutencaoProtocolo});
             this.MimAtencaoAssist.Name = "MimAtencaoAssist";
-            this.MimAtencaoAssist.Size = new System.Drawing.Size(167, 22);
+            this.MimAtencaoAssist.Size = new System.Drawing.Size(180, 22);
             this.MimAtencaoAssist.Text = "Atenção Assistida";
             // 
             // MimAtencaoAssistEntregaMedicamentos
@@ -572,7 +574,7 @@ namespace teste1
             // MimAutoriza
             // 
             this.MimAutoriza.Name = "MimAutoriza";
-            this.MimAutoriza.Size = new System.Drawing.Size(167, 22);
+            this.MimAutoriza.Size = new System.Drawing.Size(180, 22);
             this.MimAutoriza.Text = "Autoriza";
             this.MimAutoriza.Click += new System.EventHandler(this.autorizaToolStripMenuItem_Click);
             // 
@@ -593,7 +595,7 @@ namespace teste1
             this.MiRCafPedidosPeríodo,
             this.MiRCafEstoque});
             this.MiRCaftrin.Name = "MiRCaftrin";
-            this.MiRCaftrin.Size = new System.Drawing.Size(180, 22);
+            this.MiRCaftrin.Size = new System.Drawing.Size(167, 22);
             this.MiRCaftrin.Text = "Caftrin";
             // 
             // MiRCafSaidaMercadoria
@@ -624,7 +626,7 @@ namespace teste1
             this.MiROdontPedidosPeríodo,
             this.MiROdontEstoque});
             this.MiROdont.Name = "MiROdont";
-            this.MiROdont.Size = new System.Drawing.Size(180, 22);
+            this.MiROdont.Size = new System.Drawing.Size(167, 22);
             this.MiROdont.Text = "Odontologia";
             // 
             // MiROdontSaidaMercadoria
@@ -655,7 +657,7 @@ namespace teste1
             this.MirAtencaoAssistEntregaEfetivadas,
             this.MirAtencaoAssistPacienteProdutos});
             this.MiRAtencaoAssist.Name = "MiRAtencaoAssist";
-            this.MiRAtencaoAssist.Size = new System.Drawing.Size(180, 22);
+            this.MiRAtencaoAssist.Size = new System.Drawing.Size(167, 22);
             this.MiRAtencaoAssist.Text = "Atenção Assistida";
             // 
             // MirAtencaoAssistPrevisaoEntrega
@@ -770,6 +772,13 @@ namespace teste1
             this.AvisoAutoriza.Interval = 1000;
             this.AvisoAutoriza.Tick += new System.EventHandler(this.AvisoAutoriza_Tick);
             // 
+            // MicCaftrinPadrãoDeSaida
+            // 
+            this.MicCaftrinPadrãoDeSaida.Name = "MicCaftrinPadrãoDeSaida";
+            this.MicCaftrinPadrãoDeSaida.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinPadrãoDeSaida.Text = "Padrão de Saida";
+            this.MicCaftrinPadrãoDeSaida.Click += new System.EventHandler(this.MicCaftrinPadrãoDeSaida_Click);
+            // 
             // FrmInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -882,6 +891,7 @@ namespace teste1
         private System.Windows.Forms.ToolStripMenuItem MiROdontSaidaMercadoria;
         private System.Windows.Forms.ToolStripMenuItem MiROdontPedidosPeríodo;
         private System.Windows.Forms.ToolStripMenuItem MiROdontEstoque;
+        private System.Windows.Forms.ToolStripMenuItem MicCaftrinPadrãoDeSaida;
     }
 }
 
