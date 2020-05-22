@@ -992,10 +992,10 @@ namespace Atencao_Assistida.Classes.Funcoes
             Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
             Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
             Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
-            Mysql = Mysql + " [MES]  varchar(2), ";
-            Mysql = Mysql + " [ANO]  varchar(4), ";
             Mysql = Mysql + " [CODGRUPO]   Int, ";
             Mysql = Mysql + " [NOMEGRUPO]  varchar(200), ";
+            Mysql = Mysql + " [DTINICIAL]  varchar(11), ";
+            Mysql = Mysql + " [DTFINAL]  varchar(11), ";
 
             Mysql = Mysql + " [CODPRODUTO]   Int, ";
             Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";

@@ -20,6 +20,7 @@ using System.Text;
 
 using UnidadeMedida = Atencao_Assistida.Forms.UnidadeMedida;
 using System.Runtime.InteropServices;
+using Atencao_Assistida.Relatorios.Estoque_Extrato;
 
 namespace teste1
 {
@@ -1551,6 +1552,25 @@ namespace teste1
             if (!open)
             {
                 Form tela = new Padrao_saida();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+        }
+
+        private void MiRCafExtrato_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is Chama_extrato)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new Chama_extrato();
                 tela.MdiParent = this;
                 tela.Show();
             }

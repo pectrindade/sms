@@ -264,6 +264,7 @@ namespace Atencao_Assistida.Classes.Mysql
             return dr;
         }
 
+
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static MySqlDataReader SelectRel(string por, string nota, string serie)
         {
@@ -310,7 +311,7 @@ namespace Atencao_Assistida.Classes.Mysql
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;
         }
-
+        
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static DataSet SelectTodos()
         {

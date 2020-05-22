@@ -1051,14 +1051,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sms.exe" size="8158168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sms.exe" size="8158680">
       <assemblyIdentity name="Sms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6+Vmq8kNVbMwiEvuHdauM5WSmPbrUm+8D33hd3nfrLc=</dsig:DigestValue>
+        <dsig:DigestValue>aY8cjO6UYgJvMSCVCMUQq6Zj8cuBXszYuKD9UsKX/Fs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -2298,7 +2298,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7QIJqlGzHWkMehN5QH1dAJ1FdgLmb8COz+pPMRVwmqM=</dsig:DigestValue>
+      <dsig:DigestValue>fjRooR6WyzjL23c6oMjfltoCwMhbL0NhP5M1DKe4/BM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SqlServerTypes\readme.htm" size="2369">

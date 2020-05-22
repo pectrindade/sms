@@ -28,7 +28,6 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
 
         }
 
-
         private void CarregaCmbEmpresa()
         {
             int codigo;
@@ -128,12 +127,12 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
         {
             try
             {
-                System.Threading.Thread tFormAguarde = new System.Threading.Thread(new System.Threading.ThreadStart(CarregaFormAguarde));
-                tFormAguarde.Start();
+                //System.Threading.Thread tFormAguarde = new System.Threading.Thread(new System.Threading.ThreadStart(CarregaFormAguarde));
+                //tFormAguarde.Start();
 
                 Relatorio();
 
-                tFormAguarde.Abort();
+                //tFormAguarde.Abort();
             }
             catch (Exception ex)
             {
@@ -150,102 +149,98 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
         private void Relatorio()
         {
 
-            DateTime dtInicial = Convert.ToDateTime(txtDataInicial.Text.Trim());
-            DateTime dtInfinal = Convert.ToDateTime(txtDataFinal.Text.Trim());
+            var cria = new Classes.Funcoes.CriaArquivo();
+            cria.Cria_EstoqueExtrato();
 
+            #region Busca Entradas
 
             var codempresa = cmbEmpresa.SelectedIndex;
-
             var nomeempresa = "";
             var coddepartamento = cmbDepartamento.SelectedIndex;
             var nomedepartamento = "";
-            var mes = dtInicial.Month.ToString();
-            var ano = dtInicial.Year.ToString();
             var codgrupo = cmbGrupo.SelectedIndex;
             var nomegrupo = "";
+            var dtinicial = txtDataInicial.Text.Trim();
+            var dtfinal = txtDataFinal.Text.Trim();
+
             var codproduto = 0;
             if (txtcodigo.Text.Trim() != "") { codproduto = int.Parse(txtcodigo.Text.Trim()); }
             var nomeproduto = "";
-
-            var qtanterior = "";
-            var entrada = "";
-            var saida = "";
-            var qtatual = "";
-            var negativo = false;
+            var datamovimento = "";
+            var quantidade = "";
 
             if (codempresa == -1) { codempresa = 0; }
             if (coddepartamento == -1) { coddepartamento = 0; }
             if (codgrupo == -1) { codgrupo = 0; }
-           
 
+            
 
-            var cria = new Classes.Funcoes.CriaArquivo();
-            cria.Cria_EstoquePeriodo();
+            //// BUSCA ENTRADAS E GRAVA NO REPOSITORIO
+            //var dr = Classes.Mysql.Estoque.Select_estrato(codempresa, coddepartamento, codgrupo, codproduto);
 
-            // BUSCA E GRAVA NO REPOSITORIO
-            var dr = Classes.Mysql.Estoque.Estoque_Periodo(codempresa, coddepartamento, codgrupo, codproduto, mes, ano, negativo);
+            //if (dr.HasRows)
+            //{
+            //    while (dr.Read())
+            //    {
+            //        if (!dr.IsDBNull(dr.GetOrdinal("CODEMPRESA"))) { codempresa = dr.GetInt32(dr.GetOrdinal("CODEMPRESA")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("NOMEEMPRESA"))) { nomeempresa = dr.GetString(dr.GetOrdinal("NOMEEMPRESA")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("CODDEPARTAMENTO"))) { coddepartamento = dr.GetInt32(dr.GetOrdinal("CODDEPARTAMENTO")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("NOMEDEPARTAMENTO"))) { nomedepartamento = dr.GetString(dr.GetOrdinal("NOMEDEPARTAMENTO")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("CODGRUPO"))) { codgrupo = dr.GetInt32(dr.GetOrdinal("CODGRUPO")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("NOMEGRUPO"))) { nomegrupo = dr.GetString(dr.GetOrdinal("NOMEGRUPO")); }
 
-            if (dr.HasRows)
-            {
-                while (dr.Read())
-                {
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODEMPRESA"))) { codempresa = dr.GetInt32(dr.GetOrdinal("CODEMPRESA")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("NOMEEMPRESA"))) { nomeempresa = dr.GetString(dr.GetOrdinal("NOMEEMPRESA")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODDEPARTAMENTO"))) { coddepartamento = dr.GetInt32(dr.GetOrdinal("CODDEPARTAMENTO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("NOMEDEPARTAMENTO"))) { nomedepartamento = dr.GetString(dr.GetOrdinal("NOMEDEPARTAMENTO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("MES"))) { mes = dr.GetString(dr.GetOrdinal("MES")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("ANO"))) { ano = dr.GetString(dr.GetOrdinal("ANO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODGRUPO"))) { codgrupo = dr.GetInt32(dr.GetOrdinal("CODGRUPO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("NOMEGRUPO"))) { nomegrupo = dr.GetString(dr.GetOrdinal("NOMEGRUPO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODPRODUTO"))) { codproduto = dr.GetInt32(dr.GetOrdinal("CODPRODUTO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("NOMEPRODUTO"))) { nomeproduto = dr.GetString(dr.GetOrdinal("NOMEPRODUTO")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("QTANTERIOR"))) { qtanterior = dr.GetString(dr.GetOrdinal("QTANTERIOR")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("ENTRADA"))) { entrada = dr.GetString(dr.GetOrdinal("ENTRADA")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("SAIDA"))) { saida = dr.GetString(dr.GetOrdinal("SAIDA")); }
-                    if (!dr.IsDBNull(dr.GetOrdinal("QTATUAL"))) { qtatual = dr.GetString(dr.GetOrdinal("QTATUAL")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("DTINICIAL"))) { dtinicial = dr.GetString(dr.GetOrdinal("DTINICIAL")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("DTFINAL"))) { dtfinal = dr.GetString(dr.GetOrdinal("DTFINAL")); }
 
-                    try
-                    {
-                        var m = new Classes.Mysql.Estoque();
+            //        if (!dr.IsDBNull(dr.GetOrdinal("CODPRODUTO"))) { codproduto = dr.GetInt32(dr.GetOrdinal("CODPRODUTO")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("NOMEPRODUTO"))) { nomeproduto = dr.GetString(dr.GetOrdinal("NOMEPRODUTO")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("DATARECEBIMENTO"))) { datamovimento = dr.GetString(dr.GetOrdinal("DATARECEBIMENTO")); }
+            //        if (!dr.IsDBNull(dr.GetOrdinal("QUANTIDADE"))) { quantidade = dr.GetString(dr.GetOrdinal("QUANTIDADE")); }
+                    
+                   
 
-                        m.InsertAccess_Estoque_Periodo(codempresa, nomeempresa, coddepartamento, nomedepartamento, mes, ano, codgrupo, nomegrupo,
-                            codproduto, nomeproduto, qtanterior, entrada, saida, qtatual);
-                    }
-                    catch (Exception erro)
-                    {
+            //        try
+            //        {
+            //            var m = new Classes.Mysql.Estoque();
 
-                    }
+            //            m.InsertAccess_Estoque_Periodo(codempresa, nomeempresa, coddepartamento, nomedepartamento, mes, ano, codgrupo, nomegrupo,
+            //                codproduto, nomeproduto, qtanterior, entrada, saida, qtatual);
+            //        }
+            //        catch (Exception erro)
+            //        {
 
-                }
+            //        }
 
-            }
+            //    }
 
-            dr.Close();
-            dr.Dispose();
+            //}
 
-            //CHAMA A TELA DE RELATORIO
-            bool open = false;
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is RelEstoquePeriodo)
-                {
-                    form.BringToFront();
-                    open = true;
-                }
-            }
-            if (!open)
-            {
-                Form tela = new RelEstoquePeriodo();
-                tela.ShowDialog();
-            }
+            //dr.Close();
+            //dr.Dispose();
+
+            #endregion
+
+            ////CHAMA A TELA DE RELATORIO
+            //bool open = false;
+            //foreach (Form form in this.MdiChildren)
+            //{
+            //    if (form is RelEstoquePeriodo)
+            //    {
+            //        form.BringToFront();
+            //        open = true;
+            //    }
+            //}
+            //if (!open)
+            //{
+            //    Form tela = new RelEstoquePeriodo();
+            //    tela.ShowDialog();
+            //}
 
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime date = this.dtpfinal.Value;
-
-            this.txtDataFinal.Text = date.ToString("dd/MM/yyyy");
+           
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -335,8 +330,8 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
             CarregaCmbGrupo();
             txtcodigo.Text = "";
             txtNome.Text = "";
+            txtDataInicial.Text = "";
             txtDataFinal.Text = "";
-           
 
             cmbEmpresa.Focus();
         }
@@ -346,6 +341,18 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
             LimpraTela();
         }
 
+        private void dtpInicial_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime date = this.dtpfinal.Value;
 
+            this.txtDataInicial.Text = date.ToString("dd/MM/yyyy");
+        }
+
+        private void dtpfinal_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime date = this.dtpfinal.Value;
+
+            this.txtDataFinal.Text = date.ToString("dd/MM/yyyy");
+        }
     }
 }

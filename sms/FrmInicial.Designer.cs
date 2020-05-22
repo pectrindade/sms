@@ -43,6 +43,7 @@ namespace teste1
             this.MicCaftrinMarcas = new System.Windows.Forms.ToolStripMenuItem();
             this.MicCaftrinCfop = new System.Windows.Forms.ToolStripMenuItem();
             this.MicCaftrinProdutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.MicCaftrinPadrãoDeSaida = new System.Windows.Forms.ToolStripMenuItem();
             this.MicOdont = new System.Windows.Forms.ToolStripMenuItem();
             this.MicOdontDepartamento = new System.Windows.Forms.ToolStripMenuItem();
             this.MicOdontFornecedor = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,7 @@ namespace teste1
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tAviso = new System.Windows.Forms.Timer(this.components);
             this.AvisoAutoriza = new System.Windows.Forms.Timer(this.components);
-            this.MicCaftrinPadrãoDeSaida = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiRCafExtrato = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -168,58 +169,65 @@ namespace teste1
             // MicCaftrinDepartamento
             // 
             this.MicCaftrinDepartamento.Name = "MicCaftrinDepartamento";
-            this.MicCaftrinDepartamento.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinDepartamento.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinDepartamento.Text = "Departamento";
             this.MicCaftrinDepartamento.Click += new System.EventHandler(this.MicCaftrinDepartamento_Click);
             // 
             // MicCaftrinFornecedor
             // 
             this.MicCaftrinFornecedor.Name = "MicCaftrinFornecedor";
-            this.MicCaftrinFornecedor.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinFornecedor.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinFornecedor.Text = "Fornecedor";
             this.MicCaftrinFornecedor.Click += new System.EventHandler(this.MicCaftrinFornecedor_Click);
             // 
             // MicCaftrinUnidades
             // 
             this.MicCaftrinUnidades.Name = "MicCaftrinUnidades";
-            this.MicCaftrinUnidades.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinUnidades.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinUnidades.Text = "Unidades";
             this.MicCaftrinUnidades.Click += new System.EventHandler(this.MicCaftrinUnidades_Click);
             // 
             // MicCaftrinUnidadeMedida
             // 
             this.MicCaftrinUnidadeMedida.Name = "MicCaftrinUnidadeMedida";
-            this.MicCaftrinUnidadeMedida.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinUnidadeMedida.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinUnidadeMedida.Text = "Unidade de Media";
             this.MicCaftrinUnidadeMedida.Click += new System.EventHandler(this.MicCaftrinUnidadeMedida_Click);
             // 
             // MicCaftrinGrupo
             // 
             this.MicCaftrinGrupo.Name = "MicCaftrinGrupo";
-            this.MicCaftrinGrupo.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinGrupo.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinGrupo.Text = "Grupo";
             this.MicCaftrinGrupo.Click += new System.EventHandler(this.MicCaftrinGrupo_Click);
             // 
             // MicCaftrinMarcas
             // 
             this.MicCaftrinMarcas.Name = "MicCaftrinMarcas";
-            this.MicCaftrinMarcas.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinMarcas.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinMarcas.Text = "Marcas";
             this.MicCaftrinMarcas.Click += new System.EventHandler(this.MicCaftrinMarcas_Click);
             // 
             // MicCaftrinCfop
             // 
             this.MicCaftrinCfop.Name = "MicCaftrinCfop";
-            this.MicCaftrinCfop.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinCfop.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinCfop.Text = "Cfop";
             this.MicCaftrinCfop.Click += new System.EventHandler(this.MicCaftrinCfop_Click);
             // 
             // MicCaftrinProdutos
             // 
             this.MicCaftrinProdutos.Name = "MicCaftrinProdutos";
-            this.MicCaftrinProdutos.Size = new System.Drawing.Size(180, 22);
+            this.MicCaftrinProdutos.Size = new System.Drawing.Size(170, 22);
             this.MicCaftrinProdutos.Text = "Produtos";
             this.MicCaftrinProdutos.Click += new System.EventHandler(this.MicCaftrinProdutos_Click);
+            // 
+            // MicCaftrinPadrãoDeSaida
+            // 
+            this.MicCaftrinPadrãoDeSaida.Name = "MicCaftrinPadrãoDeSaida";
+            this.MicCaftrinPadrãoDeSaida.Size = new System.Drawing.Size(170, 22);
+            this.MicCaftrinPadrãoDeSaida.Text = "Padrão de Saida";
+            this.MicCaftrinPadrãoDeSaida.Click += new System.EventHandler(this.MicCaftrinPadrãoDeSaida_Click);
             // 
             // MicOdont
             // 
@@ -379,14 +387,14 @@ namespace teste1
             // MiconsEstoque
             // 
             this.MiconsEstoque.Name = "MiconsEstoque";
-            this.MiconsEstoque.Size = new System.Drawing.Size(116, 22);
+            this.MiconsEstoque.Size = new System.Drawing.Size(180, 22);
             this.MiconsEstoque.Text = "Estoque";
             this.MiconsEstoque.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
             // 
             // MiconsSaldo
             // 
             this.MiconsSaldo.Name = "MiconsSaldo";
-            this.MiconsSaldo.Size = new System.Drawing.Size(116, 22);
+            this.MiconsSaldo.Size = new System.Drawing.Size(180, 22);
             this.MiconsSaldo.Text = "Saldo";
             this.MiconsSaldo.Click += new System.EventHandler(this.MiconsSaldo_Click);
             // 
@@ -593,9 +601,10 @@ namespace teste1
             this.MiRCaftrin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MiRCafSaidaMercadoria,
             this.MiRCafPedidosPeríodo,
-            this.MiRCafEstoque});
+            this.MiRCafEstoque,
+            this.MiRCafExtrato});
             this.MiRCaftrin.Name = "MiRCaftrin";
-            this.MiRCaftrin.Size = new System.Drawing.Size(167, 22);
+            this.MiRCaftrin.Size = new System.Drawing.Size(180, 22);
             this.MiRCaftrin.Text = "Caftrin";
             // 
             // MiRCafSaidaMercadoria
@@ -626,7 +635,7 @@ namespace teste1
             this.MiROdontPedidosPeríodo,
             this.MiROdontEstoque});
             this.MiROdont.Name = "MiROdont";
-            this.MiROdont.Size = new System.Drawing.Size(167, 22);
+            this.MiROdont.Size = new System.Drawing.Size(180, 22);
             this.MiROdont.Text = "Odontologia";
             // 
             // MiROdontSaidaMercadoria
@@ -657,7 +666,7 @@ namespace teste1
             this.MirAtencaoAssistEntregaEfetivadas,
             this.MirAtencaoAssistPacienteProdutos});
             this.MiRAtencaoAssist.Name = "MiRAtencaoAssist";
-            this.MiRAtencaoAssist.Size = new System.Drawing.Size(167, 22);
+            this.MiRAtencaoAssist.Size = new System.Drawing.Size(180, 22);
             this.MiRAtencaoAssist.Text = "Atenção Assistida";
             // 
             // MirAtencaoAssistPrevisaoEntrega
@@ -772,12 +781,12 @@ namespace teste1
             this.AvisoAutoriza.Interval = 1000;
             this.AvisoAutoriza.Tick += new System.EventHandler(this.AvisoAutoriza_Tick);
             // 
-            // MicCaftrinPadrãoDeSaida
+            // MiRCafExtrato
             // 
-            this.MicCaftrinPadrãoDeSaida.Name = "MicCaftrinPadrãoDeSaida";
-            this.MicCaftrinPadrãoDeSaida.Size = new System.Drawing.Size(180, 22);
-            this.MicCaftrinPadrãoDeSaida.Text = "Padrão de Saida";
-            this.MicCaftrinPadrãoDeSaida.Click += new System.EventHandler(this.MicCaftrinPadrãoDeSaida_Click);
+            this.MiRCafExtrato.Name = "MiRCafExtrato";
+            this.MiRCafExtrato.Size = new System.Drawing.Size(186, 22);
+            this.MiRCafExtrato.Text = "Extrato";
+            this.MiRCafExtrato.Click += new System.EventHandler(this.MiRCafExtrato_Click);
             // 
             // FrmInicial
             // 
@@ -892,6 +901,7 @@ namespace teste1
         private System.Windows.Forms.ToolStripMenuItem MiROdontPedidosPeríodo;
         private System.Windows.Forms.ToolStripMenuItem MiROdontEstoque;
         private System.Windows.Forms.ToolStripMenuItem MicCaftrinPadrãoDeSaida;
+        private System.Windows.Forms.ToolStripMenuItem MiRCafExtrato;
     }
 }
 

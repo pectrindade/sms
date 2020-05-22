@@ -76,6 +76,7 @@
             this.btnDesfaz.TabIndex = 315;
             this.btnDesfaz.Text = "Desfaz";
             this.btnDesfaz.UseVisualStyleBackColor = true;
+            this.btnDesfaz.Click += new System.EventHandler(this.btnDesfaz_Click);
             // 
             // btnBuscaProduto
             // 
@@ -86,6 +87,7 @@
             this.btnBuscaProduto.TabIndex = 312;
             this.btnBuscaProduto.TabStop = false;
             this.btnBuscaProduto.UseVisualStyleBackColor = true;
+            this.btnBuscaProduto.Click += new System.EventHandler(this.btnBuscaProduto_Click);
             // 
             // txtcodigo
             // 
@@ -93,6 +95,7 @@
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(67, 20);
             this.txtcodigo.TabIndex = 310;
+            this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // txtNome
             // 
@@ -131,6 +134,7 @@
             this.btnFechar.TabIndex = 309;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // label2
             // 
@@ -158,6 +162,7 @@
             this.dtpfinal.Size = new System.Drawing.Size(20, 20);
             this.dtpfinal.TabIndex = 307;
             this.dtpfinal.TabStop = false;
+            this.dtpfinal.ValueChanged += new System.EventHandler(this.dtpfinal_ValueChanged);
             // 
             // label5
             // 
@@ -203,6 +208,7 @@
             this.btnListar.TabIndex = 301;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // label1
             // 
@@ -230,6 +236,7 @@
             this.dtpInicial.Size = new System.Drawing.Size(20, 20);
             this.dtpInicial.TabIndex = 319;
             this.dtpInicial.TabStop = false;
+            this.dtpInicial.ValueChanged += new System.EventHandler(this.dtpInicial_ValueChanged);
             // 
             // Chama_extrato
             // 

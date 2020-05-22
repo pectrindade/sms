@@ -719,6 +719,37 @@ namespace Atencao_Assistida.Classes.Mysql
             return 1;
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader BuscaSaidaMes(int codempresa, int coddepartamento, string dtinicial, string dtfinal, int codproduto)
+        {
+            //-> PROCESSO EM QUE BUSCA TODAS AS ENTRADAS NO MES DO REFERIDO PRODUTO
+            //-> PROCESSO DE CORREÇÃO DE ESTOQUE 
+
+            var db = new DBAcess();
+            string Mysql = " select S.CODSAIDA, S.CODEMPRESA, S.CODDEPARTAMENTO, S.NUMEROPEDIDO, S.DATAENTREGA, ";
+            Mysql = Mysql + " I.CODPRODUTO, P.DESCRICAO, I.LOTE, I.VALIDADE, I.ENTREGUE ";
+            Mysql = Mysql + " FROM saida S ";
+            Mysql = Mysql + " inner JOIN saida_item as I ON S.CODSAIDA = I.CODSAIDA ";
+            Mysql = Mysql + " inner join produtos as P on I.CODPRODUTO = P.CODPRODUTO ";
+
+            Mysql = Mysql + " WHERE S.DATAENTREGA BETWEEN @DATAINICIAL AND @DATAFINAL ";
+            Mysql = Mysql + " AND S.CODEMPRESA = @CODEMPRESA";
+            Mysql = Mysql + " AND S.CODDEPARTAMENTO = @CODDEPARTAMENTO;";
+            Mysql = Mysql + " AND I.CODPRODUTO = @CODPRODUTO";
+            Mysql = Mysql + " AND P.ATIVO = 1 ";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@DATAINICIAL", Convert.ToDateTime(dtinicial));
+            db.AddParameter("@DATAFINAL", Convert.ToDateTime(dtfinal));
+            db.AddParameter("@CODPRODUTO", codproduto);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            return dr;
+        }
+
         #endregion
 
         #region Quantidade Atual
@@ -1216,8 +1247,7 @@ namespace Atencao_Assistida.Classes.Mysql
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;
         }
-
-
+        
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static MySqlDataReader BuscaProdutoEstoque(int codempresa, int coddepartamento, string mes, string ano, int codproduto)
         {
