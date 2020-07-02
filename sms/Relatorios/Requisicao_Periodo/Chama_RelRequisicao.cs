@@ -98,6 +98,7 @@ namespace Atencao_Assistida.Relatorios.Requisicao_Periodo
 
                 Relatorio();
 
+
                 tFormAguarde.Abort();
             }
             catch (Exception ex)
@@ -400,5 +401,10 @@ namespace Atencao_Assistida.Relatorios.Requisicao_Periodo
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread tFormAguarde = new System.Threading.Thread(new System.Threading.ThreadStart(CarregaFormAguarde));
+            tFormAguarde.Start();
+        }
     }
 }

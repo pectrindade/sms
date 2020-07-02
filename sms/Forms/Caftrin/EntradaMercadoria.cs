@@ -133,41 +133,70 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         private void Grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Grid.CurrentRow == null) return;
 
-            if (Grid.CurrentRow.Cells[4].Value != "") return;
-
-            bool open = false;
-            foreach (Form form in Application.OpenForms)
+            DialogResult result = MessageBox.Show("Deseja alterar este item da Entrada ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
+                var RowsIndex = Grid.CurrentRow.Index;
 
-                // Verifica se o form esta aberto
-                if (form.Name == "PesquisaProdutos")
+                try
                 {
-                    if (form is PesquisaProdutos)
-                    {
-                        form.BringToFront();
-                        open = true;
-                    }
+                    txtcodigomercadoria.Text = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
+                    txtnomemercadoria.Text = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+                    
+                }
+                catch
+                {
 
                 }
-            }
 
-            if (!open)
+
+                if (Grid.CurrentRow == null) return;
+                Grid.Rows.RemoveAt(Grid.CurrentRow.Index);
+            }
+            else if (result == DialogResult.No)
             {
-                Parametros.Valor = "";
-                Parametros.Nome = "";
+                //code for No
 
-                Form tela = new PesquisaProdutos();
-                tela.ShowDialog();
+                txtcodigomercadoria.Focus();
 
             }
 
-            Grid.CurrentRow.Cells[4].Value = Grid.CurrentRow.Cells[0].Value;
-            Grid.CurrentRow.Cells[5].Value = Grid.CurrentRow.Cells[1].Value;
+            //if (Grid.CurrentRow == null) return;
 
-            Grid.CurrentRow.Cells[0].Value = Parametros.Valor;
-            Grid.CurrentRow.Cells[1].Value = Parametros.Nome;
+            //if (Grid.CurrentRow.Cells[4].Value != "") return;
+
+            //bool open = false;
+            //foreach (Form form in Application.OpenForms)
+            //{
+
+            //    // Verifica se o form esta aberto
+            //    if (form.Name == "PesquisaProdutos")
+            //    {
+            //        if (form is PesquisaProdutos)
+            //        {
+            //            form.BringToFront();
+            //            open = true;
+            //        }
+
+            //    }
+            //}
+
+            //if (!open)
+            //{
+            //    Parametros.Valor = "";
+            //    Parametros.Nome = "";
+
+            //    Form tela = new PesquisaProdutos();
+            //    tela.ShowDialog();
+
+            //}
+
+            //Grid.CurrentRow.Cells[4].Value = Grid.CurrentRow.Cells[0].Value;
+            //Grid.CurrentRow.Cells[5].Value = Grid.CurrentRow.Cells[1].Value;
+
+            //Grid.CurrentRow.Cells[0].Value = Parametros.Valor;
+            //Grid.CurrentRow.Cells[1].Value = Parametros.Nome;
         }
 
         private void Grid_MouseDown(object sender, MouseEventArgs e)
@@ -393,7 +422,7 @@ namespace Atencao_Assistida.Forms.Caftrin
 
         private void BuscaFornecedor(string campo, string codigo)
         {
-            var dr = Classes.Mysql.Fornecedor.SelectLista(campo, codigo);
+            var dr = Fornecedor.SelectLista(campo, codigo);
 
             if (dr.HasRows)
             {
@@ -900,6 +929,7 @@ namespace Atencao_Assistida.Forms.Caftrin
             {
                 while (dr.Read())
                 {
+                    var indice = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
 
                     linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
                     linhaDados[1] = dr.GetString(dr.GetOrdinal("NOME"));
@@ -1006,7 +1036,7 @@ namespace Atencao_Assistida.Forms.Caftrin
         {
             if (txtnumeronota.Text.Trim() != "")
             {
-                BuscaNota();
+                //BuscaNota();
             }
         }
 

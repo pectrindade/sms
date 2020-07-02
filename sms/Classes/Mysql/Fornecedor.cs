@@ -344,8 +344,8 @@ namespace Atencao_Assistida.Classes.Mysql
                     break;
                 case "codigo":
                     {
-                        Mysql = Mysql + " WHERE CODFORNECEDOR LIKE CONCAT(@valor) ";
-                        valor = '%' + valor + "%";
+                        Mysql = Mysql + " WHERE CODFORNECEDOR = @valor ";
+                        
                     }
                     break;
             }

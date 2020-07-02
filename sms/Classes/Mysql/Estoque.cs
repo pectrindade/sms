@@ -491,6 +491,7 @@ namespace Atencao_Assistida.Classes.Mysql
                         qtEntrada = BuscaEntrada();
 
                         qtEntrada = qtEntrada + dr.GetFloat(dr.GetOrdinal("QUANTIDADE"));
+                        
 
                         var QtAjuste = BuscaAjuste(codempresa, coddepartamento, data, codproduto);
                         // se tem Ajuste entao a entrada é o ajuste
@@ -506,6 +507,10 @@ namespace Atencao_Assistida.Classes.Mysql
                             UpdateEntrada(qtEntrada.ToString());
 
                             qtEntrada = float.Parse(QtAjuste);
+                        }
+                        else
+                        {
+                            UpdateEntrada(qtEntrada.ToString());
                         }
                     }
                 }

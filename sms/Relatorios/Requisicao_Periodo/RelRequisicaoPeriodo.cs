@@ -22,11 +22,15 @@ namespace Atencao_Assistida.Relatorios.Requisicao_Periodo
 
             this.reportViewer1.RefreshReport();
 
-            if (Application.OpenForms["Espera"] != null)
-                Application.OpenForms["Espera"].Close();
+            
 
+           
+                if (Application.OpenForms["Espera"] != null)
+                   
+                    Application.OpenForms["Espera"].Close();
+           
         }
 
-        
+
     }
 }

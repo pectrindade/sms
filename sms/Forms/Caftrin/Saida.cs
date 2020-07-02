@@ -199,20 +199,20 @@ namespace Atencao_Assistida.Forms.Caftrin
             try
             {
 
-                var dr = Atencao_Assistida.Classes.Mysql.Saida.BuscaNota(numeropedido, int.Parse(Usuario.Coddepartamento));
+                var dr = Classes.Mysql.Saida.BuscaNota(numeropedido, int.Parse(Usuario.Coddepartamento));
                 if (dr.HasRows)
                 {
                     while (dr.Read())
                     {
                         codsaida = dr.GetInt32(dr.GetOrdinal("CODSAIDA"));
                     }
-                    var m = new Atencao_Assistida.Classes.Mysql.Saida(codsaida, int.Parse(codempresa), int.Parse(coddepartamento), int.Parse(codunidade), numeropedido, dataentrega, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, excluido);
+                    var m = new Classes.Mysql.Saida(codsaida, int.Parse(codempresa), int.Parse(coddepartamento), int.Parse(codunidade), numeropedido, dataentrega, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, excluido);
                     m.Update();
                     numero = codsaida;
                 }
                 else
                 {
-                    var m = new Atencao_Assistida.Classes.Mysql.Saida(codsaida, int.Parse(codempresa), int.Parse(coddepartamento), int.Parse(codunidade), numeropedido, dataentrega, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, excluido);
+                    var m = new Classes.Mysql.Saida(codsaida, int.Parse(codempresa), int.Parse(coddepartamento), int.Parse(codunidade), numeropedido, dataentrega, respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao, excluido);
                     numero = m.Insert();
                     codsaida = numero;
                 }
