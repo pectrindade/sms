@@ -2298,7 +2298,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7QIJqlGzHWkMehN5QH1dAJ1FdgLmb8COz+pPMRVwmqM=</dsig:DigestValue>
+      <dsig:DigestValue>fjRooR6WyzjL23c6oMjfltoCwMhbL0NhP5M1DKe4/BM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SqlServerTypes\readme.htm" size="2369">
