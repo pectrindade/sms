@@ -977,6 +977,71 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
+        public bool Cria_Temp()
+        {
+
+            Inicio:
+
+            var db = new DBAcessOleDB();
+
+            var tableName = "Temp";
+
+            var Mysql = "CREATE TABLE " + tableName + "( ";
+
+            Mysql = Mysql + " [CODEMPRESA]  Int, ";
+            Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
+            Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
+            Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [CODGRUPO]   Int, ";
+            Mysql = Mysql + " [NOMEGRUPO]  varchar(200), ";
+            Mysql = Mysql + " [DTINICIAL]  varchar(11), ";
+            Mysql = Mysql + " [DTFINAL]  varchar(11), ";
+
+            Mysql = Mysql + " [CODPRODUTO]   Int, ";
+            Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
+            Mysql = Mysql + " [DATAMOVIMENTO]  DATETIME, ";
+            Mysql = Mysql + " [CODMOVIMENTO]   Int, ";
+            Mysql = Mysql + " [TIPOMOVIMENTO]  varchar(80), ";
+            Mysql = Mysql + " [QUANTIDADE]  varchar(20) ";
+           
+
+
+            Mysql = Mysql + " )";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+                db.Dispose();
+                db = new DBAcessOleDB();
+
+                Mysql = "DROP TABLE " + tableName;
+                db.CommandText = Mysql;
+                try
+                {
+                    db.ExecuteNonQuery();
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+
+                goto Inicio;
+
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+
         public bool Cria_EstoqueExtrato()
         {
 
@@ -999,7 +1064,8 @@ namespace Atencao_Assistida.Classes.Funcoes
 
             Mysql = Mysql + " [CODPRODUTO]   Int, ";
             Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
-            Mysql = Mysql + " [DATAMOVIMENTO]  varchar(20), ";
+            Mysql = Mysql + " [DATAMOVIMENTO]  DATETIME, ";
+            Mysql = Mysql + " [CODMOVIMENTO]   Int, ";
             Mysql = Mysql + " [TIPOMOVIMENTO]  varchar(80), ";
             Mysql = Mysql + " [QUANTIDADE]  varchar(20), ";
             Mysql = Mysql + " [SALDO]  varchar(20) ";

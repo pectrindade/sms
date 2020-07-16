@@ -66,14 +66,14 @@
             this.cmbGrupo.Location = new System.Drawing.Point(14, 114);
             this.cmbGrupo.Name = "cmbGrupo";
             this.cmbGrupo.Size = new System.Drawing.Size(319, 21);
-            this.cmbGrupo.TabIndex = 316;
+            this.cmbGrupo.TabIndex = 2;
             // 
             // btnDesfaz
             // 
             this.btnDesfaz.Location = new System.Drawing.Point(251, 264);
             this.btnDesfaz.Name = "btnDesfaz";
             this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
-            this.btnDesfaz.TabIndex = 315;
+            this.btnDesfaz.TabIndex = 8;
             this.btnDesfaz.Text = "Desfaz";
             this.btnDesfaz.UseVisualStyleBackColor = true;
             this.btnDesfaz.Click += new System.EventHandler(this.btnDesfaz_Click);
@@ -94,7 +94,7 @@
             this.txtcodigo.Location = new System.Drawing.Point(14, 158);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(67, 20);
-            this.txtcodigo.TabIndex = 310;
+            this.txtcodigo.TabIndex = 3;
             this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // txtNome
@@ -104,7 +104,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.ReadOnly = true;
             this.txtNome.Size = new System.Drawing.Size(533, 38);
-            this.txtNome.TabIndex = 311;
+            this.txtNome.TabIndex = 4;
             // 
             // label3
             // 
@@ -131,7 +131,7 @@
             this.btnFechar.Location = new System.Drawing.Point(12, 264);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(120, 23);
-            this.btnFechar.TabIndex = 309;
+            this.btnFechar.TabIndex = 9;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -152,7 +152,7 @@
             this.txtDataFinal.Mask = "00/00/0000";
             this.txtDataFinal.Name = "txtDataFinal";
             this.txtDataFinal.Size = new System.Drawing.Size(82, 20);
-            this.txtDataFinal.TabIndex = 303;
+            this.txtDataFinal.TabIndex = 6;
             this.txtDataFinal.ValidatingType = typeof(System.DateTime);
             // 
             // dtpfinal
@@ -180,7 +180,7 @@
             this.cmbDepartamento.Location = new System.Drawing.Point(12, 68);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(319, 21);
-            this.cmbDepartamento.TabIndex = 304;
+            this.cmbDepartamento.TabIndex = 1;
             // 
             // label4
             // 
@@ -198,14 +198,14 @@
             this.cmbEmpresa.Location = new System.Drawing.Point(12, 25);
             this.cmbEmpresa.Name = "cmbEmpresa";
             this.cmbEmpresa.Size = new System.Drawing.Size(319, 21);
-            this.cmbEmpresa.TabIndex = 302;
+            this.cmbEmpresa.TabIndex = 0;
             // 
             // btnListar
             // 
             this.btnListar.Location = new System.Drawing.Point(510, 264);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(120, 23);
-            this.btnListar.TabIndex = 301;
+            this.btnListar.TabIndex = 7;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
@@ -226,7 +226,7 @@
             this.txtDataInicial.Mask = "00/00/0000";
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(82, 20);
-            this.txtDataInicial.TabIndex = 318;
+            this.txtDataInicial.TabIndex = 5;
             this.txtDataInicial.ValidatingType = typeof(System.DateTime);
             // 
             // dtpInicial
@@ -265,10 +265,13 @@
             this.Controls.Add(this.cmbEmpresa);
             this.Controls.Add(this.btnListar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "Chama_extrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estoque Analítico";
             this.Load += new System.EventHandler(this.Chama_extrato_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Chama_extrato_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Chama_extrato_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

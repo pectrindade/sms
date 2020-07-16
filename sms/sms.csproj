@@ -680,6 +680,11 @@
     <Compile Include="Relatorios\Estoque_Extrato\Chama_extrato.Designer.cs">
       <DependentUpon>Chama_extrato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Estoque_Extrato\DsExtrato.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsExtrato.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Estoque_Extrato\Rel_Extrato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1135,6 +1140,10 @@
     <EmbeddedResource Include="Relatorios\Estoque_Extrato\Chama_extrato.resx">
       <DependentUpon>Chama_extrato.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque_Extrato\RelExtrato.rdlc" />
+    <EmbeddedResource Include="Relatorios\Estoque_Extrato\Rel_Extrato.resx">
+      <DependentUpon>Rel_Extrato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Estoque_Periodo\Chama_RelEstoque.resx">
       <DependentUpon>Chama_RelEstoque.cs</DependentUpon>
     </EmbeddedResource>
@@ -1308,6 +1317,17 @@
     </None>
     <None Include="Relatorios\Estoque\DsEstoque.xss">
       <DependentUpon>DsEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Estoque_Extrato\DsExtrato.xsc">
+      <DependentUpon>DsExtrato.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Estoque_Extrato\DsExtrato.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsExtrato.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Estoque_Extrato\DsExtrato.xss">
+      <DependentUpon>DsExtrato.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Estoque_Periodo\DsEstoquePeriodo.xsc">
       <DependentUpon>DsEstoquePeriodo.xsd</DependentUpon>

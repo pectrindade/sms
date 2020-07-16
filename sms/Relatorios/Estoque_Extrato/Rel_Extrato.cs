@@ -16,5 +16,18 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
         {
             InitializeComponent();
         }
+
+        private void Rel_Extrato_Load(object sender, EventArgs e)
+        {
+
+            reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            reportViewer1.ZoomPercent = 100;
+
+            // TODO: esta linha de código carrega dados na tabela 'DsExtrato.Extrato'. Você pode movê-la ou removê-la conforme necessário.
+            this.ExtratoTableAdapter.Fill(this.DsExtrato.Extrato);
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
