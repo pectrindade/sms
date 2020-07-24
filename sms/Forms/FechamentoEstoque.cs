@@ -429,5 +429,13 @@ namespace Atencao_Assistida.Forms
 
             cmbDepartamento.Focus();
         }
+
+        private void txtcodigo_Leave(object sender, EventArgs e)
+        {
+            if (txtcodigo.Text.Trim() != "")
+            {
+                BuscaProduto(int.Parse(txtcodigo.Text));
+            }
+        }
     }
 }

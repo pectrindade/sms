@@ -55,10 +55,11 @@
             // 
             // btnBuscaProduto
             // 
+            this.btnBuscaProduto.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
             this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaProduto.Location = new System.Drawing.Point(87, 155);
+            this.btnBuscaProduto.Location = new System.Drawing.Point(87, 153);
             this.btnBuscaProduto.Name = "btnBuscaProduto";
-            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 26);
             this.btnBuscaProduto.TabIndex = 292;
             this.btnBuscaProduto.TabStop = false;
             this.btnBuscaProduto.UseVisualStyleBackColor = true;
@@ -133,13 +134,13 @@
             // btnBuscaUnidade
             // 
             this.btnBuscaUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscaUnidade.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
             this.btnBuscaUnidade.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaUnidade.Location = new System.Drawing.Point(87, 112);
+            this.btnBuscaUnidade.Location = new System.Drawing.Point(87, 110);
             this.btnBuscaUnidade.Name = "btnBuscaUnidade";
-            this.btnBuscaUnidade.Size = new System.Drawing.Size(25, 21);
+            this.btnBuscaUnidade.Size = new System.Drawing.Size(25, 24);
             this.btnBuscaUnidade.TabIndex = 286;
             this.btnBuscaUnidade.TabStop = false;
-            this.btnBuscaUnidade.Text = "...";
             this.btnBuscaUnidade.UseVisualStyleBackColor = true;
             this.btnBuscaUnidade.Click += new System.EventHandler(this.btnBuscaUnidade_Click);
             // 

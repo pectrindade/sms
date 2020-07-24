@@ -1162,7 +1162,6 @@ D:\Projetos\c#\Winform\sms\sms\bin\Debug\ru\Microsoft.ReportViewer.Common.resour
 D:\Projetos\c#\Winform\sms\sms\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
 D:\Projetos\c#\Winform\sms\sms\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Sms.exe.config
-D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Chama_RelEntrada.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Saida_Periodo.Chama_RelSaida.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Saida_Periodo.RelSaidaPeriodo.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Consultas.Saldo.resources
@@ -1179,3 +1178,5 @@ D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Ex
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Forms.Padrao_saida.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Pesquisas.PesquisaPadraoSaida.resources
 D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.Estoque_Extrato.Rel_Extrato.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.EntradaPeriodo.ChamaRelEntrada.resources
+D:\Projetos\c#\Winform\sms\sms\obj\Debug\Atencao_Assistida.Relatorios.EntradaPeriodo.RelEntradaPeriodo.resources

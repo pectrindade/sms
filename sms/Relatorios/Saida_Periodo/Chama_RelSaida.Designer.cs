@@ -58,7 +58,7 @@
             this.button1.Location = new System.Drawing.Point(316, 265);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 23);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 6;
             this.button1.Text = "Listar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -69,7 +69,7 @@
             this.txtDataInicial.Mask = "00/00/0000";
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(82, 20);
-            this.txtDataInicial.TabIndex = 253;
+            this.txtDataInicial.TabIndex = 4;
             this.txtDataInicial.ValidatingType = typeof(System.DateTime);
             // 
             // dateTimePicker1
@@ -97,7 +97,7 @@
             this.cmbDepartamento.Location = new System.Drawing.Point(12, 69);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(238, 21);
-            this.cmbDepartamento.TabIndex = 254;
+            this.cmbDepartamento.TabIndex = 1;
             // 
             // label4
             // 
@@ -115,7 +115,7 @@
             this.cmbEmpresa.Location = new System.Drawing.Point(12, 26);
             this.cmbEmpresa.Name = "cmbEmpresa";
             this.cmbEmpresa.Size = new System.Drawing.Size(238, 21);
-            this.cmbEmpresa.TabIndex = 252;
+            this.cmbEmpresa.TabIndex = 0;
             // 
             // txtDataFinal
             // 
@@ -123,7 +123,7 @@
             this.txtDataFinal.Mask = "00/00/0000";
             this.txtDataFinal.Name = "txtDataFinal";
             this.txtDataFinal.Size = new System.Drawing.Size(82, 20);
-            this.txtDataFinal.TabIndex = 258;
+            this.txtDataFinal.TabIndex = 5;
             this.txtDataFinal.ValidatingType = typeof(System.DateTime);
             // 
             // dateTimePicker2
@@ -138,13 +138,13 @@
             // btnBuscaUnidade
             // 
             this.btnBuscaUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscaUnidade.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
             this.btnBuscaUnidade.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaUnidade.Location = new System.Drawing.Point(87, 116);
+            this.btnBuscaUnidade.Location = new System.Drawing.Point(87, 114);
             this.btnBuscaUnidade.Name = "btnBuscaUnidade";
-            this.btnBuscaUnidade.Size = new System.Drawing.Size(25, 21);
+            this.btnBuscaUnidade.Size = new System.Drawing.Size(25, 24);
             this.btnBuscaUnidade.TabIndex = 264;
             this.btnBuscaUnidade.TabStop = false;
-            this.btnBuscaUnidade.Text = "...";
             this.btnBuscaUnidade.UseVisualStyleBackColor = true;
             this.btnBuscaUnidade.Click += new System.EventHandler(this.btnBuscaUnidade_Click);
             // 
@@ -153,7 +153,7 @@
             this.txtCodUnidade.Location = new System.Drawing.Point(13, 116);
             this.txtCodUnidade.Name = "txtCodUnidade";
             this.txtCodUnidade.Size = new System.Drawing.Size(68, 20);
-            this.txtCodUnidade.TabIndex = 260;
+            this.txtCodUnidade.TabIndex = 2;
             this.txtCodUnidade.Leave += new System.EventHandler(this.txtCodUnidade_Leave);
             // 
             // txtNomeUnidade
@@ -210,17 +210,18 @@
             this.btnFechar.Location = new System.Drawing.Point(12, 265);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(120, 23);
-            this.btnFechar.TabIndex = 267;
+            this.btnFechar.TabIndex = 8;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnBuscaProduto
             // 
+            this.btnBuscaProduto.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
             this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaProduto.Location = new System.Drawing.Point(87, 159);
+            this.btnBuscaProduto.Location = new System.Drawing.Point(87, 157);
             this.btnBuscaProduto.Name = "btnBuscaProduto";
-            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 26);
             this.btnBuscaProduto.TabIndex = 270;
             this.btnBuscaProduto.TabStop = false;
             this.btnBuscaProduto.UseVisualStyleBackColor = true;
@@ -231,7 +232,7 @@
             this.txtcodigo.Location = new System.Drawing.Point(14, 159);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(67, 20);
-            this.txtcodigo.TabIndex = 268;
+            this.txtcodigo.TabIndex = 3;
             this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // txtNome
@@ -267,7 +268,7 @@
             this.btnDesfaz.Location = new System.Drawing.Point(167, 265);
             this.btnDesfaz.Name = "btnDesfaz";
             this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
-            this.btnDesfaz.TabIndex = 296;
+            this.btnDesfaz.TabIndex = 7;
             this.btnDesfaz.Text = "Desfaz";
             this.btnDesfaz.UseVisualStyleBackColor = true;
             this.btnDesfaz.Click += new System.EventHandler(this.btnDesfaz_Click);
@@ -305,7 +306,7 @@
             this.KeyPreview = true;
             this.Name = "Chama_RelSaida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Saida Por Período";
+            this.Text = "Saida de Mercadoria";
             this.Load += new System.EventHandler(this.Chama_RelSaida_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Chama_RelSaida_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Chama_RelSaida_KeyPress);

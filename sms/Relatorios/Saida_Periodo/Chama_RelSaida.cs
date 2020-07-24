@@ -15,7 +15,25 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
         private void Chama_RelSaida_Load(object sender, EventArgs e)
         {
             CarregaCmbEmpresa();
+            cmbEmpresa.SelectedIndex = 1;
             CarregaCmbDepartamento();
+        }
+
+        private void Chama_RelSaida_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F8)
+            {
+                if (ActiveControl.Name == "txtCodUnidade") { btnBuscaUnidade.PerformClick(); return; }
+            }
+        }
+
+        private void Chama_RelSaida_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
         }
 
         private void CarregaCmbEmpresa()
@@ -273,23 +291,6 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
 
         }
 
-        private void Chama_RelSaida_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F8)
-            {
-                if (ActiveControl.Name == "txtCodUnidade") { btnBuscaUnidade.PerformClick(); return; }
-            }
-        }
-
-        private void Chama_RelSaida_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-        }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime date = this.dateTimePicker1.Value;
@@ -340,7 +341,7 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo
             dr.Close();
             dr.Dispose();
 
-            txtNome.Focus();
+            txtDataInicial.Focus();
         }
 
         private void btnBuscaProduto_Click(object sender, EventArgs e)

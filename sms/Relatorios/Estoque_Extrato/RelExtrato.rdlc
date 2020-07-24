@@ -375,14 +375,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="CODMOVIMENTO">
+                    <Textbox Name="NUMEROMOVIMENTO">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CODMOVIMENTO.Value</Value>
+                              <Value>=Fields!NUMEROMOVIMENTO.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -393,7 +393,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>CODMOVIMENTO</rd:DefaultName>
+                      <rd:DefaultName>NUMEROMOVIMENTO</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -549,10 +549,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.64953in</Height>
+    <Height>0.61828in</Height>
     <Style />
   </Body>
-  <Width>6.33643in</Width>
+  <Width>6.43067in</Width>
   <Page>
     <PageHeader>
       <Height>5.00063cm</Height>
@@ -909,6 +909,10 @@
         <Field Name="CODMOVIMENTO">
           <DataField>CODMOVIMENTO</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NUMEROMOVIMENTO">
+          <DataField>NUMEROMOVIMENTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TIPOMOVIMENTO">
           <DataField>TIPOMOVIMENTO</DataField>

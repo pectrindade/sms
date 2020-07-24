@@ -173,6 +173,46 @@ namespace Atencao_Assistida.Classes.Mysql
             }
         }
 
+
+        public int InsertAccessEntradaPeriodo(int codempresa, string nomedeempresa, int coddepartamento, string nomedepartamento, int codentrada, string numeronf, 
+        int codfornecedor, string nomefornecedor, string dataentrada, int codproduto, string nomeproduto, string quantidade)
+        {
+            var db = new DBAcessOleDB();
+            var Mysql = " INSERT INTO EntradaPeriodo(";
+            Mysql = Mysql + " CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, CODENTRADA, NUMERONF, CODFORNECEDOR, NOMEFORNECEDOR, ";
+            Mysql = Mysql + " DATAENTRADA, CODPRODUTO, NOMEPRODUTO, QUANTIDADE ";
+            Mysql = Mysql + ") ";
+            Mysql = Mysql + " VALUES(";
+            Mysql = Mysql + " @CODEMPRESA, @NOMEEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @CODENTRADA, @NUMERONF, @CODFORNECEDOR, @NOMEFORNECEDOR, ";
+            Mysql = Mysql + " @DATAENTRADA, @CODPRODUTO, @NOMEPRODUTO, @QUANTIDADE ";
+            Mysql = Mysql + "); ";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@NOMEEMPRESA", nomedeempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@NOMEDEPARTAMENTO", nomedepartamento);
+            db.AddParameter("@CODENTRADA", codentrada);
+            db.AddParameter("@NUMERONF", numeronf);
+            db.AddParameter("@CODFORNECEDOR", codfornecedor);
+            db.AddParameter("@NOMEFORNECEDOR", nomefornecedor);
+            db.AddParameter("@DATAENTRADA", dataentrada);
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@NOMEPRODUTO", nomeproduto);
+            db.AddParameter("@QUANTIDADE", quantidade);
+
+            try
+            {
+                return Convert.ToInt32(db.ExecuteScalar());
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static MySqlDataReader Select(int id)
         {
@@ -360,6 +400,44 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@valor", valor);
             var ds = db.ExecuteDataSet();
             return ds;
+        }
+
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader Entrada_Periodo(int codempresa, int coddepartamento, int codfornecedor, int codproduto, string dtinicial, string dtfinal)
+        {
+            var db = new DBAcess();
+            var Mysql = " SELECT E.CODEMPRESA, EM.NOME AS NOMEEMPRESA, E.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, ";
+            Mysql = Mysql + " E.CODENTRADA, E.NUMERONOTA, E.SERIE, E.CODFORNECEDOR, F.NOME AS NOMEFORNECEDOR, ";
+            Mysql = Mysql + " DATE_FORMAT(E.DATARECEBIMENTO, '%d/%m/%Y') AS DATAENTRADA, EI.CODPRODUTO, P.NOME AS NOMEPRODUTO, EI.QUANTIDADE ";
+
+            Mysql = Mysql + " FROM entrada E ";
+
+            Mysql = Mysql + " INNER JOIN empresa EM ON E.CODEMPRESA = EM.CODEMPRESA ";
+            Mysql = Mysql + " INNER JOIN fornecedor F ON E.CODFORNECEDOR = F.CODFORNECEDOR ";
+            Mysql = Mysql + " INNER JOIN departamento D ON E.CODDEPARTAMENTO = D.CODDEPARTAMENTO ";
+            Mysql = Mysql + " INNER JOIN entrada_item EI ON E.CODENTRADA = EI.CODENTRADA ";
+            Mysql = Mysql + " INNER JOIN produtos P ON EI.CODPRODUTO = P.CODPRODUTO ";
+
+            Mysql = Mysql + " WHERE E.DATARECEBIMENTO BETWEEN @DATAINICIAL AND @DATAFINAL ";
+            Mysql = Mysql + " AND E.CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+
+            if (codfornecedor != 0) { Mysql = Mysql + " AND E.CODFORNECEDOR = @CODFORNECEDOR "; }
+            if (codproduto != 0) { Mysql = Mysql + " AND EI.CODPRODUTO = @CODPRODUTO "; }
+
+            Mysql = Mysql + " ORDER BY E.CODENTRADA, E.DATARECEBIMENTO ";
+
+            db.CommandText = Mysql;
+            db.AddParameter("@DATAINICIAL", Convert.ToDateTime(dtinicial));
+            db.AddParameter("@DATAFINAL", Convert.ToDateTime(dtfinal));
+            db.AddParameter("@CODFORNECEDOR", codfornecedor);
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            return dr;
         }
 
     }

@@ -793,6 +793,65 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
+        public bool Cria_EntradaPeriodo()
+        {
+
+            Inicio:
+
+            var db = new DBAcessOleDB();
+
+            var tableName = "EntradaPeriodo";
+
+            var Mysql = "CREATE TABLE " + tableName + "( ";
+
+            Mysql = Mysql + " [CODEMPRESA]  Int, ";
+            Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
+            Mysql = Mysql + " [CODDEPARTAMENTO]  Int, ";
+            Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [CODENTRADA]  Int, ";
+            Mysql = Mysql + " [NUMERONF]   varchar(20), ";
+            Mysql = Mysql + " [CODFORNECEDOR]  Int, ";
+            Mysql = Mysql + " [NOMEFORNECEDOR]  varchar(200), ";
+            Mysql = Mysql + " [DATAENTRADA]  varchar(20), ";
+            Mysql = Mysql + " [CODPRODUTO]   Int, ";
+            Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
+            Mysql = Mysql + " [QUANTIDADE]  varchar(10) ";
+
+            Mysql = Mysql + " )";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+                db.Dispose();
+                db = new DBAcessOleDB();
+
+                Mysql = "DROP  TABLE " + tableName;
+                db.CommandText = Mysql;
+                try
+                {
+                    db.ExecuteNonQuery();
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+
+                goto Inicio;
+
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
         public bool Cria_SaidaPeriodo()
         {
 
@@ -1001,10 +1060,9 @@ namespace Atencao_Assistida.Classes.Funcoes
             Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
             Mysql = Mysql + " [DATAMOVIMENTO]  DATETIME, ";
             Mysql = Mysql + " [CODMOVIMENTO]   Int, ";
+            Mysql = Mysql + " [NUMEROMOVIMENTO]  varchar(20), ";
             Mysql = Mysql + " [TIPOMOVIMENTO]  varchar(80), ";
             Mysql = Mysql + " [QUANTIDADE]  varchar(20) ";
-           
-
 
             Mysql = Mysql + " )";
 
@@ -1066,10 +1124,10 @@ namespace Atencao_Assistida.Classes.Funcoes
             Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
             Mysql = Mysql + " [DATAMOVIMENTO]  DATETIME, ";
             Mysql = Mysql + " [CODMOVIMENTO]   Int, ";
+            Mysql = Mysql + " [NUMEROMOVIMENTO]  varchar(20), ";
             Mysql = Mysql + " [TIPOMOVIMENTO]  varchar(80), ";
             Mysql = Mysql + " [QUANTIDADE]  varchar(20), ";
             Mysql = Mysql + " [SALDO]  varchar(20) ";
-
 
             Mysql = Mysql + " )";
 

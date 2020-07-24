@@ -41,11 +41,11 @@
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbgrupo = new System.Windows.Forms.ComboBox();
-            this.btnBuscaProduto = new System.Windows.Forms.Button();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnBuscaProduto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -171,23 +171,13 @@
             this.cmbgrupo.Size = new System.Drawing.Size(255, 21);
             this.cmbgrupo.TabIndex = 226;
             // 
-            // btnBuscaProduto
-            // 
-            this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaProduto.Location = new System.Drawing.Point(71, 174);
-            this.btnBuscaProduto.Name = "btnBuscaProduto";
-            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 23);
-            this.btnBuscaProduto.TabIndex = 230;
-            this.btnBuscaProduto.TabStop = false;
-            this.btnBuscaProduto.UseVisualStyleBackColor = true;
-            this.btnBuscaProduto.Click += new System.EventHandler(this.btnBuscaProduto_Click);
-            // 
             // txtcodigo
             // 
             this.txtcodigo.Location = new System.Drawing.Point(12, 174);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(53, 20);
             this.txtcodigo.TabIndex = 228;
+            this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // txtNome
             // 
@@ -215,6 +205,18 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 232;
             this.label3.Text = "Nome";
+            // 
+            // btnBuscaProduto
+            // 
+            this.btnBuscaProduto.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
+            this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnBuscaProduto.Location = new System.Drawing.Point(71, 171);
+            this.btnBuscaProduto.Name = "btnBuscaProduto";
+            this.btnBuscaProduto.Size = new System.Drawing.Size(24, 24);
+            this.btnBuscaProduto.TabIndex = 230;
+            this.btnBuscaProduto.TabStop = false;
+            this.btnBuscaProduto.UseVisualStyleBackColor = true;
+            this.btnBuscaProduto.Click += new System.EventHandler(this.btnBuscaProduto_Click);
             // 
             // FechamentoEstoque
             // 

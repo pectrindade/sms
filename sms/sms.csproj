@@ -610,12 +610,6 @@
     <Compile Include="Relatorios\Balanco\RelBalanco.Designer.cs">
       <DependentUpon>RelBalanco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\Chama_RelEntrada.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Relatorios\Chama_RelEntrada.Designer.cs">
-      <DependentUpon>Chama_RelEntrada.cs</DependentUpon>
-    </Compile>
     <Compile Include="Relatorios\Departamento\DsDepartamento.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -626,6 +620,23 @@
     </Compile>
     <Compile Include="Relatorios\Departamento\RelDepartamento.Designer.cs">
       <DependentUpon>RelDepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\EntradaPeriodo\ChamaRelEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\EntradaPeriodo\ChamaRelEntrada.Designer.cs">
+      <DependentUpon>ChamaRelEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\EntradaPeriodo\DsEntradaPeriodo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsEntradaPeriodo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\EntradaPeriodo\RelEntradaPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\EntradaPeriodo\RelEntradaPeriodo.Designer.cs">
+      <DependentUpon>RelEntradaPeriodo.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Entrada\DsEntrada.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1114,12 +1125,16 @@
     <EmbeddedResource Include="Relatorios\Balanco\RelBalanco.resx">
       <DependentUpon>RelBalanco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Chama_RelEntrada.resx">
-      <DependentUpon>Chama_RelEntrada.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Departamento\RelDepartamento.rdlc" />
     <EmbeddedResource Include="Relatorios\Departamento\RelDepartamento.resx">
       <DependentUpon>RelDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\EntradaPeriodo\ChamaRelEntrada.resx">
+      <DependentUpon>ChamaRelEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\EntradaPeriodo\RelEntradaPeriodo.rdlc" />
+    <EmbeddedResource Include="Relatorios\EntradaPeriodo\RelEntradaPeriodo.resx">
+      <DependentUpon>RelEntradaPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Entrada\RelEntrada.rdlc" />
     <EmbeddedResource Include="Relatorios\Entrada\RelEntrada.resx">
@@ -1223,6 +1238,7 @@
     <EmbeddedResource Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.resx">
       <DependentUpon>RelSaidaPeriodo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Saida_Periodo\RelSaidaPeriodo_bk.rdlc" />
     <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.rdlc" />
     <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.resx">
       <DependentUpon>RelUnidade.cs</DependentUpon>
@@ -1273,6 +1289,17 @@
     </None>
     <None Include="Relatorios\Departamento\DsDepartamento.xss">
       <DependentUpon>DsDepartamento.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\EntradaPeriodo\DsEntradaPeriodo.xsc">
+      <DependentUpon>DsEntradaPeriodo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\EntradaPeriodo\DsEntradaPeriodo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsEntradaPeriodo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\EntradaPeriodo\DsEntradaPeriodo.xss">
+      <DependentUpon>DsEntradaPeriodo.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Entrada\DsEntrada.xsc">
       <DependentUpon>DsEntrada.xsd</DependentUpon>
@@ -1577,7 +1604,6 @@
   <ItemGroup>
     <Folder Include="Relatorios\Administrativos\Produtos\" />
     <Folder Include="Relatorios\Cfop\" />
-    <Folder Include="Relatorios\EntradaPeriodo\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

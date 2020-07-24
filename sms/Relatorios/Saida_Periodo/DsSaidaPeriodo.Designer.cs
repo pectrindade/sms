@@ -1279,7 +1279,9 @@ namespace Atencao_Assistida.Relatorios.Saida_Periodo.DsSaidaPeriodoTableAdapters
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        SaidaPeriodo.*\r\nFROM            SaidaPeriodo";
+            this._commandCollection[0].CommandText = "SELECT        CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, CODSAID" +
+                "A, DATASAIDA, CODUNIDADE, NOMEUNIDADE, SOLICITANTE, NUMEROPEDIDO, CODPRODUTO, NO" +
+                "MEPRODUTO, QUANTIDADE\r\nFROM            SaidaPeriodo\r\nORDER BY CODSAIDA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

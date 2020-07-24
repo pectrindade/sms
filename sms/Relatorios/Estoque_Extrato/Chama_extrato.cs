@@ -23,6 +23,9 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
         private void Chama_extrato_Load(object sender, EventArgs e)
         {
             CarregaCmbEmpresa();
+
+            cmbEmpresa.SelectedIndex = 1;
+
             CarregaCmbDepartamento();
             CarregaCmbGrupo();
 
@@ -112,8 +115,8 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
 
         private void btnListar_Click(object sender, EventArgs e)
         {
-
-            CarregarRelatorio();
+            if (txtcodigo.Text.Trim() == "") { MessageBox.Show("Produto é campo Obrigatório !"); txtcodigo.Focus(); return;  }
+                CarregarRelatorio();
         }
 
         private void CarregarRelatorio()
@@ -159,6 +162,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
 
             var datamovimento = "";
             var codmovimento = 0;
+            var numeromovimento = "";
             var tipomovimento = "";
             var quantidade = "";
 
@@ -207,11 +211,12 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
                 quantidade = qtanterior.ToString();
                 saldo = qtanterior.ToString();
                 nomeproduto = " XXXXXXXXXXXXXXXXX";
+                numeromovimento = "";
 
                 var m = new Classes.Mysql.Estoque();
 
                 m.InsertAccessExtrato(codempresa, nomeempresa, coddepartamento, nomedepartamento, codgrupo, nomegrupo, dtinicial, dtfinal, codproduto, nomeproduto,
-                datamovimento, codmovimento, tipomovimento, quantidade, saldo);
+                datamovimento, codmovimento, numeromovimento, tipomovimento, quantidade, saldo);
             }
             catch (Exception erro)
             {
@@ -238,13 +243,13 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
                     tipomovimento = "BALANÇO";
                     saldo = quantidade ;
                     nomeproduto = " XXXXXXXXXXXXXXXXX";
-
+                    numeromovimento = "";
                     try
                     {
                         var m = new Classes.Mysql.Estoque();
 
                         m.InsertAccessExtrato(codempresa, nomeempresa, coddepartamento, nomedepartamento, codgrupo, nomegrupo, dtinicial, dtfinal, codproduto, nomeproduto,
-                        datamovimento, codmovimento, tipomovimento, quantidade, saldo);
+                        datamovimento, codmovimento, numeromovimento, tipomovimento, quantidade, saldo);
                     }
                     catch (Exception erro)
                     {
@@ -270,16 +275,17 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
 
                     if (!dr.IsDBNull(dr.GetOrdinal("CODENTRADA"))) { codmovimento = dr.GetInt32(dr.GetOrdinal("CODENTRADA")); }
 
+                    if (!dr.IsDBNull(dr.GetOrdinal("NUMERONOTA"))) { numeromovimento = dr.GetString(dr.GetOrdinal("NUMERONOTA")) + "/" + dr.GetString(dr.GetOrdinal("SERIE")); }
+
                     tipomovimento = "ENTRADA";
-                    //qtanterior = float.Parse(quantidade) + float.Parse(quantidade);
-                    //saldo = qtanterior.ToString();
+                   
 
                     try
                     {
                         var m = new Classes.Mysql.Estoque();
 
                         m.InsertAccessExtrato(codempresa, nomeempresa, coddepartamento, nomedepartamento, codgrupo, nomegrupo, dtinicial, dtfinal, codproduto, nomeproduto,
-                        datamovimento, codmovimento, tipomovimento, quantidade, saldo);
+                        datamovimento, codmovimento, numeromovimento, tipomovimento, quantidade, saldo);
                     }
                     catch (Exception erro)
                     {
@@ -300,24 +306,22 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
             {
                 while (dr.Read())
                 {
-
+                    if (!dr.IsDBNull(dr.GetOrdinal("CODSAIDA"))) { codmovimento = dr.GetInt32(dr.GetOrdinal("CODSAIDA")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("CODPRODUTO"))) { codproduto = dr.GetInt32(dr.GetOrdinal("CODPRODUTO")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("DESCRICAO"))) { nomeproduto = dr.GetString(dr.GetOrdinal("DESCRICAO")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("DATAENTREGA"))) { datamovimento = dr.GetString(dr.GetOrdinal("DATAENTREGA")); }
                     if (!dr.IsDBNull(dr.GetOrdinal("ENTREGUE"))) { quantidade = dr.GetString(dr.GetOrdinal("ENTREGUE")); }
 
-                    if (!dr.IsDBNull(dr.GetOrdinal("CODSAIDA"))) { codmovimento = dr.GetInt32(dr.GetOrdinal("CODSAIDA")); }
+                    if (!dr.IsDBNull(dr.GetOrdinal("NUMEROPEDIDO"))) { numeromovimento = dr.GetString(dr.GetOrdinal("NUMEROPEDIDO")); }
 
                     tipomovimento = "SAIDA";
-                    //qtanterior = float.Parse(quantidade) - float.Parse(quantidade);
-                    //saldo = qtanterior.ToString();
 
                     try
                     {
                         var m = new Classes.Mysql.Estoque();
 
                         m.InsertAccessExtrato(codempresa, nomeempresa, coddepartamento, nomedepartamento, codgrupo, nomegrupo, dtinicial, dtfinal, codproduto, nomeproduto,
-                        datamovimento, codmovimento, tipomovimento, quantidade, saldo);
+                        datamovimento, codmovimento, numeromovimento, tipomovimento, quantidade, saldo);
                     }
                     catch (Exception erro)
                     {
@@ -354,6 +358,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
                     if (!dr1.IsDBNull(dr1.GetOrdinal("TIPOMOVIMENTO"))) { Utipomovimento = dr1.GetString(dr1.GetOrdinal("TIPOMOVIMENTO")); }
                     if (!dr1.IsDBNull(dr1.GetOrdinal("QUANTIDADE"))) { Uquantidade = dr1.GetString(dr1.GetOrdinal("QUANTIDADE")); }
                     Udatamovimento = dr1.GetDateTime(dr1.GetOrdinal("DATAMOVIMENTO")).ToString();
+                    numeromovimento = dr1.GetString(dr1.GetOrdinal("NUMEROMOVIMENTO"));
 
                     if (Utipomovimento == "QUANTIDADE ANTERIOR")
                     {
@@ -380,7 +385,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato
                         var m = new Classes.Mysql.Estoque();
 
                         m.InsertAccessExtrato1(codempresa, nomeempresa, coddepartamento, nomedepartamento, codgrupo, nomegrupo, dtinicial, dtfinal, codproduto, unomeproduto,
-                        Udatamovimento, Ucodmovimento, Utipomovimento, Uquantidade, saldo);
+                        Udatamovimento, Ucodmovimento, numeromovimento, Utipomovimento, Uquantidade, saldo);
                     }
                     catch (Exception erro)
                     {

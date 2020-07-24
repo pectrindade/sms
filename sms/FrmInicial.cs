@@ -21,6 +21,7 @@ using System.Text;
 using UnidadeMedida = Atencao_Assistida.Forms.UnidadeMedida;
 using System.Runtime.InteropServices;
 using Atencao_Assistida.Relatorios.Estoque_Extrato;
+using Atencao_Assistida.Relatorios.EntradaPeriodo;
 
 namespace teste1
 {
@@ -1574,6 +1575,26 @@ namespace teste1
                 tela.MdiParent = this;
                 tela.Show();
             }
+        }
+
+        private void MiRCafEntradaMercadoria_Click(object sender, EventArgs e)
+        {
+            bool open = false;
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is ChamaRelEntrada)
+                {
+                    form.BringToFront();
+                    open = true;
+                }
+            }
+            if (!open)
+            {
+                Form tela = new ChamaRelEntrada();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+
         }
     }
 }

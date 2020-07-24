@@ -303,6 +303,8 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
             
             private global::System.Data.DataColumn columnCODMOVIMENTO;
             
+            private global::System.Data.DataColumn columnNUMEROMOVIMENTO;
+            
             private global::System.Data.DataColumn columnTIPOMOVIMENTO;
             
             private global::System.Data.DataColumn columnQUANTIDADE;
@@ -440,6 +442,14 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NUMEROMOVIMENTOColumn {
+                get {
+                    return this.columnNUMEROMOVIMENTO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn TIPOMOVIMENTOColumn {
                 get {
                     return this.columnTIPOMOVIMENTO;
@@ -499,7 +509,23 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ExtratoRow AddExtratoRow(int CODEMPRESA, string NOMEEMPRESA, int CODDEPARTAMENTO, string NOMEDEPARTAMENTO, int CODGRUPO, string NOMEGRUPO, string DTINICIAL, string DTFINAL, int CODPRODUTO, string NOMEPRODUTO, System.DateTime DATAMOVIMENTO, int CODMOVIMENTO, string TIPOMOVIMENTO, string QUANTIDADE, string SALDO) {
+            public ExtratoRow AddExtratoRow(
+                        int CODEMPRESA, 
+                        string NOMEEMPRESA, 
+                        int CODDEPARTAMENTO, 
+                        string NOMEDEPARTAMENTO, 
+                        int CODGRUPO, 
+                        string NOMEGRUPO, 
+                        string DTINICIAL, 
+                        string DTFINAL, 
+                        int CODPRODUTO, 
+                        string NOMEPRODUTO, 
+                        System.DateTime DATAMOVIMENTO, 
+                        int CODMOVIMENTO, 
+                        string NUMEROMOVIMENTO, 
+                        string TIPOMOVIMENTO, 
+                        string QUANTIDADE, 
+                        string SALDO) {
                 ExtratoRow rowExtratoRow = ((ExtratoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CODEMPRESA,
@@ -514,6 +540,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
                         NOMEPRODUTO,
                         DATAMOVIMENTO,
                         CODMOVIMENTO,
+                        NUMEROMOVIMENTO,
                         TIPOMOVIMENTO,
                         QUANTIDADE,
                         SALDO};
@@ -551,6 +578,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
                 this.columnNOMEPRODUTO = base.Columns["NOMEPRODUTO"];
                 this.columnDATAMOVIMENTO = base.Columns["DATAMOVIMENTO"];
                 this.columnCODMOVIMENTO = base.Columns["CODMOVIMENTO"];
+                this.columnNUMEROMOVIMENTO = base.Columns["NUMEROMOVIMENTO"];
                 this.columnTIPOMOVIMENTO = base.Columns["TIPOMOVIMENTO"];
                 this.columnQUANTIDADE = base.Columns["QUANTIDADE"];
                 this.columnSALDO = base.Columns["SALDO"];
@@ -583,6 +611,8 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
                 base.Columns.Add(this.columnDATAMOVIMENTO);
                 this.columnCODMOVIMENTO = new global::System.Data.DataColumn("CODMOVIMENTO", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCODMOVIMENTO);
+                this.columnNUMEROMOVIMENTO = new global::System.Data.DataColumn("NUMEROMOVIMENTO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNUMEROMOVIMENTO);
                 this.columnTIPOMOVIMENTO = new global::System.Data.DataColumn("TIPOMOVIMENTO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTIPOMOVIMENTO);
                 this.columnQUANTIDADE = new global::System.Data.DataColumn("QUANTIDADE", typeof(string), null, global::System.Data.MappingType.Element);
@@ -595,6 +625,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
                 this.columnDTINICIAL.MaxLength = 11;
                 this.columnDTFINAL.MaxLength = 11;
                 this.columnNOMEPRODUTO.MaxLength = 200;
+                this.columnNUMEROMOVIMENTO.MaxLength = 20;
                 this.columnTIPOMOVIMENTO.MaxLength = 80;
                 this.columnQUANTIDADE.MaxLength = 20;
                 this.columnSALDO.MaxLength = 20;
@@ -932,6 +963,22 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NUMEROMOVIMENTO {
+                get {
+                    try {
+                        return ((string)(this[this.tableExtrato.NUMEROMOVIMENTOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'NUMEROMOVIMENTO\' na tabela \'Extrato\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtrato.NUMEROMOVIMENTOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string TIPOMOVIMENTO {
                 get {
                     try {
@@ -1120,6 +1167,18 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCODMOVIMENTONull() {
                 this[this.tableExtrato.CODMOVIMENTOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNUMEROMOVIMENTONull() {
+                return this.IsNull(this.tableExtrato.NUMEROMOVIMENTOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNUMEROMOVIMENTONull() {
+                this[this.tableExtrato.NUMEROMOVIMENTOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1330,13 +1389,14 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato.DsExtratoTableAdapters {
             tableMapping.ColumnMappings.Add("NOMEPRODUTO", "NOMEPRODUTO");
             tableMapping.ColumnMappings.Add("DATAMOVIMENTO", "DATAMOVIMENTO");
             tableMapping.ColumnMappings.Add("CODMOVIMENTO", "CODMOVIMENTO");
+            tableMapping.ColumnMappings.Add("NUMEROMOVIMENTO", "NUMEROMOVIMENTO");
             tableMapping.ColumnMappings.Add("TIPOMOVIMENTO", "TIPOMOVIMENTO");
             tableMapping.ColumnMappings.Add("QUANTIDADE", "QUANTIDADE");
             tableMapping.ColumnMappings.Add("SALDO", "SALDO");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `Extrato` (`CODEMPRESA`, `NOMEEMPRESA`, `CODDEPARTAMENTO`, `NOMEDEPARTAMENTO`, `CODGRUPO`, `NOMEGRUPO`, `DTINICIAL`, `DTFINAL`, `CODPRODUTO`, `NOMEPRODUTO`, `DATAMOVIMENTO`, `CODMOVIMENTO`, `TIPOMOVIMENTO`, `QUANTIDADE`, `SALDO`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `Extrato` (`CODEMPRESA`, `NOMEEMPRESA`, `CODDEPARTAMENTO`, `NOMEDEPARTAMENTO`, `CODGRUPO`, `NOMEGRUPO`, `DTINICIAL`, `DTFINAL`, `CODPRODUTO`, `NOMEPRODUTO`, `DATAMOVIMENTO`, `CODMOVIMENTO`, `NUMEROMOVIMENTO`, `TIPOMOVIMENTO`, `QUANTIDADE`, `SALDO`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CODEMPRESA", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CODEMPRESA", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NOMEEMPRESA", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NOMEEMPRESA", global::System.Data.DataRowVersion.Current, false, null));
@@ -1350,6 +1410,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato.DsExtratoTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NOMEPRODUTO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NOMEPRODUTO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DATAMOVIMENTO", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DATAMOVIMENTO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CODMOVIMENTO", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CODMOVIMENTO", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NUMEROMOVIMENTO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NUMEROMOVIMENTO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TIPOMOVIMENTO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIPOMOVIMENTO", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("QUANTIDADE", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "QUANTIDADE", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SALDO", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SALDO", global::System.Data.DataRowVersion.Current, false, null));
@@ -1429,7 +1490,23 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato.DsExtratoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> CODEMPRESA, string NOMEEMPRESA, global::System.Nullable<int> CODDEPARTAMENTO, string NOMEDEPARTAMENTO, global::System.Nullable<int> CODGRUPO, string NOMEGRUPO, string DTINICIAL, string DTFINAL, global::System.Nullable<int> CODPRODUTO, string NOMEPRODUTO, global::System.Nullable<global::System.DateTime> DATAMOVIMENTO, global::System.Nullable<int> CODMOVIMENTO, string TIPOMOVIMENTO, string QUANTIDADE, string SALDO) {
+        public virtual int Insert(
+                    global::System.Nullable<int> CODEMPRESA, 
+                    string NOMEEMPRESA, 
+                    global::System.Nullable<int> CODDEPARTAMENTO, 
+                    string NOMEDEPARTAMENTO, 
+                    global::System.Nullable<int> CODGRUPO, 
+                    string NOMEGRUPO, 
+                    string DTINICIAL, 
+                    string DTFINAL, 
+                    global::System.Nullable<int> CODPRODUTO, 
+                    string NOMEPRODUTO, 
+                    global::System.Nullable<global::System.DateTime> DATAMOVIMENTO, 
+                    global::System.Nullable<int> CODMOVIMENTO, 
+                    string NUMEROMOVIMENTO, 
+                    string TIPOMOVIMENTO, 
+                    string QUANTIDADE, 
+                    string SALDO) {
             if ((CODEMPRESA.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CODEMPRESA.Value));
             }
@@ -1502,23 +1579,29 @@ namespace Atencao_Assistida.Relatorios.Estoque_Extrato.DsExtratoTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((TIPOMOVIMENTO == null)) {
+            if ((NUMEROMOVIMENTO == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(TIPOMOVIMENTO));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(NUMEROMOVIMENTO));
             }
-            if ((QUANTIDADE == null)) {
+            if ((TIPOMOVIMENTO == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(QUANTIDADE));
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(TIPOMOVIMENTO));
             }
-            if ((SALDO == null)) {
+            if ((QUANTIDADE == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(SALDO));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(QUANTIDADE));
+            }
+            if ((SALDO == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(SALDO));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

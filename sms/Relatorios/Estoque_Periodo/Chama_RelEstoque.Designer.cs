@@ -50,17 +50,18 @@
             // 
             // btnBuscaProduto
             // 
+            this.btnBuscaProduto.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
             this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnBuscaProduto.Location = new System.Drawing.Point(87, 156);
             this.btnBuscaProduto.Name = "btnBuscaProduto";
-            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscaProduto.Size = new System.Drawing.Size(25, 25);
             this.btnBuscaProduto.TabIndex = 292;
             this.btnBuscaProduto.TabStop = false;
             this.btnBuscaProduto.UseVisualStyleBackColor = true;
             // 
             // txtcodigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(14, 156);
+            this.txtcodigo.Location = new System.Drawing.Point(14, 159);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(67, 20);
             this.txtcodigo.TabIndex = 290;
@@ -71,7 +72,7 @@
             this.txtNome.Location = new System.Drawing.Point(116, 159);
             this.txtNome.Name = "txtNome";
             this.txtNome.ReadOnly = true;
-            this.txtNome.Size = new System.Drawing.Size(533, 20);
+            this.txtNome.Size = new System.Drawing.Size(317, 20);
             this.txtNome.TabIndex = 291;
             // 
             // label3
@@ -170,7 +171,7 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(510, 262);
+            this.btnListar.Location = new System.Drawing.Point(304, 262);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(120, 23);
             this.btnListar.TabIndex = 273;
@@ -180,7 +181,7 @@
             // 
             // btnDesfaz
             // 
-            this.btnDesfaz.Location = new System.Drawing.Point(251, 262);
+            this.btnDesfaz.Location = new System.Drawing.Point(157, 262);
             this.btnDesfaz.Name = "btnDesfaz";
             this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
             this.btnDesfaz.TabIndex = 297;
@@ -220,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 295);
+            this.ClientSize = new System.Drawing.Size(449, 298);
             this.ControlBox = false;
             this.Controls.Add(this.chkNegativo);
             this.Controls.Add(this.label9);

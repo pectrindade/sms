@@ -366,7 +366,6 @@ namespace Atencao_Assistida.Classes.Mysql
                 while (dr.Read())
                 {
                     qtanterior = dr.GetFloat(dr.GetOrdinal("QTATUAL"));
-
                 }
             }
             else
@@ -559,7 +558,7 @@ namespace Atencao_Assistida.Classes.Mysql
             //-> PROCESSO DE CORREÇÃO DE ESTOQUE 
 
             var db = new DBAcess();
-            string Mysql = " select E.CODENTRADA, E.CODEMPRESA, E.CODDEPARTAMENTO, E.NUMERONOTA, E.DATARECEBIMENTO, I.CODPRODUTO, P.NOME AS DESCRICAO, I.LOTE, I.VALIDADE, I.QUANTIDADE ";
+            string Mysql = " select E.CODENTRADA, E.CODEMPRESA, E.CODDEPARTAMENTO, E.NUMERONOTA, E.SERIE, E.DATARECEBIMENTO, I.CODPRODUTO, P.NOME AS DESCRICAO, I.LOTE, I.VALIDADE, I.QUANTIDADE ";
             Mysql = Mysql + " from entrada E  ";
             Mysql = Mysql + " inner join entrada_item as I on E.CODENTRADA = I.CODENTRADA ";
             Mysql = Mysql + " inner join produtos as P on I.CODPRODUTO = P.CODPRODUTO ";
@@ -576,7 +575,6 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@DATAINICIAL", Convert.ToDateTime(dtinicial));
             db.AddParameter("@DATAFINAL", Convert.ToDateTime(dtfinal));
             db.AddParameter("@CODPRODUTO", codproduto);
-
 
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;
@@ -1408,18 +1406,18 @@ namespace Atencao_Assistida.Classes.Mysql
         }
 
         public int InsertAccessExtrato(int codempresa, string nomeempresa, int coddepartamento, string nomedepartamento, int codgrupo, string nomegrupo,
-        string dtinicial, string dtfinal, int codproduto, string nomeproduto, string datamovimento, int codmovimento, string tipomovimento, string quantidade, string saldo)
+        string dtinicial, string dtfinal, int codproduto, string nomeproduto, string datamovimento, int codmovimento, string numeromovimento, string tipomovimento, string quantidade, string saldo)
         {
             var db = new DBAcessOleDB();
 
             var Mysql = " INSERT INTO Temp(";
             Mysql = Mysql + " CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, CODGRUPO, NOMEGRUPO, DTINICIAL, DTFINAL, CODPRODUTO, NOMEPRODUTO, ";
-            Mysql = Mysql + " DATAMOVIMENTO, CODMOVIMENTO, TIPOMOVIMENTO, QUANTIDADE ";
+            Mysql = Mysql + " DATAMOVIMENTO, CODMOVIMENTO, NUMEROMOVIMENTO, TIPOMOVIMENTO, QUANTIDADE ";
 
             Mysql = Mysql + ") ";
             Mysql = Mysql + " VALUES(";
             Mysql = Mysql + " @CODEMPRESA, @NOMEEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @CODGRUPO, @NOMEGRUPO, @DTINICIAL, @DTFINAL, @CODPRODUTO, @NOMEPRODUTO, ";
-            Mysql = Mysql + " @DATAMOVIMENTO, @CODMOVIMENTO, @TIPOMOVIMENTO, @QUANTIDADE ";
+            Mysql = Mysql + " @DATAMOVIMENTO, @CODMOVIMENTO, @NUMEROMOVIMENTO, @TIPOMOVIMENTO, @QUANTIDADE ";
 
             Mysql = Mysql + "); ";
 
@@ -1437,6 +1435,7 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@NOMEPRODUTO", nomeproduto);
             db.AddParameter("@DATAMOVIMENTO", datamovimento); //Convert.ToDateTime(datamovimento))
             db.AddParameter("@CODMOVIMENTO", codmovimento);
+            db.AddParameter("@NUMEROMOVIMENTO", numeromovimento);
             db.AddParameter("@TIPOMOVIMENTO", tipomovimento);
             db.AddParameter("@QUANTIDADE", quantidade);
             db.AddParameter("@SALDO", saldo);
@@ -1456,7 +1455,7 @@ namespace Atencao_Assistida.Classes.Mysql
         {
 
             var db = new DBAcessOleDB();
-            string Mysql = " SELECT E.CODPRODUTO, E.NOMEPRODUTO, E.DATAMOVIMENTO, E.CODMOVIMENTO, E.TIPOMOVIMENTO, E.QUANTIDADE ";
+            string Mysql = " SELECT E.CODPRODUTO, E.NOMEPRODUTO, E.DATAMOVIMENTO, E.CODMOVIMENTO, E.NUMEROMOVIMENTO, E.TIPOMOVIMENTO, E.QUANTIDADE ";
             Mysql = Mysql + " FROM TEMP E ";
             Mysql = Mysql + " ORDER BY E.DATAMOVIMENTO, E.NOMEPRODUTO, E.CODMOVIMENTO ";
 
@@ -1467,18 +1466,18 @@ namespace Atencao_Assistida.Classes.Mysql
 
 
         public int InsertAccessExtrato1(int codempresa, string nomeempresa, int coddepartamento, string nomedepartamento, int codgrupo, string nomegrupo,
-         string dtinicial, string dtfinal, int codproduto, string nomeproduto, string datamovimento, int codmovimento, string tipomovimento, string quantidade, string saldo)
+        string dtinicial, string dtfinal, int codproduto, string nomeproduto, string datamovimento, int codmovimento, string numeromovimento, string tipomovimento, string quantidade, string saldo)
         {
             var db = new DBAcessOleDB();
 
             var Mysql = " INSERT INTO Extrato(";
             Mysql = Mysql + " CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, CODGRUPO, NOMEGRUPO, DTINICIAL, DTFINAL, CODPRODUTO, NOMEPRODUTO, ";
-            Mysql = Mysql + " DATAMOVIMENTO, CODMOVIMENTO, TIPOMOVIMENTO, QUANTIDADE, SALDO ";
+            Mysql = Mysql + " DATAMOVIMENTO, CODMOVIMENTO, NUMEROMOVIMENTO, TIPOMOVIMENTO, QUANTIDADE, SALDO ";
 
             Mysql = Mysql + ") ";
             Mysql = Mysql + " VALUES(";
             Mysql = Mysql + " @CODEMPRESA, @NOMEEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @CODGRUPO, @NOMEGRUPO, @DTINICIAL, @DTFINAL, @CODPRODUTO, @NOMEPRODUTO, ";
-            Mysql = Mysql + " @DATAMOVIMENTO, @CODMOVIMENTO, @TIPOMOVIMENTO, @QUANTIDADE, @SALDO ";
+            Mysql = Mysql + " @DATAMOVIMENTO, @CODMOVIMENTO, @NUMEROMOVIMENTO, @TIPOMOVIMENTO, @QUANTIDADE, @SALDO ";
 
             Mysql = Mysql + "); ";
 
@@ -1496,6 +1495,7 @@ namespace Atencao_Assistida.Classes.Mysql
             db.AddParameter("@NOMEPRODUTO", nomeproduto);
             db.AddParameter("@DATAMOVIMENTO", datamovimento);
             db.AddParameter("@CODMOVIMENTO", codmovimento);
+            db.AddParameter("@NUMEROMOVIMENTO", numeromovimento);
             db.AddParameter("@TIPOMOVIMENTO", tipomovimento);
             db.AddParameter("@QUANTIDADE", quantidade);
             db.AddParameter("@SALDO", saldo);

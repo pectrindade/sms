@@ -32,8 +32,9 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        SaidaPeriodo.*
-FROM            SaidaPeriodo</CommandText>
+                    <CommandText>SELECT        CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, CODSAIDA, DATASAIDA, CODUNIDADE, NOMEUNIDADE, SOLICITANTE, NUMEROPEDIDO, CODPRODUTO, NOMEPRODUTO, QUANTIDADE
+FROM            SaidaPeriodo
+ORDER BY CODSAIDA</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
