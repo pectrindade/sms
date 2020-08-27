@@ -24,6 +24,12 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             CarregaCmbEmpresa();
             CarregaCmbDepartamento();
             CarregaCmbGrupo();
+            cmbEmpresa.SelectedIndex = 1;
+
+            if (RbCodigo.Checked == true)
+            {
+                PnlPorNome.Visible = false;
+            }
         }
 
         private void Chama_RelEstoque_KeyDown(object sender, KeyEventArgs e)
@@ -134,7 +140,15 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            var data = txtDataInicial.Text.Trim();
 
+            if (Classes.Funcoes.Funcoes.CheckDate(data) == false)
+            {
+                MessageBox.Show("Data é campo Obrigatório !");
+                txtDataInicial.Focus();
+
+                return;
+            }
             CarregarRelatorio();
         }
 
@@ -163,21 +177,38 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
 
         private void Relatorio()
         {
+            DateTime dtInicial;
+            var mes = "";
+            var ano = "";
 
-            DateTime dtInicial = Convert.ToDateTime(txtDataInicial.Text.Trim());
-            //string DataInicial = dtInicial.Year.ToString() + "-" + dtInicial.Month.ToString() + "-" + dtInicial.Day.ToString();
+            try
+            {
+                dtInicial = Convert.ToDateTime(txtDataInicial.Text.Trim());
+                mes = dtInicial.Month.ToString();
+                ano = dtInicial.Year.ToString();
+            }
+            catch
+            {
+                Application.OpenForms["Espera"].Close();
+                MessageBox.Show("Data é campo Obrigatório !");
+                txtDataInicial.Focus();
+                
+                return;
+            }
 
             var codempresa = cmbEmpresa.SelectedIndex;
 
             var nomeempresa = "";
             var coddepartamento = cmbDepartamento.SelectedIndex;
             var nomedepartamento = "";
-            var mes = dtInicial.Month.ToString();
-            var ano = dtInicial.Year.ToString();
+            //mes = dtInicial.Month.ToString();
+            //ano = dtInicial.Year.ToString();
             var codgrupo = cmbGrupo.SelectedIndex;
             var nomegrupo = "";
             var codproduto = 0;
+            var buscaNome = "";
             if (txtcodigo.Text.Trim() != "") { codproduto = int.Parse(txtcodigo.Text.Trim()); }
+            if (txtBuscaNome.Text.Trim() != "") { buscaNome = txtBuscaNome.Text.Trim(); }
             var nomeproduto = "";
 
             var qtanterior = "";
@@ -196,7 +227,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             cria.Cria_EstoquePeriodo();
 
             // BUSCA E GRAVA NO REPOSITORIO
-            var dr = Classes.Mysql.Estoque.Estoque_Periodo(codempresa, coddepartamento, codgrupo, codproduto, mes, ano, negativo);
+            var dr = Classes.Mysql.Estoque.Estoque_Periodo(codempresa, coddepartamento, codgrupo, codproduto, buscaNome, mes, ano, negativo);
 
             if (dr.HasRows)
             {
@@ -275,6 +306,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             else
             {
                 txtNome.Text = "";
+                txtBuscaNome.Text = "";
             }
         }
 
@@ -304,6 +336,7 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
         {
             txtcodigo.Text = "";
             txtNome.Text = "";
+            txtBuscaNome.Text = "";
 
             Parametros.Form = "Produtos";
             Parametros.Valor = "";
@@ -348,8 +381,12 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             CarregaCmbGrupo();
             txtcodigo.Text = "";
             txtNome.Text = "";
+            txtBuscaNome.Text = "";
             txtDataInicial.Text = "";
             chkNegativo.Checked = false;
+
+            RbCodigo.Checked = true;
+            RbNome.Checked = false;
 
             cmbEmpresa.Focus();
         }
@@ -359,6 +396,65 @@ namespace Atencao_Assistida.Relatorios.Estoque_Periodo
             LimpraTela();
         }
 
+        private void btnBuscaProduto_Click_1(object sender, EventArgs e)
+        {
 
+            txtcodigo.Text = "";
+            txtNome.Text = "";
+            txtBuscaNome.Text = "";
+
+            Parametros.Form = "Produtos";
+            Parametros.Valor = "";
+
+            bool open = false;
+            foreach (Form form in Application.OpenForms)
+            {
+
+                // Verifica se o form esta aberto
+                if (form.Name == "PesquisaProdutos")
+                {
+                    if (form is PesquisaProdutos)
+                    {
+                        form.BringToFront();
+                        open = true;
+                    }
+
+                }
+            }
+
+            if (!open)
+            {
+                Form tela = new PesquisaProdutos();
+                //tela.MdiParent = this.MdiParent;
+                tela.ShowDialog();
+                RetornoPesquisaMedicamento();
+            }
+        }
+
+        private void RbCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbCodigo.Checked == true)
+            {
+                PnlPorNome.Visible = false;
+                PnlPorCodigo.Visible = true;
+
+                txtcodigo.Text = "";
+                txtNome.Text = "";
+                txtBuscaNome.Text = "";
+            }
+        }
+
+        private void RbNome_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbNome.Checked == true)
+            {
+                PnlPorCodigo.Visible = false;
+                PnlPorNome.Visible = true;
+
+                txtcodigo.Text = "";
+                txtNome.Text = "";
+                txtBuscaNome.Text = "";
+            }
+        }
     }
 }

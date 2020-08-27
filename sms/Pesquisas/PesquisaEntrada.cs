@@ -25,18 +25,18 @@ namespace Atencao_Assistida.Pesquisas
         private void txtpesquisa_TextChanged(object sender, EventArgs e)
         {
 
-            if (Rb1.Checked = true)
+            if (Rb1.Checked == true)
             {
                 Carrega("nota", txtpesquisa.Text);
             }
-            else if (Rb2.Checked = true)
+            else if (Rb2.Checked == true)
             {
                 Carrega("fornecedor", txtpesquisa.Text);
             }
-            else if (Rb3.Checked = true)
-            {
-                Carrega("recebimento", txtpesquisa.Text);
-            }
+            //else if (Rb3.Checked == true)
+            //{
+            //    Carrega("recebimento", txtpesquisa.Text);
+            //}
         }
 
         private void Carrega(string por, string valor)
@@ -49,7 +49,7 @@ namespace Atencao_Assistida.Pesquisas
             Grid.Rows.Clear();
             Grid.Refresh();
 
-            var dr = Classes.Mysql.Entrada.PesquisaNota("", valor);
+            var dr = Classes.Mysql.Entrada.PesquisaNota(por, valor);
 
             if (dr.HasRows)
             {

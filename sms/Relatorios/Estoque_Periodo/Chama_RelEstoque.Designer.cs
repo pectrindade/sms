@@ -46,22 +46,31 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbGrupo = new System.Windows.Forms.ComboBox();
             this.chkNegativo = new System.Windows.Forms.CheckBox();
+            this.PnlPorCodigo = new System.Windows.Forms.Panel();
+            this.RbCodigo = new System.Windows.Forms.RadioButton();
+            this.RbNome = new System.Windows.Forms.RadioButton();
+            this.PnlPorNome = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBuscaNome = new System.Windows.Forms.TextBox();
+            this.PnlPorCodigo.SuspendLayout();
+            this.PnlPorNome.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBuscaProduto
             // 
             this.btnBuscaProduto.Image = global::Atencao_Assistida.Properties.Resources.lupa1;
             this.btnBuscaProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscaProduto.Location = new System.Drawing.Point(87, 156);
+            this.btnBuscaProduto.Location = new System.Drawing.Point(77, 23);
             this.btnBuscaProduto.Name = "btnBuscaProduto";
             this.btnBuscaProduto.Size = new System.Drawing.Size(25, 25);
             this.btnBuscaProduto.TabIndex = 292;
             this.btnBuscaProduto.TabStop = false;
             this.btnBuscaProduto.UseVisualStyleBackColor = true;
+            this.btnBuscaProduto.Click += new System.EventHandler(this.btnBuscaProduto_Click_1);
             // 
             // txtcodigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(14, 159);
+            this.txtcodigo.Location = new System.Drawing.Point(4, 26);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(67, 20);
             this.txtcodigo.TabIndex = 290;
@@ -69,7 +78,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(116, 159);
+            this.txtNome.Location = new System.Drawing.Point(106, 26);
             this.txtNome.Name = "txtNome";
             this.txtNome.ReadOnly = true;
             this.txtNome.Size = new System.Drawing.Size(317, 20);
@@ -79,7 +88,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(18, 140);
+            this.label3.Location = new System.Drawing.Point(8, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 293;
@@ -89,7 +98,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(113, 143);
+            this.label8.Location = new System.Drawing.Point(103, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 294;
@@ -97,7 +106,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(12, 262);
+            this.btnFechar.Location = new System.Drawing.Point(12, 287);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(120, 23);
             this.btnFechar.TabIndex = 289;
@@ -109,7 +118,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(17, 184);
+            this.label2.Location = new System.Drawing.Point(17, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 288;
@@ -117,7 +126,7 @@
             // 
             // txtDataInicial
             // 
-            this.txtDataInicial.Location = new System.Drawing.Point(14, 200);
+            this.txtDataInicial.Location = new System.Drawing.Point(14, 243);
             this.txtDataInicial.Mask = "00/00/0000";
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(82, 20);
@@ -126,7 +135,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(95, 200);
+            this.dateTimePicker1.Location = new System.Drawing.Point(95, 243);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(20, 20);
             this.dateTimePicker1.TabIndex = 279;
@@ -171,7 +180,7 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(304, 262);
+            this.btnListar.Location = new System.Drawing.Point(304, 287);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(120, 23);
             this.btnListar.TabIndex = 273;
@@ -181,7 +190,7 @@
             // 
             // btnDesfaz
             // 
-            this.btnDesfaz.Location = new System.Drawing.Point(157, 262);
+            this.btnDesfaz.Location = new System.Drawing.Point(157, 287);
             this.btnDesfaz.Name = "btnDesfaz";
             this.btnDesfaz.Size = new System.Drawing.Size(121, 23);
             this.btnDesfaz.TabIndex = 297;
@@ -210,28 +219,89 @@
             // chkNegativo
             // 
             this.chkNegativo.AutoSize = true;
-            this.chkNegativo.Location = new System.Drawing.Point(146, 205);
+            this.chkNegativo.Location = new System.Drawing.Point(146, 248);
             this.chkNegativo.Name = "chkNegativo";
             this.chkNegativo.Size = new System.Drawing.Size(289, 17);
             this.chkNegativo.TabIndex = 300;
             this.chkNegativo.Text = "Mostrar apenas produtos com estoque zero ou negativo";
             this.chkNegativo.UseVisualStyleBackColor = true;
             // 
+            // PnlPorCodigo
+            // 
+            this.PnlPorCodigo.Controls.Add(this.txtNome);
+            this.PnlPorCodigo.Controls.Add(this.label8);
+            this.PnlPorCodigo.Controls.Add(this.label3);
+            this.PnlPorCodigo.Controls.Add(this.txtcodigo);
+            this.PnlPorCodigo.Controls.Add(this.btnBuscaProduto);
+            this.PnlPorCodigo.Location = new System.Drawing.Point(12, 166);
+            this.PnlPorCodigo.Name = "PnlPorCodigo";
+            this.PnlPorCodigo.Size = new System.Drawing.Size(438, 57);
+            this.PnlPorCodigo.TabIndex = 301;
+            // 
+            // RbCodigo
+            // 
+            this.RbCodigo.AutoSize = true;
+            this.RbCodigo.Checked = true;
+            this.RbCodigo.Location = new System.Drawing.Point(12, 139);
+            this.RbCodigo.Name = "RbCodigo";
+            this.RbCodigo.Size = new System.Drawing.Size(77, 17);
+            this.RbCodigo.TabIndex = 302;
+            this.RbCodigo.TabStop = true;
+            this.RbCodigo.Text = "Por Código";
+            this.RbCodigo.UseVisualStyleBackColor = true;
+            this.RbCodigo.CheckedChanged += new System.EventHandler(this.RbCodigo_CheckedChanged);
+            // 
+            // RbNome
+            // 
+            this.RbNome.AutoSize = true;
+            this.RbNome.Location = new System.Drawing.Point(118, 139);
+            this.RbNome.Name = "RbNome";
+            this.RbNome.Size = new System.Drawing.Size(72, 17);
+            this.RbNome.TabIndex = 303;
+            this.RbNome.Text = "Por Nome";
+            this.RbNome.UseVisualStyleBackColor = true;
+            this.RbNome.CheckedChanged += new System.EventHandler(this.RbNome_CheckedChanged);
+            // 
+            // PnlPorNome
+            // 
+            this.PnlPorNome.Controls.Add(this.label6);
+            this.PnlPorNome.Controls.Add(this.txtBuscaNome);
+            this.PnlPorNome.Location = new System.Drawing.Point(12, 167);
+            this.PnlPorNome.Name = "PnlPorNome";
+            this.PnlPorNome.Size = new System.Drawing.Size(438, 57);
+            this.PnlPorNome.TabIndex = 302;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(8, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 293;
+            this.label6.Text = "Nome";
+            // 
+            // txtBuscaNome
+            // 
+            this.txtBuscaNome.Location = new System.Drawing.Point(4, 26);
+            this.txtBuscaNome.Name = "txtBuscaNome";
+            this.txtBuscaNome.Size = new System.Drawing.Size(419, 20);
+            this.txtBuscaNome.TabIndex = 290;
+            // 
             // Chama_RelEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 298);
+            this.ClientSize = new System.Drawing.Size(461, 322);
             this.ControlBox = false;
+            this.Controls.Add(this.PnlPorNome);
+            this.Controls.Add(this.RbNome);
+            this.Controls.Add(this.RbCodigo);
+            this.Controls.Add(this.PnlPorCodigo);
             this.Controls.Add(this.chkNegativo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cmbGrupo);
             this.Controls.Add(this.btnDesfaz);
-            this.Controls.Add(this.btnBuscaProduto);
-            this.Controls.Add(this.txtcodigo);
-            this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDataInicial);
@@ -249,6 +319,10 @@
             this.Load += new System.EventHandler(this.Chama_RelEstoque_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Chama_RelEstoque_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Chama_RelEstoque_KeyPress);
+            this.PnlPorCodigo.ResumeLayout(false);
+            this.PnlPorCodigo.PerformLayout();
+            this.PnlPorNome.ResumeLayout(false);
+            this.PnlPorNome.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +348,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbGrupo;
         private System.Windows.Forms.CheckBox chkNegativo;
+        private System.Windows.Forms.Panel PnlPorCodigo;
+        private System.Windows.Forms.RadioButton RbCodigo;
+        private System.Windows.Forms.RadioButton RbNome;
+        private System.Windows.Forms.Panel PnlPorNome;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBuscaNome;
     }
 }

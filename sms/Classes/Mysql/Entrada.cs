@@ -298,7 +298,8 @@ namespace Atencao_Assistida.Classes.Mysql
             }
             Mysql = Mysql + " ORDER BY E.DATARECEBIMENTO ASC; ";
             db.CommandText = Mysql;
-            db.AddParameter("@valor", valor);
+            if (por == "recebimento") { db.AddParameter("@valor", Convert.ToDateTime(valor)); }
+            else { db.AddParameter("@valor", valor); }
 
             var dr = (MySqlDataReader)db.ExecuteReader();
             return dr;

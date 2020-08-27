@@ -1513,107 +1513,110 @@ namespace Atencao_Assistida.Classes.Mysql
 
 
         public bool DeleteAccess()
-    {
-        var db = new DBAcessOleDB();
-        var Mysql = " DELETE FROM Estoque ";
-
-        db.CommandText = Mysql;
-
-        try
         {
-            db.ExecuteNonQuery();
-            return true;
+            var db = new DBAcessOleDB();
+            var Mysql = " DELETE FROM Estoque ";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
-        catch
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static MySqlDataReader Estoque_Periodo(int codempresa, int coddepartamento, int codgrupo, int codproduto, string nome, string mes, string ano, bool negativo)
         {
-            return false;
+
+            var db = new DBAcess();
+            string Mysql = " SELECT E.CODEMPRESA, EM.NOME AS NOMEEMPRESA, E.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, E.MES, E.ANO, ";
+            Mysql = Mysql + " P.CODGRUPO, G.DESCRICAO AS NOMEGRUPO, E.CODPRODUTO, P.NOME AS NOMEPRODUTO, E.QTANTERIOR, E.ENTRADA, E.SAIDA, E.QTATUAL ";
+
+            Mysql = Mysql + " FROM estoque E ";
+
+            Mysql = Mysql + " INNER JOIN empresa EM ON EM.CODEMPRESA = E.CODEMPRESA ";
+            Mysql = Mysql + " INNER JOIN departamento D ON D.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
+            Mysql = Mysql + " INNER JOIN produtos P ON P.CODPRODUTO = E.CODPRODUTO ";
+            Mysql = Mysql + " INNER JOIN grupo G ON G.CODGRUPO = P.CODGRUPO ";
+
+            Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            if (codgrupo != 0) { Mysql = Mysql + " AND P.CODGRUPO = @CODGRUPO "; }
+            if (codproduto != 0) { Mysql = Mysql + " AND  E.CODPRODUTO = @CODPRODUTO "; }
+            if (nome != "") { Mysql = Mysql + " AND p.NOME LIKE @NOME "; nome = '%' + nome + "%"; }
+
+            Mysql = Mysql + " AND E.MES = @MES ";
+            Mysql = Mysql + " AND E.ANO = @ANO ";
+
+            if (negativo == true) { Mysql = Mysql + " AND E.QTATUAL < 1 "; }
+
+            Mysql = Mysql + " ORDER BY P.NOME";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@CODGRUPO", codgrupo);
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@NOME", nome);
+            db.AddParameter("@MES", mes);
+            db.AddParameter("@ANO", ano);
+
+            var dr = (MySqlDataReader)db.ExecuteReader();
+            return dr;
         }
+
+        public int InsertAccess_Estoque_Periodo(int codempresa, string nomeempresa, int coddepartamento, string nomedepartamento,
+        string mes, string ano, int codgrupo, string nomegrupo,
+        int codproduto, string nomeproduto, string qtanterior, string entrada, string saida, string qtatual)
+        {
+            var db = new DBAcessOleDB();
+
+            var Mysql = " INSERT INTO Estoque(";
+            Mysql = Mysql + " CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, MES, ANO, CODGRUPO, NOMEGRUPO, ";
+            Mysql = Mysql + " CODPRODUTO, NOMEPRODUTO, QTANTERIOR, ENTRADA, SAIDA, QTATUAL ";
+
+            Mysql = Mysql + ") ";
+            Mysql = Mysql + " VALUES(";
+            Mysql = Mysql + " @CODEMPRESA, @NOMEEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @MES, @ANO, @CODGRUPO, @NOMEGRUPO, ";
+            Mysql = Mysql + " @CODPRODUTO, @NOMEPRODUTO, @QTANTERIOR, @ENTRADA, @SAIDA, @QTATUAL ";
+            Mysql = Mysql + "); ";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@NOMEEMPRESA", nomeempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@NOMEDEPARTAMENTO", nomedepartamento);
+
+            db.AddParameter("@MES", mes);
+            db.AddParameter("@ANO", ano);
+
+            db.AddParameter("@CODGRUPO", codgrupo);
+            db.AddParameter("@NOMEGRUPO", nomegrupo);
+
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@NOMEPRODUTO", nomeproduto);
+            db.AddParameter("@QTANTERIOR", qtanterior);
+            db.AddParameter("@ENTRADA", entrada);
+            db.AddParameter("@SAIDA", saida);
+            db.AddParameter("@QTATUAL", qtatual);
+            try
+            {
+                return Convert.ToInt32(db.ExecuteScalar());
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+
     }
-
-    [DataObjectMethod(DataObjectMethodType.Select)]
-    public static MySqlDataReader Estoque_Periodo(int codempresa, int coddepartamento, int codgrupo, int codproduto, string mes, string ano, bool negativo)
-    {
-
-        var db = new DBAcess();
-        string Mysql = " SELECT E.CODEMPRESA, EM.NOME AS NOMEEMPRESA, E.CODDEPARTAMENTO, D.NOME AS NOMEDEPARTAMENTO, E.MES, E.ANO, ";
-        Mysql = Mysql + " P.CODGRUPO, G.DESCRICAO AS NOMEGRUPO, E.CODPRODUTO, P.NOME AS NOMEPRODUTO, E.QTANTERIOR, E.ENTRADA, E.SAIDA, E.QTATUAL ";
-
-        Mysql = Mysql + " FROM estoque E ";
-
-        Mysql = Mysql + " INNER JOIN empresa EM ON EM.CODEMPRESA = E.CODEMPRESA ";
-        Mysql = Mysql + " INNER JOIN departamento D ON D.CODDEPARTAMENTO = E.CODDEPARTAMENTO ";
-        Mysql = Mysql + " INNER JOIN produtos P ON P.CODPRODUTO = E.CODPRODUTO ";
-        Mysql = Mysql + " INNER JOIN grupo G ON G.CODGRUPO = P.CODGRUPO ";
-
-        Mysql = Mysql + " WHERE E.CODEMPRESA = @CODEMPRESA ";
-        Mysql = Mysql + " AND E.CODDEPARTAMENTO = @CODDEPARTAMENTO ";
-        if (codgrupo != 0) { Mysql = Mysql + " AND P.CODGRUPO = @CODGRUPO "; }
-        if (codproduto != 0) { Mysql = Mysql + " AND  E.CODPRODUTO = @CODPRODUTO "; }
-        Mysql = Mysql + " AND E.MES = @MES ";
-        Mysql = Mysql + " AND E.ANO = @ANO ";
-
-        if (negativo == true) { Mysql = Mysql + " AND E.QTATUAL < 1 "; }
-
-        Mysql = Mysql + " ORDER BY P.NOME";
-
-        db.CommandText = Mysql;
-
-        db.AddParameter("@CODEMPRESA", codempresa);
-        db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
-        db.AddParameter("@CODGRUPO", codgrupo);
-        db.AddParameter("@CODPRODUTO", codproduto);
-        db.AddParameter("@MES", mes);
-        db.AddParameter("@ANO", ano);
-
-        var dr = (MySqlDataReader)db.ExecuteReader();
-        return dr;
-    }
-
-    public int InsertAccess_Estoque_Periodo(int codempresa, string nomeempresa, int coddepartamento, string nomedepartamento,
-    string mes, string ano, int codgrupo, string nomegrupo,
-    int codproduto, string nomeproduto, string qtanterior, string entrada, string saida, string qtatual)
-    {
-        var db = new DBAcessOleDB();
-
-        var Mysql = " INSERT INTO Estoque(";
-        Mysql = Mysql + " CODEMPRESA, NOMEEMPRESA, CODDEPARTAMENTO, NOMEDEPARTAMENTO, MES, ANO, CODGRUPO, NOMEGRUPO, ";
-        Mysql = Mysql + " CODPRODUTO, NOMEPRODUTO, QTANTERIOR, ENTRADA, SAIDA, QTATUAL ";
-
-        Mysql = Mysql + ") ";
-        Mysql = Mysql + " VALUES(";
-        Mysql = Mysql + " @CODEMPRESA, @NOMEEMPRESA, @CODDEPARTAMENTO, @NOMEDEPARTAMENTO, @MES, @ANO, @CODGRUPO, @NOMEGRUPO, ";
-        Mysql = Mysql + " @CODPRODUTO, @NOMEPRODUTO, @QTANTERIOR, @ENTRADA, @SAIDA, @QTATUAL ";
-        Mysql = Mysql + "); ";
-
-        db.CommandText = Mysql;
-
-        db.AddParameter("@CODEMPRESA", codempresa);
-        db.AddParameter("@NOMEEMPRESA", nomeempresa);
-        db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
-        db.AddParameter("@NOMEDEPARTAMENTO", nomedepartamento);
-
-        db.AddParameter("@MES", mes);
-        db.AddParameter("@ANO", ano);
-
-        db.AddParameter("@CODGRUPO", codgrupo);
-        db.AddParameter("@NOMEGRUPO", nomegrupo);
-
-        db.AddParameter("@CODPRODUTO", codproduto);
-        db.AddParameter("@NOMEPRODUTO", nomeproduto);
-        db.AddParameter("@QTANTERIOR", qtanterior);
-        db.AddParameter("@ENTRADA", entrada);
-        db.AddParameter("@SAIDA", saida);
-        db.AddParameter("@QTATUAL", qtatual);
-        try
-        {
-            return Convert.ToInt32(db.ExecuteScalar());
-        }
-        finally
-        {
-            db.Dispose();
-        }
-    }
-
-
-}
 }

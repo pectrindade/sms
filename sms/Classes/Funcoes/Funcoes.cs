@@ -101,6 +101,18 @@ namespace Atencao_Assistida.Classes.Funcoes
 
             return quatos;
         }
+        public static bool CheckDate(String date)
+        {
+            try
+            {
+                DateTime dt = DateTime.Parse(date);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public static string TirarAcento(string palavra)
         {
@@ -179,10 +191,10 @@ namespace Atencao_Assistida.Classes.Funcoes
 
         //FUNÇÃO PARA FECHAR ESTOQUE DE UM ITEM 
 
-        public static void FechaEstoqueUm(string coddepartamento, string grupo, string codproduto, string dtprocesso )
+        public static void FechaEstoqueUm(string coddepartamento, string grupo, string codproduto, string dtprocesso)
         {
             var codempresa = Usuario.Codempresa.ToString();
-                                   
+
             DateTime data = Convert.ToDateTime(dtprocesso);
 
             var vmes = data.ToString("MM");
@@ -214,7 +226,7 @@ namespace Atencao_Assistida.Classes.Funcoes
 
             //int progresso1 = 0;
             //int progresso2 = 0;
-           
+
 
             if (dr.HasRows)
             {
@@ -223,7 +235,7 @@ namespace Atencao_Assistida.Classes.Funcoes
 
                     SaldoAnterior(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))), dtprocesso);
 
-                  
+
                     var cod = int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO")));
 
                     DateTime totalDeDias = primeiroDiaDoMes;
@@ -237,12 +249,12 @@ namespace Atencao_Assistida.Classes.Funcoes
                         totalDeDias = Convert.ToDateTime(Adiciona);
 
                         //progresso2 = progresso2 + 1;
-                       // progressBar2.Value = i;
+                        // progressBar2.Value = i;
                     }
 
                     SaldoAtual(int.Parse(codempresa), int.Parse(dr.GetString(dr.GetOrdinal("CODPRODUTO"))), dtprocesso);
 
-                   
+
 
                 }
 

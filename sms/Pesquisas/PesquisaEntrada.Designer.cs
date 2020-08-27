@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.Grid = new System.Windows.Forms.DataGridView();
-            this.txtpesquisa = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Rb1 = new System.Windows.Forms.RadioButton();
-            this.Rb2 = new System.Windows.Forms.RadioButton();
-            this.Rb3 = new System.Windows.Forms.RadioButton();
             this.empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipooperacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +36,11 @@
             this.codfornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomefornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datarecebimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtpesquisa = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Rb1 = new System.Windows.Forms.RadioButton();
+            this.Rb2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,70 +65,6 @@
             this.Grid.TabIndex = 20;
             this.Grid.TabStop = false;
             this.Grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick);
-            // 
-            // txtpesquisa
-            // 
-            this.txtpesquisa.Location = new System.Drawing.Point(12, 61);
-            this.txtpesquisa.Name = "txtpesquisa";
-            this.txtpesquisa.Size = new System.Drawing.Size(473, 20);
-            this.txtpesquisa.TabIndex = 18;
-            this.txtpesquisa.TextChanged += new System.EventHandler(this.txtpesquisa_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Texto de Pesquisa";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(277, 413);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Fechar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Rb1
-            // 
-            this.Rb1.AutoSize = true;
-            this.Rb1.Checked = true;
-            this.Rb1.Location = new System.Drawing.Point(19, 12);
-            this.Rb1.Name = "Rb1";
-            this.Rb1.Size = new System.Drawing.Size(88, 17);
-            this.Rb1.TabIndex = 22;
-            this.Rb1.TabStop = true;
-            this.Rb1.Text = "Número Nota";
-            this.Rb1.UseVisualStyleBackColor = true;
-            this.Rb1.Click += new System.EventHandler(this.Rb1_Click);
-            // 
-            // Rb2
-            // 
-            this.Rb2.AutoSize = true;
-            this.Rb2.Location = new System.Drawing.Point(120, 12);
-            this.Rb2.Name = "Rb2";
-            this.Rb2.Size = new System.Drawing.Size(110, 17);
-            this.Rb2.TabIndex = 23;
-            this.Rb2.TabStop = true;
-            this.Rb2.Text = "Nome Fornecedor";
-            this.Rb2.UseVisualStyleBackColor = true;
-            this.Rb2.Click += new System.EventHandler(this.Rb1_Click);
-            // 
-            // Rb3
-            // 
-            this.Rb3.AutoSize = true;
-            this.Rb3.Location = new System.Drawing.Point(236, 12);
-            this.Rb3.Name = "Rb3";
-            this.Rb3.Size = new System.Drawing.Size(114, 17);
-            this.Rb3.TabIndex = 24;
-            this.Rb3.TabStop = true;
-            this.Rb3.Text = "Data Recebimento";
-            this.Rb3.UseVisualStyleBackColor = true;
-            this.Rb3.Click += new System.EventHandler(this.Rb1_Click);
             // 
             // empresa
             // 
@@ -179,13 +114,63 @@
             this.datarecebimento.ReadOnly = true;
             this.datarecebimento.Width = 120;
             // 
+            // txtpesquisa
+            // 
+            this.txtpesquisa.Location = new System.Drawing.Point(12, 61);
+            this.txtpesquisa.Name = "txtpesquisa";
+            this.txtpesquisa.Size = new System.Drawing.Size(473, 20);
+            this.txtpesquisa.TabIndex = 18;
+            this.txtpesquisa.TextChanged += new System.EventHandler(this.txtpesquisa_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Texto de Pesquisa";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(277, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(208, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Fechar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Rb1
+            // 
+            this.Rb1.AutoSize = true;
+            this.Rb1.Checked = true;
+            this.Rb1.Location = new System.Drawing.Point(19, 12);
+            this.Rb1.Name = "Rb1";
+            this.Rb1.Size = new System.Drawing.Size(88, 17);
+            this.Rb1.TabIndex = 22;
+            this.Rb1.TabStop = true;
+            this.Rb1.Text = "Número Nota";
+            this.Rb1.UseVisualStyleBackColor = true;
+            this.Rb1.Click += new System.EventHandler(this.Rb1_Click);
+            // 
+            // Rb2
+            // 
+            this.Rb2.AutoSize = true;
+            this.Rb2.Location = new System.Drawing.Point(120, 12);
+            this.Rb2.Name = "Rb2";
+            this.Rb2.Size = new System.Drawing.Size(110, 17);
+            this.Rb2.TabIndex = 23;
+            this.Rb2.Text = "Nome Fornecedor";
+            this.Rb2.UseVisualStyleBackColor = true;
+            this.Rb2.Click += new System.EventHandler(this.Rb1_Click);
+            // 
             // PesquisaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 489);
+            this.ClientSize = new System.Drawing.Size(795, 447);
             this.ControlBox = false;
-            this.Controls.Add(this.Rb3);
             this.Controls.Add(this.Rb2);
             this.Controls.Add(this.Rb1);
             this.Controls.Add(this.Grid);
@@ -218,6 +203,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datarecebimento;
         private System.Windows.Forms.RadioButton Rb1;
         private System.Windows.Forms.RadioButton Rb2;
-        private System.Windows.Forms.RadioButton Rb3;
     }
 }
