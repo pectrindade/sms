@@ -1099,7 +1099,6 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
-
         public bool Cria_EstoqueExtrato()
         {
 
@@ -1164,5 +1163,62 @@ namespace Atencao_Assistida.Classes.Funcoes
             }
         }
 
+        public bool Cria_Saldo()
+        {
+            Inicio:
+
+            var db = new DBAcessOleDB();
+
+            var tableName = "Saldo";
+
+             var Mysql = "CREATE TABLE " + tableName + "( ";
+
+          
+            Mysql = Mysql + " [NOMEEMPRESA]  varchar(200), ";
+            Mysql = Mysql + " [NOMEDEPARTAMENTO]  varchar(200), ";
+            Mysql = Mysql + " [NOMEGRUPO]  varchar(200), ";
+            Mysql = Mysql + " [DATAESTOQUE]  DATETIME, ";
+            Mysql = Mysql + " [CODPRODUTO]   Int, ";
+            Mysql = Mysql + " [NOMEPRODUTO]  varchar(200), ";
+            Mysql = Mysql + " [ENTRADA]  varchar(20), ";
+            Mysql = Mysql + " [SAIDA]  varchar(20), ";
+            Mysql = Mysql + " [ATUAL]  varchar(20), ";
+            Mysql = Mysql + " [PADRAO]  varchar(20), ";
+            Mysql = Mysql + " [ESTIMATIVA]  varchar(20) ";
+
+            Mysql = Mysql + " )";
+
+            db.CommandText = Mysql;
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+                db.Dispose();
+                db = new DBAcessOleDB();
+
+                Mysql = "DROP TABLE " + tableName;
+                db.CommandText = Mysql;
+                try
+                {
+                    db.ExecuteNonQuery();
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+
+                goto Inicio;
+
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
     }
 }

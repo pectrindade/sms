@@ -155,7 +155,7 @@
             this.Grid.Size = new System.Drawing.Size(770, 367);
             this.Grid.TabIndex = 256;
             this.Grid.TabStop = false;
-            this.Grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick);
+            this.Grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick1);
             // 
             // codigo
             // 
@@ -183,9 +183,9 @@
             // btnListar
             // 
             this.btnListar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnListar.Location = new System.Drawing.Point(534, 469);
+            this.btnListar.Location = new System.Drawing.Point(501, 469);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(59, 23);
+            this.btnListar.Size = new System.Drawing.Size(96, 23);
             this.btnListar.TabIndex = 7;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
@@ -194,9 +194,9 @@
             // btnDesfazer
             // 
             this.btnDesfazer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDesfazer.Location = new System.Drawing.Point(450, 469);
+            this.btnDesfazer.Location = new System.Drawing.Point(321, 469);
             this.btnDesfazer.Name = "btnDesfazer";
-            this.btnDesfazer.Size = new System.Drawing.Size(59, 23);
+            this.btnDesfazer.Size = new System.Drawing.Size(96, 23);
             this.btnDesfazer.TabIndex = 6;
             this.btnDesfazer.Text = "Desfazer";
             this.btnDesfazer.UseVisualStyleBackColor = true;
@@ -205,30 +205,32 @@
             // BtnExcluir
             // 
             this.BtnExcluir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnExcluir.Location = new System.Drawing.Point(361, 469);
+            this.BtnExcluir.Location = new System.Drawing.Point(723, 469);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(59, 23);
             this.BtnExcluir.TabIndex = 5;
             this.BtnExcluir.Text = "Excluir";
             this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Visible = false;
             // 
             // btnGravar
             // 
             this.btnGravar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnGravar.Location = new System.Drawing.Point(271, 469);
+            this.btnGravar.Location = new System.Drawing.Point(723, 469);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(59, 23);
             this.btnGravar.TabIndex = 4;
             this.btnGravar.Text = "Salvar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Visible = false;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnFechar
             // 
             this.btnFechar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFechar.Location = new System.Drawing.Point(185, 469);
+            this.btnFechar.Location = new System.Drawing.Point(152, 469);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(59, 23);
+            this.btnFechar.Size = new System.Drawing.Size(96, 23);
             this.btnFechar.TabIndex = 8;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;

@@ -128,6 +128,8 @@ namespace Atencao_Assistida.Forms
 
         private void GridAdd()
         {
+
+            Gravar1();
             Grid.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //define um array de strings com nCOlunas
@@ -217,7 +219,7 @@ namespace Atencao_Assistida.Forms
 
 
         }
-
+        
         private void Balanço_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -349,6 +351,127 @@ namespace Atencao_Assistida.Forms
             LimpaTela();
 
         }
+
+
+        private void Grid_CellDoubleClick1(object sender, DataGridViewCellEventArgs e)
+        {
+
+            var codempresa = Usuario.Codempresa.ToString();
+            var databalanco = txtdtBalanco.Text.Trim();
+            var coddepartamento = Usuario.Coddepartamento.ToString();
+
+            DialogResult result = MessageBox.Show("Deseja alterar este item da Balanço ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                var RowsIndex = Grid.CurrentRow.Index;
+
+                try
+                {
+                    txtCodProduto.Text = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
+                    txtNomeProduto.Text = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+                    txtQuantidade.Text = Grid.Rows[RowsIndex].Cells[3].Value.ToString();
+
+                    var b = new Balanco();
+
+                    var resp = b.Delete(int.Parse(codempresa), int.Parse(coddepartamento), databalanco, int.Parse(txtCodProduto.Text));
+                                        
+
+                }
+                catch
+                {
+
+                }
+
+
+                if (Grid.CurrentRow == null) return;
+                Grid.Rows.RemoveAt(Grid.CurrentRow.Index);
+            }
+            else if (result == DialogResult.No)
+            {
+                //code for No
+
+                txtCodProduto.Focus();
+
+            }
+
+
+
+        }
+
+        private void Gravar1()
+        {
+
+            var hoje = DateTime.Now;
+            var codempresa = Usuario.Codempresa.ToString();
+
+            var databalanco = txtdtBalanco.Text.Trim();
+
+
+            var coddepartamento = Usuario.Coddepartamento.ToString();
+
+
+            var status = "ABERTO";
+
+            var respinclusao = Usuario.Nomeusuario.ToString();
+            var datainclusao = hoje.ToString();
+            var respalteracao = Usuario.Nomeusuario.ToString();
+            var dataalteracao = hoje.ToString();
+            var excluido = "N";
+
+            try
+            {
+
+                //int total = Grid.Rows.Count;
+                int i;
+                var Produto = "";
+                var nome = "";
+                var qt = "";
+                var Lote = "0";
+                var Validade = "";
+
+                //DialogResult result = MessageBox.Show("Deseja Incluir este item ?", "Atenção !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //if (result == DialogResult.Yes)
+                //{
+
+                    //var Linhas = Grid.Rows.Count;
+
+                    //foreach (DataGridViewRow linha1 in Grid.Rows)
+                    //{
+
+                        Produto = txtCodProduto.Text;
+                        nome = txtNomeProduto.Text;
+                        qt = txtQuantidade.Text;
+
+                        var item = new Balanco(int.Parse(codempresa), int.Parse(coddepartamento), databalanco, int.Parse(Produto), Lote, Validade, int.Parse(qt), respinclusao.ToString(), datainclusao, respalteracao.ToString(), dataalteracao);
+
+                        var dr_i = Balanco.Select(int.Parse(codempresa), int.Parse(coddepartamento), databalanco, int.Parse(Produto));
+                        if (dr_i.HasRows)
+                        {
+                            item.Update();
+                        }
+                        else
+                        {
+                            item.Insert();
+                        }
+
+                        dr_i.Dispose();
+                        dr_i.Close();
+
+                    //}
+
+                //}
+                //MessageBox.Show("Registro Gravado com Sucesso !");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro na Persistência");
+            }
+
+            //LimpaTela();
+
+        }
+
+
 
         private void btnListar_Click(object sender, EventArgs e)
         {

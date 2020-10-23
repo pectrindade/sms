@@ -221,10 +221,11 @@
             // btnBuscaProtocolo
             // 
             this.btnBuscaProtocolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscaProtocolo.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btnBuscaProtocolo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnBuscaProtocolo.Location = new System.Drawing.Point(154, 23);
             this.btnBuscaProtocolo.Name = "btnBuscaProtocolo";
-            this.btnBuscaProtocolo.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscaProtocolo.Size = new System.Drawing.Size(35, 23);
             this.btnBuscaProtocolo.TabIndex = 200;
             this.btnBuscaProtocolo.TabStop = false;
             this.btnBuscaProtocolo.Text = "...";

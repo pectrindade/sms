@@ -1,6 +1,7 @@
 ﻿using Atencao_Assistida.Classes.Mysql;
 using Atencao_Assistida.Pesquisas;
 using Atencao_Assistida.Relatorios.Estoque;
+using Atencao_Assistida.Relatorios.Saldo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -156,7 +157,7 @@ namespace Atencao_Assistida.Consultas
             Grid.Columns["qtatual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //define um array de strings com nCOlunas
-            string[] linhaDados = new string[8];
+            string[] linhaDados = new string[9];
 
             //LIMPAR GRID
             Grid.Rows.Clear();
@@ -174,14 +175,15 @@ namespace Atencao_Assistida.Consultas
                     var qtatual = "";
                     var result = decimal.Parse("1") / decimal.Parse("1");
 
-                    linhaDados[0] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
-                    linhaDados[1] = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
-                    linhaDados[2] = dr.GetString(dr.GetOrdinal("QTANTERIOR"));
-                    linhaDados[3] = dr.GetString(dr.GetOrdinal("ENTRADA"));
-                    linhaDados[4] = dr.GetString(dr.GetOrdinal("SAIDA"));
-                    linhaDados[5] = dr.GetString(dr.GetOrdinal("QTATUAL"));
-                    linhaDados[6] = ""; ;
-                    linhaDados[7] = "";
+                    //linhaDados[0] = false;
+                    linhaDados[1] = dr.GetString(dr.GetOrdinal("CODPRODUTO"));
+                    linhaDados[2] = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
+                    linhaDados[3] = dr.GetString(dr.GetOrdinal("QTANTERIOR"));
+                    linhaDados[4] = dr.GetString(dr.GetOrdinal("ENTRADA"));
+                    linhaDados[5] = dr.GetString(dr.GetOrdinal("SAIDA"));
+                    linhaDados[6] = dr.GetString(dr.GetOrdinal("QTATUAL"));
+                    linhaDados[7] = ""; ;
+                    linhaDados[8] = "";
 
                     if (!dr.IsDBNull(dr.GetOrdinal("SAIDAPADRAO")))
                     {
@@ -191,16 +193,16 @@ namespace Atencao_Assistida.Consultas
                             qtatual = dr.GetString(dr.GetOrdinal("QTATUAL"));
                             result = decimal.Parse(qtatual) / decimal.Parse(prevSaida);
 
-                            linhaDados[6] = dr.GetString(dr.GetOrdinal("SAIDAPADRAO"));
+                            linhaDados[7] = dr.GetString(dr.GetOrdinal("SAIDAPADRAO"));
 
                             var somatorio = "";
                             somatorio = String.Format("{0:0.0}", result);
 
-                            linhaDados[7] = somatorio;
+                            linhaDados[8] = somatorio;
 
                         }
                     }
-                   
+
 
                     Grid.Rows.Add(linhaDados);
 
@@ -210,7 +212,7 @@ namespace Atencao_Assistida.Consultas
                         somatorio = String.Format("{0:N}", result);
 
                         result = decimal.Parse(somatorio);
-                       
+
                         somatorio = String.Format("{0:0.0}", result);
 
                         float comparaAmarelo = float.Parse("2,5");
@@ -243,7 +245,7 @@ namespace Atencao_Assistida.Consultas
         private void Relatorio()
         {
             var cria = new Classes.Funcoes.CriaArquivo();
-            cria.Cria_Estoque();
+            cria.Cria_Saldo();
 
             DateTime data = Convert.ToDateTime(txtDataEstoque.Text.Trim());
 
@@ -269,61 +271,66 @@ namespace Atencao_Assistida.Consultas
             progressBar1.Value = 0;
             progressBar1.Visible = true;
 
-            var dr = Classes.Mysql.Estoque.BuscaEstoque(cmbEmpresa.SelectedIndex, cmbDepartamento.SelectedIndex, vmes, vano, int.Parse(cod), vcodgrupo);
-            var drcont = Classes.Mysql.Estoque.BuscaEstoque(cmbEmpresa.SelectedIndex, cmbDepartamento.SelectedIndex, vmes, vano, int.Parse(cod), vcodgrupo);
+            //var dr = Classes.Mysql.Estoque.BuscaEstoque(cmbEmpresa.SelectedIndex, cmbDepartamento.SelectedIndex, vmes, vano, int.Parse(cod), vcodgrupo);
+            //var drcont = Classes.Mysql.Estoque.BuscaEstoque(cmbEmpresa.SelectedIndex, cmbDepartamento.SelectedIndex, vmes, vano, int.Parse(cod), vcodgrupo);
 
 
 
-            if (dr.HasRows)
+            //if (dr.HasRows)
+            //{
+            //    DataTable dt = new DataTable();
+            //    dt.Load(drcont);
+            int numRows = Grid.Rows.Count;
+            progressBar1.Maximum = numRows;
+
+            var Linhas = Grid.Rows.Count;
+
+            foreach (DataGridViewRow linha1 in Grid.Rows)
             {
-                DataTable dt = new DataTable();
-                dt.Load(drcont);
-                int numRows = dt.Rows.Count;
-                progressBar1.Maximum = numRows;
-
-                while (dr.Read())
+                try
                 {
+                    var nomeempresa = cmbEmpresa.Text;
+                    var nomedepartamento = cmbDepartamento.Text;
+                    var nomegrupo = cmbGrupo.Text;
+                    var dataestoque = txtDataEstoque.Text;
 
+                    var codproduto = linha1.Cells[1].Value.ToString();
+                    var nomeproduto = linha1.Cells[2].Value.ToString();
 
-                    var codempresa = dr.GetInt32(dr.GetOrdinal("CODEMPRESA"));
-                    var coddepartamento = dr.GetInt32(dr.GetOrdinal("CODDEPARTAMENTO"));
-                    var nomedepartamento = dr.GetString(dr.GetOrdinal("NOMEDEPARTAMENTO"));
-                    var varmes = dr.GetInt32(dr.GetOrdinal("MES"));
-                    var varano = dr.GetString(dr.GetOrdinal("ANO"));
-
-                    var codproduto = dr.GetInt32(dr.GetOrdinal("CODPRODUTO"));
-                    var nomeproduto = dr.GetString(dr.GetOrdinal("NOMEPRODUTO"));
-
-                    var qtanterior = dr.GetString(dr.GetOrdinal("QTANTERIOR"));
-                    var entrada = dr.GetString(dr.GetOrdinal("ENTRADA"));
-                    var saida = dr.GetString(dr.GetOrdinal("SAIDA"));
-                    var qtatual = dr.GetString(dr.GetOrdinal("QTATUAL"));
-
-                    var usuario = Usuario.Nomeusuario;
-                    var funcao = Usuario.Funcao;
+                    var entrada = linha1.Cells[4].Value.ToString();
+                    var saida = linha1.Cells[5].Value.ToString();
+                    var atual = linha1.Cells[6].Value.ToString();
+                    var padrao = linha1.Cells[7].Value.ToString();
+                    var estimativa = linha1.Cells[8].Value.ToString();
 
 
 
-                    try
+
+                    var index = bool.Parse(linha1.Cells[0].Value.ToString());
+
+                    if (index == true)
                     {
+
                         var m = new Classes.Mysql.Estoque();
 
-                        m.InsertAccess(codempresa, coddepartamento, nomedepartamento, varmes.ToString(), varano, codproduto, nomeproduto, qtanterior, entrada, saida, qtatual);
-                    }
-                    catch (Exception erro)
-                    {
+                        m.InsertAccessSaldo(nomeempresa, nomedepartamento, nomegrupo, dataestoque, int.Parse(codproduto), nomeproduto, entrada, saida, atual, padrao, estimativa);
 
                     }
-
-                    progresso1 = progresso1 + 1;
-                    progressBar1.Value = progresso1;
+                }
+                catch (Exception erro)
+                {
 
                 }
 
+                progresso1 = progresso1 + 1;
+                progressBar1.Value = progresso1;
+
             }
 
-            dr.Close();
-            dr.Dispose();
+            //}
+
+            //dr.Close();
+            //dr.Dispose();
             progressBar1.Visible = false;
 
             MessageBox.Show("Relatório Pronto !");
@@ -332,7 +339,7 @@ namespace Atencao_Assistida.Consultas
             bool open = false;
             foreach (Form form in this.MdiChildren)
             {
-                if (form is RelEstoque)
+                if (form is RelSaldo)
                 {
                     form.BringToFront();
                     open = true;
@@ -340,7 +347,7 @@ namespace Atencao_Assistida.Consultas
             }
             if (!open)
             {
-                Form tela = new RelEstoque();
+                Form tela = new RelSaldo();
                 tela.ShowDialog();
             }
 
@@ -533,8 +540,8 @@ namespace Atencao_Assistida.Consultas
 
             try
             {
-                Parametros.Codigo = Grid.Rows[RowsIndex].Cells[0].Value.ToString();
-                Parametros.Nome = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+                Parametros.Codigo = Grid.Rows[RowsIndex].Cells[1].Value.ToString();
+                Parametros.Nome = Grid.Rows[RowsIndex].Cells[2].Value.ToString();
                 Parametros.Coddepartamento = cmbDepartamento.SelectedIndex.ToString();
 
             }

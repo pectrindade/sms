@@ -1450,6 +1450,47 @@ namespace Atencao_Assistida.Classes.Mysql
             }
         }
 
+
+        public int InsertAccessSaldo(string nomeempresa, string nomedepartamento, string nomegrupo,
+           string dataestoque, 
+           int codproduto, string nomeproduto, string entrada, string saida, string atual, string padrao, string estimativa)
+        {
+            var db = new DBAcessOleDB();
+
+            var Mysql = " INSERT INTO Saldo(";
+            Mysql = Mysql + " NOMEEMPRESA, NOMEDEPARTAMENTO, NOMEGRUPO, DATAESTOQUE, ";
+            Mysql = Mysql + " CODPRODUTO, NOMEPRODUTO, ENTRADA, SAIDA, ATUAL, PADRAO, ESTIMATIVA ";
+
+            Mysql = Mysql + ") ";
+            Mysql = Mysql + " VALUES(";
+            Mysql = Mysql + " @NOMEEMPRESA, @NOMEDEPARTAMENTO, @NOMEGRUPO, @DATAESTOQUE, ";
+            Mysql = Mysql + " @CODPRODUTO, @NOMEPRODUTO, @ENTRADA, @SAIDA, @ATUAL, @PADRAO, @ESTIMATIVA ";
+            Mysql = Mysql + "); ";
+
+            db.CommandText = Mysql;
+
+            db.AddParameter("@NOMEEMPRESA", nomeempresa);
+            db.AddParameter("@NOMEDEPARTAMENTO", nomedepartamento);
+            db.AddParameter("@NOMEGRUPO", nomegrupo);
+            db.AddParameter("@DATAESTOQUE", dataestoque);//Convert.ToDateTime(datamovimento))
+            db.AddParameter("@CODPRODUTO", codproduto);
+            db.AddParameter("@NOMEPRODUTO", nomeproduto);
+            db.AddParameter("@ENTRADA", entrada);
+            db.AddParameter("@SAIDA", saida);
+            db.AddParameter("@ATUAL", atual);
+            db.AddParameter("@PADRAO", padrao);
+            db.AddParameter("@ESTIMATIVA", estimativa);
+
+            try
+            {
+                return Convert.ToInt32(db.ExecuteScalar());
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static OleDbDataReader BuscaExtratoAccess()
         {

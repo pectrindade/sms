@@ -72,9 +72,7 @@ namespace Atencao_Assistida.Forms
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Exclamation,
                         MessageBoxDefaultButton.Button1);
-                        //txtCodigo.Text = "";
-
-                        //return;
+                        
 
                         btnSalvar.Enabled = false;
                     }
@@ -89,6 +87,7 @@ namespace Atencao_Assistida.Forms
             }
             dr.Dispose();
             dr.Close();
+
             if (txtCodigoUnidade.Text.Trim() != "")
             {
                 BuscaUnidade(int.Parse(txtCodigoUnidade.Text));

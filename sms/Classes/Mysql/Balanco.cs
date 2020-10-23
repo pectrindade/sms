@@ -215,6 +215,32 @@ namespace Atencao_Assistida.Classes.Mysql
             }
         }
 
+        public bool Delete(int codempresa, int coddepartamento, string databalanco, int codproduto)
+        {
+            var db = new DBAcess();
+            var Mysql = " DELETE FROM Balanco ";
+
+            Mysql = Mysql + " WHERE CODEMPRESA = @CODEMPRESA ";
+            Mysql = Mysql + " AND CODDEPARTAMENTO = @CODDEPARTAMENTO ";
+            Mysql = Mysql + " AND DATABALANCO = @DATABALANCO ";
+            Mysql = Mysql + " AND CODPRODUTO = @CODPRODUTO";
+
+            db.CommandText = Mysql;
+            db.AddParameter("@CODEMPRESA", codempresa);
+            db.AddParameter("@CODDEPARTAMENTO", coddepartamento);
+            db.AddParameter("@DATABALANCO", Convert.ToDateTime(databalanco));
+            db.AddParameter("@CODPRODUTO", codproduto);
+
+            try
+            {
+                db.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public int InsertAccess(int codempresa, int coddepartamento, string nomedepartamento, string databalanco, int codproduto, string nomeproduto, string quantidade)
         {

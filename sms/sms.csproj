@@ -907,6 +907,17 @@
     <Compile Include="Relatorios\Saida_Periodo\RelSaidaPeriodo.Designer.cs">
       <DependentUpon>RelSaidaPeriodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Saldo\DsSaldo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsSaldo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Saldo\RelSaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Saldo\RelSaldo.Designer.cs">
+      <DependentUpon>RelSaldo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Unidades\DsUnidade.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1239,6 +1250,10 @@
       <DependentUpon>RelSaidaPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Saida_Periodo\RelSaidaPeriodo_bk.rdlc" />
+    <EmbeddedResource Include="Relatorios\Saldo\RelSaldo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Saldo\RelSaldo.resx">
+      <DependentUpon>RelSaldo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.rdlc" />
     <EmbeddedResource Include="Relatorios\Unidades\RelUnidade.resx">
       <DependentUpon>RelUnidade.cs</DependentUpon>
@@ -1487,6 +1502,17 @@
     </None>
     <None Include="Relatorios\Saida_Periodo\DsSaidaPeriodo.xss">
       <DependentUpon>DsSaidaPeriodo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Saldo\DsSaldo.xsc">
+      <DependentUpon>DsSaldo.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Saldo\DsSaldo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsSaldo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Saldo\DsSaldo.xss">
+      <DependentUpon>DsSaldo.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Unidades\DsUnidade.xsc">
       <DependentUpon>DsUnidade.xsd</DependentUpon>
